@@ -1,0 +1,148 @@
+#Login {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #1e1e1e; /* Dark background */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: #ffffff; /* White text */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  #Login h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff6f61; /* Vibrant coral color */
+    font-size: 24px;
+  }
+  
+  #Login form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #Login input {
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid #444; /* Dark border */
+    border-radius: 5px;
+    background-color: #333; /* Dark input background */
+    color: #ffffff; /* White text */
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  #Login input:focus {
+    border-color: #ff6f61; /* Vibrant coral border on focus */
+  }
+  
+  #Login button {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6f61; /* Vibrant coral button */
+    color: #ffffff; /* White text */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #Login button:hover {
+    background-color: #ff3b2f; /* Darker coral on hover */
+  }
+  
+  #Login p {
+    text-align: center;
+    margin-top: 15px;
+    color: #888; /* Light gray for secondary text */
+  }
+
+  #regNav {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  #Login a {
+    color: #ff6f61; /* Vibrant coral for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  #Login a:hover {
+    color: #ff3b2f; /* Darker coral on hover */
+  }
+
+  @media (max-width: 768px) {
+    /* Adjust container width */
+    #Login {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #Login h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    #Login input {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #Login button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #Login p {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    
+    /* Mobile Styling for the "Register Here" button */
+    #regNav {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+/* Mobile View (phones in portrait) */
+@media (max-width: 480px) {
+    #Login {
+        width: 90%;
+        padding: 15px;
+    }
+
+    #Login h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    #Login input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    #Login button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #Login p {
+        margin-top: 8px;
+        font-size: 12px;
+    }
+    
+    /* Mobile styling for the "Register Here" button */
+    #regNav {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
+}

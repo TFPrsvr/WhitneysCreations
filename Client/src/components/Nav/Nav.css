@@ -1,0 +1,66 @@
+#Nav {
+    background-color: #1e1e1e; 
+    padding: 15px 20px;
+    display: flex;
+    /* flex-direction: column; */
+    /* justify-content: space-around; */
+    
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  #Nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: darkmagenta;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    /* align-items: flex-start; */
+  }
+  
+  #Nav .nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    color:cyan;
+    gap: 20px;
+  }
+  
+  #Nav .nav-links a {
+    color: #ffffff; 
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  #Nav .nav-links a:hover {
+    color: #ff6f61; 
+  }
+  
+  #Nav .nav-links a.active {
+    color: #ff6f61; 
+    font-weight: bold;
+  }
+  
+  #Nav .auth-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+  }
+  
+  #Nav .auth-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6f61; 
+    color: #ffffff; 
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #Nav .auth-buttons button:hover {
+    background-color: #ff3b2f;
+  }

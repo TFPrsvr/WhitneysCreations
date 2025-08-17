@@ -1,0 +1,46 @@
+/* General styles for About, Contact, and Order pages */
+.contact{
+    padding: 20px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1 {
+    color: #ff6f61;
+    font-size: 24px;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #ffffff;
+  }
+  
+  @media (max-width: 768px) {
+    .contact {
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 20px;
+    }
+  
+    p {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact {
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 18px;
+    }
+  
+    p {
+      font-size: 12px;
+    }
+  }
+  

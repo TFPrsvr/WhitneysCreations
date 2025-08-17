@@ -1,0 +1,52 @@
+/* Force CleanNav to absolute top-left corner - NO GAP */
+.nav-vertical-left {
+  position: fixed !important;
+  top: 0px !important;
+  left: 0px !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  transform: none !important;
+  translate: none !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: 9999 !important;
+  width: 16rem !important; /* 256px */
+  background-color: rgba(17, 24, 39, 0.95) !important;
+  border-right: 1px solid rgba(75, 85, 99, 0.3) !important;
+  border-bottom: 1px solid rgba(75, 85, 99, 0.3) !important;
+}
+
+/* Remove any inherited spacing from parent elements */
+.nav-vertical-left,
+.nav-vertical-left > div {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.nav-vertical-left * {
+  box-sizing: border-box;
+}
+
+/* Override any global button constraints */
+.nav-vertical-left a,
+.nav-vertical-left button {
+  max-width: none !important;
+  width: auto !important;
+  min-width: auto !important;
+}
+
+/* Override any global spacing that might affect navigation positioning */
+
+/* Force navigation to start at absolute 0,0 coordinate */
+.nav-vertical-left {
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+  border-top: none !important;
+  border-left: none !important;
+}
+
+/* Make navigation links more visually appealing */
+.nav-vertical-left a {
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}

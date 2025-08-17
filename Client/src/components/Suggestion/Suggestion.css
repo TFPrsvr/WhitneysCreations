@@ -1,0 +1,264 @@
+body {
+  background-color: #121212; 
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#Suggestions {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  color: #ff6347; 
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #00bfff;
+  font-size: 2rem; 
+  margin-bottom: 10px;
+}
+
+.suggestion-card {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+  color: #f0f0f0;
+  text-align: center;
+  max-width: 600px;
+  margin: 15px auto;
+}
+
+#cardT\&D {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#cBtns {
+  text-align: center;
+}
+
+.suggestion-card:hover {
+  transform: scale(1.05);
+}
+
+.suggestion-card h3 {
+  color: #ff6347;  
+}
+
+.suggestion-card p {
+  color: #ffcc00;  
+  font-size: 1.2rem;
+}
+
+.cardBtns-wrapper {
+  display: flex; 
+  gap: 10px;      
+  margin-top: 15px;
+  justify-content: center;
+  text-align: center;
+}
+
+.cardBtns {
+  background-color: #ff6347;  
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+}
+
+.cardBtns:hover {
+  background-color: #ff4500; 
+}
+
+.cardBtns.secondary {
+  background-color: #00bfff;  
+}
+
+.cardBtns.secondary:hover {
+  background-color: #1e90ff;
+}
+
+#sugForm {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#sugForm form input,
+#sugForm form textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  margin: 10px auto;
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 5px;
+  display: block;
+}
+
+#sugForm form button {
+  background-color: #00bfff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.suggestions-list {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.suggestions-list button {
+  background-color: #00bfff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.suggestions-list button:hover {
+  background-color: #1e90ff;
+}
+
+#wtf {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#sugForm form button:hover {
+  background-color: #1e90ff;
+}
+
+/* Mobile and Tablet Responsive Styles */
+@media (max-width: 768px) {
+  #Suggestions {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.5rem; 
+    text-align: center;
+  }
+
+  .suggestion-card {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .suggestion-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .suggestion-card p {
+    font-size: 1rem;
+  }
+
+  .cardBtns {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .cardBtns.secondary {
+    background-color: #ff6347;
+  }
+
+  .cardBtns.secondary:hover {
+    background-color: #ff4500;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  .suggestion-card {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .suggestion-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .suggestion-card p {
+    font-size: 0.9rem;
+  }
+
+  .cardBtns {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .cardBtns.secondary {
+    background-color: #ff6347;
+  }
+
+  .cardBtns.secondary:hover {
+    background-color: #ff4500;
+  }
+}
+
+/* Desktop Mode */
+@media (min-width: 769px) {
+  .suggestion-card {
+    width: 100%;
+  }
+
+  .cardBtns-wrapper {
+    display: flex; 
+    gap: 10px;     
+  }
+
+  .cardBtns {
+    width: auto;  
+    padding: 10px 20px;
+  }
+
+  .cardBtns.secondary {
+    background-color: #ff6347; 
+  }
+
+  .cardBtns.secondary:hover {
+    background-color: #ff4500;
+  }
+}

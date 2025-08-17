@@ -1,0 +1,247 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const About = () => {
+  const teamMembers = [
+    {
+      name: 'Whitney Richards',
+      role: 'Founder & CEO',
+      bio: 'Passionate about empowering creators to build sustainable businesses through print-on-demand.',
+      avatar: '👩‍💼',
+      linkedin: '#'
+    },
+    {
+      name: 'Tabitha Fortner',
+      role: 'Head of Design',
+      bio: '10+ years in product design, focused on creating intuitive and powerful design tools.',
+      avatar: '👩‍🎨',
+      linkedin: '#'
+    },
+    {
+      name: 'Terry Green',
+      role: 'VP of Operations',
+      bio: 'Ensures quality and fast fulfillment across our global network of print partners.',
+      avatar: '👨‍💻',
+      linkedin: '#'
+    }
+  ];
+
+  const values = [
+    {
+      icon: '🎯',
+      title: 'Quality First',
+      description: 'We never compromise on product quality. Every item is printed on premium materials with vibrant, long-lasting inks.'
+    },
+    {
+      icon: '🌱',
+      title: 'Sustainable Practices',
+      description: 'Eco-friendly printing processes and sustainable materials. We care about our planet as much as your business.'
+    },
+    {
+      icon: '🚀',
+      title: 'Creator Success',
+      description: 'Your success is our success. We provide tools, support, and guidance to help you build a thriving business.'
+    },
+    {
+      icon: '🤝',
+      title: 'Community Driven',
+      description: 'Built by creators, for creators. We listen to our community and continuously improve based on your feedback.'
+    }
+  ];
+
+  const milestones = [
+    { year: '2020', event: 'PrintCraft founded with a vision to democratize custom product creation' },
+    { year: '2021', event: 'Launched with 10 product types and 100 satisfied creators' },
+    { year: '2022', event: 'Expanded to 50+ products and served 10,000+ customers worldwide' },
+    { year: '2023', event: 'Introduced advanced design tools and automated fulfillment' },
+    { year: '2024', event: 'Growing community of 100,000+ active creators and counting' }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50 pt-16">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-primary-600 to-purple-600 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              About PrintCraft
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-100">
+              We're on a mission to empower creators worldwide to turn their ideas into successful businesses 
+              through high-quality print-on-demand products.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center justify-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Our Mission
+              </h2>
+              <p className="text-lg text-gray-600 mb-6">
+                At PrintCraft, we believe everyone should have the opportunity to turn their creativity into a 
+                thriving business. That's why we've built the most intuitive, powerful, and accessible 
+                print-on-demand platform in the world.
+              </p>
+              <p className="text-lg text-gray-600 mb-8">
+                Whether you're an artist, entrepreneur, or just someone with great ideas, we provide all the 
+                tools you need to design, sell, and fulfill custom products without any upfront investment 
+                or inventory management.
+              </p>
+              <Link
+                to="/reg"
+                className="bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+              >
+                Start Your Journey
+              </Link>
+            </div>
+            <div className="relative">
+              <div className="bg-gradient-to-br from-primary-100 to-purple-100 rounded-2xl p-8 text-center">
+                <div className="text-8xl mb-6">🎨</div>
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div className="bg-white rounded-lg p-4">
+                    <div className="text-2xl font-bold text-primary-600">100K+</div>
+                    <div className="text-sm text-gray-600">Active Creators</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-4">
+                    <div className="text-2xl font-bold text-primary-600">2M+</div>
+                    <div className="text-sm text-gray-600">Products Sold</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-4">
+                    <div className="text-2xl font-bold text-primary-600">150+</div>
+                    <div className="text-sm text-gray-600">Product Types</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-4">
+                    <div className="text-2xl font-bold text-primary-600">50+</div>
+                    <div className="text-sm text-gray-600">Countries</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Values
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              These principles guide everything we do at PrintCraft
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, index) => (
+              <div key={index} className="bg-white p-8 rounded-xl shadow-sm text-center hover:shadow-lg transition-shadow duration-300">
+                <div className="text-6xl mb-6">{value.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">{value.title}</h3>
+                <p className="text-gray-600">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Meet Our Team
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              The passionate people behind PrintCraft
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => (
+              <div key={index} className="bg-gray-50 rounded-xl p-8 text-center hover:bg-white hover:shadow-lg transition-all duration-300">
+                <div className="text-8xl mb-6">{member.avatar}</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
+                <p className="text-primary-600 font-medium mb-4">{member.role}</p>
+                <p className="text-gray-600 mb-6">{member.bio}</p>
+                <a
+                  href={member.linkedin}
+                  className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
+                >
+                  Connect on LinkedIn →
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Journey
+            </h2>
+            <p className="text-xl text-gray-600">
+              From startup to global platform
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="absolute left-1/2 transform -translate-x-px top-0 bottom-0 w-0.5 bg-primary-200"></div>
+            
+            {milestones.map((milestone, index) => (
+              <div key={index} className="relative flex items-center mb-12">
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                  <div className="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                
+                <div className={`w-full ${index % 2 === 0 ? 'pr-8 md:pr-12 text-right' : 'pl-8 md:pl-12 text-left md:ml-1/2'}`}>
+                  <div className={`bg-white p-6 rounded-lg shadow-sm max-w-md ${index % 2 === 0 ? 'ml-auto md:mr-8' : 'mr-auto md:ml-8'}`}>
+                    <div className="text-primary-600 font-bold text-lg mb-2">{milestone.year}</div>
+                    <p className="text-gray-700">{milestone.event}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-primary-600 to-purple-600 text-white">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Ready to Join Our Community?
+          </h2>
+          <p className="text-xl mb-8">
+            Become part of a thriving community of creators who are building successful businesses with PrintCraft.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/reg"
+              className="bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+            >
+              Get Started Free
+            </Link>
+            <Link
+              to="/contact"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary-600 transition-all duration-200"
+            >
+              Get in Touch
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default About;

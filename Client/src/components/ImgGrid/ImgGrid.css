@@ -1,0 +1,15 @@
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 40px;
+  }
+  
+  .image-item {
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .image-item:hover {
+    transform: scale(1.05);
+  }
