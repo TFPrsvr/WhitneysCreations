@@ -81,13 +81,14 @@ const CleanNav = () => {
           margin: '0px',
           padding: '0px',
           transform: 'none',
-          inset: '0px auto auto 0px'
+          inset: '0px auto auto 0px',
+          borderRadius: '0 25px 25px 0'
         }}
       >
         <div 
           className="flex flex-col shadow-lg"
           style={{
-            backgroundColor: 'rgba(17, 24, 39, 0.95)',
+            backgroundColor: 'rgba(173, 216, 230, 0.95)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
             borderRight: '1px solid rgba(75, 85, 99, 0.3)',
@@ -135,15 +136,16 @@ const CleanNav = () => {
                 }`}
                 style={{
                   textShadow: isActive(link.path) 
-                    ? '0 0 8px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff' 
-                    : '0 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff',
+                    ? '0 0 8px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.8)' 
+                    : '0 1px 2px rgba(0, 0, 0, 0.8)',
                   transform: isActive(link.path) ? 'translateX(4px)' : 'none',
                   fontWeight: '700',
+                  fontSize: '28px',
                   margin: '2px 0'
                 }}
               >
                 <div className="flex items-center space-x-3">
-                  <span>{link.icon}</span>
+                  <span className="text-4xl">{link.icon}</span>
                   <span>{link.label}</span>
                 </div>
                 {link.badge !== undefined && link.badge > 0 && (
@@ -162,23 +164,28 @@ const CleanNav = () => {
                 {/* User Info */}
                 <div className="flex items-center p-2 mb-4 bg-gray-800 rounded-lg">
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-white truncate"
+                    <p className="font-bold truncate"
                        style={{ 
-                         textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                          overflow: 'hidden',
                          whiteSpace: 'nowrap',
-                         textOverflow: 'ellipsis'
+                         textOverflow: 'ellipsis',
+                         color: '#00ff88',
+                         fontSize: '28px',
+                         textShadow: '0 3px 6px rgba(0, 0, 0, 0.9), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                        }}>
                       {user?.first && user?.last 
                         ? `${String(user.first).charAt(0).toUpperCase()}${String(user.first).slice(1).toLowerCase().replace(/[^a-zA-Z]/g, '')} ${String(user.last).charAt(0).toUpperCase()}${String(user.last).slice(1).toLowerCase().replace(/[^a-zA-Z]/g, '')}`
                         : (user?.username ? String(user.username).replace(/[^a-zA-Z0-9_]/g, '').trim() : 'User')
                       }
                     </p>
-                    <p className="text-xs text-gray-400 truncate" 
+                    <p className="font-medium truncate" 
                        style={{ 
                          overflow: 'hidden',
                          whiteSpace: 'nowrap',
-                         textOverflow: 'ellipsis'
+                         textOverflow: 'ellipsis',
+                         color: '#66d9ff',
+                         fontSize: '22px',
+                         textShadow: '0 3px 6px rgba(0, 0, 0, 0.9), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                        }}>
                       {user?.email ? String(user.email).trim() : ''}
                     </p>
@@ -192,7 +199,12 @@ const CleanNav = () => {
                     className="flex items-center justify-center p-3 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
                     title="Cart"
                   >
-                    <span className="text-xl">🛒</span>
+                    <span className="text-5xl" style={{ 
+                      textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+                      background: 'rgba(255, 255, 255, 0.2)',
+                      borderRadius: '8px',
+                      padding: '4px 8px'
+                    }}>🛒</span>
                   </Link>
                   
                   <Link 
@@ -200,7 +212,12 @@ const CleanNav = () => {
                     className="flex items-center justify-center p-3 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
                     title="Profile"
                   >
-                    <span className="text-xl">👤</span>
+                    <span className="text-5xl" style={{ 
+                      textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+                      background: 'rgba(255, 255, 255, 0.2)',
+                      borderRadius: '8px',
+                      padding: '4px 8px'
+                    }}>👤</span>
                   </Link>
                   
                   <Link 
@@ -208,7 +225,12 @@ const CleanNav = () => {
                     className="flex items-center justify-center p-3 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
                     title="Orders"
                   >
-                    <span className="text-xl">📦</span>
+                    <span className="text-5xl" style={{ 
+                      textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+                      background: 'rgba(255, 255, 255, 0.2)',
+                      borderRadius: '8px',
+                      padding: '4px 8px'
+                    }}>📦</span>
                   </Link>
                 </div>
                 
@@ -218,16 +240,17 @@ const CleanNav = () => {
                     className="w-4/5 text-center"
                     style={{
                       display: 'block',
-                      padding: '10px 16px',
-                      fontSize: '14px',
+                      padding: '18px 32px',
+                      fontSize: '22px',
                       fontWeight: 'bold',
                       color: '#ffffff',
                       background: 'linear-gradient(to right, #dc2626, #b91c1c)',
                       border: 'none',
-                      borderRadius: '8px',
+                      borderRadius: '12px',
                       textDecoration: 'none',
                       transition: 'all 0.2s',
-                      margin: '12px auto'
+                      margin: '12px auto',
+                      textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                     }}
                     onMouseEnter={(e) => {
                       e.target.style.background = 'linear-gradient(to right, #b91c1c, #991b1b)';
@@ -240,7 +263,7 @@ const CleanNav = () => {
                       e.target.style.transform = 'translateY(0)';
                     }}
                   >
-                    🚪 Sign Out
+                    <span className="text-2xl">🚪</span> Sign Out
                   </button>
                 </div>
               </div>
