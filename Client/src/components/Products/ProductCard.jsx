@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ProductCard.css';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/lib/ui/card';
+import { Button } from '@/lib/ui/button';
 
 const ProductCard = ({ product, priceRange }) => {
   const primaryImage = product.images?.find(img => img.isPrimary) || product.images?.[0];
@@ -61,8 +63,8 @@ const ProductCard = ({ product, priceRange }) => {
   };
 
   return (
-    <div className="product-card">
-      <Link to={`/products/${product._id}`} className="product-link">
+    <Card className="product-card h-full flex flex-col">
+      <Link to={`/products/${product._id}`} className="flex-1">
         <div className="product-image-container">
           {primaryImage ? (
             <img
@@ -94,18 +96,21 @@ const ProductCard = ({ product, priceRange }) => {
           )}
         </div>
 
-        <div className="product-info">
-          <div className="product-category">
+        <CardHeader>
+          <div className="product-category text-sm text-muted-foreground">
             {getCategoryDisplay(product.category)} • {getTypeDisplay(product.type)}
           </div>
           
-          <h3 className="product-name">{product.name}</h3>
+          <CardTitle className="product-name">{product.name}</CardTitle>
           
-          <p className="product-description">{product.description}</p>
+          <CardDescription>{product.description}</CardDescription>
           
-          <div className="product-price">
+          <div className="product-price font-semibold text-lg">
             {getDisplayPrice()}
           </div>
+        </CardHeader>
+        
+        <CardContent className="flex-1">
 
           <div className="product-variants">
             {getAvailableColors().length > 0 && (
@@ -149,15 +154,17 @@ const ProductCard = ({ product, priceRange }) => {
               ))}
             </div>
           )}
-        </div>
+        </CardContent>
       </Link>
 
-      <div className="product-actions">
-        <Link to={`/products/${product._id}`} className="view-details-btn">
-          View Details
-        </Link>
-        <button 
-          className="customize-btn"
+      <CardFooter className="flex gap-2 mt-auto">
+        <Button asChild variant="outline" className="flex-1">
+          <Link to={`/products/${product._id}`}>
+            View Details
+          </Link>
+        </Button>
+        <Button 
+          className="flex-1"
           disabled={!isInStock()}
           onClick={(e) => {
             e.preventDefault();
@@ -166,9 +173,9 @@ const ProductCard = ({ product, priceRange }) => {
           }}
         >
           Customize
-        </button>
-      </div>
-    </div>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 

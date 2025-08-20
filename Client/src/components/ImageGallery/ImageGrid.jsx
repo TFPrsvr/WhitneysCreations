@@ -1,13 +1,13 @@
 import React from 'react';
-import Img1 from '../Others/img1.jpg'
-import Img2 from '../Others/img2.jpg'
-import Img3 from '../Others/img3.jpg'
-import Img4 from '../Others/img4.jpg'
-import Img5 from '../Others/img5.jpg'
-import Img6 from '../Others/img6.jpg'
+import Img1 from '../../assets/images/img1.jpg'
+import Img2 from '../../assets/images/img2.jpg'
+import Img3 from '../../assets/images/img3.jpg'
+import Img4 from '../../assets/images/img4.jpg'
+import Img5 from '../../assets/images/img5.jpg'
+import Img6 from '../../assets/images/img6.jpg'
 
 
-const ImageGrid = ({  }) => {
+const ImageGallery = () => {
   const images = [
     {src: Img1, alt: 'Image 1'},  
     {src: Img2, alt: 'Image 2'},  
@@ -41,7 +41,7 @@ const ImageGrid = ({  }) => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center py-8">
-      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-4 lg:px-4">
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Image Gallery</h1>
@@ -76,4 +76,4 @@ const ImageGrid = ({  }) => {
   );
 };
 
-export default ImageGrid;
+export default ImageGallery;

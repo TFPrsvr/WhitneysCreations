@@ -7,19 +7,18 @@ import { GuestProvider } from './contexts/GuestContext.jsx';
 import { ProjectProvider } from './contexts/ProjectContext.jsx';
 import { AdminProvider } from './contexts/AdminContext.jsx';
 import { DesignProvider } from './contexts/DesignContext.jsx';
-import Creations from './components/CreationsPg/Creations.jsx'
-import ImageGrid from './components/ImgGrid/ImageGrid.jsx'
+import Creations from './components/DesignCreator/Creations.jsx'
+import ImageGallery from './components/ImageGallery/ImageGrid.jsx'
 import Login from './components/Login/Login.jsx'
-import Reg from './components/Reg/Reg.jsx'
+import Reg from './components/Registration/Reg.jsx'
 import Nav from './components/Nav/Nav.jsx'
-import SimpleNav from './components/Nav/SimpleNav.jsx'
 import CleanNav from './components/Nav/CleanNav.jsx'
 import './index.css'
 import App from './App.jsx'
 import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
 import Order from './components/Order/Order.jsx'
-import Suggestions from './components/Suggestion/Suggestions.jsx'
+import Suggestions from './components/Suggestions/Suggestions.jsx'
 import Cart from './components/Cart/Cart.jsx'
 import UploadTest from './components/Upload/UploadTest.jsx'
 import ProductCatalog from './components/Products/ProductCatalog.jsx'
@@ -27,7 +26,6 @@ import ProjectDashboard from './components/Projects/ProjectDashboard.jsx'
 import Pricing from './components/Pricing/Pricing.jsx'
 import AdminDashboard from './components/Admin/AdminDashboard.jsx'
 import FontManager from './components/FontCustomizer/FontManager.jsx'
-import SimpleFontTest from './components/FontCustomizer/SimpleFontTest.jsx'
 import DesignStudio from './components/DesignPreview/DesignStudio.jsx'
 import PaymentSetup from './components/Payment/PaymentSetup.jsx'
 import ProfileSettings from './components/Profile/ProfileSettings.jsx'
@@ -48,7 +46,7 @@ createRoot(document.getElementById('root')).render(
                     {/* <App /> */}
 
     <Route path='/create' element={<Creations />} />
-    <Route path='/img' element={<ImageGrid />} />
+    <Route path='/img' element={<ImageGallery />} />
     <Route path='/about' element={<About />} />
     <Route path='/contact' element={<Contact />} />
     

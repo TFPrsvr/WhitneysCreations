@@ -2,57 +2,125 @@
 
 /* Global Layout - Viewport Padding - ensures nothing touches edges */
 .viewport-container {
-  @apply px-4 sm:px-6 lg:px-8;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* Page Container - Standard page layout with safe padding on left/right */
 .page-container {
-  @apply min-h-screen px-6 sm:px-8 lg:px-12;
   min-height: 100vh;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-left: 256px; /* Account for 256px wide side navigation */
 }
 
 /* Content Container - Max width with safe edges, nothing butting against viewport */
 .content-container {
-  @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-left: 256px; /* Account for 256px wide side navigation */
+}
+
+/* Main content spacing for side navigation */
+main, .main-content, #root > div {
+  margin-left: 256px; /* Ensure main content doesn't get covered by side nav */
+}
+
+/* Design Studio specific override - positioned correctly relative to navbar */
+.design-studio-container {
+  margin-left: 256px !important;
+  width: calc(100vw - 256px) !important;
+  max-width: calc(100vw - 256px) !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  position: relative !important;
+}
+
+/* Global Border Radius for ALL inputs, selects, and textareas */
+input, select, textarea, 
+input[type="text"], input[type="number"], input[type="color"], input[type="email"], input[type="password"],
+.w-full.px-3.py-2,
+.border.border-gray-300,
+.border-gray-300 {
+  border-radius: 15px !important;
 }
 
 /* Primary Button Styles */
 .btn-primary {
-  @apply flex flex-col items-center justify-center p-1 transition-all duration-200 hover:shadow-md active:scale-98 font-bold text-xs;
-  @apply bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-lg border-2 border-blue-300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  transition: all 0.2s;
+  font-weight: bold;
+  font-size: 10px;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899);
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 2px solid #93c5fd;
   border-radius: 12%;
   min-height: 35px;
   max-width: 16vw;
-  font-size: 10px;
 }
 
 /* Secondary Button Styles */
 .btn-secondary {
-  @apply flex flex-col items-center justify-center p-1 transition-all duration-200 hover:shadow-md active:scale-98 font-bold text-xs;
-  @apply bg-gradient-to-r from-gray-50 to-white text-gray-700 hover:from-blue-100 hover:via-purple-100 hover:to-pink-100 hover:text-blue-700 shadow-sm border-2 border-gray-200 hover:border-blue-300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  transition: all 0.2s;
+  font-weight: bold;
+  font-size: 10px;
+  background: linear-gradient(to right, #f9fafb, #ffffff);
+  color: #374151;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 2px solid #e5e7eb;
   border-radius: 12%;
   min-height: 35px;
   max-width: 16vw;
-  font-size: 10px;
 }
 
 /* Tool Button Styles */
 .btn-tool-active {
-  @apply flex flex-col items-center justify-center p-1 transition-all duration-200 hover:shadow-md active:scale-98 font-bold text-xs;
-  @apply bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 text-white shadow-lg border-2 border-green-300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  transition: all 0.2s;
+  font-weight: bold;
+  font-size: 10px;
+  background: linear-gradient(to right, #34d399, #10b981, #14b8a6);
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 2px solid #86efac;
   border-radius: 12%;
   min-height: 35px;
   max-width: 16vw;
-  font-size: 10px;
 }
 
 .btn-tool-inactive {
-  @apply flex flex-col items-center justify-center p-1 transition-all duration-200 hover:shadow-md active:scale-98 font-bold text-xs;
-  @apply bg-gradient-to-r from-gray-50 to-white text-gray-700 hover:from-green-100 hover:via-emerald-100 hover:to-teal-100 hover:text-green-700 shadow-sm border-2 border-gray-200 hover:border-green-300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  transition: all 0.2s;
+  font-weight: bold;
+  font-size: 10px;
+  background: linear-gradient(to right, #f9fafb, #ffffff);
+  color: #374151;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 2px solid #e5e7eb;
   border-radius: 12%;
   min-height: 35px;
   max-width: 16vw;
-  font-size: 10px;
 }
 
 /* Selection Button Styles */
@@ -98,8 +166,10 @@
 
 /* Input Styles - Never span viewport width, max 15-20% of viewport */
 .input-primary {
-  @apply px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200;
-  border-radius: 12%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 15px !important;
+  transition: all 0.2s;
   max-width: 18vw;
   min-width: 120px;
   width: auto;
@@ -218,10 +288,11 @@
     font-size: 16px; /* Prevents zoom on iOS */
   }
   
-  /* Page containers - more padding on mobile */
-  .page-container, .content-container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  /* Page containers - more padding on mobile, no side nav spacing */
+  .page-container, .content-container, main, .main-content, #root > div {
+    margin-left: 0 !important; /* No side nav spacing on mobile */
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
 }
 
@@ -301,7 +372,7 @@
 
 /* Navigation Override Styles - Prevent global button constraints from affecting navigation */
 /* Navigation links should not be constrained by global button viewport width limits */
-nav a, .nav-link, .navbar a, #NavBar a, #Nav a, 
+nav a, .nav-link, .navbar a, #Nav a, 
 .navigation a, [class*="nav"] a, [id*="nav"] a {
   max-width: none !important;
   width: auto !important;
@@ -309,13 +380,13 @@ nav a, .nav-link, .navbar a, #NavBar a, #Nav a,
 }
 
 /* Navigation containers should span full width when needed */
-nav, .navbar, #NavBar, #Nav, .navigation, 
+nav, .navbar, #Nav, .navigation, 
 [class*="nav-container"], [id*="nav"] {
   max-width: none !important;
 }
 
 /* Ensure navigation doesn't inherit button border radius constraints */
-nav a, .nav-link, .navbar a, #NavBar a, #Nav a {
+nav a, .nav-link, .navbar a, #Nav a {
   border-radius: 8px !important; /* Fixed radius for nav items */
 }
 

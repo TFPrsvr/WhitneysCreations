@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../Order/Order.css'
+import './Order.css'
 
 const Order = () => {
   return (

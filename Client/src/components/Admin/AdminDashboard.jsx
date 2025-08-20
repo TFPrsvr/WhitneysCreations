@@ -67,7 +67,7 @@ const AdminDashboard = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
           <div className="flex justify-between items-center py-6">
             <div>
               <h1 className="header-main">Admin Dashboard</h1>
@@ -119,7 +119,7 @@ const AdminDashboard = () => {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4 py-8">
         {renderTabContent()}
       </div>
     </div>

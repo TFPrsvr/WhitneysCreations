@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import '../Reg/Reg.css'
+import './Reg.css'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 
@@ -63,7 +63,7 @@ const Reg = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-4 lg:px-4">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <h1 className="header-main">Create Account</h1>

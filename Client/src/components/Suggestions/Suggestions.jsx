@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../Suggestion/Suggestion.css';
+import './Suggestion.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SuggestionCard from './SuggestionCard';
@@ -102,7 +102,7 @@ const Suggestions = () => {
           <br />
           <br />
           
-          <div id='wtf'>
+          <div className="suggestions-grid">
             {suggestions.length > 0 ? (
               suggestions.map((suggestion) => (
                 <SuggestionCard

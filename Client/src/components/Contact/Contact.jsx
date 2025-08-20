@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import '../Contact/Contact.css'
+import './Contact.css'
+import { Card, CardHeader, CardTitle, CardContent } from '@/lib/ui/card';
+import { Button } from '@/lib/ui/button';
 
 
 
@@ -9,7 +11,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-4 lg:px-4 py-12">
         <div className="text-center mb-12">
           <h1 className="header-main">Contact Us</h1>
           <p className="text-gray-600 mt-4 text-lg">
@@ -18,8 +20,11 @@ const Contact = () => {
         </div>
         
         <div className="grid md:grid-cols-2 gap-12">
-          <div className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="header-primary mb-6">Get In Touch</h2>
+          <Card>
+            <CardHeader>
+              <CardTitle className="header-primary">Get In Touch</CardTitle>
+            </CardHeader>
+            <CardContent>
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <span className="text-2xl">📧</span>
@@ -43,10 +48,14 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
+            </CardContent>
+          </Card>
           
-          <div className="bg-white rounded-xl shadow-sm p-8">
-            <h2 className="header-primary mb-6">Send Message</h2>
+          <Card>
+            <CardHeader>
+              <CardTitle className="header-primary">Send Message</CardTitle>
+            </CardHeader>
+            <CardContent>
             <form className="space-y-4">
               <div>
                 <input
@@ -72,14 +81,16 @@ const Contact = () => {
                   required
                 />
               </div>
-              <button
+              <Button
                 type="submit"
-                className="btn-action-blue w-full py-3"
+                className="w-full"
+                size="lg"
               >
                 Send Message
-              </button>
+              </Button>
             </form>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

@@ -11,16 +11,6 @@ const CleanNav = () => {
   const { isAuthenticated, user, logout } = useAuth();
   const { stats } = useProject();
   
-  // Debug authentication state
-  useEffect(() => {
-    console.log('Auth Debug - NavBar:', { 
-      isAuthenticated, 
-      username: user?.username, 
-      email: user?.email,
-      firstName: user?.first,
-      userObject: user 
-    });
-  }, [isAuthenticated, user]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
@@ -170,67 +160,55 @@ const CleanNav = () => {
             {isAuthenticated ? (
               <div className="p-3">
                 {/* User Info */}
-                <div className="flex items-center justify-between p-2 mb-4 bg-gray-800 rounded-lg">
-                  <div className="flex items-center space-x-3">
-                    <div className="relative w-8 h-8 rounded-full border-2 border-gray-300 shadow-md overflow-hidden">
-                      {/* Avatar background */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600"></div>
-                      
-                      {/* Person silhouette - covers entire avatar */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-white truncate"
-                         style={{ 
-                           textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
-                           overflow: 'hidden',
-                           whiteSpace: 'nowrap',
-                           textOverflow: 'ellipsis'
-                         }}>
-                        {user?.first && user?.last 
-                          ? `${String(user.first).charAt(0).toUpperCase()}${String(user.first).slice(1).toLowerCase().replace(/[^a-zA-Z]/g, '')} ${String(user.last).charAt(0).toUpperCase()}${String(user.last).slice(1).toLowerCase().replace(/[^a-zA-Z]/g, '')}`
-                          : (user?.username ? String(user.username).replace(/[^a-zA-Z0-9_]/g, '').trim() : 'User')
-                        }
-                      </p>
-                      <p className="text-xs text-gray-400 truncate" 
-                         style={{ 
-                           overflow: 'hidden',
-                           whiteSpace: 'nowrap',
-                           textOverflow: 'ellipsis'
-                         }}>
-                        {user?.email ? String(user.email).trim() : ''}
-                      </p>
-                    </div>
+                <div className="flex items-center p-2 mb-4 bg-gray-800 rounded-lg">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-white truncate"
+                       style={{ 
+                         textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+                         overflow: 'hidden',
+                         whiteSpace: 'nowrap',
+                         textOverflow: 'ellipsis'
+                       }}>
+                      {user?.first && user?.last 
+                        ? `${String(user.first).charAt(0).toUpperCase()}${String(user.first).slice(1).toLowerCase().replace(/[^a-zA-Z]/g, '')} ${String(user.last).charAt(0).toUpperCase()}${String(user.last).slice(1).toLowerCase().replace(/[^a-zA-Z]/g, '')}`
+                        : (user?.username ? String(user.username).replace(/[^a-zA-Z0-9_]/g, '').trim() : 'User')
+                      }
+                    </p>
+                    <p className="text-xs text-gray-400 truncate" 
+                       style={{ 
+                         overflow: 'hidden',
+                         whiteSpace: 'nowrap',
+                         textOverflow: 'ellipsis'
+                       }}>
+                      {user?.email ? String(user.email).trim() : ''}
+                    </p>
                   </div>
-                  <Link 
-                    to="/cart" 
-                    className="flex items-center justify-center p-2 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
-                    title="Cart"
-                  >
-                    <span className="text-5xl">🛒</span>
-                  </Link>
                 </div>
                 
-                {/* Quick Actions - Profile & Orders */}
-                <div className="flex justify-evenly space-x-8 py-3 mb-4">
+                {/* Quick Actions - Cart, Profile & Orders in a row */}
+                <div className="flex justify-evenly space-x-2 py-3 mb-4">
+                  <Link 
+                    to="/cart" 
+                    className="flex items-center justify-center p-3 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
+                    title="Cart"
+                  >
+                    <span className="text-xl">🛒</span>
+                  </Link>
+                  
                   <Link 
                     to="/profile" 
-                    className="flex items-center justify-center p-4 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
+                    className="flex items-center justify-center p-3 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
                     title="Profile"
                   >
-                    <span className="text-4xl">👤</span>
+                    <span className="text-xl">👤</span>
                   </Link>
                   
                   <Link 
                     to="/orders" 
-                    className="flex items-center justify-center p-4 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
+                    className="flex items-center justify-center p-3 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
                     title="Orders"
                   >
-                    <span className="text-4xl">📦</span>
+                    <span className="text-xl">📦</span>
                   </Link>
                 </div>
                 

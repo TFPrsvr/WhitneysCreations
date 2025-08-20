@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
-import '../Login/Login.css'
+import './Login.css'
 import axios from 'axios'
 import {Link, useNavigate} from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
-import Reg from '../Reg/Reg'
+import Reg from '../Registration/Reg'
+import { Button } from '@/lib/ui/button'
 
 const Login = () => {
   const { login } = useAuth()
@@ -61,7 +62,7 @@ const Login = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-4 lg:px-4">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <h1 className="header-main">Sign In</h1>
@@ -93,25 +94,27 @@ const Login = () => {
             />
           </div>
 
-          <button 
+          <Button 
             type="submit"
-            className="btn-action-blue w-full py-3"
+            className="w-full"
             disabled={isLoading}
+            size="lg"
           >
             {isLoading ? 'Signing In...' : 'Sign In'}
-          </button>
+          </Button>
         </form>
         
         <div className="text-center">
           <p className="text-gray-600">
             Don't have an account?
           </p>
-          <button 
+          <Button 
             onClick={() => handleReg()}
-            className="btn-secondary mt-2"
+            variant="outline"
+            className="mt-2"
           >
             Create Account
-          </button>
+          </Button>
         </div>
       </div>
     </div>

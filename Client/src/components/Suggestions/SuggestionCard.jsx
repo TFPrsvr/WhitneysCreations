@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/lib/ui/card';
+import { Button } from '@/lib/ui/button';
 
 const SuggestionCard = ({ suggestion, onEdit, onDelete }) => {
   const handleDelete = () => {
@@ -25,20 +27,21 @@ const SuggestionCard = ({ suggestion, onEdit, onDelete }) => {
   };
 
   return (
-    <div className="suggestion-card">
-      <div id='cardT&D'>
-        <h5>Title:</h5>
-        <h3>{suggestion.title}</h3>
-        
-        <h5>Description:</h5>
-        <p>{suggestion.description}</p>
-      </div>
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle>{suggestion.title}</CardTitle>
+        <CardDescription>{suggestion.description}</CardDescription>
+      </CardHeader>
       
-      <div className='cardBtns-wrapper'>
-        <button className='cardBtns' onClick={() => onEdit(suggestion)}>Edit</button>
-        <button className='cardBtns' onClick={handleDelete}>Delete</button>
-      </div>
-    </div>
+      <CardFooter className="flex gap-2">
+        <Button variant="outline" onClick={() => onEdit(suggestion)}>
+          Edit
+        </Button>
+        <Button variant="destructive" onClick={handleDelete}>
+          Delete
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 
