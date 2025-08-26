@@ -149,7 +149,7 @@ const ProjectCard = ({ project, viewMode, onUpdate }) => {
 
         <div className="relative">
           <button
-            className="p-2 hover:bg-gray-100 rounded-full"
+            className="hover:bg-gray-100 rounded-full" style={{padding: '0.5rem'}}
             onClick={(e) => {
               e.stopPropagation();
               setShowActions(!showActions);
@@ -214,7 +214,7 @@ const ProjectCard = ({ project, viewMode, onUpdate }) => {
         
         <div className="absolute top-2 right-2">
           <button
-            className="p-1 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full"
+            className="bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full" style={{padding: '0.5rem'}}
             onClick={(e) => {
               e.stopPropagation();
               setShowActions(!showActions);
@@ -225,7 +225,7 @@ const ProjectCard = ({ project, viewMode, onUpdate }) => {
         </div>
 
         {showActions && (
-          <div className="absolute top-10 right-2 w-48 bg-white rounded-lg shadow-lg border z-10">
+          <div className="absolute top-20 right-2 w-48 bg-white rounded-lg shadow-lg border z-10">
             <button 
               onClick={handleDuplicate} 
               disabled={isDuplicating}
@@ -259,7 +259,7 @@ const ProjectCard = ({ project, viewMode, onUpdate }) => {
       <div className="p-4">
         <div className="flex items-center justify-between mb-2">
           <h3 className="font-semibold text-gray-900 truncate">{project.name}</h3>
-          <div className="flex gap-1">
+          <div className="flex gap-2">
             {project.isTemplate && 
               <span className="px-2 py-1 text-xs bg-purple-100 text-purple-800 rounded-full">Template</span>
             }

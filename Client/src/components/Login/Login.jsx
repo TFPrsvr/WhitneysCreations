@@ -62,20 +62,33 @@ const Login = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-4 lg:px-4">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-12 px-4 sm:px-4 lg:px-4 relative">
+      {/* Background decorative elements */}
+      <div className="absolute top-10 left-10 text-4xl opacity-20 animate-bounce hidden lg:block">🎨</div>
+      <div className="absolute top-20 right-20 text-3xl opacity-20 animate-pulse hidden lg:block">👕</div>
+      <div className="absolute bottom-20 left-20 text-3xl opacity-20 animate-bounce delay-1000 hidden lg:block">☕</div>
+      <div className="absolute bottom-10 right-10 text-2xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '10s'}}>🧢</div>
+      
+      <div className="max-w-md w-full space-y-8 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
         <div className="text-center">
-          <h1 className="header-main">Sign In</h1>
+          <div className="flex items-center justify-center mb-4">
+            <span className="text-4xl">🎨</span>
+            <h1 className="header-main ml-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
+          </div>
           <p className="text-gray-600 mt-2">Welcome back to PrintCraft</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Username
+            </label>
             <input
-              className="input-primary"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
+              style={{color: '#1f2937'}}
               type="text"
               name="username"
-              placeholder="Username"
+              placeholder="Enter your username"
               value={formData.username}
               onChange={handleChange}
               required
@@ -83,11 +96,15 @@ const Login = () => {
           </div>
 
           <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Password
+            </label>
             <input
-              className="input-primary"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
+              style={{color: '#1f2937'}}
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Enter your password"
               value={formData.password}
               onChange={handleChange}
               required
@@ -108,13 +125,13 @@ const Login = () => {
           <p className="text-gray-600">
             Don't have an account?
           </p>
-          <Button 
+          <button 
             onClick={() => handleReg()}
-            variant="outline"
-            className="mt-2"
+            className="w-full mt-3 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-200"
+            style={{borderRadius: '10%'}}
           >
             Create Account
-          </Button>
+          </button>
         </div>
       </div>
     </div>

@@ -213,12 +213,12 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
                     <button
                       key={font.name}
                       onClick={() => handleSettingChange('family', font.name)}
-                      className={`p-2 text-left border rounded-lg transition-colors ${
+                      className={`text-left border rounded-lg transition-colors ${
                         fontSettings.family === font.name
                           ? 'border-primary-500 bg-primary-50'
                           : 'border-gray-300 hover:border-gray-400'
                       }`}
-                      style={{ fontFamily: font.name }}
+                      style={{padding: '0.5rem', fontFamily: font.name}}
                     >
                       <div className="font-medium text-sm">{font.name}</div>
                       <div className="text-xs text-gray-500">{font.category}</div>
@@ -471,7 +471,7 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
         <div className="space-y-6">
           <div className="flex justify-between items-center">
             <h3 className="text-lg font-semibold text-gray-900">Preview</h3>
-            <div className="flex space-x-1 bg-gray-100 rounded-lg p-1">
+            <div className="flex space-x-1 bg-gray-100 rounded-lg" style={{padding: '0.5rem'}}>
               <button
                 onClick={() => setPreviewMode('canvas')}
                 className={`px-3 py-1 text-sm rounded-lg transition-colors ${

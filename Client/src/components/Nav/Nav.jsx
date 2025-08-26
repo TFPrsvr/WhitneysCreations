@@ -117,7 +117,7 @@ const Nav = () => {
                   {/* Cart/Projects Quick Access */}
                   <Link 
                     to="/cart" 
-                    className="relative p-2 text-gray-600 hover:text-gray-900 transition-colors"
+                    className="relative text-gray-600 hover:text-gray-900 transition-colors" style={{padding: '0.5rem'}}
                   >
                     <span className="text-xl">🛒</span>
                     {/* Cart badge could go here */}
@@ -127,7 +127,7 @@ const Nav = () => {
                   <div className="relative">
                     <button
                       onClick={toggleProfileDropdown}
-                      className="profile-button flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+                      className="profile-button flex items-center space-x-2 rounded-lg hover:bg-gray-100 transition-colors" style={{padding: '0.5rem'}}
                     >
                       <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
                         {user?.username?.charAt(0).toUpperCase() || 'U'}
@@ -194,7 +194,7 @@ const Nav = () => {
                 <div className="flex items-center space-x-3">
                   <Link
                     to="/login"
-                    className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+                    className="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-600 text-white text-sm font-medium rounded-lg hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
                   >
                     Sign In
                   </Link>
@@ -212,7 +212,7 @@ const Nav = () => {
             <div className="md:hidden">
               <button
                 onClick={toggleMobileMenu}
-                className="p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+                className="rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors" style={{padding: '0.5rem'}}
               >
                 {isMobileMenuOpen ? (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -247,7 +247,7 @@ const Nav = () => {
               </Link>
               <button
                 onClick={toggleMobileMenu}
-                className="p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                className="rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100" style={{padding: '0.5rem'}}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

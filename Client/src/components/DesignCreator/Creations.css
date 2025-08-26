@@ -66,6 +66,20 @@
     text-align: center;
 }
 
+.ideas-life{
+    color: #ff6b35;
+    font-size: smaller;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ideas-start{
+    color: #00d4aa;
+    font-size: smaller;
+    text-align: center;
+    font-weight: bold;
+}
+
 #suggestions {
     text-align: center;
     margin: 20px auto;
@@ -82,13 +96,13 @@ h3 {
 }
 
 h4 {
-    color: #32cd32;
+    color: powderblue;
     text-align: center;
 }
 
 h5 {
     /* color: #ff1493; */
-    color: powderblue;
+    color: #32cd32;
     text-align: center;
 }
 
