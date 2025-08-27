@@ -72,9 +72,9 @@ const Nav = () => {
   return (
     <>
       {/* Navigation Bar */}
-      <nav className="bg-white shadow-lg border-b border-gray-200 fixed top-0 left-0 right-0 z-40 h-16">
+      <nav className="bg-white shadow-lg border-b border-gray-200 fixed top-0 left-0 right-0 z-40 h-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <Link 
               to="/" 
@@ -85,12 +85,12 @@ const Nav = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
+            <div className="hidden lg:flex items-center space-x-1 overflow-x-auto max-w-3xl">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 ${
+                  className={`relative px-2 py-2 rounded-lg text-xs font-medium transition-all duration-200 flex items-center space-x-1 whitespace-nowrap ${
                     isActive(link.path)
                       ? 'bg-primary-100 text-primary-700 shadow-sm'
                       : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
@@ -108,7 +108,7 @@ const Nav = () => {
             </div>
 
             {/* Desktop Auth Section */}
-            <div className="hidden md:flex items-center space-x-4">
+            <div className="hidden lg:flex items-center space-x-2">
               {/* Language Selector */}
               {/* <LanguageSelector /> */}
               
@@ -117,9 +117,9 @@ const Nav = () => {
                   {/* Cart/Projects Quick Access */}
                   <Link 
                     to="/cart" 
-                    className="relative text-gray-600 hover:text-gray-900 transition-colors" style={{padding: '0.5rem'}}
+                    className="relative text-gray-600 hover:text-gray-900 transition-colors p-3 rounded-lg hover:bg-gray-100"
                   >
-                    <span className="text-xl">🛒</span>
+                    <span className="text-2xl">🛒</span>
                     {/* Cart badge could go here */}
                   </Link>
 
@@ -127,12 +127,12 @@ const Nav = () => {
                   <div className="relative">
                     <button
                       onClick={toggleProfileDropdown}
-                      className="profile-button flex items-center space-x-2 rounded-lg hover:bg-gray-100 transition-colors" style={{padding: '0.5rem'}}
+                      className="profile-button flex items-center space-x-2 rounded-lg hover:bg-gray-100 transition-colors p-3"
                     >
                       <div className="w-8 h-8 bg-gradient-to-r from-primary-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
                         {user?.username?.charAt(0).toUpperCase() || 'U'}
                       </div>
-                      <span className="text-sm font-medium text-gray-700 max-w-24 truncate">
+                      <span className="text-xs font-medium text-gray-700 max-w-20 truncate hidden xl:block">
                         {user?.username || 'User'}
                       </span>
                       <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -209,7 +209,7 @@ const Nav = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <button
                 onClick={toggleMobileMenu}
                 className="rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors" style={{padding: '0.5rem'}}
@@ -231,7 +231,7 @@ const Nav = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
+        <div className="fixed inset-0 z-50 lg:hidden">
           <div className="fixed inset-0 bg-black bg-opacity-50" onClick={toggleMobileMenu}></div>
           
           <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-xl">
@@ -356,7 +356,7 @@ const Nav = () => {
       )}
 
       {/* Spacer for fixed navbar */}
-      <div className="h-16"></div>
+      <div className="h-20"></div>
     </>
   );
 };

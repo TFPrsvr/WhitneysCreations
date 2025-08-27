@@ -382,17 +382,18 @@ const DesignStudio = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 design-studio-container">
+    <div className="min-h-screen bg-gray-50 design-studio-container" style={{ borderRadius: '8px' }}>
       <div className="w-full py-6">
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             🎨 Design Studio
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="flex justify-center gap-6 max-w-4xl mx-auto">
             <button
               onClick={newDesign}
-              className="px-8 py-6 bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 text-gray-800 rounded-2xl font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-4"
+              className="px-8 py-6 bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 text-gray-800 font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-4"
+              style={{ borderRadius: '8px' }}
             >
               <span className="text-3xl">📄</span>
               <span className="text-lg">New Design</span>
@@ -428,8 +429,9 @@ const DesignStudio = () => {
             </h2>
             <div
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(6, 1fr)",
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
                 gap: "24px",
                 maxWidth: "1200px",
                 margin: "0 auto",

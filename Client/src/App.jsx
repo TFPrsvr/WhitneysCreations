@@ -60,11 +60,11 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 w-full overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-600 via-purple-600 to-pink-500 text-white">
+      <section className="relative bg-gradient-to-br from-primary-600 via-purple-600 to-pink-500 text-white w-full">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-4 lg:px-4 py-8 lg:py-12">
+        <div className="relative w-full px-4 sm:px-4 lg:px-4 py-8 lg:py-12">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               <span className="block text-6xl md:text-7xl mb-4">👕 👚</span>
@@ -78,15 +78,15 @@ function App() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-2xl md:text-3xl font-bold">
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="text-5xl animate-pulse">✨</span>
-                  <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent animate-bounce">What You Want!!</span>
+                  <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">What You Want!!</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="text-5xl animate-spin" style={{animationDuration: '3s'}}>🎨</span>
-                  <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent animate-pulse">How You Want It!!</span>
+                  <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">How You Want It!!</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="text-5xl animate-bounce" style={{animationDelay: '0.5s'}}>⚡</span>
-                  <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent animate-pulse" style={{animationDelay: '1s'}}>When You Want It!!</span>
+                  <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent">When You Want It!!</span>
                 </div>
               </div>
             </div>
@@ -126,10 +126,12 @@ function App() {
             </div>
             
             {!isAuthenticated && (
-              <div className="mt-2">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xl md:text-2xl font-bold">
+              <div className="mt-6">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-xl md:text-2xl font-bold">
                   <span className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">No credit card required</span>
+                  <span className="hidden sm:inline text-white">•</span>
                   <span className="bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">Free to start</span>
+                  <span className="hidden sm:inline text-white">•</span>
                   <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Premium quality guaranteed</span>
                 </div>
               </div>
@@ -140,14 +142,15 @@ function App() {
         {/* Floating Elements */}
         <div className="absolute top-20 left-10 text-4xl opacity-30 animate-bounce hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>🎨</div>
         <div className="absolute top-40 right-20 text-3xl opacity-30 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>👕</div>
-        <div className="absolute bottom-20 left-20 text-4xl opacity-80 animate-bounce delay-1000 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}}>☕</div>
+        <div className="absolute top-20 right-10 text-4xl opacity-80 animate-bounce delay-1000 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}}>☕</div>
       </section>
 
       {/* Features Section */}
-      <section className="py-12 bg-white relative">
-        <div className="absolute top-10 right-10 text-3xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
-        <div className="absolute bottom-10 left-10 text-3xl opacity-40 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>👕</div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
+      <section className="py-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative">
+        <div className="absolute top-10 right-10 text-4xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
+        <div className="absolute top-5 left-5 text-4xl opacity-40 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>👕</div>
+        <div className="absolute top-5 right-5 text-4xl opacity-40" style={{filter: 'drop-shadow(2px 2px 4px rgba(34, 197, 94, 0.6))'}}>👚</div>
+        <div className="w-full px-4 sm:px-4 lg:px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Everything You Need to Succeed
@@ -159,10 +162,10 @@ function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto px-4">
             {features.map((feature, index) => (
-              <div key={index} className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2">
+              <div key={index} className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
                 <div className="text-6xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed text-sm">{feature.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-3 break-words">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm break-words">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -173,7 +176,7 @@ function App() {
       <section className="py-8 bg-gray-50 relative">
         <div className="absolute top-5 left-5 text-2xl opacity-50 animate-bounce hidden lg:block" style={{animationDelay: '1s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
         <div className="absolute bottom-5 right-5 text-2xl opacity-50 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🧢</div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-4 lg:px-4">
+        <div className="w-full px-4 sm:px-4 lg:px-4">
           <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               Premium Products, Perfect Quality
@@ -183,14 +186,14 @@ function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto px-4">
             {productShowcase.map((product, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2 p-6 text-center">
-                <div className="mb-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg p-8 flex items-center justify-center">
+              <div key={index} className="bg-white rounded-md shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2 p-3 text-center">
+                <div className="mb-2 bg-gradient-to-br from-gray-100 to-gray-200 rounded-md p-4 flex items-center justify-center">
                   <span className="text-4xl">{product.image}</span>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{product.name}</h3>
-                <p className="text-primary-600 font-semibold">{product.price}</p>
+                <h3 className="text-sm font-semibold text-gray-900 mb-1">{product.name}</h3>
+                <p className="text-primary-600 font-semibold text-sm">{product.price}</p>
               </div>
             ))}
           </div>
@@ -198,7 +201,7 @@ function App() {
           <div className="text-center mt-6">
             <Link
               to="/products"
-              className="bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+              className="bg-primary-600 text-white px-8 py-4 rounded-md font-semibold text-lg hover:bg-primary-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
             >
               View All Products
             </Link>

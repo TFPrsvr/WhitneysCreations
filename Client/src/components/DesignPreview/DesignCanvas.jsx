@@ -1049,8 +1049,8 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
   return (
     <div className="bg-white rounded-xl shadow-lg p-8 mx-4 md:mx-8">
       <div className="flex justify-between items-center mb-16">
-        <h2 className="header-primary text-2xl font-bold text-gray-800">
-          🎨 Design Canvas
+        <h2 className="header-primary text-4xl font-bold text-gray-800">
+          <span className="text-6xl">🎨</span> Design Canvas
         </h2>
         <div className="flex flex-wrap gap-6 justify-center">
           <Button
@@ -1169,7 +1169,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
             <Card className="relative z-10 border-none shadow-none bg-transparent"
                   style={{ fontFamily: 'Comfortaa, cursive' }}>
             <CardHeader>
-              <CardTitle className="text-5xl flex items-center gap-4 font-bold" 
+              <CardTitle className="text-5xl flex items-center justify-center gap-4 font-bold" 
                          style={{ 
                            fontFamily: 'Comfortaa, cursive',
                            color: '#ff0040',
@@ -1180,8 +1180,8 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-3 gap-8">
-                {tools.map((toolItem) => (
+              <div className="grid grid-cols-3 gap-2">
+                {tools.slice(0, -1).map((toolItem) => (
                   <button
                     key={toolItem.id}
                     onClick={() => setTool(toolItem.id)}
@@ -1202,10 +1202,35 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute -inset-1 bg-gradient-to-r from-red-400 via-rose-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-30 blur transition-all duration-500"></div>
-                    <div className="text-5xl relative z-10 transform group-hover:scale-110 transition-transform duration-300">{toolItem.icon}</div>
+                    <div className="text-3xl relative z-10 transform group-hover:scale-110 transition-transform duration-300">{toolItem.icon}</div>
                     <div className="text-lg font-bold relative z-10 text-center leading-tight">{toolItem.name}</div>
                   </button>
                 ))}
+                {/* Rectangle tool - spans full width */}
+                <div className="col-span-3">
+                  <button
+                    onClick={() => setTool('rectangle')}
+                    className={`group relative w-full h-auto py-4 px-6 flex items-center justify-center gap-4 shadow-lg transition-all duration-300 transform hover:scale-105 hover:rotate-1 overflow-hidden ${
+                      tool === 'rectangle'
+                        ? "bg-gradient-to-br from-red-500 via-rose-600 to-pink-600 text-white shadow-2xl"
+                        : "bg-gradient-to-br from-white via-red-50 to-rose-100 text-red-800 hover:from-red-100 hover:via-rose-200 hover:to-pink-200 hover:text-red-900"
+                    }`}
+                    style={{ 
+                      borderRadius: '20px',
+                      fontFamily: 'Comfortaa, cursive',
+                      border: tool === 'rectangle' ? '3px solid #f87171' : '2px solid #dc2626',
+                      minHeight: '80px',
+                      boxShadow: tool === 'rectangle' 
+                        ? '0 20px 40px rgba(239, 68, 68, 0.4), 0 0 0 1px rgba(239, 68, 68, 0.1)' 
+                        : '0 8px 25px rgba(220, 38, 38, 0.15)'
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute -inset-1 bg-gradient-to-r from-red-400 via-rose-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-30 blur transition-all duration-500"></div>
+                    <div className="text-3xl relative z-10 transform group-hover:scale-110 transition-transform duration-300">⬛</div>
+                    <div className="text-lg font-bold relative z-10 text-center leading-tight">Rectangle</div>
+                  </button>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -1240,17 +1265,17 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
             </CardHeader>
             <CardContent style={{ fontFamily: 'Comfortaa, cursive' }}>
               {tool === "text" ? (
-                <div className="grid grid-cols-2 gap-8">
-                  {/* Text Content - Grid Item 1 */}
-                  <div className="space-y-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg border border-blue-200">
-                    <label className="block text-xl font-bold"
+                <div className="grid grid-cols-1 gap-4">
+                  {/* Text Content - Full Width */}
+                  <div className="space-y-4 p-4 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg border border-blue-200">
+                    <label className="block text-lg font-bold text-center"
                            style={{ 
                              color: '#0066ff',
                              textShadow: '0 4px 8px rgba(0, 0, 0, 0.9), -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff, 0 0 15px rgba(0, 102, 255, 0.5)',
                              fontFamily: 'Comfortaa, cursive',
-                             fontSize: '24px'
+                             fontSize: '20px'
                            }}>
-                      <span className="text-3xl">📝</span> Text Content
+                      <span className="text-2xl">📝</span> Text Content
                     </label>
                     <textarea
                       value={textSettings.text}
@@ -1261,26 +1286,29 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                         }))
                       }
                       placeholder="Enter your text..."
-                      className="w-full px-4 py-3 border-2 border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gradient-to-br from-white via-blue-50 to-indigo-50 text-blue-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-blue-400 focus:shadow-xl"
+                      className="w-full px-4 py-3 border-2 border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gradient-to-br from-white via-blue-50 to-indigo-50 text-blue-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-blue-400 focus:shadow-xl resize-none"
                       style={{ 
                         borderRadius: '15px',
                         fontFamily: 'Comfortaa, cursive',
-                        boxShadow: '0 4px 15px rgba(59, 130, 246, 0.1)'
+                        boxShadow: '0 4px 15px rgba(59, 130, 246, 0.1)',
+                        minHeight: '60px',
+                        maxHeight: '120px'
                       }}
                       rows={2}
                     />
                   </div>
-
-                  {/* Font Family - Grid Item 2 */}
-                  <div className="space-y-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg border border-blue-200">
-                    <label className="block text-xl font-bold"
+                  
+                  <div className="grid grid-cols-3 gap-4">
+                  {/* Font Family - Grid Item 1 */}
+                  <div className="space-y-4 p-4 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg border border-blue-200">
+                    <label className="block text-lg font-bold text-center"
                            style={{ 
                              color: '#0066ff',
                              textShadow: '0 4px 8px rgba(0, 0, 0, 0.9), -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff, 0 0 15px rgba(0, 102, 255, 0.5)',
                              fontFamily: 'Comfortaa, cursive',
-                             fontSize: '24px'
+                             fontSize: '16px'
                            }}>
-                      <span className="text-3xl">🎨</span> Font Family
+                      <span className="text-xl">🎨</span> Font
                     </label>
                     <select
                       value={textSettings.fontFamily}
@@ -1290,9 +1318,9 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                           fontFamily: e.target.value,
                         }))
                       }
-                      className="w-full px-4 py-3 border-2 border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gradient-to-br from-white via-blue-50 to-indigo-50 text-blue-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-blue-400 focus:shadow-xl cursor-pointer"
+                      className="w-full px-3 py-2 border-2 border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gradient-to-br from-white via-blue-50 to-indigo-50 text-blue-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-blue-400 focus:shadow-xl cursor-pointer text-sm"
                       style={{ 
-                        borderRadius: '15px',
+                        borderRadius: '10px',
                         fontFamily: 'Comfortaa, cursive',
                         boxShadow: '0 4px 15px rgba(59, 130, 246, 0.1)'
                       }}
@@ -1305,16 +1333,16 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                     </select>
                   </div>
 
-                  {/* Font Size - Grid Item 3 */}
-                  <div className="space-y-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg border border-blue-200">
-                    <label className="block text-xl font-bold"
+                  {/* Font Size - Grid Item 2 */}
+                  <div className="space-y-4 p-4 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg border border-blue-200">
+                    <label className="block text-lg font-bold text-center"
                            style={{ 
                              color: '#0066ff',
                              textShadow: '0 4px 8px rgba(0, 0, 0, 0.9), -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff, 0 0 15px rgba(0, 102, 255, 0.5)',
                              fontFamily: 'Comfortaa, cursive',
-                             fontSize: '24px'
+                             fontSize: '16px'
                            }}>
-                      <span className="text-3xl">📏</span> Font Size
+                      <span className="text-xl">📏</span> Size
                     </label>
                     <input
                       type="number"
@@ -1327,9 +1355,9 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                       }
                       min="8"
                       max="200"
-                      className="w-full px-4 py-3 border-2 border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gradient-to-br from-white via-blue-50 to-indigo-50 text-blue-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-blue-400 focus:shadow-xl"
+                      className="w-full px-3 py-2 border-2 border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gradient-to-br from-white via-blue-50 to-indigo-50 text-blue-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-blue-400 focus:shadow-xl text-center text-sm"
                       style={{ 
-                        borderRadius: '15px',
+                        borderRadius: '10px',
                         fontFamily: 'Comfortaa, cursive',
                         boxShadow: '0 4px 15px rgba(59, 130, 246, 0.1)'
                       }}
@@ -1337,18 +1365,18 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                     />
                   </div>
 
-                  {/* Text Color - Grid Item 4 */}
-                  <div className="space-y-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg border border-blue-200">
-                    <label className="block text-xl font-bold"
+                  {/* Text Color - Grid Item 3 */}
+                  <div className="space-y-4 p-4 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg border border-blue-200">
+                    <label className="block text-lg font-bold text-center"
                            style={{ 
                              color: '#0066ff',
                              textShadow: '0 4px 8px rgba(0, 0, 0, 0.9), -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff, 0 0 15px rgba(0, 102, 255, 0.5)',
                              fontFamily: 'Comfortaa, cursive',
-                             fontSize: '24px'
+                             fontSize: '16px'
                            }}>
-                      <span className="text-3xl">🌈</span> Text Color
+                      <span className="text-xl">🌈</span> Color
                     </label>
-                    <div className="grid grid-cols-1 gap-2">
+                    <div className="flex flex-col gap-2 items-center">
                       <input
                         type="color"
                         value={textSettings.color}
@@ -1358,9 +1386,9 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                             color: e.target.value,
                           }))
                         }
-                        className="w-full h-12 border-2 border-blue-300 cursor-pointer bg-gradient-to-br from-white via-blue-50 to-indigo-50 transition-all duration-300 hover:shadow-lg hover:border-blue-400 hover:scale-105"
+                        className="w-full h-8 border-2 border-blue-300 cursor-pointer bg-gradient-to-br from-white via-blue-50 to-indigo-50 transition-all duration-300 hover:shadow-lg hover:border-blue-400 hover:scale-105"
                         style={{ 
-                          borderRadius: '15px',
+                          borderRadius: '10px',
                           boxShadow: '0 4px 15px rgba(59, 130, 246, 0.1)'
                         }}
                       />
@@ -1373,15 +1401,16 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                             color: e.target.value,
                           }))
                         }
-                        className="w-full px-4 py-2 border-2 border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gradient-to-br from-white via-blue-50 to-indigo-50 text-blue-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-blue-400 focus:shadow-xl"
+                        className="w-full px-2 py-1 border-2 border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gradient-to-br from-white via-blue-50 to-indigo-50 text-blue-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-blue-400 focus:shadow-xl text-center text-xs"
                         style={{ 
-                          borderRadius: '15px',
+                          borderRadius: '8px',
                           fontFamily: 'Comfortaa, cursive',
                           boxShadow: '0 4px 15px rgba(59, 130, 246, 0.1)'
                         }}
                         placeholder="#000000"
                       />
                     </div>
+                  </div>
                   </div>
                 </div>
               ) : (
@@ -1509,18 +1538,18 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
               </CardTitle>
             </CardHeader>
             <CardContent style={{ fontFamily: 'Comfortaa, cursive', height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <div className="flex-grow space-y-12">
-                <div className="grid grid-cols-2 gap-12">
+              <div className="flex-grow space-y-6">
+                <div className="grid grid-cols-2 gap-6">
                   {/* Canvas Width */}
-                  <div className="space-y-8 p-8 bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg border border-green-200">
-                    <label className="block text-2xl font-bold"
+                  <div className="space-y-4 p-4 bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg border border-green-200">
+                    <label className="block text-lg font-bold text-center"
                            style={{ 
                              color: '#ff6600',
                              textShadow: '0 4px 8px rgba(0, 0, 0, 0.9), -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff, 0 0 15px rgba(255, 102, 0, 0.5)',
                              fontFamily: 'Comfortaa, cursive',
-                             fontSize: '24px'
+                             fontSize: '18px'
                            }}>
-                      📏 Width
+                      <span className="text-xl">📏</span> Width
                     </label>
                     <input
                       type="number"
@@ -1533,26 +1562,26 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                       }
                       min="100"
                       max="2000"
-                      className="group relative w-full px-6 py-6 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl"
+                      className="group relative w-full px-3 py-3 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl text-center"
                       style={{ 
-                        borderRadius: '15px',
+                        borderRadius: '10px',
                         fontFamily: 'Comfortaa, cursive',
                         boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)',
-                        fontSize: '18px'
+                        fontSize: '16px'
                       }}
                     />
                   </div>
 
                   {/* Canvas Height */}
-                  <div className="space-y-8 p-8 bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg border border-green-200">
-                    <label className="block text-2xl font-bold"
+                  <div className="space-y-4 p-4 bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg border border-green-200">
+                    <label className="block text-lg font-bold text-center"
                            style={{ 
                              color: '#ff6600',
                              textShadow: '0 4px 8px rgba(0, 0, 0, 0.9), -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff, 0 0 15px rgba(255, 102, 0, 0.5)',
                              fontFamily: 'Comfortaa, cursive',
-                             fontSize: '24px'
+                             fontSize: '18px'
                            }}>
-                      📐 Height
+                      <span className="text-xl">📐</span> Height
                     </label>
                     <input
                       type="number"
@@ -1565,54 +1594,56 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                       }
                       min="100"
                       max="2000"
-                      className="group relative w-full px-6 py-6 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl"
+                      className="group relative w-full px-3 py-3 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl text-center"
                       style={{ 
-                        borderRadius: '15px',
+                        borderRadius: '10px',
                         fontFamily: 'Comfortaa, cursive',
                         boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)',
-                        fontSize: '18px'
+                        fontSize: '16px'
                       }}
                     />
                   </div>
 
                   {/* Background Color */}
-                  <div className="space-y-8 p-8 bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg border border-green-200">
-                    <label className="block text-2xl font-bold"
+                  <div className="space-y-4 p-4 bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg border border-green-200">
+                    <label className="block text-lg font-bold text-center"
                            style={{ 
                              color: '#ff6600',
                              textShadow: '0 4px 8px rgba(0, 0, 0, 0.9), -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff, 0 0 15px rgba(255, 102, 0, 0.5)',
                              fontFamily: 'Comfortaa, cursive',
-                             fontSize: '24px'
+                             fontSize: '18px'
                            }}>
-                      🌈 Background
+                      <span className="text-xl">🌈</span> Background
                     </label>
-                    <input
-                      type="color"
-                      value={canvasSettings.backgroundColor}
-                      onChange={(e) =>
-                        setCanvasSettings((prev) => ({
-                          ...prev,
-                          backgroundColor: e.target.value,
-                        }))
-                      }
-                      className="group relative w-full h-16 border-2 border-green-300 cursor-pointer bg-gradient-to-br from-white via-green-50 to-emerald-50 transition-all duration-300 hover:shadow-lg hover:border-green-400 hover:scale-105"
-                      style={{ 
-                        borderRadius: '15px',
-                        boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'
-                      }}
-                    />
+                    <div className="flex justify-center">
+                      <input
+                        type="color"
+                        value={canvasSettings.backgroundColor}
+                        onChange={(e) =>
+                          setCanvasSettings((prev) => ({
+                            ...prev,
+                            backgroundColor: e.target.value,
+                          }))
+                        }
+                        className="group relative w-full h-12 border-2 border-green-300 cursor-pointer bg-gradient-to-br from-white via-green-50 to-emerald-50 transition-all duration-300 hover:shadow-lg hover:border-green-400 hover:scale-105"
+                        style={{ 
+                          borderRadius: '10px',
+                          boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'
+                        }}
+                      />
+                    </div>
                   </div>
 
                   {/* Grid Size */}
-                  <div className="space-y-8 p-8 bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg border border-green-200">
-                    <label className="block text-2xl font-bold"
+                  <div className="space-y-4 p-4 bg-gradient-to-br from-green-50 to-emerald-100 rounded-lg border border-green-200">
+                    <label className="block text-lg font-bold text-center"
                            style={{ 
                              color: '#ff6600',
                              textShadow: '0 4px 8px rgba(0, 0, 0, 0.9), -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff, 0 0 15px rgba(255, 102, 0, 0.5)',
                              fontFamily: 'Comfortaa, cursive',
-                             fontSize: '24px'
+                             fontSize: '18px'
                            }}>
-                      🔢 Grid Size
+                      <span className="text-xl">🔢</span> Grid Size
                     </label>
                     <input
                       type="number"
@@ -1625,12 +1656,12 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                       }
                       min="10"
                       max="50"
-                      className="group relative w-full px-6 py-6 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl"
+                      className="group relative w-full px-3 py-3 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl text-center"
                       style={{ 
-                        borderRadius: '15px',
+                        borderRadius: '10px',
                         fontFamily: 'Comfortaa, cursive',
                         boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)',
-                        fontSize: '18px'
+                        fontSize: '16px'
                       }}
                     />
                   </div>
@@ -1639,10 +1670,10 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
               </div>
 
               {/* Grid Options Footer - AT THE VERY BOTTOM */}
-              <div className="mt-auto pt-8 border-t-2 border-orange-400">
-                <div className="flex justify-center space-x-12">
+              <div className="mt-auto pt-4 border-t-2 border-orange-400">
+                <div className="flex justify-center space-x-6">
                   {/* Show Grid */}
-                  <label className="flex items-center space-x-3 cursor-pointer p-3 bg-gradient-to-r from-orange-100 to-yellow-100 rounded-lg border-2 border-orange-300 hover:from-orange-200 hover:to-yellow-200 transition-all duration-200"
+                  <label className="flex items-center space-x-2 cursor-pointer p-2 bg-gradient-to-r from-orange-100 to-yellow-100 rounded-lg border-2 border-orange-300 hover:from-orange-200 hover:to-yellow-200 transition-all duration-200"
                          style={{ fontFamily: 'Comfortaa, cursive' }}>
                     <input
                       type="checkbox"
@@ -1653,21 +1684,21 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                           gridEnabled: e.target.checked,
                         }))
                       }
-                      className="w-4 h-4 text-orange-600 bg-white border-2 border-orange-400 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
+                      className="w-3 h-3 text-orange-600 bg-white border-2 border-orange-400 rounded focus:ring-orange-500 focus:ring-1 cursor-pointer"
                     />
-                    <span className="text-sm font-bold"
+                    <span className="text-xs font-bold"
                           style={{ 
                             fontFamily: 'Comfortaa, cursive',
                             color: '#cc4400',
-                            textShadow: '0 2px 4px rgba(255, 255, 255, 0.9), -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff',
-                            fontSize: '14px'
+                            textShadow: '0 1px 2px rgba(255, 255, 255, 0.9), -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff',
+                            fontSize: '12px'
                           }}>
-                      📋 Show Grid
+                      <span className="text-sm">📋</span> Show Grid
                     </span>
                   </label>
 
                   {/* Snap to Grid */}
-                  <label className="flex items-center space-x-3 cursor-pointer p-3 bg-gradient-to-r from-orange-100 to-yellow-100 rounded-lg border-2 border-orange-300 hover:from-orange-200 hover:to-yellow-200 transition-all duration-200"
+                  <label className="flex items-center space-x-2 cursor-pointer p-2 bg-gradient-to-r from-orange-100 to-yellow-100 rounded-lg border-2 border-orange-300 hover:from-orange-200 hover:to-yellow-200 transition-all duration-200"
                          style={{ fontFamily: 'Comfortaa, cursive' }}>
                     <input
                       type="checkbox"
@@ -1678,16 +1709,16 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                           snapToGrid: e.target.checked,
                         }))
                       }
-                      className="w-4 h-4 text-orange-600 bg-white border-2 border-orange-400 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
+                      className="w-3 h-3 text-orange-600 bg-white border-2 border-orange-400 rounded focus:ring-orange-500 focus:ring-1 cursor-pointer"
                     />
-                    <span className="text-sm font-bold"
+                    <span className="text-xs font-bold"
                           style={{ 
                             fontFamily: 'Comfortaa, cursive',
                             color: '#cc4400',
-                            textShadow: '0 2px 4px rgba(255, 255, 255, 0.9), -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff',
-                            fontSize: '14px'
+                            textShadow: '0 1px 2px rgba(255, 255, 255, 0.9), -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff',
+                            fontSize: '12px'
                           }}>
-                      🧲 Snap to Grid
+                      <span className="text-sm">🧲</span> Snap to Grid
                     </span>
                   </label>
                 </div>
@@ -1704,10 +1735,10 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
       {/* Canvas Area - MASSIVE and More Prominent */}
       <div className="w-full max-w-[98vw] mx-auto">
         <div
-          className="border-4 border-gradient-to-r from-blue-400 to-purple-500 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 p-8 flex justify-center items-center shadow-2xl"
+          className="border-4 border-gradient-to-r from-blue-400 to-purple-500 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 p-8 flex flex-col justify-center items-center shadow-2xl"
           style={{ minHeight: "1000px" }}
         >
-          <div className="w-full max-w-[90vw]">
+          <div className="w-full max-w-[90vw] mb-4">
             <canvas
               ref={canvasRef}
               onMouseDown={handleCanvasMouseDown}
@@ -1728,7 +1759,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
           </div>
 
           <div
-            className={`mt-4 text-center text-sm text-gray-600 space-y-1 ${
+            className={`text-center text-sm text-gray-600 space-y-1 ${
               isMobile ? "text-xs" : ""
             }`}
           >

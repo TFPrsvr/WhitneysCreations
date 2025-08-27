@@ -55,25 +55,25 @@ const CleanNav = () => {
   };
 
   const navLinks = [
-    { path: '/', label: 'Home', icon: '🏠' },
-    { path: '/products', label: 'Products', icon: '🛍️' },
-    { path: '/create', label: 'Create', icon: '🎨' },
-    { path: '/studio', label: 'Design Studio', icon: '🎭' },
+    { path: '/', label: 'Home', icon: '🏠', color: 'from-green-600 to-emerald-600' },
+    { path: '/products', label: 'Products', icon: '🛍️', color: 'from-blue-600 to-cyan-600' },
+    { path: '/create', label: 'Create', icon: '🎨', color: 'from-purple-600 to-pink-600' },
+    { path: '/studio', label: 'Design Studio', icon: '🎭', color: 'from-orange-600 to-red-600' },
+    { path: '/suggest', label: 'Suggestions', icon: '💡', color: 'from-yellow-600 to-amber-600' },
     ...(isAuthenticated ? [
-      { path: '/projects', label: 'My Projects', icon: '📁', badge: stats?.stats?.totalProjects || 0 },
-      { path: '/suggest', label: 'Suggestions', icon: '💡' }
+      { path: '/projects', label: 'My Projects', icon: '📁', badge: stats?.stats?.totalProjects || 0, color: 'from-indigo-600 to-violet-600' }
     ] : []),
     ...(user?.role === 'admin' || user?.role === 'superadmin' ? [
-      { path: '/admin', label: 'Admin', icon: '⚙️' }
+      { path: '/admin', label: 'Admin', icon: '⚙️', color: 'from-slate-600 to-gray-600' }
     ] : []),
-    { path: '/about', label: 'About', icon: 'ℹ️' }
+    { path: '/about', label: 'About', icon: 'ℹ️', color: 'from-teal-600 to-cyan-600' }
   ];
 
   return (
     <>
       {/* Vertical Navigation List - Top Left Corner */}
       <nav 
-        className="nav-vertical-left fixed z-[60] w-64"
+        className="nav-vertical-left fixed z-[60] w-64 h-screen"
         style={{
           position: 'fixed',
           top: '0px',
@@ -86,7 +86,7 @@ const CleanNav = () => {
         }}
       >
         <div 
-          className="flex flex-col shadow-lg"
+          className="flex flex-col shadow-lg h-full"
           style={{
             backgroundColor: 'rgba(173, 216, 230, 0.95)',
             backdropFilter: 'blur(20px)',
@@ -94,7 +94,8 @@ const CleanNav = () => {
             borderRight: '1px solid rgba(75, 85, 99, 0.3)',
             borderBottom: '1px solid rgba(75, 85, 99, 0.3)',
             margin: 0,
-            padding: 0
+            padding: 0,
+            minHeight: '100vh'
           }}
         >
           {/* Logo Header */}
@@ -124,24 +125,27 @@ const CleanNav = () => {
           </Link>
 
           {/* Navigation Links List */}
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-1 flex-1 overflow-hidden">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-4 text-sm font-bold transition-all duration-200 flex items-center justify-between ${
+                className={`px-4 py-3 text-sm font-bold transition-all duration-200 flex items-center justify-between ${
                   isActive(link.path)
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg rounded-lg'
+                    ? `bg-gradient-to-r ${link.color} text-white shadow-lg rounded-lg`
                     : 'text-gray-200 hover:text-white hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 hover:shadow-md rounded-lg'
                 }`}
                 style={{
                   textShadow: isActive(link.path) 
-                    ? '0 0 8px rgba(255, 255, 255, 0.6), 0 1px 2px rgba(0, 0, 0, 0.8)' 
-                    : '0 1px 2px rgba(0, 0, 0, 0.8)',
+                    ? '2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000' 
+                    : '2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                   transform: isActive(link.path) ? 'translateX(4px)' : 'none',
-                  fontWeight: '700',
-                  fontSize: '28px',
-                  margin: '2px 0'
+                  fontWeight: '800',
+                  fontSize: '22px',
+                  margin: '2px 0',
+                  color: isActive(link.path) ? '#ffffff' : '#e2e8f0',
+                  WebkitFontSmoothing: 'antialiased',
+                  MozOsxFontSmoothing: 'grayscale'
                 }}
               >
                 <div className="flex items-center space-x-3">
@@ -158,11 +162,11 @@ const CleanNav = () => {
           </div>
 
           {/* Auth Section */}
-          <div className="border-t border-gray-600 mt-4">
+          <div className="border-t border-gray-600 mt-2">
             {isAuthenticated ? (
               <div className="p-3">
                 {/* User Info */}
-                <div className="flex items-center p-2 mb-4 bg-gray-800 rounded-lg">
+                <div className="flex items-center p-2 mb-1 bg-gray-800 rounded-lg">
                   <div className="flex-1 min-w-0">
                     <p className="font-bold truncate"
                        style={{ 
@@ -170,7 +174,7 @@ const CleanNav = () => {
                          whiteSpace: 'nowrap',
                          textOverflow: 'ellipsis',
                          color: '#00ff88',
-                         fontSize: '28px',
+                         fontSize: '16px',
                          textShadow: '0 3px 6px rgba(0, 0, 0, 0.9), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                        }}>
                       {user?.first && user?.last 
@@ -184,7 +188,7 @@ const CleanNav = () => {
                          whiteSpace: 'nowrap',
                          textOverflow: 'ellipsis',
                          color: '#66d9ff',
-                         fontSize: '22px',
+                         fontSize: '14px',
                          textShadow: '0 3px 6px rgba(0, 0, 0, 0.9), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                        }}>
                       {user?.email ? String(user.email).trim() : ''}
@@ -193,55 +197,63 @@ const CleanNav = () => {
                 </div>
                 
                 {/* Quick Actions - Cart, Profile & Orders in a row */}
-                <div className="flex justify-evenly space-x-2 py-3 mb-4">
+                <div className="flex justify-evenly space-x-0 py-1 mb-1">
                   <Link 
                     to="/cart" 
-                    className="flex items-center justify-center p-3 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
+                    className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
                     title="Cart"
                   >
-                    <span className="text-5xl" style={{ 
+                    <span className="text-3xl mb-1" style={{ 
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '8px',
-                      padding: '4px 8px'
+                      padding: '8px 12px',
+                      lineHeight: '1'
                     }}>🛒</span>
+                    <span className="text-xs font-bold text-white">Cart</span>
                   </Link>
                   
                   <Link 
                     to="/profile" 
-                    className="flex items-center justify-center p-3 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
+                    className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
                     title="Profile"
                   >
-                    <span className="text-5xl" style={{ 
+                    <span className="text-3xl mb-1" style={{ 
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '8px',
-                      padding: '4px 8px'
+                      padding: '8px 12px',
+                      lineHeight: '1'
                     }}>👤</span>
+                    <span className="text-xs font-bold text-white">Profile</span>
                   </Link>
                   
                   <Link 
                     to="/orders" 
-                    className="flex items-center justify-center p-3 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-110"
+                    className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
                     title="Orders"
                   >
-                    <span className="text-5xl" style={{ 
+                    <span className="text-3xl mb-1" style={{ 
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '8px',
-                      padding: '4px 8px'
+                      padding: '8px 12px',
+                      lineHeight: '1'
                     }}>📦</span>
+                    <span className="text-xs font-bold text-white">Orders</span>
                   </Link>
                 </div>
                 
                 <div className="flex justify-center w-full">
                   <button
                     onClick={handleLogout}
-                    className="w-4/5 text-center"
+                    className="w-full text-center"
                     style={{
-                      display: 'block',
-                      padding: '18px 32px',
-                      fontSize: '22px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '6px 24px',
+                      fontSize: '14px',
                       fontWeight: 'bold',
                       color: '#ffffff',
                       background: 'linear-gradient(to right, #dc2626, #b91c1c)',
@@ -249,7 +261,7 @@ const CleanNav = () => {
                       borderRadius: '12px',
                       textDecoration: 'none',
                       transition: 'all 0.2s',
-                      margin: '12px auto',
+                      margin: '4px auto',
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                     }}
                     onMouseEnter={(e) => {
@@ -279,21 +291,22 @@ const CleanNav = () => {
                       textAlign: 'center',
                       fontSize: '14px',
                       fontWeight: 'bold',
-                      color: '#d1d5db',
-                      backgroundColor: 'transparent',
-                      border: '1px solid #4b5563',
+                      color: '#ffffff',
+                      background: 'linear-gradient(to right, #3b82f6, #1e40af)',
+                      border: 'none',
                       borderRadius: '6px',
                       textDecoration: 'none',
                       transition: 'all 0.2s',
-                      marginBottom: '0'
+                      marginBottom: '0',
+                      textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)'
                     }}
                     onMouseEnter={(e) => {
-                      e.target.style.color = '#ffffff';
-                      e.target.style.backgroundColor = 'rgba(75, 85, 99, 0.5)';
+                      e.target.style.background = 'linear-gradient(to right, #1e40af, #1d4ed8)';
+                      e.target.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.4)';
                     }}
                     onMouseLeave={(e) => {
-                      e.target.style.color = '#d1d5db';
-                      e.target.style.backgroundColor = 'transparent';
+                      e.target.style.background = 'linear-gradient(to right, #3b82f6, #1e40af)';
+                      e.target.style.boxShadow = 'none';
                     }}
                   >
                     Sign In

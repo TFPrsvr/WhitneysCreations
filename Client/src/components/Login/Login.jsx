@@ -113,9 +113,10 @@ const Login = () => {
 
           <Button 
             type="submit"
-            className="w-full"
+            className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold hover:from-blue-600 hover:to-blue-700 transition-all duration-200"
             disabled={isLoading}
             size="lg"
+            style={{borderRadius: '10%'}}
           >
             {isLoading ? 'Signing In...' : 'Sign In'}
           </Button>
