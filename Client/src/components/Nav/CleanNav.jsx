@@ -66,7 +66,8 @@ const CleanNav = () => {
     ...(user?.role === 'admin' || user?.role === 'superadmin' ? [
       { path: '/admin', label: 'Admin', icon: '⚙️', color: 'from-slate-600 to-gray-600' }
     ] : []),
-    { path: '/about', label: 'About', icon: 'ℹ️', color: 'from-teal-600 to-cyan-600' }
+    { path: '/about', label: 'About', icon: 'ℹ️', color: 'from-teal-600 to-cyan-600' },
+    { path: '/contact', label: 'Contact', icon: '📞', color: 'from-emerald-600 to-teal-600' }
   ];
 
   return (

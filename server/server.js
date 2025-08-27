@@ -7,6 +7,14 @@ const mongoose = require("mongoose");
 
 require("dotenv").config();
 
+// Debug environment variables
+if (!process.env.MONGO_URI) {
+  console.error("❌ MONGO_URI is not defined in environment variables");
+  console.error("Current working directory:", process.cwd());
+  console.error("Available environment variables:", Object.keys(process.env).filter(key => key.includes('MONGO') || key.includes('SECRET') || key.includes('PORT')));
+  process.exit(1);
+}
+
 const bcrypt = require("bcrypt");
 
 const port = process.env.PORT || 3002;
@@ -68,9 +76,15 @@ app.use((err, req, res, next) => {
 Router(app);
 
 app.listen(port, () => {
-  mongoose.connect(process.env.MONGO_URI).then(() => {
-    console.log("connected to Database");
+  mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }).then(() => {
+    console.log("✅ Connected to MongoDB Database");
+  }).catch((error) => {
+    console.error("❌ MongoDB connection failed:", error.message);
+    process.exit(1);
   });
 
-  console.log(`Server is running on port: ${port} `);
+  console.log(`🚀 Server is running on port: ${port}`);
 });

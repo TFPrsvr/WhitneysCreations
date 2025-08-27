@@ -2,6 +2,7 @@
   "permissions": {
     "allow": [
       "Read(/C:\\Users\\tfort\\Desktop\\Whitney''''s/**)",
+      "Read(/C:\\Users\\tfort\\Desktop\\Whitney''''s/**)",
       "Read(/C:\\Users\\tfort\\Desktop\\Whitney''''s/**)"
     ],
     "deny": [],

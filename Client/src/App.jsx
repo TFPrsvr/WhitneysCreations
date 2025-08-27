@@ -60,11 +60,11 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 w-full overflow-x-hidden">
+    <div className="min-h-screen bg-gray-50 w-full overflow-x-hidden page-container">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-600 via-purple-600 to-pink-500 text-white w-full">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="relative w-full px-4 sm:px-4 lg:px-4 py-8 lg:py-12">
+        <div className="relative w-full px-4 sm:px-4 lg:px-4 py-2 lg:py-4">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               <span className="block text-6xl md:text-7xl mb-4">👕 👚</span>
