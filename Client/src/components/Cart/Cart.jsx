@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import './CartDD.css'
 
@@ -26,7 +27,18 @@ return (
             <div className="text-6xl mb-4">🛒</div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Your cart is empty</h3>
             <p className="text-gray-600 mb-6">Add some awesome designs to get started!</p>
-            <button className="btn-action-blue">Continue Shopping</button>
+            <Link 
+              to="/products"
+              className="inline-block px-12 py-6 bg-green-500 border-2 border-green-600 font-bold hover:bg-green-600 hover:border-green-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              style={{
+                borderRadius: '10%',
+                color: '#ffffff',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
+                fontSize: '24px'
+              }}
+            >
+              🛍️ Continue Shopping
+            </Link>
           </div>
         ) : (
           <div className="grid lg:grid-cols-3 gap-8">

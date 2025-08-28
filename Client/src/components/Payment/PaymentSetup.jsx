@@ -310,7 +310,7 @@ const PaymentSetup = () => {
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex space-x-1 bg-gray-100 rounded-lg p-1 overflow-x-auto">
+      <div className="flex space-x-1 bg-gray-100 rounded-lg overflow-x-auto" style={{padding: '0.5rem'}}>
         {tabs.map(tab => (
           <button
             key={tab.id}
@@ -814,7 +814,7 @@ const PaymentSetup = () => {
                     
                     <div>
                       <span className="text-sm font-medium text-gray-700 block mb-2">Features:</span>
-                      <div className="flex flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-2">
                         {provider.features.map((feature, index) => (
                           <span 
                             key={index}

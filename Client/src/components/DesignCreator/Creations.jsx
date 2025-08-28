@@ -29,12 +29,12 @@ const Creations = () => {
         
     <div id='CreationsComp'>
         <h1 className='whits'>
-           👕 Whitney's Unique Creations 👚
+           👕 👚 Whitney's Unique Creations
             </h1>
         
         {/* <br /> */}
             <h2 className='whits2'>
-           Creations You Want
+           The Creations You Want
              </h2>
         
         <div className='creations'>
@@ -71,10 +71,10 @@ const Creations = () => {
 
               <p className='ideas'> See If Our Creators Can </p>
               
-              <p className='ideas'>
+              <p className='ideas-life'>
                  Make Your Ideas Come To Life </p>
 
-              <p className='ideas'> 
+              <p className='ideas-start'> 
                 Just Click Below To Get Started:</p>
 
               <br />

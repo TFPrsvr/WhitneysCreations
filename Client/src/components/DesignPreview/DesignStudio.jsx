@@ -382,80 +382,74 @@ const DesignStudio = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 design-studio-container">
-      <div className="w-full py-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white page-container">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            🎨 Design Studio
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <button
-              onClick={newDesign}
-              className="px-8 py-6 bg-gradient-to-r from-gray-200 to-gray-300 hover:from-gray-300 hover:to-gray-400 text-gray-800 rounded-2xl font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-4"
-            >
-              <span className="text-3xl">📄</span>
-              <span className="text-lg">New Design</span>
-            </button>
-            {currentDesign && (
-              <>
-                <button
-                  onClick={exportToMockup}
-                  className="px-8 py-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-2xl font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-4"
-                >
-                  <span className="text-3xl">👕</span>
-                  <span className="text-lg">View Mockup</span>
-                </button>
-                {isAuthenticated && (
+        <div className="text-center mb-12">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20">
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent mb-4">
+              🎨 Design Studio
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Create stunning designs with our professional tools and templates
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button
+                onClick={newDesign}
+                className="px-6 py-3 bg-white hover:bg-gray-50 text-gray-800 font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-3 border border-gray-200"
+              >
+                <span className="text-2xl">📄</span>
+                <span>New Design</span>
+              </button>
+              {currentDesign && (
+                <>
                   <button
-                    onClick={() => setShowSaveModal(true)}
-                    className="px-8 py-6 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-2xl font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-4"
+                    onClick={exportToMockup}
+                    className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-3"
                   >
-                    <span className="text-3xl">💾</span>
-                    <span className="text-lg">Save Design</span>
+                    <span className="text-2xl">👕</span>
+                    <span>View Mockup</span>
                   </button>
-                )}
-              </>
-            )}
+                  {isAuthenticated && (
+                    <button
+                      onClick={() => setShowSaveModal(true)}
+                      className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-3"
+                    >
+                      <span className="text-2xl">💾</span>
+                      <span>Save Design</span>
+                    </button>
+                  )}
+                </>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Top Section - Tools */}
-        <div style={{ width: "100%", marginBottom: "32px" }}>
-          <div className="bg-white rounded-2xl shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
-              🛠️ Choose Your Tool
+        {/* Navigation Tabs */}
+        <div className="mb-8">
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/30">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center gap-3">
+              🛠️ <span>Design Tools</span>
             </h2>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(6, 1fr)",
-                gap: "24px",
-                maxWidth: "1200px",
-                margin: "0 auto",
-              }}
-            >
+            <div className="flex flex-wrap justify-center gap-3">
               {tabs.map((tab) => {
                 if (tab.authRequired && !isAuthenticated) return null;
                 return (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`relative p-6 font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex flex-col items-center justify-center space-y-3 min-h-[120px] ${
+                    className={`relative px-6 py-4 font-semibold transition-all duration-300 transform hover:scale-105 flex items-center space-x-3 rounded-xl ${
                       activeTab === tab.id
-                        ? "bg-gradient-to-br from-blue-600 to-purple-700 text-white shadow-lg border-2 border-blue-400"
-                        : "bg-gradient-to-br from-gray-100 to-gray-200 hover:from-blue-100 hover:to-purple-100 text-gray-700 border-2 border-gray-300 hover:border-blue-400"
+                        ? "bg-gradient-to-r from-primary-600 to-purple-600 text-white shadow-lg"
+                        : "bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 hover:border-primary-300 hover:shadow-md"
                     }`}
-                    style={{
-                      borderRadius: "15px",
-                    }}
                   >
-                    <span className="text-3xl">{tab.icon}</span>
-                    <span className="text-sm font-bold text-center leading-tight">
+                    <span className="text-xl">{tab.icon}</span>
+                    <span className="text-sm font-medium whitespace-nowrap">
                       {tab.name}
                     </span>
                     {tab.id === "saved" && designs.length > 0 && (
-                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-1 min-w-[16px] flex items-center justify-center font-bold shadow-sm">
+                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-1 min-w-[20px] flex items-center justify-center font-bold shadow-sm">
                         {designs.length}
                       </span>
                     )}
@@ -466,9 +460,9 @@ const DesignStudio = () => {
           </div>
         </div>
 
-        {/* Bottom Section - Canvas & Content (Full Width) */}
-        <div style={{ width: "100%" }}>
-          <div style={{ minHeight: "600px" }}>
+        {/* Main Content Area */}
+        <div className="w-full">
+          <div className="min-h-[600px] bg-white/50 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6">
             {activeTab === "canvas" && (
               <DesignCanvas
                 onDesignChange={handleDesignChange}
@@ -478,20 +472,22 @@ const DesignStudio = () => {
             )}
 
             {activeTab === "templates" && (
-              <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="h-full">
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="header-primary">Design Templates</h2>
-                  <p className="text-sm text-gray-600">
+                  <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                    📋 <span>Design Templates</span>
+                  </h2>
+                  <p className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
                     {designTemplates.length} templates available
                   </p>
                 </div>
 
                 {/* Category Filter */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-3 mb-8">
                   {categories.map((category) => (
                     <span
                       key={category}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
+                      className="px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary-100 hover:to-primary-200 text-gray-700 hover:text-primary-800 text-sm rounded-xl font-medium cursor-pointer transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md"
                     >
                       {category}
                     </span>
@@ -499,20 +495,19 @@ const DesignStudio = () => {
                 </div>
 
                 {/* Templates Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {/* Built-in Templates */}
                   {designTemplates.map((template) => (
                     <div
                       key={template.id}
-                      className="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow cursor-pointer"
+                      className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-lg hover:border-primary-300 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
                       onClick={() => loadTemplate(template)}
                     >
-                      <div className="aspect-w-16 aspect-h-12 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+                      <div className="aspect-w-16 aspect-h-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg mb-4 flex items-center justify-center border border-gray-200">
                         <div className="text-center">
                           <div className="text-4xl mb-2">🎨</div>
-                          <div className="text-xs text-gray-500">
-                            {template.dimensions.width} ×{" "}
-                            {template.dimensions.height}
+                          <div className="text-xs text-gray-500 bg-white px-2 py-1 rounded-full">
+                            {template.dimensions.width} × {template.dimensions.height}
                           </div>
                         </div>
                       </div>
@@ -535,7 +530,7 @@ const DesignStudio = () => {
                           e.stopPropagation();
                           loadTemplate(template);
                         }}
-                        className="btn-action-blue w-full"
+                        className="w-full px-4 py-2 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
                       >
                         Use Template
                       </button>
@@ -546,7 +541,7 @@ const DesignStudio = () => {
                   {templates.map((template) => (
                     <div
                       key={template._id}
-                      className="border border-blue-200 rounded-xl p-4 hover:shadow-md transition-shadow cursor-pointer bg-blue-50"
+                      className="bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-5 hover:shadow-lg hover:border-blue-400 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
                       onClick={() => loadTemplate(template)}
                     >
                       <div className="aspect-w-16 aspect-h-12 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
@@ -590,7 +585,7 @@ const DesignStudio = () => {
                           e.stopPropagation();
                           loadTemplate(template);
                         }}
-                        className="btn-action-blue w-full"
+                        className="w-full px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
                       >
                         Use Template
                       </button>
@@ -629,12 +624,13 @@ const DesignStudio = () => {
             )}
 
             {activeTab === "saved" && isAuthenticated && (
-              <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="h-full">
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="header-primary">Saved Designs</h2>
-                  <div className="text-sm text-gray-600">
-                    {designs.length} design{designs.length !== 1 ? "s" : ""}{" "}
-                    saved
+                  <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
+                    💾 <span>Saved Designs</span>
+                  </h2>
+                  <div className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+                    {designs.length} design{designs.length !== 1 ? "s" : ""} saved
                   </div>
                 </div>
 
@@ -655,11 +651,11 @@ const DesignStudio = () => {
                 )}
 
                 {designs.length > 0 ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {designs.map((design) => (
                       <div
                         key={design._id}
-                        className="border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow"
+                        className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-lg hover:border-primary-300 transition-all duration-300 transform hover:scale-[1.02]"
                       >
                         <div className="aspect-w-16 aspect-h-12 bg-gray-100 rounded-lg mb-4 overflow-hidden">
                           {design.previewImage ? (
@@ -714,14 +710,14 @@ const DesignStudio = () => {
                         <div className="space-y-2">
                           <button
                             onClick={() => loadDesign(design)}
-                            className="btn-action-blue w-full"
+                            className="w-full px-4 py-2 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
                             disabled={loading}
                           >
                             Open Design
                           </button>
                           <button
                             onClick={() => duplicateDesign(design._id)}
-                            className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+                            className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 hover:border-primary-300 transition-all duration-200 text-sm font-medium"
                             disabled={loading}
                           >
                             Duplicate
@@ -731,17 +727,17 @@ const DesignStudio = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-12">
-                    <div className="text-6xl mb-4">🎨</div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <div className="text-center py-16">
+                    <div className="text-8xl mb-6">🎨</div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
                       No designs saved yet
                     </h3>
-                    <p className="text-gray-600 mb-6">
-                      Create your first design and save it to access it later
+                    <p className="text-gray-600 mb-8 max-w-md mx-auto">
+                      Create your first design and save it to access it later. Start with a template or build from scratch.
                     </p>
                     <button
                       onClick={() => setActiveTab("templates")}
-                      className="btn-action-blue"
+                      className="px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-xl font-semibold transition-all duration-200 transform hover:scale-105"
                     >
                       Browse Templates
                     </button>
@@ -754,10 +750,10 @@ const DesignStudio = () => {
 
         {/* Save Design Modal */}
         {showSaveModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-xl max-w-md w-full p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Save Design
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl border border-white/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                💾 <span>Save Design</span>
               </h3>
 
               <div className="mb-4">
@@ -774,30 +770,28 @@ const DesignStudio = () => {
                 />
               </div>
 
-              <div className="mb-6">
-                <p className="text-sm text-gray-600 mb-2">Design Info:</p>
-                <div className="border border-gray-200 rounded-lg p-3 bg-gray-50">
-                  <div className="text-sm text-gray-700">
-                    <p>Elements: {designElements.length}</p>
-                    <p>
-                      Size: {canvasSettings.width} × {canvasSettings.height}px
-                    </p>
-                    <p>Background: {canvasSettings.backgroundColor}</p>
+              <div className="mb-8">
+                <p className="text-sm font-medium text-gray-700 mb-3">Design Info:</p>
+                <div className="border border-gray-200 rounded-xl p-4 bg-gradient-to-br from-gray-50 to-gray-100">
+                  <div className="text-sm text-gray-700 space-y-1">
+                    <p className="flex justify-between"><span>Elements:</span> <span className="font-medium">{designElements.length}</span></p>
+                    <p className="flex justify-between"><span>Size:</span> <span className="font-medium">{canvasSettings.width} × {canvasSettings.height}px</span></p>
+                    <p className="flex justify-between"><span>Background:</span> <span className="font-medium">{canvasSettings.backgroundColor}</span></p>
                   </div>
                 </div>
               </div>
 
-              <div className="flex space-x-3">
+              <div className="flex space-x-4">
                 <button
                   onClick={() => setShowSaveModal(false)}
-                  className="btn-secondary flex-1"
+                  className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 hover:border-gray-400 transition-all duration-200"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={saveDesign}
                   disabled={!designName.trim() || loading}
-                  className="btn-action-blue flex-1"
+                  className="flex-1 px-4 py-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-xl font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105"
                 >
                   {loading
                     ? "Saving..."
@@ -811,14 +805,13 @@ const DesignStudio = () => {
         )}
 
         {!isAuthenticated && (
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center mt-6">
+          <div className="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-xl p-6 text-center mt-8 shadow-lg">
             <div className="text-yellow-800">
-              <p className="font-medium mb-1">
-                🔒 Sign in to unlock full studio features
+              <p className="font-semibold text-lg mb-2 flex items-center justify-center gap-3">
+                🔒 <span>Sign in to unlock full studio features</span>
               </p>
               <p className="text-sm">
-                Save designs, access premium templates, and export
-                high-resolution files
+                Save designs, access premium templates, and export high-resolution files
               </p>
             </div>
           </div>

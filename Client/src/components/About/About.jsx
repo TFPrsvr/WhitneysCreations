@@ -7,22 +7,22 @@ const About = () => {
       name: 'Whitney Richards',
       role: 'Founder & CEO',
       bio: 'Passionate about empowering creators to build sustainable businesses through print-on-demand.',
-      avatar: '👩‍💼',
-      linkedin: '#'
+      avatar: '👩‍💻',
+      linkedin: 'https://linkedin.com/in/whitney-richards'
     },
     {
       name: 'Tabitha Fortner',
       role: 'Head of Design',
       bio: '10+ years in product design, focused on creating intuitive and powerful design tools.',
-      avatar: '👩‍🎨',
-      linkedin: '#'
+      avatar: '👩‍💻',
+      linkedin: 'https://linkedin.com/in/tabitha-fortner'
     },
     {
       name: 'Terry Green',
       role: 'VP of Operations',
       bio: 'Ensures quality and fast fulfillment across our global network of print partners.',
       avatar: '👨‍💻',
-      linkedin: '#'
+      linkedin: 'https://linkedin.com/in/terry-green'
     }
   ];
 
@@ -58,15 +58,15 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-16">
+    <div className="min-h-screen bg-gray-50 pt-4 page-container">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-600 to-purple-600 text-white py-20">
+      <section className="bg-gradient-to-br from-primary-600 to-purple-600 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               About PrintCraft
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-100">
+            <p className="text-2xl md:text-3xl mb-8 max-w-3xl mx-auto text-gray-100 font-bold">
               We're on a mission to empower creators worldwide to turn their ideas into successful businesses 
               through high-quality print-on-demand products.
             </p>
@@ -75,19 +75,19 @@ const About = () => {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 bg-white">
+      <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center justify-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 Our Mission
               </h2>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-xl text-gray-700 mb-6 font-semibold">
                 At PrintCraft, we believe everyone should have the opportunity to turn their creativity into a 
                 thriving business. That's why we've built the most intuitive, powerful, and accessible 
                 print-on-demand platform in the world.
               </p>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-xl text-gray-700 mb-8 font-semibold">
                 Whether you're an artist, entrepreneur, or just someone with great ideas, we provide all the 
                 tools you need to design, sell, and fulfill custom products without any upfront investment 
                 or inventory management.
@@ -103,22 +103,22 @@ const About = () => {
               <div className="bg-gradient-to-br from-primary-100 to-purple-100 rounded-2xl p-8 text-center">
                 <div className="text-8xl mb-6">🎨</div>
                 <div className="grid grid-cols-2 gap-4 text-center">
-                  <div className="bg-white rounded-lg p-4">
+                  <Link to="/projects" className="bg-white rounded-lg p-4 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
                     <div className="text-2xl font-bold text-primary-600">100K+</div>
                     <div className="text-sm text-gray-600">Active Creators</div>
-                  </div>
-                  <div className="bg-white rounded-lg p-4">
+                  </Link>
+                  <Link to="/products" className="bg-white rounded-lg p-4 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
                     <div className="text-2xl font-bold text-primary-600">2M+</div>
                     <div className="text-sm text-gray-600">Products Sold</div>
-                  </div>
-                  <div className="bg-white rounded-lg p-4">
+                  </Link>
+                  <Link to="/products" className="bg-white rounded-lg p-4 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
                     <div className="text-2xl font-bold text-primary-600">150+</div>
                     <div className="text-sm text-gray-600">Product Types</div>
-                  </div>
-                  <div className="bg-white rounded-lg p-4">
+                  </Link>
+                  <Link to="/contact" className="bg-white rounded-lg p-4 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
                     <div className="text-2xl font-bold text-primary-600">50+</div>
                     <div className="text-sm text-gray-600">Countries</div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -127,9 +127,9 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Our Values
             </h2>
@@ -138,12 +138,12 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-sm text-center hover:shadow-lg transition-shadow duration-300">
-                <div className="text-6xl mb-6">{value.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+              <div key={index} className="bg-white p-6 rounded-xl shadow-sm text-center hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
+                <div className="text-4xl mb-4">{value.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex-shrink-0">{value.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed flex-grow">{value.description}</p>
               </div>
             ))}
           </div>
@@ -151,9 +151,9 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-white">
+      <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Meet Our Team
             </h2>
@@ -164,14 +164,16 @@ const About = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-8 text-center hover:bg-white hover:shadow-lg transition-all duration-300">
-                <div className="text-8xl mb-6">{member.avatar}</div>
+              <div key={index} className="bg-gray-50 rounded-xl p-6 text-center hover:bg-white hover:shadow-lg transition-all duration-300">
+                <div className="text-6xl mb-4">{member.avatar}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
                 <p className="text-primary-600 font-medium mb-4">{member.role}</p>
-                <p className="text-gray-600 mb-6">{member.bio}</p>
+                <p className="text-gray-600 mb-6 text-sm">{member.bio}</p>
                 <a
                   href={member.linkedin}
-                  className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium hover:underline"
                 >
                   Connect on LinkedIn →
                 </a>
@@ -182,9 +184,9 @@ const About = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-8 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Our Journey
             </h2>
@@ -197,15 +199,15 @@ const About = () => {
             <div className="absolute left-1/2 transform -translate-x-px top-0 bottom-0 w-0.5 bg-primary-200"></div>
             
             {milestones.map((milestone, index) => (
-              <div key={index} className="relative flex items-center mb-12">
-                <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+              <div key={index} className="relative mb-8">
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center z-10">
                   <div className="w-3 h-3 bg-white rounded-full"></div>
                 </div>
                 
-                <div className={`w-full ${index % 2 === 0 ? 'pr-8 md:pr-12 text-right' : 'pl-8 md:pl-12 text-left md:ml-1/2'}`}>
-                  <div className={`bg-white p-6 rounded-lg shadow-sm max-w-md ${index % 2 === 0 ? 'ml-auto md:mr-8' : 'mr-auto md:ml-8'}`}>
+                <div className={`flex ${index % 2 === 0 ? 'justify-end pr-8 md:pr-16' : 'justify-start pl-8 md:pl-16'}`}>
+                  <div className={`bg-white p-6 rounded-lg shadow-sm max-w-md w-full ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>
                     <div className="text-primary-600 font-bold text-lg mb-2">{milestone.year}</div>
-                    <p className="text-gray-700">{milestone.event}</p>
+                    <p className="text-gray-700 text-sm leading-relaxed">{milestone.event}</p>
                   </div>
                 </div>
               </div>
@@ -215,12 +217,17 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-purple-600 text-white">
+      <section className="py-8 bg-gradient-to-r from-primary-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-4 lg:px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{
+            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+            WebkitTextStroke: '1px rgba(0, 0, 0, 0.3)'
+          }}>
             Ready to Join Our Community?
           </h2>
-          <p className="text-xl mb-8">
+          <p className="text-xl mb-8 font-semibold" style={{
+            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+          }}>
             Become part of a thriving community of creators who are building successful businesses with PrintCraft.
           </p>
           

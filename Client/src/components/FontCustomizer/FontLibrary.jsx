@@ -259,11 +259,12 @@ const FontLibrary = ({ onFontSelect, selectedFont }) => {
                 e.stopPropagation();
                 toggleSaveFont(font.name);
               }}
-              className={`p-1 rounded-full transition-colors ${
+              className={`rounded-full transition-colors ${
                 savedFonts.includes(font.name)
                   ? 'text-red-500 hover:text-red-600'
                   : 'text-gray-400 hover:text-gray-600'
               }`}
+              style={{padding: '0.5rem'}}
             >
               {savedFonts.includes(font.name) ? '❤️' : '🤍'}
             </button>
@@ -284,7 +285,7 @@ const FontLibrary = ({ onFontSelect, selectedFont }) => {
       </p>
 
       {/* Font Weights */}
-      <div className="flex flex-wrap gap-1 mb-3">
+      <div className="flex flex-wrap gap-2 mb-3">
         {font.weight.map(weight => (
           <span 
             key={weight}
@@ -302,7 +303,7 @@ const FontLibrary = ({ onFontSelect, selectedFont }) => {
       </div>
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-1">
+      <div className="flex flex-wrap gap-2">
         {font.tags.slice(0, 3).map(tag => (
           <span 
             key={tag}
@@ -359,7 +360,7 @@ const FontLibrary = ({ onFontSelect, selectedFont }) => {
         <p className="text-sm text-gray-600 mb-2">{font.description}</p>
         
         <div className="flex items-center justify-between">
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-2">
             {font.tags.slice(0, 2).map(tag => (
               <span 
                 key={tag}
@@ -370,7 +371,7 @@ const FontLibrary = ({ onFontSelect, selectedFont }) => {
             ))}
           </div>
           
-          <div className="flex gap-1">
+          <div className="flex gap-2">
             {font.weight.map(weight => (
               <span 
                 key={weight}
@@ -390,7 +391,7 @@ const FontLibrary = ({ onFontSelect, selectedFont }) => {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Font Library</h2>
         <div className="flex items-center space-x-2">
-          <div className="flex bg-gray-100 rounded-lg p-1">
+          <div className="flex bg-gray-100 rounded-lg" style={{padding: '0.5rem'}}>
             <button
               onClick={() => setViewMode('grid')}
               className={`px-3 py-1 text-sm rounded-lg transition-colors ${

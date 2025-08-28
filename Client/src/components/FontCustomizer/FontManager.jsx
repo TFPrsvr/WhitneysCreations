@@ -195,7 +195,7 @@ const FontManager = ({ onFontApply, initialSettings = null }) => {
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex space-x-2 bg-gray-100 rounded-lg p-2">
+      <div className="flex space-x-2 bg-gray-100 rounded-lg" style={{padding: '0.5rem'}}>
         {tabs.map(tab => {
           if (tab.authRequired && !isAuthenticated) return null;
           return (

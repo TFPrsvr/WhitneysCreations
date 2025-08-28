@@ -149,7 +149,7 @@ const Pricing = () => {
           </p>
           
           {/* Billing Toggle */}
-          <div className="inline-flex items-center bg-white bg-opacity-20 rounded-lg p-1 mb-8">
+          <div className="inline-flex items-center bg-white bg-opacity-20 rounded-lg mb-8" style={{padding: '0.5rem'}}>
             <button
               onClick={() => setBillingCycle('monthly')}
               className={`px-6 py-2 rounded-md font-medium transition-all ${
