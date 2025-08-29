@@ -73,7 +73,7 @@ const Login = () => {
         <div className="text-center">
           <div className="flex items-center justify-center mb-4">
             <span className="text-4xl">🎨</span>
-            <h1 className="header-main ml-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
+            <h1 className="text-3xl font-bold ml-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
           </div>
           <p className="text-gray-600 mt-2">Welcome back to PrintCraft</p>
         </div>
@@ -111,15 +111,14 @@ const Login = () => {
             />
           </div>
 
-          <Button 
+          <button 
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold hover:from-blue-600 hover:to-blue-700 transition-all duration-200"
+            className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             disabled={isLoading}
-            size="lg"
-            style={{borderRadius: '10%'}}
+            style={{borderRadius: '12px'}}
           >
             {isLoading ? 'Signing In...' : 'Sign In'}
-          </Button>
+          </button>
         </form>
         
         <div className="text-center">
@@ -128,8 +127,8 @@ const Login = () => {
           </p>
           <button 
             onClick={() => handleReg()}
-            className="w-full mt-3 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-200"
-            style={{borderRadius: '10%'}}
+            className="w-full mt-3 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            style={{borderRadius: '12px'}}
           >
             Create Account
           </button>

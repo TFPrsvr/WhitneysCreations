@@ -59,8 +59,9 @@ return (
                       </div>
                       <button 
                         onClick={() => removeFromCart(item.id)}
-                        className="btn-action-red"
+                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 flex items-center gap-2"
                       >
+                        <span className="text-lg">✕</span>
                         Remove
                       </button>
                     </div>
@@ -91,7 +92,46 @@ return (
                     <span>${total.toFixed(2)}</span>
                   </div>
                 </div>
-                <button className="btn-action-blue w-full mt-6 py-3">
+                
+                {/* Shipping Options */}
+                <div className="mt-6">
+                  <h3 className="font-semibold text-gray-900 mb-3">Shipping Options</h3>
+                  <div className="space-y-2">
+                    <label className="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                      <input type="radio" name="shipping" value="standard" defaultChecked className="text-blue-600" />
+                      <div className="flex-1">
+                        <div className="flex justify-between">
+                          <span className="font-medium">Standard Shipping</span>
+                          <span className="font-semibold">$5.99</span>
+                        </div>
+                        <p className="text-sm text-gray-600">5-7 business days</p>
+                      </div>
+                    </label>
+                    <label className="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                      <input type="radio" name="shipping" value="express" className="text-blue-600" />
+                      <div className="flex-1">
+                        <div className="flex justify-between">
+                          <span className="font-medium">Express Shipping</span>
+                          <span className="font-semibold">$12.99</span>
+                        </div>
+                        <p className="text-sm text-gray-600">2-3 business days</p>
+                      </div>
+                    </label>
+                    <label className="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                      <input type="radio" name="shipping" value="overnight" className="text-blue-600" />
+                      <div className="flex-1">
+                        <div className="flex justify-between">
+                          <span className="font-medium">Overnight Shipping</span>
+                          <span className="font-semibold">$24.99</span>
+                        </div>
+                        <p className="text-sm text-gray-600">Next business day</p>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                
+                <button className="w-full mt-6 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105 flex items-center justify-center gap-2">
+                  <span className="text-xl">🛒</span>
                   Proceed to Checkout
                 </button>
               </div>
