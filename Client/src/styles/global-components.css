@@ -11,7 +11,7 @@
   min-height: 100vh;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  margin-left: 256px; /* Account for 256px wide side navigation */
+  /* Using top navigation, no side nav margin needed */
 }
 
 /* Content Container - Max width with safe edges, nothing butting against viewport */
@@ -21,22 +21,23 @@
   margin-right: auto;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  margin-left: 256px; /* Account for 256px wide side navigation */
+  /* Using top navigation, no side nav margin needed */
 }
 
 /* Main content spacing for side navigation */
 main, .main-content, #root > div {
-  margin-left: 256px; /* Ensure main content doesn't get covered by side nav */
+  /* Using top navigation, no side nav margin needed */
+  padding-top: 1.25rem; /* Space for fixed top navbar */
 }
 
 /* Design Studio specific override - positioned correctly relative to navbar */
 .design-studio-container {
-  margin-left: 256px !important;
-  width: calc(100vw - 256px) !important;
-  max-width: calc(100vw - 256px) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
   padding-left: 24px !important;
   padding-right: 24px !important;
   position: relative !important;
+  /* Using top navigation, no side nav margin needed */
 }
 
 /* Global Border Radius for ALL inputs, selects, and textareas */

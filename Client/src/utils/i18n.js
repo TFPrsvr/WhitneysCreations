@@ -137,7 +137,7 @@ export const formatCurrency = (amount, langCode = 'en', countryCode = 'US') => {
       style: 'currency',
       currency: currency
     }).format(amount);
-  } catch (error) {
+  } catch {
     // Fallback to USD if formatting fails
     return new Intl.NumberFormat('en-US', {
       style: 'currency',

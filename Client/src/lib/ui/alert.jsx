@@ -1,5 +1,5 @@
-import * as React from "react"
 import { cva } from "class-variance-authority";
+import PropTypes from 'prop-types';
 
 import { cn } from "@/lib/utils"
 
@@ -59,5 +59,18 @@ function AlertDescription({
       {...props} />
   );
 }
+
+Alert.propTypes = {
+  className: PropTypes.string,
+  variant: PropTypes.oneOf(['default', 'destructive']),
+};
+
+AlertTitle.propTypes = {
+  className: PropTypes.string,
+};
+
+AlertDescription.propTypes = {
+  className: PropTypes.string,
+};
 
 export { Alert, AlertTitle, AlertDescription }

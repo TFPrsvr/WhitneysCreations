@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 // Example dark theme page component to demonstrate styling options
 const DarkPageExample = ({ children, variant = 'default' }) => {
@@ -152,6 +152,11 @@ export const DarkButton = ({ children, variant = 'primary', ...props }) => {
       {children}
     </button>
   );
+};
+
+DarkPageExample.propTypes = {
+  children: PropTypes.node,
+  variant: PropTypes.oneOf(['default', 'gradient', 'mesh', 'particles'])
 };
 
 export default DarkPageExample;

@@ -1,5 +1,5 @@
-import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { useAuth } from '../../contexts/AuthContext';
 import AuthPrompt from './AuthPrompt';
 
@@ -124,5 +124,30 @@ export const PremiumRoute = ({ children, ...props }) => (
     {children}
   </ProtectedRoute>
 );
+
+ProtectedRoute.propTypes = {
+  children: PropTypes.node.isRequired,
+  requireAuth: PropTypes.bool,
+  allowGuest: PropTypes.bool,
+  requiredPermission: PropTypes.string,
+  fallbackPath: PropTypes.string,
+  showPrompt: PropTypes.bool
+};
+
+AuthRequiredRoute.propTypes = {
+  children: PropTypes.node.isRequired
+};
+
+GuestAllowedRoute.propTypes = {
+  children: PropTypes.node.isRequired
+};
+
+AdminOnlyRoute.propTypes = {
+  children: PropTypes.node.isRequired
+};
+
+PremiumRoute.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export default ProtectedRoute;

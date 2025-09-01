@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useAuth } from '../../contexts/AuthContext';
 
 const FontLibrary = ({ onFontSelect, selectedFont }) => {
@@ -531,6 +532,11 @@ const FontLibrary = ({ onFontSelect, selectedFont }) => {
       )}
     </div>
   );
+};
+
+FontLibrary.propTypes = {
+  onFontSelect: PropTypes.func,
+  selectedFont: PropTypes.string
 };
 
 export default FontLibrary;

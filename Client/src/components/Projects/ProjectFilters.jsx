@@ -1,4 +1,3 @@
-import React from 'react';
 
 const ProjectFilters = ({ filters, onFilterChange }) => {
   const handleFilterUpdate = (key, value) => {

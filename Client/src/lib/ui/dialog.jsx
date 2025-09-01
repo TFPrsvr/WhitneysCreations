@@ -1,6 +1,6 @@
-import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { XIcon } from "lucide-react"
+import PropTypes from 'prop-types';
 
 import { cn } from "@/lib/utils"
 
@@ -120,6 +120,32 @@ function DialogDescription({
       {...props} />
   );
 }
+
+DialogOverlay.propTypes = {
+  className: PropTypes.string,
+};
+
+DialogContent.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+  showCloseButton: PropTypes.bool,
+};
+
+DialogHeader.propTypes = {
+  className: PropTypes.string,
+};
+
+DialogFooter.propTypes = {
+  className: PropTypes.string,
+};
+
+DialogTitle.propTypes = {
+  className: PropTypes.string,
+};
+
+DialogDescription.propTypes = {
+  className: PropTypes.string,
+};
 
 export {
   Dialog,

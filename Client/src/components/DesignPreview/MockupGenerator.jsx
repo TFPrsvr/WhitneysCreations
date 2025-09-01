@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useAuth } from '../../contexts/AuthContext';
 import { productAPI } from '../../utils/api';
 
@@ -768,6 +769,11 @@ const MockupGenerator = ({ design, onExport }) => {
       </div>
     </div>
   );
+};
+
+MockupGenerator.propTypes = {
+  design: PropTypes.object,
+  onExport: PropTypes.func
 };
 
 export default MockupGenerator;

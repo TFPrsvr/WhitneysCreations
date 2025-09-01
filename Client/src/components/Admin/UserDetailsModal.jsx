@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useAdmin } from '../../contexts/AdminContext';
 
 const UserDetailsModal = ({ user, onClose, onUserUpdate }) => {
@@ -344,6 +345,26 @@ const UserDetailsModal = ({ user, onClose, onUserUpdate }) => {
       </div>
     </div>
   );
+};
+
+UserDetailsModal.propTypes = {
+  user: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    first: PropTypes.string,
+    last: PropTypes.string,
+    email: PropTypes.string.isRequired,
+    username: PropTypes.string,
+    role: PropTypes.string,
+    isActive: PropTypes.bool,
+    createdAt: PropTypes.string,
+    lastLogin: PropTypes.string,
+    loginCount: PropTypes.number,
+    stats: PropTypes.object,
+    recentProjects: PropTypes.array,
+    recentActivity: PropTypes.array
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
+  onUserUpdate: PropTypes.func.isRequired
 };
 
 export default UserDetailsModal;

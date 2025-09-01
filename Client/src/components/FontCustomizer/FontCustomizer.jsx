@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { useAuth } from '../../contexts/AuthContext';
 
 const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
@@ -576,6 +577,11 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
       </div>
     </div>
   );
+};
+
+FontCustomizer.propTypes = {
+  onFontChange: PropTypes.func,
+  initialText: PropTypes.string
 };
 
 export default FontCustomizer;

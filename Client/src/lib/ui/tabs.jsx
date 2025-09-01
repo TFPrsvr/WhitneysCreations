@@ -1,5 +1,5 @@
-import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
+import PropTypes from 'prop-types';
 
 import { cn } from "@/lib/utils"
 
@@ -56,5 +56,21 @@ function TabsContent({
       {...props} />
   );
 }
+
+Tabs.propTypes = {
+  className: PropTypes.string,
+};
+
+TabsList.propTypes = {
+  className: PropTypes.string,
+};
+
+TabsTrigger.propTypes = {
+  className: PropTypes.string,
+};
+
+TabsContent.propTypes = {
+  className: PropTypes.string,
+};
 
 export { Tabs, TabsList, TabsTrigger, TabsContent }

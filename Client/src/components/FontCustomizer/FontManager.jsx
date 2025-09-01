@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useAuth } from '../../contexts/AuthContext';
 import FontCustomizer from './FontCustomizer';
 import FontLibrary from './FontLibrary';
@@ -401,6 +402,11 @@ const FontManager = ({ onFontApply, initialSettings = null }) => {
     </div>
     </div>
   );
+};
+
+FontManager.propTypes = {
+  onFontApply: PropTypes.func,
+  initialSettings: PropTypes.object
 };
 
 export default FontManager;

@@ -1,7 +1,7 @@
 "use client"
 
-import * as React from "react"
 import * as SwitchPrimitive from "@radix-ui/react-switch"
+import PropTypes from 'prop-types';
 
 import { cn } from "@/lib/utils"
 
@@ -25,5 +25,9 @@ function Switch({
     </SwitchPrimitive.Root>
   );
 }
+
+Switch.propTypes = {
+  className: PropTypes.string,
+};
 
 export { Switch }

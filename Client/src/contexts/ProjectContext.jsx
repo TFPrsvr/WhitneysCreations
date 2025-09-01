@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useContext, useEffect } from 'react';
+import { createContext, useReducer, useContext } from 'react';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
 

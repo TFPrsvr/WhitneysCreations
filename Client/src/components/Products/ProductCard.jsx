@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import './ProductCard.css';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/lib/ui/card';

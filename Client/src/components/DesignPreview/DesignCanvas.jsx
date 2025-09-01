@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import PropTypes from 'prop-types';
 import { useAuth } from "../../contexts/AuthContext";
 import { Button } from "@/lib/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/lib/ui/card";
@@ -1802,6 +1803,14 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
       </div>
     </div>
   );
+};
+
+DesignCanvas.propTypes = {
+  onDesignChange: PropTypes.func,
+  initialDesign: PropTypes.shape({
+    elements: PropTypes.array,
+    settings: PropTypes.object
+  })
 };
 
 export default DesignCanvas;

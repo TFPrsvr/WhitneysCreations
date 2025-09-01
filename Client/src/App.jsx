@@ -1,4 +1,3 @@
-import React from 'react';
 import "./App.css"
 import { Link } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
@@ -38,26 +37,6 @@ function App() {
     { name: 'Stylish Hats', image: '🧢', price: 'From $24.99' }
   ];
 
-  const testimonials = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Small Business Owner',
-      content: 'PrintCraft helped me launch my clothing line without any upfront investment. The quality is amazing!',
-      avatar: '👩‍💼'
-    },
-    {
-      name: 'Mike Chen',
-      role: 'Artist',
-      content: 'The design tools are incredibly intuitive. I can create professional designs in minutes.',
-      avatar: '👨‍🎨'
-    },
-    {
-      name: 'Lisa Davis',
-      role: 'Content Creator',
-      content: 'My fans love the merchandise quality. Orders are fulfilled quickly and shipping is reliable.',
-      avatar: '👩‍💻'
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50 w-full overflow-x-hidden page-container">
@@ -68,7 +47,7 @@ function App() {
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               <span className="block text-6xl md:text-7xl mb-4">👕 👚</span>
-              <span className="block text-4xl md:text-6xl">Whitney's Unique Creations</span>
+              <span className="block text-4xl md:text-6xl">Whitney&apos;s Unique Creations</span>
               <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent text-4xl md:text-5xl mt-4 font-extrabold">
                 The Place That Lets You Customize Your Ideas
               </span>
@@ -156,7 +135,7 @@ function App() {
               Everything You Need to Succeed
             </h2>
             <p className="text-xl text-gray-600 max-w-xl mx-auto px-4">
-              From design to delivery, we've got you covered with professional tools and services.
+              From design to delivery, we&apos;ve got you covered with professional tools and services.
             </p>
           </div>
 
@@ -238,7 +217,7 @@ function App() {
             className="inline-block bg-gradient-to-r from-emerald-400 to-cyan-500 text-white px-4 py-2 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
             style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8)'}}
           >
-            ✨ What's Your Creation Idea? ✨
+            ✨ What&apos;s Your Creation Idea? ✨
           </Link>
         </div>
       </section>

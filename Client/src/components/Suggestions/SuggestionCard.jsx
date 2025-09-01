@@ -1,4 +1,3 @@
-import React from 'react';
 import axios from 'axios';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/lib/ui/card';
 import { Button } from '@/lib/ui/button';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const About = () => {
@@ -67,7 +66,7 @@ const About = () => {
               About PrintCraft
             </h1>
             <p className="text-2xl md:text-3xl mb-8 max-w-3xl mx-auto text-gray-100 font-bold">
-              We're on a mission to empower creators worldwide to turn their ideas into successful businesses 
+              We&apos;re on a mission to empower creators worldwide to turn their ideas into successful businesses 
               through high-quality print-on-demand products.
             </p>
           </div>
@@ -84,11 +83,11 @@ const About = () => {
               </h2>
               <p className="text-xl text-gray-700 mb-6 font-semibold">
                 At PrintCraft, we believe everyone should have the opportunity to turn their creativity into a 
-                thriving business. That's why we've built the most intuitive, powerful, and accessible 
+                thriving business. That&apos;s why we&apos;ve built the most intuitive, powerful, and accessible 
                 print-on-demand platform in the world.
               </p>
               <p className="text-xl text-gray-700 mb-8 font-semibold">
-                Whether you're an artist, entrepreneur, or just someone with great ideas, we provide all the 
+                Whether you&apos;re an artist, entrepreneur, or just someone with great ideas, we provide all the 
                 tools you need to design, sell, and fulfill custom products without any upfront investment 
                 or inventory management.
               </p>

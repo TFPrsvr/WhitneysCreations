@@ -76,10 +76,7 @@ app.use((err, req, res, next) => {
 Router(app);
 
 app.listen(port, () => {
-  mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }).then(() => {
+  mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log("✅ Connected to MongoDB Database");
   }).catch((error) => {
     console.error("❌ MongoDB connection failed:", error.message);

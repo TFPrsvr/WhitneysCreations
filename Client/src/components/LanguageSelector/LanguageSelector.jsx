@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { 
   detectUserLanguage, 
   getSupportedLanguages, 
@@ -141,6 +142,10 @@ const LanguageSelector = ({ className = '' }) => {
       )}
     </>
   );
+};
+
+LanguageSelector.propTypes = {
+  className: PropTypes.string
 };
 
 export default LanguageSelector;

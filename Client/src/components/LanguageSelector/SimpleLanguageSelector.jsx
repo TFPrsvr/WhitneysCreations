@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const SimpleLanguageSelector = ({ className = '' }) => {
   const [currentLang, setCurrentLang] = useState('en');
@@ -93,6 +94,10 @@ const SimpleLanguageSelector = ({ className = '' }) => {
       )}
     </div>
   );
+};
+
+SimpleLanguageSelector.propTypes = {
+  className: PropTypes.string
 };
 
 export default SimpleLanguageSelector;

@@ -1,4 +1,5 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Button } from '../../lib/ui/button';
 import { Slider } from '../../lib/ui/slider';
 import { Badge } from '../../lib/ui/badge';
@@ -258,10 +259,7 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
   };
 
   const drawProductMockup = (ctx, currentImage) => {
-    // This would normally load and draw the actual product image
-    // For now, we'll draw a placeholder based on the product type
-    ctx.fillStyle = selectedColor === 'white' ? '#ffffff' : selectedColor === 'black' ? '#333333' : '#dc2626';
-    
+    // Each mockup function now handles its own colors and gradients
     switch (selectedProduct) {
       case 'tshirt':
         drawTShirtMockup(ctx);
@@ -290,142 +288,834 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
   };
 
   const drawTShirtMockup = (ctx) => {
-    // T-shirt shape
+    const baseColor = selectedColor === 'white' ? '#ffffff' : selectedColor === 'black' ? '#333333' : '#dc2626';
+    
+    // Create gradient for depth
+    const gradient = ctx.createLinearGradient(0, 150, 400, 420);
+    gradient.addColorStop(0, baseColor);
+    gradient.addColorStop(0.5, baseColor);
+    gradient.addColorStop(1, selectedColor === 'white' ? '#f0f0f0' : selectedColor === 'black' ? '#1a1a1a' : '#b91c1c');
+    
+    ctx.fillStyle = gradient;
+    
+    // T-shirt body with curved edges
     ctx.beginPath();
-    ctx.moveTo(100, 150);
-    ctx.lineTo(80, 130);
-    ctx.lineTo(60, 150);
-    ctx.lineTo(60, 170);
-    ctx.lineTo(80, 190);
-    ctx.lineTo(80, 420);
-    ctx.lineTo(320, 420);
-    ctx.lineTo(320, 190);
-    ctx.lineTo(340, 170);
-    ctx.lineTo(340, 150);
-    ctx.lineTo(320, 130);
-    ctx.lineTo(300, 150);
-    ctx.closePath();
+    ctx.moveTo(120, 160); // Start at left shoulder
+    
+    // Left shoulder curve
+    ctx.quadraticCurveTo(100, 140, 85, 155);
+    ctx.quadraticCurveTo(70, 165, 75, 180);
+    
+    // Left sleeve
+    ctx.quadraticCurveTo(85, 195, 90, 210);
+    ctx.lineTo(90, 410);
+    
+    // Bottom hem with slight curve
+    ctx.quadraticCurveTo(90, 425, 105, 430);
+    ctx.lineTo(295, 430);
+    ctx.quadraticCurveTo(310, 425, 310, 410);
+    
+    // Right side seam
+    ctx.lineTo(310, 210);
+    ctx.quadraticCurveTo(315, 195, 325, 180);
+    
+    // Right shoulder curve
+    ctx.quadraticCurveTo(330, 165, 315, 155);
+    ctx.quadraticCurveTo(300, 140, 280, 160);
+    
+    // Neckline with natural curve
+    ctx.quadraticCurveTo(240, 145, 200, 145);
+    ctx.quadraticCurveTo(160, 145, 120, 160);
+    
     ctx.fill();
     
-    // Add shadow
+    // Add realistic neckline
+    ctx.strokeStyle = selectedColor === 'white' ? '#e0e0e0' : selectedColor === 'black' ? '#555555' : '#991b1b';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(120, 160);
+    ctx.quadraticCurveTo(160, 140, 200, 140);
+    ctx.quadraticCurveTo(240, 140, 280, 160);
+    ctx.stroke();
+    
+    // Subtle shadow for depth
+    ctx.fillStyle = 'rgba(0,0,0,0.15)';
+    ctx.beginPath();
+    ctx.ellipse(200, 445, 120, 12, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Sleeve shadows for 3D effect
     ctx.fillStyle = 'rgba(0,0,0,0.1)';
-    ctx.fillRect(80, 380, 240, 20);
+    ctx.beginPath();
+    ctx.moveTo(90, 180);
+    ctx.quadraticCurveTo(95, 200, 98, 220);
+    ctx.lineTo(102, 410);
+    ctx.quadraticCurveTo(98, 415, 90, 410);
+    ctx.lineTo(90, 180);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.moveTo(310, 180);
+    ctx.quadraticCurveTo(305, 200, 302, 220);
+    ctx.lineTo(298, 410);
+    ctx.quadraticCurveTo(302, 415, 310, 410);
+    ctx.lineTo(310, 180);
+    ctx.fill();
   };
 
   const drawHoodieMockup = (ctx) => {
-    // Hoodie with hood
+    const baseColor = selectedColor === 'white' ? '#ffffff' : selectedColor === 'black' ? '#333333' : '#dc2626';
+    
+    // Create gradient for the hoodie body
+    const bodyGradient = ctx.createLinearGradient(0, 170, 400, 450);
+    bodyGradient.addColorStop(0, baseColor);
+    bodyGradient.addColorStop(0.7, selectedColor === 'white' ? '#f8f8f8' : selectedColor === 'black' ? '#2a2a2a' : '#c53030');
+    bodyGradient.addColorStop(1, selectedColor === 'white' ? '#eeeeee' : selectedColor === 'black' ? '#1a1a1a' : '#991b1b');
+    
+    ctx.fillStyle = bodyGradient;
+    
+    // Hoodie body with realistic shape
     ctx.beginPath();
-    ctx.moveTo(80, 170);
-    ctx.lineTo(60, 150);
-    ctx.lineTo(60, 190);
-    ctx.lineTo(80, 210);
-    ctx.lineTo(80, 450);
-    ctx.lineTo(320, 450);
-    ctx.lineTo(320, 210);
-    ctx.lineTo(340, 190);
-    ctx.lineTo(340, 150);
-    ctx.lineTo(320, 170);
+    ctx.moveTo(110, 180);
+    
+    // Left shoulder and sleeve
+    ctx.quadraticCurveTo(85, 160, 70, 175);
+    ctx.quadraticCurveTo(55, 190, 65, 210);
+    ctx.quadraticCurveTo(75, 225, 85, 240);
+    ctx.lineTo(85, 440);
+    
+    // Bottom hem with ribbing effect
+    ctx.quadraticCurveTo(85, 455, 100, 460);
+    ctx.lineTo(300, 460);
+    ctx.quadraticCurveTo(315, 455, 315, 440);
+    
+    // Right side
+    ctx.lineTo(315, 240);
+    ctx.quadraticCurveTo(325, 225, 335, 210);
+    ctx.quadraticCurveTo(345, 190, 330, 175);
+    ctx.quadraticCurveTo(315, 160, 290, 180);
+    
+    // Connect back to start
+    ctx.quadraticCurveTo(250, 165, 200, 165);
+    ctx.quadraticCurveTo(150, 165, 110, 180);
+    
+    ctx.fill();
+    
+    // Hood with realistic draping
+    const hoodGradient = ctx.createRadialGradient(200, 100, 20, 200, 120, 80);
+    hoodGradient.addColorStop(0, baseColor);
+    hoodGradient.addColorStop(0.6, selectedColor === 'white' ? '#f0f0f0' : selectedColor === 'black' ? '#404040' : '#dc2626');
+    hoodGradient.addColorStop(1, selectedColor === 'white' ? '#e0e0e0' : selectedColor === 'black' ? '#2a2a2a' : '#b91c1c');
+    
+    ctx.fillStyle = hoodGradient;
+    ctx.beginPath();
+    
+    // Hood shape with natural draping
+    ctx.moveTo(110, 180);
+    ctx.quadraticCurveTo(120, 120, 150, 90);
+    ctx.quadraticCurveTo(175, 70, 200, 75);
+    ctx.quadraticCurveTo(225, 70, 250, 90);
+    ctx.quadraticCurveTo(280, 120, 290, 180);
+    
+    // Hood opening
+    ctx.quadraticCurveTo(250, 165, 200, 165);
+    ctx.quadraticCurveTo(150, 165, 110, 180);
+    
+    ctx.fill();
+    
+    // Hood seam line
+    ctx.strokeStyle = selectedColor === 'white' ? '#d0d0d0' : selectedColor === 'black' ? '#555555' : '#991b1b';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(150, 90);
+    ctx.quadraticCurveTo(175, 70, 200, 75);
+    ctx.quadraticCurveTo(225, 70, 250, 90);
+    ctx.stroke();
+    
+    // Drawstrings
+    ctx.strokeStyle = selectedColor === 'white' ? '#cccccc' : '#888888';
+    ctx.lineWidth = 3;
+    ctx.lineCap = 'round';
+    
+    // Left drawstring
+    ctx.beginPath();
+    ctx.moveTo(180, 165);
+    ctx.quadraticCurveTo(185, 175, 175, 185);
+    ctx.stroke();
+    
+    // Right drawstring
+    ctx.beginPath();
+    ctx.moveTo(220, 165);
+    ctx.quadraticCurveTo(215, 175, 225, 185);
+    ctx.stroke();
+    
+    // Kangaroo pocket with depth
+    const pocketGradient = ctx.createLinearGradient(140, 285, 260, 340);
+    pocketGradient.addColorStop(0, 'rgba(0,0,0,0.08)');
+    pocketGradient.addColorStop(0.5, 'rgba(0,0,0,0.12)');
+    pocketGradient.addColorStop(1, 'rgba(0,0,0,0.06)');
+    
+    ctx.fillStyle = pocketGradient;
+    ctx.beginPath();
+    ctx.moveTo(150, 285);
+    ctx.quadraticCurveTo(145, 290, 145, 295);
+    ctx.lineTo(145, 335);
+    ctx.quadraticCurveTo(145, 345, 155, 350);
+    ctx.lineTo(245, 350);
+    ctx.quadraticCurveTo(255, 345, 255, 335);
+    ctx.lineTo(255, 295);
+    ctx.quadraticCurveTo(255, 290, 250, 285);
     ctx.closePath();
     ctx.fill();
     
-    // Hood
+    // Pocket opening highlight
+    ctx.strokeStyle = selectedColor === 'white' ? '#e8e8e8' : selectedColor === 'black' ? '#444444' : '#b91c1c';
+    ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.arc(200, 125, 60, 0, Math.PI);
+    ctx.moveTo(150, 285);
+    ctx.quadraticCurveTo(200, 280, 250, 285);
+    ctx.stroke();
+    
+    // Main shadow
+    ctx.fillStyle = 'rgba(0,0,0,0.12)';
+    ctx.beginPath();
+    ctx.ellipse(200, 475, 125, 15, 0, 0, Math.PI * 2);
     ctx.fill();
     
-    // Kangaroo pocket
-    ctx.strokeStyle = 'rgba(0,0,0,0.2)';
-    ctx.lineWidth = 2;
-    ctx.strokeRect(140, 275, 120, 60);
+    // Ribbing at bottom
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.fillRect(100, 450, 200, 8);
   };
 
   const drawToteBagMockup = (ctx) => {
-    // Bag body
-    ctx.fillRect(60, 125, 280, 300);
+    const baseColor = selectedColor === 'white' ? '#ffffff' : selectedColor === 'black' ? '#333333' : '#dc2626';
     
-    // Handles
-    ctx.strokeStyle = ctx.fillStyle;
-    ctx.lineWidth = 8;
+    // Create gradient for bag depth
+    const bagGradient = ctx.createLinearGradient(60, 125, 340, 425);
+    bagGradient.addColorStop(0, baseColor);
+    bagGradient.addColorStop(0.3, selectedColor === 'white' ? '#fafafa' : selectedColor === 'black' ? '#404040' : '#e53e3e');
+    bagGradient.addColorStop(0.7, selectedColor === 'white' ? '#f0f0f0' : selectedColor === 'black' ? '#2a2a2a' : '#c53030');
+    bagGradient.addColorStop(1, selectedColor === 'white' ? '#e8e8e8' : selectedColor === 'black' ? '#1a1a1a' : '#991b1b');
+    
+    ctx.fillStyle = bagGradient;
+    
+    // Tote bag body with natural shape
     ctx.beginPath();
-    ctx.moveTo(120, 125);
-    ctx.lineTo(140, 75);
-    ctx.lineTo(180, 75);
-    ctx.lineTo(200, 125);
+    ctx.moveTo(75, 130);
+    
+    // Left side with slight curve
+    ctx.quadraticCurveTo(65, 135, 65, 150);
+    ctx.lineTo(65, 400);
+    ctx.quadraticCurveTo(65, 420, 80, 425);
+    
+    // Bottom with curved corners
+    ctx.lineTo(320, 425);
+    ctx.quadraticCurveTo(335, 420, 335, 400);
+    
+    // Right side
+    ctx.lineTo(335, 150);
+    ctx.quadraticCurveTo(335, 135, 325, 130);
+    
+    // Top edge
+    ctx.lineTo(75, 130);
+    ctx.fill();
+    
+    // Top seam/fold
+    ctx.fillStyle = 'rgba(0,0,0,0.1)';
+    ctx.beginPath();
+    ctx.moveTo(75, 130);
+    ctx.quadraticCurveTo(200, 125, 325, 130);
+    ctx.quadraticCurveTo(325, 140, 325, 145);
+    ctx.quadraticCurveTo(200, 140, 75, 145);
+    ctx.quadraticCurveTo(75, 140, 75, 130);
+    ctx.fill();
+    
+    // Handle straps with realistic curves
+    const handleColor = selectedColor === 'white' ? '#f0f0f0' : selectedColor === 'black' ? '#444444' : '#b91c1c';
+    ctx.strokeStyle = handleColor;
+    ctx.fillStyle = handleColor;
+    ctx.lineWidth = 12;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    
+    // Left handle
+    ctx.beginPath();
+    ctx.moveTo(130, 130);
+    ctx.quadraticCurveTo(125, 85, 140, 65);
+    ctx.quadraticCurveTo(155, 55, 170, 65);
+    ctx.quadraticCurveTo(175, 85, 170, 130);
     ctx.stroke();
     
+    // Right handle
     ctx.beginPath();
-    ctx.moveTo(200, 125);
-    ctx.lineTo(220, 75);
-    ctx.lineTo(260, 75);
-    ctx.lineTo(280, 125);
+    ctx.moveTo(230, 130);
+    ctx.quadraticCurveTo(225, 85, 240, 65);
+    ctx.quadraticCurveTo(255, 55, 270, 65);
+    ctx.quadraticCurveTo(275, 85, 270, 130);
     ctx.stroke();
-  };
-
-  const drawSweatshirtMockup = (ctx) => {
-    // Similar to hoodie but without hood
+    
+    // Handle attachment shadows for depth
+    ctx.fillStyle = 'rgba(0,0,0,0.15)';
     ctx.beginPath();
-    ctx.moveTo(80, 170);
-    ctx.lineTo(60, 150);
-    ctx.lineTo(60, 190);
-    ctx.lineTo(80, 210);
-    ctx.lineTo(80, 440);
-    ctx.lineTo(320, 440);
-    ctx.lineTo(320, 210);
-    ctx.lineTo(340, 190);
-    ctx.lineTo(340, 150);
-    ctx.lineTo(320, 170);
+    ctx.ellipse(130, 130, 8, 4, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.ellipse(170, 130, 8, 4, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.ellipse(230, 130, 8, 4, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.ellipse(270, 130, 8, 4, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Side gusset shading for 3D effect
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.beginPath();
+    ctx.moveTo(65, 150);
+    ctx.lineTo(75, 140);
+    ctx.lineTo(75, 410);
+    ctx.lineTo(65, 400);
     ctx.closePath();
     ctx.fill();
     
-    // Ribbed cuffs
-    ctx.fillStyle = 'rgba(0,0,0,0.1)';
-    ctx.fillRect(80, 430, 240, 10);
+    ctx.beginPath();
+    ctx.moveTo(335, 150);
+    ctx.lineTo(325, 140);
+    ctx.lineTo(325, 410);
+    ctx.lineTo(335, 400);
+    ctx.closePath();
+    ctx.fill();
+    
+    // Main shadow
+    ctx.fillStyle = 'rgba(0,0,0,0.12)';
+    ctx.beginPath();
+    ctx.ellipse(200, 440, 140, 18, 0, 0, Math.PI * 2);
+    ctx.fill();
+  };
+
+  const drawSweatshirtMockup = (ctx) => {
+    const baseColor = selectedColor === 'white' ? '#ffffff' : selectedColor === 'black' ? '#333333' : '#dc2626';
+    
+    // Create gradient for sweatshirt depth
+    const sweatshirtGradient = ctx.createLinearGradient(0, 170, 400, 440);
+    sweatshirtGradient.addColorStop(0, baseColor);
+    sweatshirtGradient.addColorStop(0.4, selectedColor === 'white' ? '#fafafa' : selectedColor === 'black' ? '#404040' : '#e53e3e');
+    sweatshirtGradient.addColorStop(0.8, selectedColor === 'white' ? '#f0f0f0' : selectedColor === 'black' ? '#2a2a2a' : '#c53030');
+    sweatshirtGradient.addColorStop(1, selectedColor === 'white' ? '#e8e8e8' : selectedColor === 'black' ? '#1a1a1a' : '#991b1b');
+    
+    ctx.fillStyle = sweatshirtGradient;
+    
+    // Sweatshirt body with natural proportions
+    ctx.beginPath();
+    ctx.moveTo(115, 175);
+    
+    // Left shoulder and sleeve
+    ctx.quadraticCurveTo(90, 155, 75, 170);
+    ctx.quadraticCurveTo(60, 185, 70, 205);
+    ctx.quadraticCurveTo(80, 225, 90, 245);
+    ctx.lineTo(90, 425);
+    
+    // Ribbed bottom with curve
+    ctx.quadraticCurveTo(90, 445, 105, 450);
+    ctx.lineTo(295, 450);
+    ctx.quadraticCurveTo(310, 445, 310, 425);
+    
+    // Right side seam
+    ctx.lineTo(310, 245);
+    ctx.quadraticCurveTo(320, 225, 330, 205);
+    ctx.quadraticCurveTo(340, 185, 325, 170);
+    ctx.quadraticCurveTo(310, 155, 285, 175);
+    
+    // Neckline - crew neck style
+    ctx.quadraticCurveTo(245, 160, 200, 155);
+    ctx.quadraticCurveTo(155, 160, 115, 175);
+    
+    ctx.fill();
+    
+    // Crew neckline with binding
+    ctx.strokeStyle = selectedColor === 'white' ? '#e0e0e0' : selectedColor === 'black' ? '#555555' : '#991b1b';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(115, 175);
+    ctx.quadraticCurveTo(155, 155, 200, 155);
+    ctx.quadraticCurveTo(245, 155, 285, 175);
+    ctx.stroke();
+    
+    // Inner neckline
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(125, 170);
+    ctx.quadraticCurveTo(160, 160, 200, 160);
+    ctx.quadraticCurveTo(240, 160, 275, 170);
+    ctx.stroke();
+    
+    // Ribbed cuffs with realistic texture
+    const ribColor = selectedColor === 'white' ? '#e8e8e8' : selectedColor === 'black' ? '#2a2a2a' : '#991b1b';
+    ctx.fillStyle = ribColor;
+    
+    // Bottom ribbing
+    ctx.beginPath();
+    ctx.moveTo(105, 440);
+    ctx.quadraticCurveTo(200, 435, 295, 440);
+    ctx.quadraticCurveTo(300, 445, 295, 450);
+    ctx.quadraticCurveTo(200, 445, 105, 450);
+    ctx.quadraticCurveTo(100, 445, 105, 440);
+    ctx.fill();
+    
+    // Rib texture lines
+    ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i < 4; i++) {
+      const y = 441 + i * 2;
+      ctx.beginPath();
+      ctx.moveTo(105, y);
+      ctx.quadraticCurveTo(200, y - 2, 295, y);
+      ctx.stroke();
+    }
+    
+    // Left sleeve cuff
+    ctx.fillStyle = ribColor;
+    ctx.beginPath();
+    ctx.moveTo(85, 235);
+    ctx.quadraticCurveTo(90, 240, 95, 245);
+    ctx.lineTo(95, 255);
+    ctx.quadraticCurveTo(90, 260, 85, 255);
+    ctx.lineTo(85, 235);
+    ctx.fill();
+    
+    // Right sleeve cuff
+    ctx.beginPath();
+    ctx.moveTo(315, 235);
+    ctx.quadraticCurveTo(310, 240, 305, 245);
+    ctx.lineTo(305, 255);
+    ctx.quadraticCurveTo(310, 260, 315, 255);
+    ctx.lineTo(315, 235);
+    ctx.fill();
+    
+    // Sleeve shadows for depth
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.beginPath();
+    ctx.moveTo(90, 205);
+    ctx.quadraticCurveTo(95, 225, 98, 245);
+    ctx.lineTo(102, 425);
+    ctx.quadraticCurveTo(98, 430, 90, 425);
+    ctx.lineTo(90, 205);
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.moveTo(310, 205);
+    ctx.quadraticCurveTo(305, 225, 302, 245);
+    ctx.lineTo(298, 425);
+    ctx.quadraticCurveTo(302, 430, 310, 425);
+    ctx.lineTo(310, 205);
+    ctx.fill();
+    
+    // Main shadow
+    ctx.fillStyle = 'rgba(0,0,0,0.12)';
+    ctx.beginPath();
+    ctx.ellipse(200, 465, 120, 15, 0, 0, Math.PI * 2);
+    ctx.fill();
   };
 
   const drawDressMockup = (ctx) => {
-    // Dress silhouette
+    const baseColor = selectedColor === 'white' ? '#ffffff' : selectedColor === 'black' ? '#333333' : '#dc2626';
+    
+    // Create gradient for dress flow
+    const dressGradient = ctx.createLinearGradient(0, 150, 400, 450);
+    dressGradient.addColorStop(0, baseColor);
+    dressGradient.addColorStop(0.3, selectedColor === 'white' ? '#fafafa' : selectedColor === 'black' ? '#404040' : '#e53e3e');
+    dressGradient.addColorStop(0.6, selectedColor === 'white' ? '#f5f5f5' : selectedColor === 'black' ? '#333333' : '#dc2626');
+    dressGradient.addColorStop(1, selectedColor === 'white' ? '#eeeeee' : selectedColor === 'black' ? '#1a1a1a' : '#b91c1c');
+    
+    ctx.fillStyle = dressGradient;
+    
+    // Dress with flowing silhouette
     ctx.beginPath();
-    ctx.moveTo(120, 150);
-    ctx.lineTo(100, 130);
-    ctx.lineTo(80, 150);
-    ctx.lineTo(80, 170);
-    ctx.lineTo(100, 190);
-    ctx.lineTo(110, 300);
-    ctx.lineTo(60, 450);
-    ctx.lineTo(340, 450);
-    ctx.lineTo(290, 300);
-    ctx.lineTo(300, 190);
-    ctx.lineTo(320, 170);
-    ctx.lineTo(320, 150);
-    ctx.lineTo(300, 130);
-    ctx.lineTo(280, 150);
+    ctx.moveTo(130, 165);
+    
+    // Left shoulder with gentle curve
+    ctx.quadraticCurveTo(110, 145, 95, 160);
+    ctx.quadraticCurveTo(80, 175, 90, 195);
+    
+    // Left side seam with waist definition
+    ctx.quadraticCurveTo(100, 220, 110, 250);
+    ctx.quadraticCurveTo(115, 280, 125, 320);
+    
+    // Flowing skirt
+    ctx.quadraticCurveTo(135, 360, 145, 400);
+    ctx.quadraticCurveTo(150, 430, 160, 450);
+    
+    // Hem with natural drape
+    ctx.bezierCurveTo(180, 455, 220, 460, 260, 455);
+    ctx.bezierCurveTo(300, 450, 330, 445, 340, 440);
+    
+    // Right side flowing back up
+    ctx.quadraticCurveTo(335, 420, 330, 400);
+    ctx.quadraticCurveTo(320, 360, 310, 320);
+    
+    // Right waist
+    ctx.quadraticCurveTo(305, 280, 300, 250);
+    ctx.quadraticCurveTo(290, 220, 305, 195);
+    
+    // Right shoulder
+    ctx.quadraticCurveTo(320, 175, 305, 160);
+    ctx.quadraticCurveTo(290, 145, 270, 165);
+    
+    // Neckline - scoop neck
+    ctx.bezierCurveTo(250, 150, 225, 145, 200, 145);
+    ctx.bezierCurveTo(175, 145, 150, 150, 130, 165);
+    
+    ctx.fill();
+    
+    // Scoop neckline detail
+    ctx.strokeStyle = selectedColor === 'white' ? '#e0e0e0' : selectedColor === 'black' ? '#555555' : '#991b1b';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(130, 165);
+    ctx.bezierCurveTo(150, 145, 175, 140, 200, 140);
+    ctx.bezierCurveTo(225, 140, 250, 145, 270, 165);
+    ctx.stroke();
+    
+    // Waist seam for definition
+    ctx.strokeStyle = 'rgba(0,0,0,0.05)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(110, 250);
+    ctx.quadraticCurveTo(200, 245, 290, 250);
+    ctx.stroke();
+    
+    // Side seam shading for form
+    ctx.fillStyle = 'rgba(0,0,0,0.06)';
+    ctx.beginPath();
+    ctx.moveTo(110, 250);
+    ctx.quadraticCurveTo(115, 280, 125, 320);
+    ctx.quadraticCurveTo(135, 360, 145, 400);
+    ctx.lineTo(155, 400);
+    ctx.quadraticCurveTo(145, 360, 135, 320);
+    ctx.quadraticCurveTo(125, 280, 120, 250);
     ctx.closePath();
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.moveTo(290, 250);
+    ctx.quadraticCurveTo(285, 280, 275, 320);
+    ctx.quadraticCurveTo(265, 360, 255, 400);
+    ctx.lineTo(265, 400);
+    ctx.quadraticCurveTo(275, 360, 285, 320);
+    ctx.quadraticCurveTo(295, 280, 300, 250);
+    ctx.closePath();
+    ctx.fill();
+    
+    // Subtle princess seams for structure
+    ctx.strokeStyle = 'rgba(0,0,0,0.03)';
+    ctx.lineWidth = 0.8;
+    ctx.beginPath();
+    ctx.moveTo(160, 180);
+    ctx.quadraticCurveTo(165, 220, 170, 260);
+    ctx.quadraticCurveTo(175, 300, 185, 340);
+    ctx.quadraticCurveTo(195, 380, 210, 420);
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.moveTo(240, 180);
+    ctx.quadraticCurveTo(235, 220, 230, 260);
+    ctx.quadraticCurveTo(225, 300, 215, 340);
+    ctx.quadraticCurveTo(205, 380, 190, 420);
+    ctx.stroke();
+    
+    // Dress shadow with flowing edge
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.beginPath();
+    ctx.ellipse(200, 465, 90, 12, 0, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Additional shadow for flowing fabric
+    ctx.fillStyle = 'rgba(0,0,0,0.04)';
+    ctx.beginPath();
+    ctx.ellipse(220, 460, 60, 8, 0.3, 0, Math.PI * 2);
     ctx.fill();
   };
 
   const drawHatMockup = (ctx) => {
-    // Cap crown
+    const baseColor = selectedColor === 'white' ? '#ffffff' : selectedColor === 'black' ? '#333333' : '#dc2626';
+    
+    // Create gradient for cap crown
+    const crownGradient = ctx.createRadialGradient(200, 180, 20, 200, 200, 100);
+    crownGradient.addColorStop(0, baseColor);
+    crownGradient.addColorStop(0.4, selectedColor === 'white' ? '#f8f8f8' : selectedColor === 'black' ? '#404040' : '#e53e3e');
+    crownGradient.addColorStop(0.8, selectedColor === 'white' ? '#f0f0f0' : selectedColor === 'black' ? '#2a2a2a' : '#c53030');
+    crownGradient.addColorStop(1, selectedColor === 'white' ? '#e8e8e8' : selectedColor === 'black' ? '#1a1a1a' : '#991b1b');
+    
+    ctx.fillStyle = crownGradient;
+    
+    // Baseball cap crown with realistic shape
     ctx.beginPath();
-    ctx.arc(200, 200, 100, 0, Math.PI);
+    ctx.moveTo(120, 250);
+    
+    // Left side of crown
+    ctx.quadraticCurveTo(110, 230, 115, 210);
+    ctx.quadraticCurveTo(125, 180, 140, 160);
+    ctx.quadraticCurveTo(160, 140, 180, 135);
+    
+    // Top of crown
+    ctx.quadraticCurveTo(190, 130, 200, 130);
+    ctx.quadraticCurveTo(210, 130, 220, 135);
+    
+    // Right side of crown
+    ctx.quadraticCurveTo(240, 140, 260, 160);
+    ctx.quadraticCurveTo(275, 180, 285, 210);
+    ctx.quadraticCurveTo(290, 230, 280, 250);
+    
+    // Back to start (front of hat)
+    ctx.quadraticCurveTo(240, 255, 200, 255);
+    ctx.quadraticCurveTo(160, 255, 120, 250);
+    
     ctx.fill();
     
-    // Bill
+    // Crown panels with seam lines
+    ctx.strokeStyle = selectedColor === 'white' ? '#e0e0e0' : selectedColor === 'black' ? '#555555' : '#991b1b';
+    ctx.lineWidth = 1.5;
+    
+    // Front panel seam
     ctx.beginPath();
-    ctx.ellipse(200, 280, 80, 32, 0, 0, Math.PI * 2);
+    ctx.moveTo(200, 130);
+    ctx.quadraticCurveTo(200, 180, 200, 225);
+    ctx.stroke();
+    
+    // Side panel seams
+    ctx.beginPath();
+    ctx.moveTo(160, 145);
+    ctx.quadraticCurveTo(165, 190, 175, 235);
+    ctx.stroke();
+    
+    ctx.beginPath();
+    ctx.moveTo(240, 145);
+    ctx.quadraticCurveTo(235, 190, 225, 235);
+    ctx.stroke();
+    
+    // Eyelets for ventilation
+    ctx.fillStyle = selectedColor === 'white' ? '#d0d0d0' : selectedColor === 'black' ? '#666666' : '#991b1b';
+    for (let i = 0; i < 6; i++) {
+      const angle = (i * Math.PI) / 3 + Math.PI / 6;
+      const x = 200 + Math.cos(angle) * 65;
+      const y = 200 + Math.sin(angle) * 35;
+      ctx.beginPath();
+      ctx.arc(x, y, 3, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Eyelet holes
+      ctx.fillStyle = 'rgba(0,0,0,0.3)';
+      ctx.beginPath();
+      ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = selectedColor === 'white' ? '#d0d0d0' : selectedColor === 'black' ? '#666666' : '#991b1b';
+    }
+    
+    // Bill/Visor with 3D effect
+    const billGradient = ctx.createLinearGradient(120, 260, 280, 300);
+    billGradient.addColorStop(0, baseColor);
+    billGradient.addColorStop(0.3, selectedColor === 'white' ? '#f5f5f5' : selectedColor === 'black' ? '#404040' : '#dc2626');
+    billGradient.addColorStop(0.7, selectedColor === 'white' ? '#eeeeee' : selectedColor === 'black' ? '#2a2a2a' : '#b91c1c');
+    billGradient.addColorStop(1, selectedColor === 'white' ? '#e0e0e0' : selectedColor === 'black' ? '#1a1a1a' : '#991b1b');
+    
+    ctx.fillStyle = billGradient;
+    ctx.beginPath();
+    
+    // Bill shape with natural curve
+    ctx.moveTo(120, 250);
+    ctx.quadraticCurveTo(140, 265, 170, 275);
+    ctx.quadraticCurveTo(185, 280, 200, 282);
+    ctx.quadraticCurveTo(215, 280, 230, 275);
+    ctx.quadraticCurveTo(260, 265, 280, 250);
+    
+    // Bill edge
+    ctx.quadraticCurveTo(270, 255, 250, 262);
+    ctx.quadraticCurveTo(225, 268, 200, 270);
+    ctx.quadraticCurveTo(175, 268, 150, 262);
+    ctx.quadraticCurveTo(130, 255, 120, 250);
+    
+    ctx.fill();
+    
+    // Bill stitching line
+    ctx.strokeStyle = selectedColor === 'white' ? '#d0d0d0' : selectedColor === 'black' ? '#555555' : '#991b1b';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(130, 252);
+    ctx.quadraticCurveTo(165, 267, 200, 270);
+    ctx.quadraticCurveTo(235, 267, 270, 252);
+    ctx.stroke();
+    
+    // Button on top
+    const buttonGradient = ctx.createRadialGradient(200, 130, 2, 200, 130, 8);
+    buttonGradient.addColorStop(0, baseColor);
+    buttonGradient.addColorStop(0.7, selectedColor === 'white' ? '#e8e8e8' : selectedColor === 'black' ? '#404040' : '#c53030');
+    buttonGradient.addColorStop(1, selectedColor === 'white' ? '#d0d0d0' : selectedColor === 'black' ? '#2a2a2a' : '#991b1b');
+    
+    ctx.fillStyle = buttonGradient;
+    ctx.beginPath();
+    ctx.arc(200, 130, 6, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Button detail
+    ctx.strokeStyle = 'rgba(0,0,0,0.2)';
+    ctx.lineWidth = 0.5;
+    ctx.beginPath();
+    ctx.arc(200, 130, 4, 0, Math.PI * 2);
+    ctx.stroke();
+    
+    // Adjustment strap at back
+    ctx.fillStyle = selectedColor === 'white' ? '#f0f0f0' : selectedColor === 'black' ? '#444444' : '#b91c1c';
+    ctx.fillRect(195, 245, 10, 12);
+    
+    // Shadow
+    ctx.fillStyle = 'rgba(0,0,0,0.15)';
+    ctx.beginPath();
+    ctx.ellipse(200, 295, 85, 12, 0, 0, Math.PI * 2);
     ctx.fill();
   };
 
   const drawBraMockup = (ctx) => {
-    // Sports bra shape
+    const baseColor = selectedColor === 'white' ? '#ffffff' : selectedColor === 'black' ? '#333333' : '#dc2626';
+    
+    // Create gradient for sports bra
+    const braGradient = ctx.createRadialGradient(200, 230, 20, 200, 250, 100);
+    braGradient.addColorStop(0, baseColor);
+    braGradient.addColorStop(0.4, selectedColor === 'white' ? '#f8f8f8' : selectedColor === 'black' ? '#404040' : '#e53e3e');
+    braGradient.addColorStop(0.8, selectedColor === 'white' ? '#f0f0f0' : selectedColor === 'black' ? '#2a2a2a' : '#c53030');
+    braGradient.addColorStop(1, selectedColor === 'white' ? '#e8e8e8' : selectedColor === 'black' ? '#1a1a1a' : '#991b1b');
+    
+    ctx.fillStyle = braGradient;
+    
+    // Sports bra with realistic contours
     ctx.beginPath();
-    ctx.moveTo(120, 200);
-    ctx.quadraticCurveTo(160, 150, 200, 180);
-    ctx.quadraticCurveTo(240, 150, 280, 200);
-    ctx.lineTo(300, 250);
-    ctx.lineTo(280, 300);
-    ctx.lineTo(120, 300);
-    ctx.lineTo(100, 250);
-    ctx.closePath();
+    
+    // Left cup
+    ctx.moveTo(130, 210);
+    ctx.quadraticCurveTo(120, 190, 135, 175);
+    ctx.quadraticCurveTo(155, 160, 180, 165);
+    ctx.quadraticCurveTo(195, 170, 200, 185);
+    
+    // Center connecting piece
+    ctx.quadraticCurveTo(200, 175, 200, 165);
+    ctx.quadraticCurveTo(200, 175, 200, 185);
+    
+    // Right cup
+    ctx.quadraticCurveTo(205, 170, 220, 165);
+    ctx.quadraticCurveTo(245, 160, 265, 175);
+    ctx.quadraticCurveTo(280, 190, 270, 210);
+    
+    // Right side band
+    ctx.quadraticCurveTo(285, 230, 290, 250);
+    ctx.quadraticCurveTo(285, 270, 275, 285);
+    
+    // Bottom band
+    ctx.quadraticCurveTo(240, 295, 200, 300);
+    ctx.quadraticCurveTo(160, 295, 125, 285);
+    
+    // Left side band
+    ctx.quadraticCurveTo(115, 270, 110, 250);
+    ctx.quadraticCurveTo(115, 230, 130, 210);
+    
+    ctx.fill();
+    
+    // Cup seaming with realistic stitching
+    ctx.strokeStyle = selectedColor === 'white' ? '#e0e0e0' : selectedColor === 'black' ? '#555555' : '#991b1b';
+    ctx.lineWidth = 1.5;
+    
+    // Left cup seam
+    ctx.beginPath();
+    ctx.moveTo(135, 175);
+    ctx.quadraticCurveTo(155, 160, 180, 165);
+    ctx.quadraticCurveTo(190, 170, 200, 185);
+    ctx.stroke();
+    
+    // Right cup seam
+    ctx.beginPath();
+    ctx.moveTo(265, 175);
+    ctx.quadraticCurveTo(245, 160, 220, 165);
+    ctx.quadraticCurveTo(210, 170, 200, 185);
+    ctx.stroke();
+    
+    // Under-bust band seaming
+    ctx.strokeStyle = selectedColor === 'white' ? '#d0d0d0' : selectedColor === 'black' ? '#666666' : '#b91c1c';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(125, 285);
+    ctx.quadraticCurveTo(160, 290, 200, 295);
+    ctx.quadraticCurveTo(240, 290, 275, 285);
+    ctx.stroke();
+    
+    // Straps with realistic curves
+    const strapColor = selectedColor === 'white' ? '#f0f0f0' : selectedColor === 'black' ? '#444444' : '#b91c1c';
+    ctx.strokeStyle = strapColor;
+    ctx.lineWidth = 8;
+    ctx.lineCap = 'round';
+    
+    // Left strap
+    ctx.beginPath();
+    ctx.moveTo(145, 180);
+    ctx.quadraticCurveTo(140, 150, 135, 120);
+    ctx.quadraticCurveTo(130, 100, 125, 85);
+    ctx.stroke();
+    
+    // Right strap
+    ctx.beginPath();
+    ctx.moveTo(255, 180);
+    ctx.quadraticCurveTo(260, 150, 265, 120);
+    ctx.quadraticCurveTo(270, 100, 275, 85);
+    ctx.stroke();
+    
+    // Strap adjusters
+    ctx.fillStyle = selectedColor === 'white' ? '#e0e0e0' : selectedColor === 'black' ? '#555555' : '#991b1b';
+    ctx.fillRect(130, 110, 10, 6);
+    ctx.fillRect(260, 110, 10, 6);
+    
+    // Center logo area or design placement
+    ctx.fillStyle = 'rgba(0,0,0,0.02)';
+    ctx.beginPath();
+    ctx.arc(200, 225, 25, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Subtle cup shaping with highlights
+    ctx.fillStyle = 'rgba(255,255,255,0.1)';
+    
+    // Left cup highlight
+    ctx.beginPath();
+    ctx.moveTo(150, 185);
+    ctx.quadraticCurveTo(165, 175, 180, 180);
+    ctx.quadraticCurveTo(190, 185, 195, 195);
+    ctx.quadraticCurveTo(185, 200, 170, 205);
+    ctx.quadraticCurveTo(155, 200, 150, 185);
+    ctx.fill();
+    
+    // Right cup highlight
+    ctx.beginPath();
+    ctx.moveTo(250, 185);
+    ctx.quadraticCurveTo(235, 175, 220, 180);
+    ctx.quadraticCurveTo(210, 185, 205, 195);
+    ctx.quadraticCurveTo(215, 200, 230, 205);
+    ctx.quadraticCurveTo(245, 200, 250, 185);
+    ctx.fill();
+    
+    // Band elasticity texture
+    ctx.strokeStyle = 'rgba(0,0,0,0.05)';
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i < 8; i++) {
+      const y = 280 + i * 2;
+      ctx.beginPath();
+      ctx.moveTo(130, y);
+      ctx.quadraticCurveTo(200, y + 1, 270, y);
+      ctx.stroke();
+    }
+    
+    // Shadow
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.beginPath();
+    ctx.ellipse(200, 315, 80, 8, 0, 0, Math.PI * 2);
     ctx.fill();
   };
 
@@ -874,6 +1564,11 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
       </div>
     </div>
   );
+};
+
+EnhancedMockupViewer.propTypes = {
+  design: PropTypes.object,
+  onExport: PropTypes.func
 };
 
 export default EnhancedMockupViewer;

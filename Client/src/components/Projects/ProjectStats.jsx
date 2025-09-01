@@ -1,4 +1,3 @@
-import React from 'react';
 
 const ProjectStats = ({ stats }) => {
   if (!stats?.stats) return null;

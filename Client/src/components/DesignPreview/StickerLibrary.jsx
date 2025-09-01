@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const StickerLibrary = ({ onStickerSelect }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -242,6 +243,10 @@ const StickerLibrary = ({ onStickerSelect }) => {
       </div>
     </div>
   );
+};
+
+StickerLibrary.propTypes = {
+  onStickerSelect: PropTypes.func
 };
 
 export default StickerLibrary;

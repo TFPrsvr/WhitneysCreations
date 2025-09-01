@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 const SelectDropdown = ({ options, onSelectChange }) => {
   return (
@@ -10,6 +10,14 @@ const SelectDropdown = ({ options, onSelectChange }) => {
       ))}
     </select>
   );
+};
+
+SelectDropdown.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.any.isRequired,
+    label: PropTypes.string.isRequired
+  })).isRequired,
+  onSelectChange: PropTypes.func.isRequired
 };
 
 export default SelectDropdown;

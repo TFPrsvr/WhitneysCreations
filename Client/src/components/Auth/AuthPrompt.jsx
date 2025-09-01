@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { useAuth } from '../../contexts/AuthContext';
 import { useGuest } from '../../contexts/GuestContext';
 import './AuthPrompt.css';
@@ -216,6 +217,19 @@ export const CompactAuthPrompt = ({
       </div>
     </div>
   );
+};
+
+AuthPrompt.propTypes = {
+  message: PropTypes.string,
+  redirectPath: PropTypes.string,
+  allowGuest: PropTypes.bool,
+  onClose: PropTypes.func
+};
+
+CompactAuthPrompt.propTypes = {
+  message: PropTypes.string,
+  allowGuest: PropTypes.bool,
+  onAction: PropTypes.func
 };
 
 export default AuthPrompt;
