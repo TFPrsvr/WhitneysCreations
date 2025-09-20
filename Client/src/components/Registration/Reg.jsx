@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import './Reg.css'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+import { API_BASE_URL } from '../../config/api'
 
 
 const Reg = () => {
@@ -12,8 +13,10 @@ const Reg = () => {
     email: '',
     password: '',
   })
-  const [userInfo, setUserInfo] = useState({})  
-  
+  const [userInfo, setUserInfo] = useState({})
+  const [errors, setErrors] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
+
   const nav = useNavigate()
 
   // const handleChange = (e) => {
@@ -29,16 +32,62 @@ const Reg = () => {
       ...formData,
       [name]: value
     });
+    // Clear errors when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.first_name.trim()) {
+      newErrors.first_name = 'First name is required';
+    }
+
+    if (!formData.last_name.trim()) {
+      newErrors.last_name = 'Last name is required';
+    }
+
+    if (!formData.username.trim()) {
+      newErrors.username = 'Username is required';
+    } else if (formData.username.length < 3) {
+      newErrors.username = 'Username must be at least 3 characters';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsLoading(true);
+
     axios({
       method:'post',
-      url: 'http://localhost:3002/api/reg',
-      data: { 
+      url: `${API_BASE_URL}/api/reg`,
+      data: {
         first_name: formData.first_name,
         last_name: formData.last_name,
         username: formData.username,
@@ -47,12 +96,20 @@ const Reg = () => {
     }
     })
     .then(res => {
-      console.log('Registration Successfull', res.data)
+      console.log('Registration Successful', res.data)
       setUserInfo(res.data)
       nav('/login')
     })
     .catch(err => {
       console.error('Registration failed:', err.response || err.message)
+      if (err.response && err.response.data && err.response.data.msg) {
+        setErrors({ general: err.response.data.msg });
+      } else {
+        setErrors({ general: 'Registration failed. Please try again.' });
+      }
+    })
+    .finally(() => {
+      setIsLoading(false);
     })
   }
 
@@ -63,21 +120,27 @@ const Reg = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 flex items-center justify-center py-12 px-4 sm:px-4 lg:px-4 relative">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 flex items-center justify-center py-12 px-4 sm:px-4 lg:px-4 relative ml-64 max-w-none overflow-x-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-15 right-15 text-4xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '8s'}}>🎨</div>
       <div className="absolute top-32 left-15 text-3xl opacity-20 animate-bounce hidden lg:block">👚</div>
       <div className="absolute bottom-32 right-15 text-3xl opacity-20 animate-pulse hidden lg:block">☕</div>
       <div className="absolute bottom-15 left-15 text-2xl opacity-20 animate-bounce delay-500 hidden lg:block">🧥</div>
       
-      <div className="max-w-md w-full space-y-8 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
+      <div className="max-w-md w-full space-y-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
         <div className="text-center">
           <div className="flex items-center justify-center mb-4">
-            <span className="text-4xl">👕</span>
-            <h1 className="header-main ml-2 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Create Account</h1>
+            <span className="text-4xl mr-3">👕</span>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Create Account</h1>
           </div>
-          <p className="text-gray-600 mt-2">Join PrintCraft today</p>
+          <p className="text-gray-600 mt-2">Join Whitney's Creations today</p>
         </div>
+
+        {errors.general && (
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+            {errors.general}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
