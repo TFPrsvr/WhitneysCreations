@@ -30,21 +30,33 @@ const Contact = () => {
                 <span className="text-2xl">📧</span>
                 <div>
                   <p className="font-medium text-gray-900">Email</p>
-                  <p className="text-gray-600">support@printcraft.com</p>
+                  <p className="text-gray-600">support@whitneyscreations.com</p>
+                  <p className="text-gray-600">orders@whitneyscreations.com</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <span className="text-2xl">📞</span>
                 <div>
                   <p className="font-medium text-gray-900">Phone</p>
-                  <p className="text-gray-600">1-800-PRINTCRAFT</p>
+                  <p className="text-gray-600">(555) 123-CRAFT (2738)</p>
+                  <p className="text-gray-600">Toll Free: 1-800-WHITNEY-1</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <span className="text-2xl">🏢</span>
+                <div>
+                  <p className="font-medium text-gray-900">Address</p>
+                  <p className="text-gray-600">123 Creative Avenue</p>
+                  <p className="text-gray-600">Design District, NY 10001</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
                 <span className="text-2xl">🕒</span>
                 <div>
                   <p className="font-medium text-gray-900">Business Hours</p>
-                  <p className="text-gray-600">Mon-Fri 9AM-6PM EST</p>
+                  <p className="text-gray-600">Monday - Friday: 9:00 AM - 7:00 PM EST</p>
+                  <p className="text-gray-600">Saturday: 10:00 AM - 4:00 PM EST</p>
+                  <p className="text-gray-600">Sunday: Closed</p>
                 </div>
               </div>
             </div>

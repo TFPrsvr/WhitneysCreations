@@ -6,22 +6,28 @@ const About = () => {
     {
       name: 'Whitney Richards',
       role: 'Founder & CEO',
-      bio: 'Passionate about empowering creators to build sustainable businesses through print-on-demand.',
-      avatar: '👩‍💻',
+      bio: 'Passionate about empowering creators to build sustainable businesses through print-on-demand. Whitney founded PrintCraft with a vision to democratize custom product creation and help artists worldwide turn their creativity into thriving businesses.',
+      avatar: '👩‍💼',
+      experience: '15+ years in e-commerce',
+      expertise: 'Business Strategy, Product Vision',
       linkedin: 'https://linkedin.com/in/whitney-richards'
     },
     {
       name: 'Tabitha Fortner',
       role: 'Head of Design',
-      bio: '10+ years in product design, focused on creating intuitive and powerful design tools.',
-      avatar: '👩‍💻',
+      bio: '10+ years in product design, focused on creating intuitive and powerful design tools. Tabitha leads our design team in building user-friendly interfaces that make complex design workflows simple and accessible for creators of all skill levels.',
+      avatar: '👩‍🎨',
+      experience: '12+ years in UX/UI Design',
+      expertise: 'User Experience, Design Systems',
       linkedin: 'https://linkedin.com/in/tabitha-fortner'
     },
     {
       name: 'Terry Green',
       role: 'VP of Operations',
-      bio: 'Ensures quality and fast fulfillment across our global network of print partners.',
-      avatar: '👨‍💻',
+      bio: 'Ensures quality and fast fulfillment across our global network of print partners. Terry oversees our entire supply chain, quality control processes, and partnerships to guarantee every product meets our high standards.',
+      avatar: '👨‍💼',
+      experience: '18+ years in Operations',
+      expertise: 'Supply Chain, Quality Control',
       linkedin: 'https://linkedin.com/in/terry-green'
     }
   ];
@@ -50,11 +56,31 @@ const About = () => {
   ];
 
   const milestones = [
-    { year: '2020', event: 'PrintCraft founded with a vision to democratize custom product creation' },
-    { year: '2021', event: 'Launched with 10 product types and 100 satisfied creators' },
-    { year: '2022', event: 'Expanded to 50+ products and served 10,000+ customers worldwide' },
-    { year: '2023', event: 'Introduced advanced design tools and automated fulfillment' },
-    { year: '2024', event: 'Growing community of 100,000+ active creators and counting' }
+    {
+      year: '2020',
+      event: 'PrintCraft founded with a vision to democratize custom product creation',
+      details: 'Whitney Richards launched PrintCraft from her home office with a simple mission: make high-quality print-on-demand accessible to every creative entrepreneur.'
+    },
+    {
+      year: '2021',
+      event: 'Launched with 10 product types and 100 satisfied creators',
+      details: 'Our first year saw incredible growth as we introduced t-shirts, mugs, and posters. Our creator community began sharing their success stories and building sustainable businesses.'
+    },
+    {
+      year: '2022',
+      event: 'Expanded to 50+ products and served 10,000+ customers worldwide',
+      details: 'International expansion brought PrintCraft to creators across 25 countries. We added apparel, home decor, and accessories to our product lineup.'
+    },
+    {
+      year: '2023',
+      event: 'Introduced advanced design tools and automated fulfillment',
+      details: 'Revolutionary design interface launched with AI-powered suggestions and one-click fulfillment. Processing times decreased by 60% while maintaining premium quality.'
+    },
+    {
+      year: '2024',
+      event: 'Growing community of 100,000+ active creators and counting',
+      details: 'Milestone year with over 2 million products sold, 150+ product types available, and creators earning sustainable income across 50+ countries worldwide.'
+    }
   ];
 
   return (
@@ -167,7 +193,11 @@ const About = () => {
               <div key={index} className="bg-gray-50 rounded-xl p-6 text-center hover:bg-white hover:shadow-lg transition-all duration-300">
                 <div className="text-6xl mb-4">{member.avatar}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-primary-600 font-medium mb-4">{member.role}</p>
+                <p className="text-primary-600 font-medium mb-3">{member.role}</p>
+                <div className="text-sm text-gray-500 mb-3">
+                  <p className="font-medium">{member.experience}</p>
+                  <p>{member.expertise}</p>
+                </div>
                 <p className="text-gray-600 mb-6 text-sm">{member.bio}</p>
                 <a
                   href={member.linkedin}
@@ -207,7 +237,8 @@ const About = () => {
                 <div className={`flex ${index % 2 === 0 ? 'justify-end pr-8 md:pr-16' : 'justify-start pl-8 md:pl-16'}`}>
                   <div className={`bg-white p-6 rounded-lg shadow-sm max-w-md w-full ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>
                     <div className="text-primary-600 font-bold text-lg mb-2">{milestone.year}</div>
-                    <p className="text-gray-700 text-sm leading-relaxed">{milestone.event}</p>
+                    <h4 className="text-gray-900 font-semibold text-sm mb-3 leading-relaxed">{milestone.event}</h4>
+                    <p className="text-gray-600 text-xs leading-relaxed">{milestone.details}</p>
                   </div>
                 </div>
               </div>
@@ -240,7 +271,7 @@ const About = () => {
             </Link>
             <Link
               to="/contact"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary-600 transition-all duration-200"
+              className="bg-yellow-400 text-gray-900 border-2 border-yellow-400 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-300 hover:border-yellow-300 transition-all duration-200 shadow-lg"
             >
               Get in Touch
             </Link>

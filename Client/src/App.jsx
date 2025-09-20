@@ -60,7 +60,7 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 w-full max-w-full overflow-x-hidden">
+    <div className="min-h-screen bg-gray-50 w-full max-w-full overflow-x-hidden ml-64">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-600 via-purple-600 to-pink-500 text-white w-full">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
@@ -91,7 +91,7 @@ function App() {
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
               {isAuthenticated ? (
                 <>
                   <Link
@@ -247,20 +247,20 @@ function App() {
           <div className="text-2xl md:text-4xl mb-12 space-y-12">
             <div className="flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-32 text-2xl md:text-4xl font-bold w-full">
               <div className="text-center flex-1">
+                <div className="text-3xl md:text-5xl mb-2">🌟</div>
                 <div className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                  <div className="text-3xl md:text-5xl mb-2">🌟</div>
                   <div className="text-2xl md:text-4xl">See If Our</div>
                   <div className="text-2xl md:text-4xl">Creators Can</div>
-                  <div className="text-3xl md:text-5xl mt-2">🚀</div>
                 </div>
+                <div className="text-3xl md:text-5xl mt-2">🚀</div>
               </div>
               <div className="text-center flex-1">
+                <div className="text-3xl md:text-5xl mb-2">💡</div>
                 <div className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
-                  <div className="text-3xl md:text-5xl mb-2">💡</div>
                   <div className="text-2xl md:text-4xl">Make Your Ideas</div>
                   <div className="text-2xl md:text-4xl">Come To Life</div>
-                  <div className="text-3xl md:text-5xl mt-2">🎯</div>
                 </div>
+                <div className="text-3xl md:text-5xl mt-2">🎯</div>
               </div>
             </div>
             <p className="text-xl md:text-2xl font-semibold">Just Click Below To Get Started:</p>
@@ -290,7 +290,7 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-8">
+          <div className="grid md:grid-cols-3 gap-8 mt-4">
             <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-3">
                 1
