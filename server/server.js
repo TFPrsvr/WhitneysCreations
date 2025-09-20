@@ -28,7 +28,16 @@ app.use('/uploads', express.static(require('path').join(__dirname, 'uploads')));
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "http://localhost:5176", "http://localhost:5177"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:5175",
+      "http://localhost:5176",
+      "http://localhost:5177",
+      "https://whitneys-creations-o412nddna-tabitha-fortners-projects-e06566f7.vercel.app",
+      "https://whitneys-creations.vercel.app",
+      "https://whitneyscreations.vercel.app"
+    ],
     credentials: true
   })
 );
