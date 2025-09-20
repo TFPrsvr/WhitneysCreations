@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create axios instance with base configuration
 const api = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3002/api',
+  baseURL: import.meta.env.PROD ? '/api' : import.meta.env.VITE_API_URL + '/api',
   timeout: 10000,
 });
 
