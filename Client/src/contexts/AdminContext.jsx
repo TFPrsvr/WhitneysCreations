@@ -1,4 +1,5 @@
-import React, { createContext, useReducer, useContext } from 'react';
+import { createContext, useReducer, useContext } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
 
@@ -245,6 +246,10 @@ export const AdminProvider = ({ children }) => {
       {children}
     </AdminContext.Provider>
   );
+};
+
+AdminProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 export const useAdmin = () => {

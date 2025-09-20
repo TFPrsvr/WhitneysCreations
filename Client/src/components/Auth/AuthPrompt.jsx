@@ -11,7 +11,6 @@ const AuthPrompt = ({
   onClose = null 
 }) => {
   const { continueAsGuest } = useAuth();
-  const { guestId } = useGuest();
   const navigate = useNavigate();
   const [showGuestInfo, setShowGuestInfo] = useState(false);
 

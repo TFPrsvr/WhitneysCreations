@@ -11,7 +11,6 @@ import Creations from './components/DesignCreator/Creations.jsx'
 import ImageGallery from './components/ImageGallery/ImageGrid.jsx'
 import Login from './components/Login/Login.jsx'
 import Reg from './components/Registration/Reg.jsx'
-import Nav from './components/Nav/Nav.jsx'
 import CleanNav from './components/Nav/CleanNav.jsx'
 import './index.css'
 import App from './App.jsx'
@@ -68,7 +67,6 @@ createRoot(document.getElementById('root')).render(
 
     <Route path='/login' element={<Login />} />
     <Route path='/reg' element={<Reg />} />
-    <Route path='/nav' element={<Nav />} />
     {/* <Route path='/getUsers' element={<GetUsers />} /> */}
 
           </Routes>

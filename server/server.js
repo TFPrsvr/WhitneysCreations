@@ -1,5 +1,4 @@
 const express = require("express");
-const jwt = require('jsonwebtoken')
 const app = express(); 
 
 const cors = require("cors"); 
@@ -14,8 +13,6 @@ if (!process.env.MONGO_URI) {
   console.error("Available environment variables:", Object.keys(process.env).filter(key => key.includes('MONGO') || key.includes('SECRET') || key.includes('PORT')));
   process.exit(1);
 }
-
-const bcrypt = require("bcrypt");
 
 const port = process.env.PORT || 3002;
 

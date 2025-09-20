@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
-@import './styles/global-components.css';
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));

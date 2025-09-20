@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import { createContext, useContext, useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 // Install uuid: npm install uuid
@@ -333,6 +334,10 @@ export const GuestProvider = ({ children }) => {
       {children}
     </GuestContext.Provider>
   );
+};
+
+GuestProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 // Custom hook to use guest context

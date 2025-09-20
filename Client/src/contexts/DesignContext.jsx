@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import { createContext, useContext, useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { designAPI } from '../utils/api';
 import { useAuth } from './AuthContext';
 
@@ -307,4 +308,8 @@ export const DesignProvider = ({ children }) => {
       {children}
     </DesignContext.Provider>
   );
+};
+
+DesignProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
