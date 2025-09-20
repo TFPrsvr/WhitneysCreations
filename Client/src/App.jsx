@@ -150,7 +150,7 @@ function App() {
         <div className="absolute top-10 right-10 text-4xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
         <div className="absolute top-5 left-5 text-4xl opacity-40 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>👕</div>
         <div className="w-full px-4 sm:px-4 lg:px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Everything You Need to Succeed
             </h2>
@@ -161,11 +161,11 @@ function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto px-4">
             {features.map((feature, index) => (
-              <div key={index} className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
-                <div className="text-6xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 break-words">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed text-sm break-words mb-4">{feature.description}</p>
-                <div className="text-xs text-gray-500 space-y-1">
+              <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
+                <div className="text-5xl mb-2">{feature.icon}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 break-words">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm break-words mb-2">{feature.description}</p>
+                <div className="text-xs text-gray-500 space-y-0.5">
                   {feature.title === 'Easy Design Tools' && (
                     <>
                       <div>• Drag-and-drop editor</div>

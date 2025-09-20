@@ -90,7 +90,7 @@ const Login = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-12 px-4 sm:px-4 lg:px-4 relative ml-64 max-w-none overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-8 px-4 relative" style={{ marginLeft: '16rem', maxWidth: 'calc(100vw - 16rem)', width: 'calc(100vw - 16rem)' }}>
       {/* Background decorative elements */}
       <div className="absolute top-10 left-10 text-4xl opacity-20 animate-bounce hidden lg:block">🎨</div>
       <div className="absolute top-20 right-20 text-3xl opacity-20 animate-pulse hidden lg:block">👕</div>
@@ -100,8 +100,8 @@ const Login = () => {
       <div className="max-w-md w-full space-y-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
         <div className="text-center">
           <div className="flex items-center justify-center mb-4">
-            <span className="text-4xl mr-3">🎨</span>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
+            <span className="text-4xl">🎨</span>
+            <h1 className="text-3xl font-bold ml-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
           </div>
           <p className="text-gray-600 mt-2">Welcome back to Whitney's Creations</p>
         </div>
