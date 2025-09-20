@@ -1,4 +1,5 @@
-import React, { createContext, useReducer, useContext } from 'react';
+import { createContext, useReducer, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 // --- Initial State
 const initialState = {
@@ -59,4 +60,8 @@ return (
       {children}
     </CartContext.Provider>
   );
+};
+
+CartProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };

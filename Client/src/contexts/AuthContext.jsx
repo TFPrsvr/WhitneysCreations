@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import { createContext, useContext, useReducer, useEffect } from 'react';
 import axios from 'axios';
 
 // Auth Action Types
@@ -104,6 +104,8 @@ const authReducer = (state, action) => {
 const AuthContext = createContext();
 
 // Auth Provider Component
+import PropTypes from 'prop-types';
+
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
@@ -333,6 +335,10 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 // Custom hook to use auth context

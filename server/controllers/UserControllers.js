@@ -266,40 +266,6 @@ module.exports = {
       },
 
 
-     getUser: (req, res) => {
-        // Access user data from the request object (added by authMiddleware)
-        const userEmail = req.user.email;
-      
-        // Find the user in the database
-        const user = users.find((user) => user.email === userEmail);
-        if (!user) {
-          return res.status(404).json({ message: 'User   not found' });
-        }
-      
-        // Return the user's data (excluding sensitive information like password)
-        const userData = { username: user.username, email: user.email };
-        res.status(200).json({ message: 'User   data fetched successfully', user: userData });
-      },
-   
-
-      getProfile: (req, res) => {
-        const userEmail = req.user.email;
-      
-        // Find the user in the database
-        const user = users.find((user) => user.email === userEmail);
-        if (!user) {
-          return res.status(404).json({ message: 'User   not found' });
-        }
-      
-        // Return the user's profile data
-        const profileData = {
-          username: user.username,
-          email: user.email,
-          bio: user.bio,
-          profilePicture: user.profilePicture,
-        };
-        res.status(200).json({ message: 'Profile data fetched successfully', profile: profileData });
-      },
       
       
 

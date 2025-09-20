@@ -1,4 +1,5 @@
-import React, { createContext, useReducer, useContext, useEffect } from 'react';
+import { createContext, useReducer, useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
 
@@ -357,6 +358,10 @@ export const ProjectProvider = ({ children }) => {
       {children}
     </ProjectContext.Provider>
   );
+};
+
+ProjectProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
 
 export const useProject = () => {
