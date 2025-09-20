@@ -1,7 +1,8 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 1rem 2rem; /* Left/right padding as required */
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0; /* Remove all padding */
   text-align: center;
   min-height: 100vh;
 }
