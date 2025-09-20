@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SuggestionCard from './SuggestionCard';
 import SuggestionForm from './SuggestionForm';
+import { API_BASE_URL } from '../../config/api';
 
 const Suggestions = () => {
   const [suggestions, setSuggestions] = useState([]);
@@ -17,7 +18,7 @@ const Suggestions = () => {
 
       axios({
         method: 'get',
-        url: 'http://localhost:3002/api/suggestions',
+        url: `${API_BASE_URL}/api/suggestions`,
         headers: token ? { Authorization: `Bearer ${token}` } : {},
         withCredentials: true,
       })

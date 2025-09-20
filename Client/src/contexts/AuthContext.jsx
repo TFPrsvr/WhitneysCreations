@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 // Auth Action Types
 const AUTH_ACTIONS = {
@@ -132,7 +133,7 @@ export const AuthProvider = ({ children }) => {
   // Validate token with server
   const validateToken = async (token) => {
     try {
-      const response = await axios.get('http://localhost:3002/api/user/profile', {
+      const response = await axios.get(`${API_BASE_URL}/api/user/profile`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -159,7 +160,7 @@ export const AuthProvider = ({ children }) => {
       const currentToken = localStorage.getItem('token');
       if (!currentToken) return;
 
-      const response = await axios.post('http://localhost:3002/api/user/refresh-token', {}, {
+      const response = await axios.post(`${API_BASE_URL}/api/user/refresh-token`, {}, {
         headers: { Authorization: `Bearer ${currentToken}` }
       });
 
@@ -185,7 +186,7 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: AUTH_ACTIONS.LOGIN_START });
 
     try {
-      const response = await axios.post('http://localhost:3002/api/login', credentials);
+      const response = await axios.post(`${API_BASE_URL}/api/login`, credentials);
 
       if (response.data.token) {
         const token = response.data.token;
@@ -219,7 +220,7 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: AUTH_ACTIONS.REGISTER_START });
 
     try {
-      const response = await axios.post('http://localhost:3002/api/reg', userData);
+      const response = await axios.post(`${API_BASE_URL}/api/reg`, userData);
 
       if (response.data.user) {
         // Auto-login after successful registration
