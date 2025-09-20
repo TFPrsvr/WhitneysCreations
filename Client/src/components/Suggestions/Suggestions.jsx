@@ -14,15 +14,11 @@ const Suggestions = () => {
   useEffect(() => {
     const fetchSuggestions = () => {
       const token = localStorage.getItem('token');
-      if (!token) {
-        nav('/login');
-        return;
-      }
 
       axios({
         method: 'get',
         url: 'http://localhost:3002/api/suggestions',
-        headers: { Authorization: `Bearer ${token}` },
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
         withCredentials: true,
       })
       .then(res => {
@@ -34,6 +30,8 @@ const Suggestions = () => {
       })
       .catch(error => {
         console.error('Error fetching suggestions:', error);
+        // Don't redirect on error - allow public access
+        setSuggestions([]);
       });
     };
 
