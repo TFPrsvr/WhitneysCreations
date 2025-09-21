@@ -177,8 +177,7 @@ const Login = () => {
             style={{borderRadius: '12px'}}
           >
             <div className="text-center">
-              Create Account
-              <div className="text-2xl">👕</div>
+              👕 Create Account
             </div>
           </button>
         </div>

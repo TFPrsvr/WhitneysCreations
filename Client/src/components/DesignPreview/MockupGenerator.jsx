@@ -990,7 +990,7 @@ const MockupGenerator = ({ design, onExport }) => {
   );
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 page-container">
+    <div className="bg-white rounded-xl shadow-lg page-container">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Mockup Generator</h2>
         <button

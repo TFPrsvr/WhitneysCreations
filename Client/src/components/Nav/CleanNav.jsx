@@ -57,7 +57,6 @@ const CleanNav = () => {
   const navLinks = [
     { path: '/', label: 'Home', icon: '🏠', color: 'from-green-600 to-emerald-600' },
     { path: '/products', label: 'Products', icon: '🛍️', color: 'from-blue-600 to-cyan-600' },
-    { path: '/create', label: 'Create', icon: '🎨', color: 'from-purple-600 to-pink-600' },
     { path: '/studio', label: 'Design Studio', icon: '🎭', color: 'from-orange-600 to-red-600' },
     { path: '/mockup', label: 'Mockup Generator', icon: '📸', color: 'from-rose-600 to-pink-600' },
     { path: '/suggest', label: 'Suggestions', icon: '💡', color: 'from-yellow-600 to-amber-600' },
@@ -127,7 +126,7 @@ const CleanNav = () => {
           </Link>
 
           {/* Navigation Links List */}
-          <div className="flex flex-col space-y-1 flex-1 overflow-hidden">
+          <div className="flex flex-col space-y-1 flex-1 overflow-y-auto scrollbar-sidebar">
             {navLinks.map((link) => (
               <Link
                 key={link.path}

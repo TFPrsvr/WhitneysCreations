@@ -85,7 +85,10 @@ function App() {
                   <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">How You Want It!!</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl animate-ping">⚡</span>
+                  <span className="text-3xl animate-bounce" style={{
+                    animation: 'lightning-strike 2s ease-in-out infinite',
+                    filter: 'drop-shadow(0 0 8px rgba(59, 130, 246, 0.8))'
+                  }}>⚡</span>
                   <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent">When You Want It!!</span>
                 </div>
               </div>
@@ -95,7 +98,7 @@ function App() {
               {isAuthenticated ? (
                 <>
                   <Link
-                    to="/create"
+                    to="/studio"
                     className="bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                   >
                     🎨 Start Designing
@@ -162,7 +165,7 @@ function App() {
             {features.map((feature, index) => (
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
                 <div className="text-5xl mb-2">{feature.icon}</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1 break-words">{feature.title}</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-0.5 break-words">{feature.title}</h3>
                 <p className="text-gray-600 leading-snug text-sm break-words mb-0">{feature.description}</p>
                 <div className="text-xs text-gray-500 space-y-0.5">
                   {feature.title === 'Easy Design Tools' && (
@@ -254,7 +257,7 @@ function App() {
                 <div className="text-3xl md:text-4xl mt-2">🚀</div>
               </div>
               <div className="text-center flex-none">
-                <div className="text-4xl md:text-5xl">☕ 👕</div>
+                <div className="text-4xl md:text-5xl">🧢 👕</div>
               </div>
               <div className="text-center flex-1">
                 <div className="text-3xl md:text-4xl mb-2">💡</div>
@@ -297,9 +300,9 @@ function App() {
               <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
                 1
               </div>
-              <div className="text-4xl mb-1">🎨</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-1">Design</h3>
-              <p className="text-gray-600 mb-1 text-sm">
+              <div className="text-5xl mb-1">🎨</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-0.5">Design</h3>
+              <p className="text-gray-600 mb-0.5 text-sm">
                 Use our intuitive design tools to create amazing products. Upload your own images or use our templates.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">
@@ -313,9 +316,9 @@ function App() {
               <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
                 2
               </div>
-              <div className="text-4xl mb-1">💰</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-1">Sell</h3>
-              <p className="text-gray-600 mb-1 text-sm">
+              <div className="text-5xl mb-1">💰</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-0.5">Sell</h3>
+              <p className="text-gray-600 mb-0.5 text-sm">
                 List your products for sale or share them directly with customers. Set your own prices and profit margins.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">
@@ -329,9 +332,9 @@ function App() {
               <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
                 3
               </div>
-              <div className="text-4xl mb-1">🚀</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-1">Fulfill</h3>
-              <p className="text-gray-600 mb-1 text-sm">
+              <div className="text-5xl mb-1">🚀</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-0.5">Fulfill</h3>
+              <p className="text-gray-600 mb-0.5 text-sm">
                 We handle printing, packaging, and shipping. You get paid, and your customers get premium products.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">
@@ -361,7 +364,7 @@ function App() {
             <div className="space-y-4">
               <p className="text-lg">Welcome back, {user?.first}! 👋</p>
               <Link
-                to="/create"
+                to="/studio"
                 className="inline-block bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
               >
                 Create New Design

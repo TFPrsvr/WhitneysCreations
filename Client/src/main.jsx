@@ -7,7 +7,6 @@ import { GuestProvider } from './contexts/GuestContext.jsx';
 import { ProjectProvider } from './contexts/ProjectContext.jsx';
 import { AdminProvider } from './contexts/AdminContext.jsx';
 import { DesignProvider } from './contexts/DesignContext.jsx';
-import Creations from './components/DesignCreator/Creations.jsx'
 import ImageGallery from './components/ImageGallery/ImageGrid.jsx'
 import Login from './components/Login/Login.jsx'
 import Reg from './components/Registration/Reg.jsx'
@@ -47,7 +46,6 @@ createRoot(document.getElementById('root')).render(
                 <Route path='/' element={< App/>} />
                     {/* <App /> */}
 
-    <Route path='/create' element={<Creations />} />
     <Route path='/img' element={<ImageGallery />} />
     <Route path='/about' element={<About />} />
     <Route path='/contact' element={<Contact />} />

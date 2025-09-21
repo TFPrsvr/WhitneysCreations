@@ -41,6 +41,7 @@ const DesignStudio = () => {
       category: "Business",
       dimensions: { width: 350, height: 200 },
       description: "Professional business card design",
+      thumbnail: "💼",
       elements: [
         {
           type: "text",
@@ -81,6 +82,7 @@ const DesignStudio = () => {
       category: "Social",
       dimensions: { width: 400, height: 400 },
       description: "Square social media post template",
+      thumbnail: "📱",
       elements: [
         {
           type: "rectangle",
@@ -113,6 +115,7 @@ const DesignStudio = () => {
       category: "Branding",
       dimensions: { width: 300, height: 300 },
       description: "Basic logo design template",
+      thumbnail: "🎯",
       elements: [
         {
           type: "circle",
@@ -145,6 +148,7 @@ const DesignStudio = () => {
       category: "Marketing",
       dimensions: { width: 300, height: 400 },
       description: "Event poster template",
+      thumbnail: "📅",
       elements: [
         {
           type: "rectangle",
@@ -199,6 +203,7 @@ const DesignStudio = () => {
       category: "Fun",
       dimensions: { width: 200, height: 200 },
       description: "Circular sticker template",
+      thumbnail: "🔵",
       elements: [
         {
           type: "circle",
@@ -441,7 +446,7 @@ const DesignStudio = () => {
                     className={`relative px-6 py-4 font-semibold transition-all duration-300 transform hover:scale-105 flex items-center space-x-3 rounded-xl ${
                       activeTab === tab.id
                         ? "bg-gradient-to-r from-primary-600 to-purple-600 text-white shadow-lg"
-                        : "bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 hover:border-primary-300 hover:shadow-md"
+                        : "bg-white hover:bg-gray-50 text-gray-900 border border-gray-200 hover:border-primary-300 hover:shadow-md font-bold"
                     }`}
                   >
                     <span className="text-xl">{tab.icon}</span>
@@ -505,7 +510,7 @@ const DesignStudio = () => {
                     >
                       <div className="aspect-w-16 aspect-h-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg mb-4 flex items-center justify-center border border-gray-200">
                         <div className="text-center">
-                          <div className="text-4xl mb-2">🎨</div>
+                          <div className="text-6xl mb-2">{template.thumbnail || '🎨'}</div>
                           <div className="text-xs text-gray-500 bg-white px-2 py-1 rounded-full">
                             {template.dimensions.width} × {template.dimensions.height}
                           </div>
