@@ -129,9 +129,9 @@ const Reg = () => {
       
       <div className="max-w-md w-full space-y-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
         <div className="text-center">
-          <div className="flex items-center justify-center mb-4">
+          <div className="text-center mb-4">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Create Account</h1>
             <span className="text-4xl">👕</span>
-            <h1 className="text-3xl font-bold ml-3 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Create Account</h1>
           </div>
           <p className="text-gray-600 mt-2">Join Whitney's Creations today</p>
         </div>
@@ -145,10 +145,11 @@ const Reg = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="first_name" className="block text-sm font-medium text-gray-700 mb-1">
                 First Name
               </label>
               <input
+                id="first_name"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
                 style={{color: '#1f2937'}}
                 type="text"
@@ -156,14 +157,19 @@ const Reg = () => {
                 name="first_name"
                 value={formData.first_name}
                 onChange={handleChange}
+                autocomplete="given-name"
                 required
               />
+              {errors.first_name && (
+                <p className="mt-1 text-sm text-red-600">{errors.first_name}</p>
+              )}
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="last_name" className="block text-sm font-medium text-gray-700 mb-1">
                 Last Name
               </label>
               <input
+                id="last_name"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
                 style={{color: '#1f2937'}}
                 type="text"
@@ -171,16 +177,21 @@ const Reg = () => {
                 name="last_name"
                 value={formData.last_name}
                 onChange={handleChange}
+                autocomplete="family-name"
                 required
               />
+              {errors.last_name && (
+                <p className="mt-1 text-sm text-red-600">{errors.last_name}</p>
+              )}
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="reg_username" className="block text-sm font-medium text-gray-700 mb-2">
               Username
             </label>
             <input
+              id="reg_username"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
               style={{color: '#1f2937'}}
               type="text"
@@ -188,15 +199,20 @@ const Reg = () => {
               name="username"
               value={formData.username}
               onChange={handleChange}
+              autocomplete="username"
               required
             />
+            {errors.username && (
+              <p className="mt-1 text-sm text-red-600">{errors.username}</p>
+            )}
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
               Email Address
             </label>
             <input
+              id="email"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
               style={{color: '#1f2937'}}
               type="email"
@@ -204,15 +220,20 @@ const Reg = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
+              autocomplete="email"
               required
             />
+            {errors.email && (
+              <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+            )}
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="reg_password" className="block text-sm font-medium text-gray-700 mb-2">
               Password
             </label>
             <input
+              id="reg_password"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
               style={{color: '#1f2937'}}
               type="password"
@@ -220,8 +241,12 @@ const Reg = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
+              autocomplete="new-password"
               required
             />
+            {errors.password && (
+              <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+            )}
           </div>
 
           <button

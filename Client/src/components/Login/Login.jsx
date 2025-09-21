@@ -99,9 +99,9 @@ const Login = () => {
 
       <div className="max-w-md w-full space-y-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
         <div className="text-center">
-          <div className="flex items-center justify-center mb-4">
-            <span className="text-4xl mr-3">🎨</span>
+          <div className="text-center mb-4">
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
+            <span className="text-4xl">🎨</span>
           </div>
           <p className="text-gray-600 mt-2">Welcome back to Whitney's Creations</p>
         </div>
@@ -114,10 +114,11 @@ const Login = () => {
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
               Username
             </label>
             <input
+              id="username"
               className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
                 errors.username ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
               }`}
@@ -126,6 +127,8 @@ const Login = () => {
               placeholder="Enter your username"
               value={formData.username}
               onChange={handleChange}
+              autocomplete="username"
+              required
             />
             {errors.username && (
               <p className="mt-1 text-sm text-red-600">{errors.username}</p>
@@ -133,10 +136,11 @@ const Login = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
               Password
             </label>
             <input
+              id="password"
               className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
                 errors.password ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
               }`}
@@ -145,6 +149,8 @@ const Login = () => {
               placeholder="Enter your password"
               value={formData.password}
               onChange={handleChange}
+              autocomplete="current-password"
+              required
             />
             {errors.password && (
               <p className="mt-1 text-sm text-red-600">{errors.password}</p>
@@ -170,7 +176,10 @@ const Login = () => {
             className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
             style={{borderRadius: '12px'}}
           >
-            Create Account
+            <div className="text-center">
+              Create Account
+              <div className="text-2xl">👕</div>
+            </div>
           </button>
         </div>
       </div>
