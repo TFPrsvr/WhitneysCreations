@@ -167,7 +167,8 @@ const Login = () => {
           </p>
           <button
             onClick={() => handleReg()}
-            className="w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] rounded-lg"
+            className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            style={{borderRadius: '12px'}}
           >
             Create Account
           </button>

@@ -224,10 +224,10 @@ const Reg = () => {
             />
           </div>
 
-          <button 
+          <button
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            style={{borderRadius: '10%'}}
+            className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold hover:from-purple-700 hover:to-pink-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            style={{borderRadius: '12px'}}
           >
             Create Account
           </button>
@@ -237,10 +237,10 @@ const Reg = () => {
           <p className="text-gray-600">
             Already have an account?
           </p>
-          <button 
+          <button
             onClick={() => handleLogin()}
-            className="w-full mt-3 px-6 py-3 bg-gradient-to-r from-gray-500 to-gray-600 text-white font-semibold hover:from-gray-600 hover:to-gray-700 transition-all duration-200"
-            style={{borderRadius: '10%'}}
+            className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            style={{borderRadius: '12px'}}
           >
             Sign In
           </button>
