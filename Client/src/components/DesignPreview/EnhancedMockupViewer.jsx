@@ -1,8 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Button } from '../../lib/ui/button';
-import { Slider } from '../../lib/ui/slider';
-import { Badge } from '../../lib/ui/badge';
-import { ChevronLeft, ChevronRight, RotateCw, ZoomIn, ZoomOut, Palette, Ruler, Download } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { productImageConfig, getProductImage, getProductVariant, getAllProductTypes, getAvailableColors } from '../../data/productImages';
 
@@ -525,8 +522,8 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
         <p className="text-gray-600">360° Interactive Product Preview with Advanced Design Placement</p>
         {currentVariant && (
           <div className="flex items-center justify-center gap-4 mt-4">
-            <Badge variant="secondary">{currentVariant.name}</Badge>
-            <Badge variant="outline">Size {selectedSize}</Badge>
+            <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm font-medium">{currentVariant.name}</span>
+            <span className="px-3 py-1 border border-gray-300 text-gray-700 rounded-full text-sm font-medium">Size {selectedSize}</span>
             <span className="font-semibold">{currentVariant.price}</span>
           </div>
         )}
@@ -622,17 +619,17 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
           {/* Zoom Controls */}
           <div className="bg-white rounded-lg p-4 shadow-sm">
             <h3 className="mb-3 flex items-center gap-2 font-semibold">
-              <ZoomIn className="w-4 h-4" />
-              Zoom
+              🔍 Zoom
             </h3>
             <div className="space-y-3">
-              <Slider
-                value={[zoomLevel]}
-                onValueChange={handleZoom}
+              <input
+                type="range"
+                value={zoomLevel}
+                onChange={(e) => handleZoom([parseInt(e.target.value)])}
                 min={50}
                 max={200}
                 step={5}
-                className="w-full"
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
               />
               <div className="flex justify-between text-sm text-gray-500">
                 <span>50%</span>
