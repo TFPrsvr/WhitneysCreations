@@ -24,6 +24,17 @@ const MockupGenerator = ({ design, onExport }) => {
   const [products, setProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(false);
   const [imageLoadingStatus, setImageLoadingStatus] = useState('idle');
+  const [performanceMode, setPerformanceMode] = useState('balanced');
+  const [preloadProgress, setPreloadProgress] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [designPosition, setDesignPosition] = useState({ x: 0, y: 0 });
+  const [dragMode, setDragMode] = useState(false);
+  const [designLayers, setDesignLayers] = useState([]);
+  const [activeLayerIndex, setActiveLayerIndex] = useState(0);
+  const [nextLayerId, setNextLayerId] = useState(1);
+  const [isHoveringDesign, setIsHoveringDesign] = useState(false);
+  const [dragPreview, setDragPreview] = useState(null);
 
   // Available mockup templates - now dynamic from configuration
   const mockupTemplates = [
@@ -122,23 +133,67 @@ const MockupGenerator = ({ design, onExport }) => {
       }
     };
 
-    // Preload initial product images
+    // Intelligent image preloading based on performance mode
     const preloadInitialImages = async () => {
       try {
-        // Preload current selection
-        await imagePreloader.preloadProductImages(selectedMockup, selectedColor);
+        setPreloadProgress(0);
 
-        // Preload critical variants in background
-        setTimeout(() => {
-          const priorityProducts = ['tshirts', 'hoodies', 'mugs'];
-          priorityProducts.forEach(product => {
-            if (product !== selectedMockup) {
-              imagePreloader.preloadProductImages(product, 'white');
+        // Always preload current selection immediately
+        await imagePreloader.preloadProductImages(selectedMockup, selectedColor);
+        setPreloadProgress(25);
+
+        // Performance-based preloading strategy
+        if (performanceMode === 'high') {
+          // Preload all available angles for current product
+          const currentProduct = currentVariant;
+          if (currentProduct?.images) {
+            const allAngles = currentProduct.images.map(img => img.src);
+            await imagePreloader.preloadImages(allAngles, false);
+          }
+          setPreloadProgress(50);
+
+          // Preload next/previous products in template list
+          const currentIndex = mockupTemplates.findIndex(t => t.id === selectedMockup);
+          const nextProducts = [];
+
+          if (currentIndex > 0) nextProducts.push(mockupTemplates[currentIndex - 1].id);
+          if (currentIndex < mockupTemplates.length - 1) nextProducts.push(mockupTemplates[currentIndex + 1].id);
+
+          for (const productId of nextProducts) {
+            await imagePreloader.preloadProductImages(productId, selectedColor);
+          }
+          setPreloadProgress(75);
+
+        } else if (performanceMode === 'balanced') {
+          // Preload critical variants in background with delay
+          setTimeout(async () => {
+            const priorityProducts = ['tshirts', 'hoodies', 'mugs'];
+            let loaded = 0;
+
+            for (const product of priorityProducts) {
+              if (product !== selectedMockup) {
+                await imagePreloader.preloadProductImages(product, 'white');
+                loaded++;
+                setPreloadProgress(25 + (loaded / priorityProducts.length) * 50);
+              }
             }
-          });
-        }, 500);
+          }, 200);
+
+        } else if (performanceMode === 'low') {
+          // Only preload on user interaction
+          setPreloadProgress(100);
+        }
+
+        // Preload next angles for smooth navigation
+        const variant = currentVariant;
+        if (variant?.images) {
+          imagePreloader.preloadNextImages(currentAngle, variant.images, 2);
+        }
+
+        setPreloadProgress(100);
       } catch (error) {
         console.error('Error preloading images:', error);
+        setPreloadProgress(100);
       }
     };
 
@@ -149,7 +204,291 @@ const MockupGenerator = ({ design, onExport }) => {
   // Generate mockup on canvas
   useEffect(() => {
     generateMockup();
-  }, [selectedMockup, selectedColor, currentAngle, mockupSettings, design]);
+  }, [selectedMockup, selectedColor, currentAngle, mockupSettings, designLayers, activeLayerIndex]);
+
+  // Smart preloading when user changes selections
+  useEffect(() => {
+    const preloadRelatedImages = async () => {
+      // Preload other colors for current product
+      const availableColors = getAvailableColors(selectedMockup);
+      const otherColors = availableColors.filter(color => color !== selectedColor);
+
+      if (otherColors.length > 0 && performanceMode !== 'low') {
+        // Preload the first alternative color
+        setTimeout(() => {
+          imagePreloader.preloadProductImages(selectedMockup, otherColors[0]);
+        }, 100);
+      }
+
+      // Preload neighboring angles for current selection
+      const variant = currentVariant;
+      if (variant?.images && performanceMode === 'high') {
+        await imagePreloader.preloadNextImages(currentAngle, variant.images, 3);
+      }
+    };
+
+    preloadRelatedImages();
+  }, [selectedMockup, selectedColor, performanceMode]);
+
+  // Drag and drop handlers for canvas
+  const handleMouseDown = (e) => {
+    if (!dragMode || designLayers.length === 0) return;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    const mouseX = (e.clientX - rect.left) * scaleX;
+    const mouseY = (e.clientY - rect.top) * scaleY;
+
+    // Check if click is within any layer (starting from top layer)
+    const activeLayer = designLayers[activeLayerIndex];
+    if (!activeLayer || !currentVariant?.designArea) return;
+
+    const designArea = currentVariant.designArea;
+    const { width, height } = currentMockup.dimensions;
+
+    const layerX = width * (designArea.x + mockupSettings.designX + activeLayer.position.x);
+    const layerY = height * (designArea.y + mockupSettings.designY + activeLayer.position.y);
+    const layerWidth = width * designArea.width * mockupSettings.designScale * activeLayer.scale;
+    const layerHeight = height * designArea.height * mockupSettings.designScale * activeLayer.scale;
+
+    if (mouseX >= layerX && mouseX <= layerX + layerWidth &&
+        mouseY >= layerY && mouseY <= layerY + layerHeight) {
+      setIsDragging(true);
+      setDragStart({
+        x: mouseX - layerX,
+        y: mouseY - layerY
+      });
+
+      // Create drag preview effect
+      setDragPreview({
+        x: layerX,
+        y: layerY,
+        width: layerWidth,
+        height: layerHeight
+      });
+
+      canvas.style.cursor = 'grabbing';
+      canvas.classList.add('dragging');
+    }
+  };
+
+  const handleMouseMove = (e) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    const mouseX = (e.clientX - rect.left) * scaleX;
+    const mouseY = (e.clientY - rect.top) * scaleY;
+
+    // Handle dragging
+    if (isDragging && dragMode && designLayers.length > 0) {
+      const activeLayer = designLayers[activeLayerIndex];
+      const designArea = currentVariant?.designArea;
+      if (!designArea || !activeLayer) return;
+
+      const { width, height } = currentMockup.dimensions;
+
+      // Calculate new relative position for the active layer
+      const newX = (mouseX - dragStart.x - width * designArea.x) / width;
+      const newY = (mouseY - dragStart.y - height * designArea.y) / height;
+
+      // Constrain to reasonable bounds
+      const maxOffset = 0.3;
+      const constrainedX = Math.max(-maxOffset, Math.min(maxOffset, newX));
+      const constrainedY = Math.max(-maxOffset, Math.min(maxOffset, newY));
+
+      // Update the layer position
+      updateLayer(activeLayerIndex, {
+        position: { x: constrainedX, y: constrainedY }
+      });
+
+      // Update drag preview
+      const layerX = width * (designArea.x + mockupSettings.designX + constrainedX);
+      const layerY = height * (designArea.y + mockupSettings.designY + constrainedY);
+      const layerWidth = width * designArea.width * mockupSettings.designScale * activeLayer.scale;
+      const layerHeight = height * designArea.height * mockupSettings.designScale * activeLayer.scale;
+
+      setDragPreview({
+        x: layerX,
+        y: layerY,
+        width: layerWidth,
+        height: layerHeight
+      });
+    } else if (dragMode && designLayers.length > 0) {
+      // Handle hover detection for visual feedback
+      const activeLayer = designLayers[activeLayerIndex];
+      const designArea = currentVariant?.designArea;
+      if (!designArea || !activeLayer) return;
+
+      const { width, height } = currentMockup.dimensions;
+      const layerX = width * (designArea.x + mockupSettings.designX + activeLayer.position.x);
+      const layerY = height * (designArea.y + mockupSettings.designY + activeLayer.position.y);
+      const layerWidth = width * designArea.width * mockupSettings.designScale * activeLayer.scale;
+      const layerHeight = height * designArea.height * mockupSettings.designScale * activeLayer.scale;
+
+      const isHovering = mouseX >= layerX && mouseX <= layerX + layerWidth &&
+                        mouseY >= layerY && mouseY <= layerY + layerHeight;
+
+      setIsHoveringDesign(isHovering);
+      canvas.style.cursor = isHovering ? 'grab' : 'default';
+    }
+  };
+
+  const handleMouseUp = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      setDragPreview(null);
+      const canvas = canvasRef.current;
+      if (canvas) {
+        canvas.style.cursor = dragMode && isHoveringDesign ? 'grab' : 'default';
+        canvas.classList.remove('dragging');
+      }
+    }
+  };
+
+  const handleMouseEnter = (e) => {
+    // Initial cursor setup when entering canvas
+    if (dragMode && designLayers.length > 0) {
+      const canvas = canvasRef.current;
+      if (canvas) {
+        canvas.style.cursor = 'default';
+      }
+    }
+  };
+
+  const handleMouseLeave = () => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      canvas.style.cursor = 'default';
+      canvas.classList.remove('dragging');
+    }
+    setIsHoveringDesign(false);
+    setDragPreview(null);
+  };
+
+  // Keyboard support for drag mode
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'd' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        setDragMode(!dragMode);
+      }
+      if (e.key === 'Escape' && isDragging) {
+        setIsDragging(false);
+        const canvas = canvasRef.current;
+        if (canvas) {
+          canvas.style.cursor = dragMode ? 'grab' : 'default';
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [dragMode, isDragging]);
+
+  // Initialize first layer when design is provided
+  useEffect(() => {
+    if (design && designLayers.length === 0) {
+      const initialLayer = {
+        id: nextLayerId,
+        name: 'Design Layer 1',
+        design: design,
+        visible: true,
+        opacity: 1,
+        position: { x: 0, y: 0 },
+        scale: 1,
+        rotation: 0,
+        blendMode: 'normal',
+        zIndex: 1
+      };
+      setDesignLayers([initialLayer]);
+      setNextLayerId(prev => prev + 1);
+      setActiveLayerIndex(0);
+    }
+  }, [design, designLayers.length, nextLayerId]);
+
+  // Layer management functions
+  const addLayer = (newDesign = null) => {
+    const newLayer = {
+      id: nextLayerId,
+      name: `Layer ${nextLayerId}`,
+      design: newDesign || design,
+      visible: true,
+      opacity: 1,
+      position: { x: 0, y: 0 },
+      scale: 1,
+      rotation: 0,
+      blendMode: 'normal',
+      zIndex: designLayers.length + 1
+    };
+    setDesignLayers(prev => [...prev, newLayer]);
+    setActiveLayerIndex(designLayers.length);
+    setNextLayerId(prev => prev + 1);
+  };
+
+  const removeLayer = (layerIndex) => {
+    if (designLayers.length <= 1) return; // Keep at least one layer
+
+    const newLayers = designLayers.filter((_, index) => index !== layerIndex);
+    setDesignLayers(newLayers);
+
+    // Adjust active layer index
+    if (activeLayerIndex >= newLayers.length) {
+      setActiveLayerIndex(newLayers.length - 1);
+    } else if (activeLayerIndex > layerIndex) {
+      setActiveLayerIndex(activeLayerIndex - 1);
+    }
+  };
+
+  const updateLayer = (layerIndex, updates) => {
+    setDesignLayers(prev => prev.map((layer, index) =>
+      index === layerIndex ? { ...layer, ...updates } : layer
+    ));
+  };
+
+  const moveLayer = (fromIndex, toIndex) => {
+    if (fromIndex === toIndex) return;
+
+    const newLayers = [...designLayers];
+    const [movedLayer] = newLayers.splice(fromIndex, 1);
+    newLayers.splice(toIndex, 0, movedLayer);
+
+    // Update z-indices
+    newLayers.forEach((layer, index) => {
+      layer.zIndex = index + 1;
+    });
+
+    setDesignLayers(newLayers);
+    setActiveLayerIndex(toIndex);
+  };
+
+  const duplicateLayer = (layerIndex) => {
+    const originalLayer = designLayers[layerIndex];
+    if (!originalLayer) return;
+
+    const duplicatedLayer = {
+      ...originalLayer,
+      id: nextLayerId,
+      name: `${originalLayer.name} Copy`,
+      position: {
+        x: originalLayer.position.x + 0.05,
+        y: originalLayer.position.y + 0.05
+      },
+      zIndex: designLayers.length + 1
+    };
+
+    setDesignLayers(prev => [...prev, duplicatedLayer]);
+    setActiveLayerIndex(designLayers.length);
+    setNextLayerId(prev => prev + 1);
+  };
 
   const generateMockup = async () => {
     const canvas = canvasRef.current;
@@ -169,8 +508,8 @@ const MockupGenerator = ({ design, onExport }) => {
       // Load and draw product image
       await drawProductImage(ctx, width, height);
 
-      // Draw design if provided
-      if (design && currentVariant) {
+      // Draw design layers if any exist
+      if (designLayers.length > 0 && currentVariant) {
         drawDesignOnMockup(ctx, width, height);
       }
 
@@ -180,7 +519,7 @@ const MockupGenerator = ({ design, onExport }) => {
       console.error('Error generating mockup:', error);
       // Fallback to drawing basic shape
       drawMockupBase(ctx, width, height);
-      if (design && currentVariant) {
+      if (designLayers.length > 0 && currentVariant) {
         drawDesignOnMockup(ctx, width, height);
       }
     }
@@ -472,26 +811,102 @@ const MockupGenerator = ({ design, onExport }) => {
   };
 
   const drawDesignOnMockup = (ctx, width, height) => {
-    if (!design || !currentVariant) return;
+    if (!currentVariant) return;
 
     const designArea = currentVariant.designArea;
-    const designX = width * (designArea.x + mockupSettings.designX);
-    const designY = height * (designArea.y + mockupSettings.designY);
-    const designWidth = width * designArea.width * mockupSettings.designScale;
-    const designHeight = height * designArea.height * mockupSettings.designScale;
 
-    ctx.save();
-    ctx.translate(designX + designWidth/2, designY + designHeight/2);
-    ctx.rotate((mockupSettings.rotation * Math.PI) / 180);
+    // Sort layers by z-index for proper rendering order
+    const sortedLayers = [...designLayers].sort((a, b) => a.zIndex - b.zIndex);
 
-    // Draw design (this would be the actual user design)
-    ctx.fillStyle = design.color || '#000000';
-    ctx.font = `${design.fontSize || 24}px ${design.fontFamily || 'Arial'}`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(design.text || 'Your Design', 0, 0);
+    // Draw each layer
+    sortedLayers.forEach((layer, index) => {
+      if (!layer.visible || !layer.design || layer.opacity === 0) return;
 
-    ctx.restore();
+      ctx.save();
+
+      // Apply layer opacity
+      ctx.globalAlpha = layer.opacity;
+
+      // Calculate layer position
+      const layerX = width * (designArea.x + mockupSettings.designX + layer.position.x);
+      const layerY = height * (designArea.y + mockupSettings.designY + layer.position.y);
+      const layerWidth = width * designArea.width * mockupSettings.designScale * layer.scale;
+      const layerHeight = height * designArea.height * mockupSettings.designScale * layer.scale;
+
+      // Apply layer transformations
+      ctx.translate(layerX + layerWidth/2, layerY + layerHeight/2);
+      ctx.rotate(((mockupSettings.rotation + layer.rotation) * Math.PI) / 180);
+
+      // Apply blend mode
+      ctx.globalCompositeOperation = layer.blendMode || 'source-over';
+
+      // Draw layer design
+      if (layer.design.type === 'text') {
+        ctx.fillStyle = layer.design.color || '#000000';
+        ctx.font = `${layer.design.fontSize || 24}px ${layer.design.fontFamily || 'Arial'}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(layer.design.text || 'Layer Text', 0, 0);
+      } else if (layer.design.type === 'image' && layer.design.imageData) {
+        // Draw image layer
+        const img = new Image();
+        img.src = layer.design.imageData;
+        ctx.drawImage(img, -layerWidth/2, -layerHeight/2, layerWidth, layerHeight);
+      } else {
+        // Fallback for legacy design format
+        ctx.fillStyle = layer.design.color || '#000000';
+        ctx.font = `${layer.design.fontSize || 24}px ${layer.design.fontFamily || 'Arial'}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(layer.design.text || 'Your Design', 0, 0);
+      }
+
+      // Draw visual feedback for active layer
+      if (index === activeLayerIndex && dragMode) {
+        // Selection border
+        ctx.strokeStyle = isDragging ? '#ef4444' : '#3b82f6';
+        ctx.lineWidth = isDragging ? 3 : 2;
+        ctx.setLineDash(isDragging ? [3, 3] : [5, 5]);
+        ctx.strokeRect(-layerWidth/2, -layerHeight/2, layerWidth, layerHeight);
+        ctx.setLineDash([]);
+
+        // Hover highlight
+        if (isHoveringDesign && !isDragging) {
+          ctx.fillStyle = 'rgba(59, 130, 246, 0.1)';
+          ctx.fillRect(-layerWidth/2, -layerHeight/2, layerWidth, layerHeight);
+        }
+
+        // Drag feedback
+        if (isDragging) {
+          ctx.fillStyle = 'rgba(239, 68, 68, 0.15)';
+          ctx.fillRect(-layerWidth/2, -layerHeight/2, layerWidth, layerHeight);
+
+          // Corner handles when dragging
+          const handleSize = 8;
+          ctx.fillStyle = '#ef4444';
+          // Top-left
+          ctx.fillRect(-layerWidth/2 - handleSize/2, -layerHeight/2 - handleSize/2, handleSize, handleSize);
+          // Top-right
+          ctx.fillRect(layerWidth/2 - handleSize/2, -layerHeight/2 - handleSize/2, handleSize, handleSize);
+          // Bottom-left
+          ctx.fillRect(-layerWidth/2 - handleSize/2, layerHeight/2 - handleSize/2, handleSize, handleSize);
+          // Bottom-right
+          ctx.fillRect(layerWidth/2 - handleSize/2, layerHeight/2 - handleSize/2, handleSize, handleSize);
+        }
+
+        // Layer info tooltip when hovering
+        if (isHoveringDesign && !isDragging) {
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+          ctx.fillRect(-layerWidth/2, -layerHeight/2 - 30, layerWidth, 20);
+          ctx.fillStyle = 'white';
+          ctx.font = '12px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText(layer.name, 0, -layerHeight/2 - 15);
+        }
+      }
+
+      ctx.restore();
+    });
   };
 
   const addMockupEffects = (ctx, width, height) => {
@@ -764,6 +1179,38 @@ const MockupGenerator = ({ design, onExport }) => {
                 />
               </div>
 
+              {/* Drag Mode Toggle */}
+              <div>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Drag & Drop Mode
+                  </label>
+                  <button
+                    onClick={() => setDragMode(!dragMode)}
+                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
+                      dragMode
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {dragMode ? '🖱️ ON' : '🖱️ OFF'}
+                  </button>
+                </div>
+                {dragMode && design && (
+                  <p className="text-xs text-blue-600">
+                    ✨ Click and drag the design on the canvas to reposition it
+                  </p>
+                )}
+                {dragMode && !design && (
+                  <p className="text-xs text-gray-500">
+                    ⚠️ Add a design to enable drag positioning
+                  </p>
+                )}
+                <p className="text-xs text-gray-400 mt-1">
+                  Shortcut: Ctrl+D (Cmd+D on Mac)
+                </p>
+              </div>
+
               {/* Design Position */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -847,10 +1294,64 @@ const MockupGenerator = ({ design, onExport }) => {
             <div className="border border-gray-300 rounded-lg overflow-hidden bg-gray-50 p-4">
               <canvas
                 ref={canvasRef}
-                className="w-full h-auto max-w-full max-h-96 mx-auto block"
-                style={{ imageRendering: 'crisp-edges' }}
+                className={`w-full h-auto max-w-full max-h-96 mx-auto block transition-all duration-200 ${
+                  dragMode && designLayers.length > 0 ? 'cursor-grab' : ''
+                } ${isDragging ? 'cursor-grabbing' : ''} ${
+                  isDragging ? 'scale-105 shadow-2xl' : ''
+                } ${
+                  isHoveringDesign && dragMode ? 'ring-2 ring-blue-400 ring-opacity-50' : ''
+                }`}
+                style={{
+                  imageRendering: 'crisp-edges',
+                  border: dragMode && designLayers.length > 0 ? '2px dashed #3b82f6' : '1px solid #e5e7eb',
+                  borderRadius: '8px',
+                  boxShadow: isDragging
+                    ? '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
+                    : isHoveringDesign && dragMode
+                    ? '0 10px 25px -3px rgba(0, 0, 0, 0.1)'
+                    : '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                  transform: isDragging ? 'scale(1.02)' : 'scale(1)',
+                  transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               />
             </div>
+
+            {/* Drag Status Indicator */}
+            {dragMode && designLayers.length > 0 && (
+              <div className="mt-3 text-center">
+                <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium transition-all ${
+                  isDragging
+                    ? 'bg-red-100 text-red-800 border border-red-200'
+                    : isHoveringDesign
+                    ? 'bg-blue-100 text-blue-800 border border-blue-200'
+                    : 'bg-gray-100 text-gray-600 border border-gray-200'
+                }`}>
+                  {isDragging && (
+                    <>
+                      <div className="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></div>
+                      Dragging {designLayers[activeLayerIndex]?.name}
+                    </>
+                  )}
+                  {!isDragging && isHoveringDesign && (
+                    <>
+                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                      Click to drag {designLayers[activeLayerIndex]?.name}
+                    </>
+                  )}
+                  {!isDragging && !isHoveringDesign && (
+                    <>
+                      <div className="w-2 h-2 bg-gray-400 rounded-full mr-2"></div>
+                      Hover over design to drag
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Mockup Info */}
@@ -890,6 +1391,233 @@ const MockupGenerator = ({ design, onExport }) => {
 
               <div className="mt-3 pt-3 border-t border-gray-200">
                 <p className="text-sm text-gray-600">{currentMockup.description}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Performance Settings */}
+          <div className="bg-blue-50 rounded-lg p-4">
+            <h4 className="font-semibold text-gray-900 mb-3">Performance Settings</h4>
+
+            {/* Performance Mode */}
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Loading Strategy
+              </label>
+              <select
+                value={performanceMode}
+                onChange={(e) => setPerformanceMode(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 text-sm"
+              >
+                <option value="low">Low (Load on demand)</option>
+                <option value="balanced">Balanced (Recommended)</option>
+                <option value="high">High (Aggressive preload)</option>
+              </select>
+              <p className="text-xs text-gray-500 mt-1">
+                {performanceMode === 'low' && 'Minimal memory usage, slower transitions'}
+                {performanceMode === 'balanced' && 'Good balance of speed and memory usage'}
+                {performanceMode === 'high' && 'Fastest experience, uses more memory'}
+              </p>
+            </div>
+
+            {/* Preload Progress */}
+            {preloadProgress < 100 && (
+              <div className="mb-3">
+                <div className="flex justify-between text-xs text-gray-600 mb-1">
+                  <span>Preloading images...</span>
+                  <span>{preloadProgress}%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div
+                    className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                    style={{ width: `${preloadProgress}%` }}
+                  ></div>
+                </div>
+              </div>
+            )}
+
+            {/* Cache Info */}
+            <div className="text-xs text-gray-500">
+              <div className="flex justify-between">
+                <span>Cached Images:</span>
+                <span>{imagePreloader.getCacheSize()}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Status:</span>
+                <span className={`${imageLoadingStatus === 'loaded' ? 'text-green-600' :
+                  imageLoadingStatus === 'loading' ? 'text-blue-600' :
+                  imageLoadingStatus === 'error' ? 'text-red-600' : 'text-gray-600'}`}>
+                  {imageLoadingStatus === 'loaded' && '✓ Ready'}
+                  {imageLoadingStatus === 'loading' && '⏳ Loading...'}
+                  {imageLoadingStatus === 'error' && '⚠ Error'}
+                  {imageLoadingStatus === 'idle' && '⚪ Idle'}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Design Layers */}
+          {designLayers.length > 0 && (
+            <div className="bg-purple-50 rounded-lg p-4">
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="font-semibold text-gray-900">Design Layers ({designLayers.length})</h4>
+                <button
+                  onClick={() => addLayer()}
+                  className="px-3 py-1 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm"
+                  disabled={!design}
+                >
+                  + Add Layer
+                </button>
+              </div>
+
+              <div className="space-y-2 max-h-48 overflow-y-auto">
+                {designLayers.map((layer, index) => (
+                  <div
+                    key={layer.id}
+                    className={`p-3 rounded-lg border-2 transition-all ${
+                      index === activeLayerIndex
+                        ? 'border-purple-400 bg-purple-100'
+                        : 'border-gray-200 bg-white hover:border-gray-300'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <button
+                          onClick={() => setActiveLayerIndex(index)}
+                          className="text-left flex-1"
+                        >
+                          <div className="font-medium text-sm">{layer.name}</div>
+                          <div className="text-xs text-gray-500">
+                            Z-Index: {layer.zIndex} | Opacity: {Math.round(layer.opacity * 100)}%
+                          </div>
+                        </button>
+                      </div>
+
+                      <div className="flex items-center space-x-1">
+                        {/* Visibility Toggle */}
+                        <button
+                          onClick={() => updateLayer(index, { visible: !layer.visible })}
+                          className={`p-1 rounded text-xs ${
+                            layer.visible ? 'text-green-600' : 'text-gray-400'
+                          }`}
+                          title={layer.visible ? 'Hide layer' : 'Show layer'}
+                        >
+                          {layer.visible ? '👁️' : '👁️‍🗨️'}
+                        </button>
+
+                        {/* Duplicate Layer */}
+                        <button
+                          onClick={() => duplicateLayer(index)}
+                          className="p-1 rounded text-xs text-blue-600 hover:bg-blue-100"
+                          title="Duplicate layer"
+                        >
+                          📄
+                        </button>
+
+                        {/* Delete Layer */}
+                        <button
+                          onClick={() => removeLayer(index)}
+                          className="p-1 rounded text-xs text-red-600 hover:bg-red-100"
+                          title="Delete layer"
+                          disabled={designLayers.length <= 1}
+                        >
+                          🗑️
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Layer Controls for Active Layer */}
+                    {index === activeLayerIndex && (
+                      <div className="mt-3 pt-3 border-t border-purple-200 space-y-2">
+                        {/* Opacity */}
+                        <div>
+                          <label className="block text-xs font-medium text-gray-700 mb-1">
+                            Opacity ({Math.round(layer.opacity * 100)}%)
+                          </label>
+                          <input
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.1"
+                            value={layer.opacity}
+                            onChange={(e) => updateLayer(index, { opacity: parseFloat(e.target.value) })}
+                            className="w-full h-2"
+                          />
+                        </div>
+
+                        {/* Scale */}
+                        <div>
+                          <label className="block text-xs font-medium text-gray-700 mb-1">
+                            Scale ({Math.round(layer.scale * 100)}%)
+                          </label>
+                          <input
+                            type="range"
+                            min="0.5"
+                            max="2"
+                            step="0.1"
+                            value={layer.scale}
+                            onChange={(e) => updateLayer(index, { scale: parseFloat(e.target.value) })}
+                            className="w-full h-2"
+                          />
+                        </div>
+
+                        {/* Rotation */}
+                        <div>
+                          <label className="block text-xs font-medium text-gray-700 mb-1">
+                            Rotation ({layer.rotation}°)
+                          </label>
+                          <input
+                            type="range"
+                            min="-180"
+                            max="180"
+                            value={layer.rotation}
+                            onChange={(e) => updateLayer(index, { rotation: parseInt(e.target.value) })}
+                            className="w-full h-2"
+                          />
+                        </div>
+
+                        {/* Blend Mode */}
+                        <div>
+                          <label className="block text-xs font-medium text-gray-700 mb-1">
+                            Blend Mode
+                          </label>
+                          <select
+                            value={layer.blendMode}
+                            onChange={(e) => updateLayer(index, { blendMode: e.target.value })}
+                            className="w-full px-2 py-1 border border-gray-300 rounded text-xs"
+                          >
+                            <option value="source-over">Normal</option>
+                            <option value="multiply">Multiply</option>
+                            <option value="screen">Screen</option>
+                            <option value="overlay">Overlay</option>
+                            <option value="soft-light">Soft Light</option>
+                            <option value="hard-light">Hard Light</option>
+                            <option value="difference">Difference</option>
+                            <option value="exclusion">Exclusion</option>
+                          </select>
+                        </div>
+
+                        {/* Layer Order */}
+                        <div className="flex space-x-2">
+                          <button
+                            onClick={() => moveLayer(index, Math.max(0, index - 1))}
+                            disabled={index === 0}
+                            className="flex-1 px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs hover:bg-gray-200 disabled:opacity-50"
+                          >
+                            ⬆️ Up
+                          </button>
+                          <button
+                            onClick={() => moveLayer(index, Math.min(designLayers.length - 1, index + 1))}
+                            disabled={index === designLayers.length - 1}
+                            className="flex-1 px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs hover:bg-gray-200 disabled:opacity-50"
+                          >
+                            ⬇️ Down
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           )}

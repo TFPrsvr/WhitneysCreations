@@ -3,9 +3,38 @@ export class ImagePreloader {
     this.cache = new Map();
     this.loadingPromises = new Map();
     this.preloadQueue = [];
+    this.lazyLoadQueue = [];
     this.isPreloading = false;
     this.maxConcurrentLoads = 3;
     this.activeLoads = 0;
+    this.intersectionObserver = null;
+    this.observedElements = new WeakMap();
+    this.lazyLoadThreshold = 0.1;
+    this.setupIntersectionObserver();
+  }
+
+  setupIntersectionObserver() {
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      this.intersectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const element = entry.target;
+              const imageData = this.observedElements.get(element);
+              if (imageData) {
+                this.loadLazyImage(imageData);
+                this.intersectionObserver.unobserve(element);
+                this.observedElements.delete(element);
+              }
+            }
+          });
+        },
+        {
+          rootMargin: '50px',
+          threshold: this.lazyLoadThreshold
+        }
+      );
+    }
   }
 
   preloadImage(src) {
@@ -132,8 +161,79 @@ export class ImagePreloader {
       cachedImages: this.cache.size,
       loadingImages: this.loadingPromises.size,
       queuedImages: this.preloadQueue.length,
-      activeLoads: this.activeLoads
+      activeLoads: this.activeLoads,
+      lazyLoadQueue: this.lazyLoadQueue.length,
+      observedElements: this.observedElements ? Array.from(this.observedElements.keys()).length : 0
     };
+  }
+
+  observeElement(element, imageSrc, callback) {
+    if (!this.intersectionObserver || !element || !imageSrc) {
+      return;
+    }
+
+    const imageData = {
+      src: imageSrc,
+      element,
+      callback: callback || (() => {})
+    };
+
+    this.observedElements.set(element, imageData);
+    this.intersectionObserver.observe(element);
+  }
+
+  loadLazyImage(imageData) {
+    const { src, element, callback } = imageData;
+
+    this.preloadImage(src)
+      .then(img => {
+        if (element && element.tagName === 'IMG') {
+          element.src = src;
+          element.classList.add('lazy-loaded');
+        } else if (element && element.tagName === 'CANVAS') {
+          const ctx = element.getContext('2d');
+          if (ctx) {
+            ctx.drawImage(img, 0, 0, element.width, element.height);
+          }
+        }
+        callback(null, img);
+      })
+      .catch(error => {
+        console.error('Lazy load failed for:', src, error);
+        callback(error, null);
+      });
+  }
+
+  preloadImagesInViewport(imageElements) {
+    imageElements.forEach(element => {
+      const src = element.dataset.src || element.src;
+      if (src && !this.hasImage(src)) {
+        this.observeElement(element, src);
+      }
+    });
+  }
+
+  preloadNextImages(currentIndex, imageArray, lookahead = 2) {
+    const startIndex = Math.max(0, currentIndex);
+    const endIndex = Math.min(imageArray.length, currentIndex + lookahead + 1);
+
+    const imagesToPreload = [];
+    for (let i = startIndex; i < endIndex; i++) {
+      if (imageArray[i] && imageArray[i].src) {
+        imagesToPreload.push(imageArray[i].src);
+      }
+    }
+
+    return this.preloadImages(imagesToPreload, true);
+  }
+
+  destroy() {
+    if (this.intersectionObserver) {
+      this.intersectionObserver.disconnect();
+      this.intersectionObserver = null;
+    }
+    this.observedElements = new WeakMap();
+    this.clearCache();
   }
 }
 
