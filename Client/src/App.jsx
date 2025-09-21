@@ -164,7 +164,7 @@ function App() {
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
                 <div className="text-5xl mb-2">{feature.icon}</div>
                 <h3 className="text-lg font-bold text-gray-900 mb-1 break-words">{feature.title}</h3>
-                <p className="text-gray-600 leading-snug text-sm break-words mb-0.5">{feature.description}</p>
+                <p className="text-gray-600 leading-snug text-sm break-words mb-0">{feature.description}</p>
                 <div className="text-xs text-gray-500 space-y-0.5">
                   {feature.title === 'Easy Design Tools' && (
                     <>
@@ -204,7 +204,7 @@ function App() {
       {/* Product Showcase */}
       <section className="py-8 bg-gray-50 relative">
         <div className="absolute top-5 left-5 text-2xl opacity-50 animate-bounce hidden lg:block" style={{animationDelay: '1s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
-        <div className="absolute bottom-5 right-5 text-2xl opacity-50 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🧢</div>
+        <div className="absolute top-5 right-5 text-2xl opacity-50 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🧢</div>
         <div className="w-full px-4 sm:px-4 lg:px-4">
           <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -239,28 +239,31 @@ function App() {
       </section>
 
       {/* Challenge Our Creators Section */}
-      <section className="py-24 bg-gradient-to-br from-purple-600 to-pink-600 text-white">
+      <section className="py-12 bg-gradient-to-br from-purple-600 to-pink-600 text-white">
         <div className="w-full max-w-none text-center px-8 sm:px-12 lg:px-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
             🎨✨ Challenge Our Creators!! ✨🎨
           </h2>
-          <div className="text-xl md:text-2xl mb-8 space-y-8">
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 text-xl md:text-2xl font-bold w-full">
+          <div className="text-2xl md:text-3xl mb-6 space-y-6">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 text-2xl md:text-3xl font-bold w-full max-w-5xl mx-auto">
               <div className="text-center flex-1">
-                <div className="text-2xl md:text-3xl mb-2">🌟</div>
+                <div className="text-3xl md:text-4xl mb-2">🌟</div>
                 <div className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                  <div className="text-xl md:text-2xl">See If Our</div>
-                  <div className="text-xl md:text-2xl">Creators Can</div>
+                  <div className="text-2xl md:text-3xl">See If Our</div>
+                  <div className="text-2xl md:text-3xl">Creators Can</div>
                 </div>
-                <div className="text-2xl md:text-3xl mt-2">🚀</div>
+                <div className="text-3xl md:text-4xl mt-2">🚀</div>
+              </div>
+              <div className="text-center flex-none">
+                <div className="text-4xl md:text-5xl">☕ 👕</div>
               </div>
               <div className="text-center flex-1">
-                <div className="text-2xl md:text-3xl mb-2">💡</div>
+                <div className="text-3xl md:text-4xl mb-2">💡</div>
                 <div className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
-                  <div className="text-xl md:text-2xl">Make Your Ideas</div>
-                  <div className="text-xl md:text-2xl">Come To Life</div>
+                  <div className="text-2xl md:text-3xl">Make Your Ideas</div>
+                  <div className="text-2xl md:text-3xl">Come To Life</div>
                 </div>
-                <div className="text-2xl md:text-3xl mt-2">🎯</div>
+                <div className="text-3xl md:text-4xl mt-2">🎯</div>
               </div>
             </div>
             <p className="text-lg md:text-xl font-semibold">Just Click Below To Get Started:</p>
@@ -292,12 +295,12 @@ function App() {
 
           <div className="grid md:grid-cols-3 gap-6 mt-4">
             <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-2">
+              <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
                 1
               </div>
-              <div className="text-3xl mb-1">🎨</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">Design</h3>
-              <p className="text-gray-600 mb-2 text-sm">
+              <div className="text-4xl mb-1">🎨</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-1">Design</h3>
+              <p className="text-gray-600 mb-1 text-sm">
                 Use our intuitive design tools to create amazing products. Upload your own images or use our templates.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">
@@ -308,12 +311,12 @@ function App() {
             </div>
 
             <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-2">
+              <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
                 2
               </div>
-              <div className="text-3xl mb-1">💰</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">Sell</h3>
-              <p className="text-gray-600 mb-2 text-sm">
+              <div className="text-4xl mb-1">💰</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-1">Sell</h3>
+              <p className="text-gray-600 mb-1 text-sm">
                 List your products for sale or share them directly with customers. Set your own prices and profit margins.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">
@@ -324,12 +327,12 @@ function App() {
             </div>
 
             <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-2">
+              <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
                 3
               </div>
-              <div className="text-3xl mb-1">🚀</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">Fulfill</h3>
-              <p className="text-gray-600 mb-2 text-sm">
+              <div className="text-4xl mb-1">🚀</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-1">Fulfill</h3>
+              <p className="text-gray-600 mb-1 text-sm">
                 We handle printing, packaging, and shipping. You get paid, and your customers get premium products.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">
