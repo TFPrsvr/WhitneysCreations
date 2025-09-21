@@ -35,6 +35,7 @@ app.use(
       "http://localhost:5176",
       "http://localhost:5177",
       "https://whitneys-creations-o412nddna-tabitha-fortners-projects-e06566f7.vercel.app",
+      "https://whitneys-creations-n811nju65-tabitha-fortners-projects-e06566f7.vercel.app",
       "https://whitneys-creations.vercel.app",
       "https://whitneyscreations.vercel.app"
     ],
