@@ -74,7 +74,7 @@ const CleanNav = () => {
     <>
       {/* Vertical Navigation List - Top Left Corner */}
       <nav 
-        className="nav-vertical-left fixed z-[60] w-64 h-screen"
+        className="nav-vertical-left fixed z-[60] w-48 h-screen"
         style={{
           position: 'fixed',
           top: '0px',

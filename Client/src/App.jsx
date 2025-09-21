@@ -165,7 +165,7 @@ function App() {
             {features.map((feature, index) => (
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
                 <div className="text-5xl mb-2">{feature.icon}</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-0.5 break-words">{feature.title}</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-0 break-words">{feature.title}</h3>
                 <p className="text-gray-600 leading-snug text-sm break-words mb-0">{feature.description}</p>
                 <div className="text-xs text-gray-500 space-y-0.5">
                   {feature.title === 'Easy Design Tools' && (
@@ -257,7 +257,7 @@ function App() {
                 <div className="text-3xl md:text-4xl mt-2">🚀</div>
               </div>
               <div className="text-center flex-none">
-                <div className="text-4xl md:text-5xl">🧢 👕</div>
+                <div className="text-4xl md:text-5xl" style={{transform: 'translateY(8px)'}}>🧢 👕</div>
               </div>
               <div className="text-center flex-1">
                 <div className="text-3xl md:text-4xl mb-2">💡</div>
@@ -301,8 +301,8 @@ function App() {
                 1
               </div>
               <div className="text-5xl mb-1">🎨</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-0.5">Design</h3>
-              <p className="text-gray-600 mb-0.5 text-sm">
+              <h3 className="text-xl font-semibold text-gray-900 mb-0">Design</h3>
+              <p className="text-gray-600 mb-0 text-sm">
                 Use our intuitive design tools to create amazing products. Upload your own images or use our templates.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">
@@ -317,8 +317,8 @@ function App() {
                 2
               </div>
               <div className="text-5xl mb-1">💰</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-0.5">Sell</h3>
-              <p className="text-gray-600 mb-0.5 text-sm">
+              <h3 className="text-xl font-semibold text-gray-900 mb-0">Sell</h3>
+              <p className="text-gray-600 mb-0 text-sm">
                 List your products for sale or share them directly with customers. Set your own prices and profit margins.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">
@@ -333,8 +333,8 @@ function App() {
                 3
               </div>
               <div className="text-5xl mb-1">🚀</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-0.5">Fulfill</h3>
-              <p className="text-gray-600 mb-0.5 text-sm">
+              <h3 className="text-xl font-semibold text-gray-900 mb-0">Fulfill</h3>
+              <p className="text-gray-600 mb-0 text-sm">
                 We handle printing, packaging, and shipping. You get paid, and your customers get premium products.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">
