@@ -4,6 +4,7 @@ import { Slider } from '../../lib/ui/slider';
 import { Badge } from '../../lib/ui/badge';
 import { ChevronLeft, ChevronRight, RotateCw, ZoomIn, ZoomOut, Palette, Ruler, Download } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import { productImageConfig, getProductImage, getProductVariant, getAllProductTypes, getAvailableColors } from '../../data/productImages';
 
 const EnhancedMockupViewer = ({ design, onExport }) => {
   const { isAuthenticated, user } = useAuth();
@@ -13,179 +14,26 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
   const [zoomLevel, setZoomLevel] = useState(100);
   const [selectedColor, setSelectedColor] = useState('white');
   const [selectedSize, setSelectedSize] = useState('M');
-  const [selectedProduct, setSelectedProduct] = useState('tshirt');
+  const [selectedProduct, setSelectedProduct] = useState('tshirts');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [loadedImages, setLoadedImages] = useState({});
   const lastMouseX = useRef(0);
   const containerRef = useRef(null);
   const autoRotateRef = useRef(null);
   const canvasRef = useRef(null);
 
-  // Enhanced product variants with multiple angles
-  const productVariants = {
-    tshirt: {
-      white: {
-        name: 'White T-Shirt',
-        images: [
-          { angle: 0, label: "Front View", mockup: 'tshirt_white_front' },
-          { angle: 45, label: "Front-Right View", mockup: 'tshirt_white_front_right' },
-          { angle: 90, label: "Side View", mockup: 'tshirt_white_side' },
-          { angle: 135, label: "Side-Back View", mockup: 'tshirt_white_side_back' },
-          { angle: 180, label: "Back View", mockup: 'tshirt_white_back' },
-          { angle: 225, label: "Back-Left View", mockup: 'tshirt_white_back_left' },
-          { angle: 270, label: "Left Side View", mockup: 'tshirt_white_left' },
-          { angle: 315, label: "Front-Left View", mockup: 'tshirt_white_front_left' },
-        ],
-        price: '$19.99'
-      },
-      black: {
-        name: 'Black T-Shirt',
-        images: [
-          { angle: 0, label: "Front View", mockup: 'tshirt_black_front' },
-          { angle: 45, label: "Front-Right View", mockup: 'tshirt_black_front_right' },
-          { angle: 90, label: "Side View", mockup: 'tshirt_black_side' },
-          { angle: 135, label: "Side-Back View", mockup: 'tshirt_black_side_back' },
-          { angle: 180, label: "Back View", mockup: 'tshirt_black_back' },
-          { angle: 225, label: "Back-Left View", mockup: 'tshirt_black_back_left' },
-          { angle: 270, label: "Left Side View", mockup: 'tshirt_black_left' },
-          { angle: 315, label: "Front-Left View", mockup: 'tshirt_black_front_left' },
-        ],
-        price: '$19.99'
-      },
-      red: {
-        name: 'Red T-Shirt',
-        images: [
-          { angle: 0, label: "Front View", mockup: 'tshirt_red_front' },
-          { angle: 45, label: "Front-Right View", mockup: 'tshirt_red_front_right' },
-          { angle: 90, label: "Side View", mockup: 'tshirt_red_side' },
-          { angle: 135, label: "Side-Back View", mockup: 'tshirt_red_side_back' },
-          { angle: 180, label: "Back View", mockup: 'tshirt_red_back' },
-          { angle: 225, label: "Back-Left View", mockup: 'tshirt_red_back_left' },
-          { angle: 270, label: "Left Side View", mockup: 'tshirt_red_left' },
-          { angle: 315, label: "Front-Left View", mockup: 'tshirt_red_front_left' },
-        ],
-        price: '$19.99'
-      }
-    },
-    hoodie: {
-      white: {
-        name: 'White Hoodie',
-        images: [
-          { angle: 0, label: "Front View", mockup: 'hoodie_white_front' },
-          { angle: 45, label: "Front-Right View", mockup: 'hoodie_white_front_right' },
-          { angle: 90, label: "Side View", mockup: 'hoodie_white_side' },
-          { angle: 135, label: "Side-Back View", mockup: 'hoodie_white_side_back' },
-          { angle: 180, label: "Back View", mockup: 'hoodie_white_back' },
-          { angle: 225, label: "Back-Left View", mockup: 'hoodie_white_back_left' },
-          { angle: 270, label: "Left Side View", mockup: 'hoodie_white_left' },
-          { angle: 315, label: "Front-Left View", mockup: 'hoodie_white_front_left' },
-        ],
-        price: '$39.99'
-      },
-      black: {
-        name: 'Black Hoodie',
-        images: [
-          { angle: 0, label: "Front View", mockup: 'hoodie_black_front' },
-          { angle: 45, label: "Front-Right View", mockup: 'hoodie_black_front_right' },
-          { angle: 90, label: "Side View", mockup: 'hoodie_black_side' },
-          { angle: 135, label: "Side-Back View", mockup: 'hoodie_black_side_back' },
-          { angle: 180, label: "Back View", mockup: 'hoodie_black_back' },
-          { angle: 225, label: "Back-Left View", mockup: 'hoodie_black_back_left' },
-          { angle: 270, label: "Left Side View", mockup: 'hoodie_black_left' },
-          { angle: 315, label: "Front-Left View", mockup: 'hoodie_black_front_left' },
-        ],
-        price: '$39.99'
-      }
-    },
-    totebag: {
-      white: {
-        name: 'White Tote Bag',
-        images: [
-          { angle: 0, label: "Front View", mockup: 'totebag_white_front' },
-          { angle: 45, label: "Front-Right View", mockup: 'totebag_white_front_right' },
-          { angle: 90, label: "Side View", mockup: 'totebag_white_side' },
-          { angle: 135, label: "Side-Back View", mockup: 'totebag_white_side_back' },
-          { angle: 180, label: "Back View", mockup: 'totebag_white_back' },
-          { angle: 225, label: "Back-Left View", mockup: 'totebag_white_back_left' },
-          { angle: 270, label: "Left Side View", mockup: 'totebag_white_left' },
-          { angle: 315, label: "Front-Left View", mockup: 'totebag_white_front_left' },
-        ],
-        price: '$14.99'
-      }
-    },
-    sweatshirt: {
-      white: {
-        name: 'White Sweatshirt',
-        images: [
-          { angle: 0, label: "Front View", mockup: 'sweatshirt_white_front' },
-          { angle: 45, label: "Front-Right View", mockup: 'sweatshirt_white_front_right' },
-          { angle: 90, label: "Side View", mockup: 'sweatshirt_white_side' },
-          { angle: 135, label: "Side-Back View", mockup: 'sweatshirt_white_side_back' },
-          { angle: 180, label: "Back View", mockup: 'sweatshirt_white_back' },
-          { angle: 225, label: "Back-Left View", mockup: 'sweatshirt_white_back_left' },
-          { angle: 270, label: "Left Side View", mockup: 'sweatshirt_white_left' },
-          { angle: 315, label: "Front-Left View", mockup: 'sweatshirt_white_front_left' },
-        ],
-        price: '$34.99'
-      }
-    },
-    dress: {
-      white: {
-        name: 'White Dress',
-        images: [
-          { angle: 0, label: "Front View", mockup: 'dress_white_front' },
-          { angle: 45, label: "Front-Right View", mockup: 'dress_white_front_right' },
-          { angle: 90, label: "Side View", mockup: 'dress_white_side' },
-          { angle: 135, label: "Side-Back View", mockup: 'dress_white_side_back' },
-          { angle: 180, label: "Back View", mockup: 'dress_white_back' },
-          { angle: 225, label: "Back-Left View", mockup: 'dress_white_back_left' },
-          { angle: 270, label: "Left Side View", mockup: 'dress_white_left' },
-          { angle: 315, label: "Front-Left View", mockup: 'dress_white_front_left' },
-        ],
-        price: '$29.99'
-      }
-    },
-    hat: {
-      white: {
-        name: 'White Baseball Cap',
-        images: [
-          { angle: 0, label: "Front View", mockup: 'hat_white_front' },
-          { angle: 45, label: "Front-Right View", mockup: 'hat_white_front_right' },
-          { angle: 90, label: "Side View", mockup: 'hat_white_side' },
-          { angle: 135, label: "Side-Back View", mockup: 'hat_white_side_back' },
-          { angle: 180, label: "Back View", mockup: 'hat_white_back' },
-          { angle: 225, label: "Back-Left View", mockup: 'hat_white_back_left' },
-          { angle: 270, label: "Left Side View", mockup: 'hat_white_left' },
-          { angle: 315, label: "Front-Left View", mockup: 'hat_white_front_left' },
-        ],
-        price: '$24.99'
-      }
-    },
-    bra: {
-      white: {
-        name: 'White Sports Bra',
-        images: [
-          { angle: 0, label: "Front View", mockup: 'bra_white_front' },
-          { angle: 45, label: "Front-Right View", mockup: 'bra_white_front_right' },
-          { angle: 90, label: "Side View", mockup: 'bra_white_side' },
-          { angle: 135, label: "Side-Back View", mockup: 'bra_white_side_back' },
-          { angle: 180, label: "Back View", mockup: 'bra_white_back' },
-          { angle: 225, label: "Back-Left View", mockup: 'bra_white_back_left' },
-          { angle: 270, label: "Left Side View", mockup: 'bra_white_left' },
-          { angle: 315, label: "Front-Left View", mockup: 'bra_white_front_left' },
-        ],
-        price: '$32.99'
-      }
-    }
-  };
+  // Use product configuration from data file
+  const productVariants = productImageConfig;
 
   const products = [
-    { id: 'tshirt', name: 'T-Shirt', icon: '👕' },
-    { id: 'hoodie', name: 'Hoodie', icon: '🧥' },
-    { id: 'totebag', name: 'Tote Bag', icon: '👜' },
-    { id: 'sweatshirt', name: 'Sweatshirt', icon: '👕' },
-    { id: 'dress', name: 'Dress', icon: '👗' },
-    { id: 'hat', name: 'Hat', icon: '🧢' },
-    { id: 'bra', name: 'Sports Bra', icon: '👙' }
+    { id: 'tshirts', name: 'T-Shirt', icon: '👕' },
+    { id: 'hoodies', name: 'Hoodie', icon: '🧥' },
+    { id: 'mugs', name: 'Coffee Mug', icon: '☕' },
+    { id: 'hats', name: 'Baseball Cap', icon: '🧢' },
+    { id: 'mousepads', name: 'Mouse Pad', icon: '🖱️' },
+    { id: 'totebags', name: 'Tote Bag', icon: '👜' },
+    { id: 'phonecases', name: 'Phone Case', icon: '📱' },
+    { id: 'stickers', name: 'Sticker', icon: '🏷️' }
   ];
 
   const sizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
@@ -236,7 +84,7 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
     generateMockup();
   }, [selectedProduct, selectedColor, design, currentRotation]);
 
-  const generateMockup = () => {
+  const generateMockup = async () => {
     const canvas = canvasRef.current;
     if (!canvas || !currentVariant) return;
 
@@ -248,13 +96,64 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
     ctx.fillStyle = '#f8f9fa';
     ctx.fillRect(0, 0, 400, 500);
 
-    // Draw mockup based on current rotation and product
-    drawProductMockup(ctx, getCurrentImage());
-    
-    // Draw design if provided
-    if (design) {
-      drawDesignOnProduct(ctx);
+    try {
+      // Get current image source
+      const currentImage = getCurrentImage();
+      const imageSrc = currentImage?.src;
+
+      if (imageSrc) {
+        // Load and draw product image
+        await drawProductImage(ctx, imageSrc);
+      } else {
+        // Fallback to drawing basic shape
+        drawProductMockup(ctx, currentImage);
+      }
+
+      // Draw design if provided
+      if (design) {
+        drawDesignOnProduct(ctx);
+      }
+    } catch (error) {
+      console.error('Error generating mockup:', error);
+      // Fallback to drawing basic shape
+      drawProductMockup(ctx, getCurrentImage());
+      if (design) {
+        drawDesignOnProduct(ctx);
+      }
     }
+  };
+
+  const drawProductImage = (ctx, imageSrc) => {
+    return new Promise((resolve, reject) => {
+      // Check if image is already loaded
+      if (loadedImages[imageSrc]) {
+        ctx.drawImage(loadedImages[imageSrc], 0, 0, 400, 500);
+        resolve();
+        return;
+      }
+
+      // Load new image
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+
+      img.onload = () => {
+        // Cache the loaded image
+        setLoadedImages(prev => ({
+          ...prev,
+          [imageSrc]: img
+        }));
+
+        ctx.drawImage(img, 0, 0, 400, 500);
+        resolve();
+      };
+
+      img.onerror = () => {
+        console.error('Failed to load product image:', imageSrc);
+        reject(new Error('Failed to load product image'));
+      };
+
+      img.src = imageSrc;
+    });
   };
 
   const drawProductMockup = (ctx, currentImage) => {
@@ -430,30 +329,37 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
   };
 
   const drawDesignOnProduct = (ctx) => {
-    if (!design) return;
+    if (!design || !currentVariant) return;
 
-    // Position design based on product type and current angle
-    let designX = 200;
-    let designY = 280;
+    const designArea = currentVariant.designArea;
+    const canvasWidth = 400;
+    const canvasHeight = 500;
+
+    // Calculate design position based on design area and current angle
+    let designX = canvasWidth * designArea.x;
+    let designY = canvasHeight * designArea.y;
+    const designWidth = canvasWidth * designArea.width;
+    const designHeight = canvasHeight * designArea.height;
+
     const currentImage = getCurrentImage();
-    
+
     // Adjust position based on viewing angle
     if (currentImage?.angle === 180) {
-      designY = 320; // Back view, design lower
+      designY = designY + designHeight * 0.1; // Back view, design slightly lower
     } else if (currentImage?.angle === 90 || currentImage?.angle === 270) {
-      designX = currentImage.angle === 90 ? 350 : 50; // Side views
+      designX = currentImage.angle === 90 ? canvasWidth - 50 : 50; // Side views
     }
 
     ctx.save();
-    ctx.translate(designX, designY);
-    
+    ctx.translate(designX + designWidth/2, designY + designHeight/2);
+
     // Draw design (text example)
     ctx.fillStyle = design.color || '#000000';
     ctx.font = `${design.fontSize || 24}px ${design.fontFamily || 'Arial'}`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(design.text || 'Your Design', 0, 0);
-    
+
     ctx.restore();
   };
 
