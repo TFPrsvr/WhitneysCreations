@@ -85,13 +85,13 @@ function App() {
                   <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">How You Want It!!</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl animate-bounce" style={{animationDelay: '0.5s'}}>⚡</span>
+                  <span className="text-3xl animate-ping">⚡</span>
                   <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent">When You Want It!!</span>
                 </div>
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-12 justify-center items-center">
               {isAuthenticated ? (
                 <>
                   <Link
@@ -140,8 +140,7 @@ function App() {
         </div>
 
         {/* Floating Elements */}
-        <div className="absolute top-20 left-10 text-4xl opacity-30 animate-bounce hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>🎨</div>
-        <div className="absolute top-40 right-20 text-3xl opacity-30 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>👕</div>
+        <div className="absolute top-20 left-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}}>🎨</div>
         <div className="absolute top-20 right-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}}>☕</div>
       </section>
 
@@ -348,7 +347,6 @@ function App() {
 
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-r from-primary-600 to-purple-600 text-white relative">
-        <div className="absolute top-5 right-8 text-4xl opacity-40" style={{filter: 'drop-shadow(2px 2px 4px rgba(34, 197, 94, 0.6))'}}>👚</div>
         <div className="absolute top-8 left-8 text-3xl opacity-30 animate-bounce hidden lg:block" style={{animationDelay: '2s', filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9))'}}>☕</div>
         <div className="absolute bottom-8 right-8 text-3xl opacity-30 animate-spin hidden lg:block" style={{animationDuration: '6s', filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>🎨</div>
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-4 lg:px-4">
