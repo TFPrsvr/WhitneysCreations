@@ -26,6 +26,9 @@ import Pricing from './components/Pricing/Pricing.jsx'
 import AdminDashboard from './components/Admin/AdminDashboard.jsx'
 import FontManager from './components/FontCustomizer/FontManager.jsx'
 import DesignStudio from './components/DesignPreview/DesignStudio.jsx'
+import MockupGenerator from './components/DesignPreview/MockupGenerator.jsx'
+import EnhancedMockupViewer from './components/DesignPreview/EnhancedMockupViewer.jsx'
+import MockupTester from './components/DesignPreview/MockupTester.jsx'
 import PaymentSetup from './components/Payment/PaymentSetup.jsx'
 import ProfileSettings from './components/Profile/ProfileSettings.jsx'
 import OrderHistory from './components/Orders/OrderHistory.jsx'
@@ -58,6 +61,9 @@ createRoot(document.getElementById('root')).render(
     <Route path='/admin' element={<AdminDashboard />} />
     <Route path='/fonts' element={<FontManager />} />
     <Route path='/studio' element={<DesignStudio />} />
+    <Route path='/mockup' element={<MockupGenerator />} />
+    <Route path='/mockup-viewer' element={<EnhancedMockupViewer />} />
+    <Route path='/mockup-test' element={<MockupTester />} />
     <Route path='/payment' element={<PaymentSetup />} />
     <Route path='/profile' element={<ProfileSettings />} />
     <Route path='/orders' element={<OrderHistory />} />
