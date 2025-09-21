@@ -36,6 +36,7 @@ app.use(
       "http://localhost:5177",
       "https://whitneys-creations-o412nddna-tabitha-fortners-projects-e06566f7.vercel.app",
       "https://whitneys-creations-n811nju65-tabitha-fortners-projects-e06566f7.vercel.app",
+      "https://whitneys-creations-cau4zvns8-tabitha-fortners-projects-e06566f7.vercel.app",
       "https://whitneys-creations.vercel.app",
       "https://whitneyscreations.vercel.app"
     ],
