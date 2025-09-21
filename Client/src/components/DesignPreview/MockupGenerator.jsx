@@ -1,11 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { productAPI } from '../../utils/api';
+import { productImageConfig, getProductImage, getProductVariant, getAllProductTypes, getAvailableColors } from '../../data/productImages';
+import { useImagePreloader } from '../../utils/imagePreloader';
 
 const MockupGenerator = ({ design, onExport }) => {
   const { isAuthenticated, user } = useAuth();
+  const imagePreloader = useImagePreloader();
   const canvasRef = useRef(null);
-  const [selectedMockup, setSelectedMockup] = useState('tshirt');
+  const [selectedMockup, setSelectedMockup] = useState('tshirts');
+  const [selectedColor, setSelectedColor] = useState('white');
+  const [currentAngle, setCurrentAngle] = useState(0);
   const [mockupSettings, setMockupSettings] = useState({
     backgroundColor: '#f0f0f0',
     shadowIntensity: 0.3,
@@ -18,96 +23,92 @@ const MockupGenerator = ({ design, onExport }) => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [products, setProducts] = useState([]);
   const [loadingProducts, setLoadingProducts] = useState(false);
+  const [imageLoadingStatus, setImageLoadingStatus] = useState('idle');
 
-  // Available mockup templates
+  // Available mockup templates - now dynamic from configuration
   const mockupTemplates = [
     {
-      id: 'tshirt',
+      id: 'tshirts',
       name: 'T-Shirt',
       category: 'Apparel',
       icon: '👕',
       isPremium: false,
       dimensions: { width: 400, height: 500 },
-      designArea: { x: 0.3, y: 0.35, width: 0.4, height: 0.3 },
       description: 'Classic crew neck t-shirt mockup'
     },
     {
-      id: 'hoodie',
+      id: 'hoodies',
       name: 'Hoodie',
       category: 'Apparel',
       icon: '🧥',
       isPremium: true,
       dimensions: { width: 400, height: 500 },
-      designArea: { x: 0.3, y: 0.4, width: 0.4, height: 0.25 },
       description: 'Comfortable pullover hoodie'
     },
     {
-      id: 'mug',
+      id: 'mugs',
       name: 'Coffee Mug',
       category: 'Drinkware',
       icon: '☕',
       isPremium: false,
       dimensions: { width: 400, height: 400 },
-      designArea: { x: 0.2, y: 0.3, width: 0.6, height: 0.4 },
       description: '11oz white ceramic mug'
     },
     {
-      id: 'poster',
-      name: 'Poster',
-      category: 'Wall Art',
-      icon: '🖼️',
-      isPremium: false,
-      dimensions: { width: 300, height: 400 },
-      designArea: { x: 0.05, y: 0.05, width: 0.9, height: 0.9 },
-      description: '18x24 inch poster print'
-    },
-    {
-      id: 'phonecase',
-      name: 'Phone Case',
-      category: 'Accessories',
-      icon: '📱',
-      isPremium: true,
-      dimensions: { width: 200, height: 400 },
-      designArea: { x: 0.1, y: 0.15, width: 0.8, height: 0.7 },
-      description: 'iPhone compatible case'
-    },
-    {
-      id: 'totebag',
-      name: 'Tote Bag',
-      category: 'Bags',
-      icon: '👜',
-      isPremium: true,
-      dimensions: { width: 400, height: 450 },
-      designArea: { x: 0.25, y: 0.3, width: 0.5, height: 0.4 },
-      description: 'Canvas tote bag'
-    },
-    {
-      id: 'sticker',
-      name: 'Sticker',
-      category: 'Stickers',
-      icon: '🏷️',
-      isPremium: false,
-      dimensions: { width: 200, height: 200 },
-      designArea: { x: 0.1, y: 0.1, width: 0.8, height: 0.8 },
-      description: 'Vinyl sticker 3x3 inch'
-    },
-    {
-      id: 'cap',
+      id: 'hats',
       name: 'Baseball Cap',
       category: 'Apparel',
       icon: '🧢',
       isPremium: true,
       dimensions: { width: 400, height: 300 },
-      designArea: { x: 0.3, y: 0.4, width: 0.4, height: 0.2 },
       description: 'Adjustable baseball cap'
+    },
+    {
+      id: 'mousepads',
+      name: 'Mouse Pad',
+      category: 'Office',
+      icon: '🖱️',
+      isPremium: false,
+      dimensions: { width: 400, height: 300 },
+      description: 'Gaming mouse pad'
+    },
+    {
+      id: 'totebags',
+      name: 'Tote Bag',
+      category: 'Bags',
+      icon: '👜',
+      isPremium: true,
+      dimensions: { width: 400, height: 450 },
+      description: 'Canvas tote bag'
+    },
+    {
+      id: 'phonecases',
+      name: 'Phone Case',
+      category: 'Accessories',
+      icon: '📱',
+      isPremium: true,
+      dimensions: { width: 200, height: 400 },
+      description: 'iPhone compatible case'
+    },
+    {
+      id: 'stickers',
+      name: 'Sticker',
+      category: 'Stickers',
+      icon: '🏷️',
+      isPremium: false,
+      dimensions: { width: 200, height: 200 },
+      description: 'Vinyl sticker 3x3 inch'
     }
   ];
 
   const categories = [...new Set(mockupTemplates.map(m => m.category))];
 
   const currentMockup = mockupTemplates.find(m => m.id === selectedMockup);
+  const currentVariant = getProductVariant(selectedMockup, selectedColor);
+  const availableColors = getAvailableColors(selectedMockup);
+  const currentImageSrc = getProductImage(selectedMockup, selectedColor, currentAngle);
 
-  // Load products for mockups
+  // Load products for mockups and preload initial images
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -121,21 +122,42 @@ const MockupGenerator = ({ design, onExport }) => {
       }
     };
 
+    // Preload initial product images
+    const preloadInitialImages = async () => {
+      try {
+        // Preload current selection
+        await imagePreloader.preloadProductImages(selectedMockup, selectedColor);
+
+        // Preload critical variants in background
+        setTimeout(() => {
+          const priorityProducts = ['tshirts', 'hoodies', 'mugs'];
+          priorityProducts.forEach(product => {
+            if (product !== selectedMockup) {
+              imagePreloader.preloadProductImages(product, 'white');
+            }
+          });
+        }, 500);
+      } catch (error) {
+        console.error('Error preloading images:', error);
+      }
+    };
+
     fetchProducts();
+    preloadInitialImages();
   }, []);
 
   // Generate mockup on canvas
   useEffect(() => {
     generateMockup();
-  }, [selectedMockup, mockupSettings, design]);
+  }, [selectedMockup, selectedColor, currentAngle, mockupSettings, design]);
 
-  const generateMockup = () => {
+  const generateMockup = async () => {
     const canvas = canvasRef.current;
-    if (!canvas || !currentMockup) return;
+    if (!canvas || !currentMockup || !currentImageSrc) return;
 
     const ctx = canvas.getContext('2d');
     const { width, height } = currentMockup.dimensions;
-    
+
     canvas.width = width;
     canvas.height = height;
 
@@ -143,16 +165,50 @@ const MockupGenerator = ({ design, onExport }) => {
     ctx.fillStyle = mockupSettings.backgroundColor;
     ctx.fillRect(0, 0, width, height);
 
-    // Draw mockup base
-    drawMockupBase(ctx, width, height);
-    
-    // Draw design if provided
-    if (design) {
-      drawDesignOnMockup(ctx, width, height);
-    }
+    try {
+      // Load and draw product image
+      await drawProductImage(ctx, width, height);
 
-    // Add shadow/lighting effects
-    addMockupEffects(ctx, width, height);
+      // Draw design if provided
+      if (design && currentVariant) {
+        drawDesignOnMockup(ctx, width, height);
+      }
+
+      // Add shadow/lighting effects
+      addMockupEffects(ctx, width, height);
+    } catch (error) {
+      console.error('Error generating mockup:', error);
+      // Fallback to drawing basic shape
+      drawMockupBase(ctx, width, height);
+      if (design && currentVariant) {
+        drawDesignOnMockup(ctx, width, height);
+      }
+    }
+  };
+
+  const drawProductImage = async (ctx, width, height) => {
+    if (!currentImageSrc) return;
+
+    try {
+      setImageLoadingStatus('loading');
+
+      // Check if image is already cached in preloader
+      if (imagePreloader.hasImage(currentImageSrc)) {
+        const img = imagePreloader.getImage(currentImageSrc);
+        ctx.drawImage(img, 0, 0, width, height);
+        setImageLoadingStatus('loaded');
+        return;
+      }
+
+      // Preload the image
+      const img = await imagePreloader.preloadImage(currentImageSrc);
+      ctx.drawImage(img, 0, 0, width, height);
+      setImageLoadingStatus('loaded');
+    } catch (error) {
+      console.error('Failed to load product image:', currentImageSrc, error);
+      setImageLoadingStatus('error');
+      throw error;
+    }
   };
 
   const drawMockupBase = (ctx, width, height) => {
@@ -416,9 +472,9 @@ const MockupGenerator = ({ design, onExport }) => {
   };
 
   const drawDesignOnMockup = (ctx, width, height) => {
-    if (!design || !currentMockup) return;
+    if (!design || !currentVariant) return;
 
-    const designArea = currentMockup.designArea;
+    const designArea = currentVariant.designArea;
     const designX = width * (designArea.x + mockupSettings.designX);
     const designY = height * (designArea.y + mockupSettings.designY);
     const designWidth = width * designArea.width * mockupSettings.designScale;
@@ -455,6 +511,33 @@ const MockupGenerator = ({ design, onExport }) => {
       ...prev,
       [setting]: value
     }));
+  };
+
+  const handleProductChange = (productId) => {
+    setSelectedMockup(productId);
+    // Reset to first available color for new product
+    const colors = getAvailableColors(productId);
+    if (colors.length > 0) {
+      setSelectedColor(colors[0]);
+      // Preload images for the selected product and color
+      imagePreloader.preloadProductImages(productId, colors[0]);
+    }
+    setCurrentAngle(0);
+
+    // Preload all variants for this product in background
+    setTimeout(() => {
+      imagePreloader.preloadAllProductVariants(productId);
+    }, 100);
+  };
+
+  const handleColorChange = (color) => {
+    setSelectedColor(color);
+    // Preload images for the new color
+    imagePreloader.preloadProductImages(selectedMockup, color);
+  };
+
+  const handleAngleChange = (angle) => {
+    setCurrentAngle(angle);
   };
 
   const exportMockup = async () => {
@@ -538,7 +621,7 @@ const MockupGenerator = ({ design, onExport }) => {
               {filteredMockups.map(mockup => (
                 <button
                   key={mockup.id}
-                  onClick={() => setSelectedMockup(mockup.id)}
+                  onClick={() => handleProductChange(mockup.id)}
                   className={`p-4 border rounded-lg text-left transition-colors ${
                     selectedMockup === mockup.id
                       ? 'border-primary-500 bg-primary-50'
@@ -559,6 +642,64 @@ const MockupGenerator = ({ design, onExport }) => {
               ))}
             </div>
           </div>
+
+          {/* Color Selection */}
+          {availableColors.length > 0 && (
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Choose Color</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {availableColors.map(color => {
+                  const variant = getProductVariant(selectedMockup, color);
+                  return (
+                    <button
+                      key={color}
+                      onClick={() => handleColorChange(color)}
+                      className={`p-3 border rounded-lg text-left transition-colors ${
+                        selectedColor === color
+                          ? 'border-primary-500 bg-primary-50'
+                          : 'border-gray-300 hover:border-gray-400'
+                      }`}
+                    >
+                      <div className={`w-8 h-8 rounded-full mx-auto mb-2 border ${
+                        color === 'black' ? 'bg-black border-gray-300' :
+                        color === 'white' ? 'bg-white border-gray-400' :
+                        color === 'red' ? 'bg-red-600 border-red-700' :
+                        color === 'blue' ? 'bg-blue-600 border-blue-700' :
+                        color === 'navy' ? 'bg-blue-900 border-blue-800' :
+                        color === 'clear' ? 'bg-transparent border-gray-400' :
+                        'bg-gray-600'
+                      }`}></div>
+                      <div className="text-sm font-medium text-gray-900">{variant?.name}</div>
+                      <div className="text-xs text-gray-500">{variant?.price}</div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Angle Selection */}
+          {currentVariant?.images && (
+            <div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">View Angle</h3>
+              <div className="grid grid-cols-4 gap-2">
+                {currentVariant.images.map(image => (
+                  <button
+                    key={image.angle}
+                    onClick={() => handleAngleChange(image.angle)}
+                    className={`p-2 border rounded-lg text-center transition-colors ${
+                      currentAngle === image.angle
+                        ? 'border-primary-500 bg-primary-50'
+                        : 'border-gray-300 hover:border-gray-400'
+                    }`}
+                  >
+                    <div className="text-xs font-medium">{image.angle}°</div>
+                    <div className="text-xs text-gray-500">{image.label}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Mockup Settings */}
           <div>
@@ -713,17 +854,21 @@ const MockupGenerator = ({ design, onExport }) => {
           </div>
 
           {/* Mockup Info */}
-          {currentMockup && (
+          {currentMockup && currentVariant && (
             <div className="bg-gray-50 rounded-lg p-4">
               <h4 className="font-semibold text-gray-900 mb-3">Product Details</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Product:</span>
-                  <span className="font-medium">{currentMockup.name}</span>
+                  <span className="font-medium">{currentVariant.name}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Category:</span>
                   <span className="font-medium">{currentMockup.category}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Price:</span>
+                  <span className="font-medium text-primary-600">{currentVariant.price}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Dimensions:</span>
@@ -732,13 +877,17 @@ const MockupGenerator = ({ design, onExport }) => {
                   </span>
                 </div>
                 <div className="flex justify-between">
+                  <span className="text-gray-600">View Angle:</span>
+                  <span className="font-medium">{currentAngle}°</span>
+                </div>
+                <div className="flex justify-between">
                   <span className="text-gray-600">Type:</span>
                   <span className={`font-medium ${currentMockup.isPremium ? 'text-yellow-600' : 'text-green-600'}`}>
                     {currentMockup.isPremium ? 'Premium' : 'Free'}
                   </span>
                 </div>
               </div>
-              
+
               <div className="mt-3 pt-3 border-t border-gray-200">
                 <p className="text-sm text-gray-600">{currentMockup.description}</p>
               </div>
