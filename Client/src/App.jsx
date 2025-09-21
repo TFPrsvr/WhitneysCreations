@@ -60,32 +60,32 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 w-full max-w-full overflow-x-hidden ml-64">
+    <div className="min-h-screen bg-gray-50 w-full max-w-full overflow-x-hidden" style={{ marginLeft: '16rem', maxWidth: 'calc(100vw - 16rem)', width: 'calc(100vw - 16rem)' }}>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-600 via-purple-600 to-pink-500 text-white w-full">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="relative w-full px-4 sm:px-4 lg:px-4 py-2 lg:py-4">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="block text-4xl md:text-6xl mb-6">Whitney's Unique Creations</span>
-              <span className="block text-6xl md:text-7xl mb-4">👕 👚</span>
-              <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent text-4xl md:text-5xl mt-8 font-extrabold">
+            <h1 className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+              <span className="block text-2xl md:text-4xl mb-4">Whitney's Unique Creations</span>
+              <span className="block text-4xl md:text-5xl mb-3">👕 👚</span>
+              <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent text-xl md:text-3xl mt-4 font-extrabold">
                 The Place That Lets You Customize Your Ideas
               </span>
             </h1>
             <div className="text-xl md:text-2xl mb-8 text-gray-100 max-w-5xl mx-auto">
-              <p className="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-yellow-400 via-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Creations You Want</p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-2xl md:text-3xl font-bold">
+              <p className="text-2xl md:text-3xl font-extrabold mb-4 bg-gradient-to-r from-yellow-400 via-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Creations You Want</p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-lg md:text-xl font-bold"
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
-                  <span className="text-5xl animate-pulse">✨</span>
+                  <span className="text-3xl animate-pulse">✨</span>
                   <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">What You Want!!</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
-                  <span className="text-5xl animate-spin" style={{animationDuration: '3s'}}>🎨</span>
+                  <span className="text-3xl animate-spin" style={{animationDuration: '3s'}}>🎨</span>
                   <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">How You Want It!!</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
-                  <span className="text-5xl animate-bounce" style={{animationDelay: '0.5s'}}>⚡</span>
+                  <span className="text-3xl animate-bounce" style={{animationDelay: '0.5s'}}>⚡</span>
                   <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent">When You Want It!!</span>
                 </div>
               </div>
@@ -163,8 +163,8 @@ function App() {
             {features.map((feature, index) => (
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
                 <div className="text-5xl mb-2">{feature.icon}</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 break-words">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed text-sm break-words mb-2">{feature.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-1 break-words">{feature.title}</h3>
+                <p className="text-gray-600 leading-snug text-sm break-words mb-0.5">{feature.description}</p>
                 <div className="text-xs text-gray-500 space-y-0.5">
                   {feature.title === 'Easy Design Tools' && (
                     <>
@@ -241,29 +241,29 @@ function App() {
       {/* Challenge Our Creators Section */}
       <section className="py-24 bg-gradient-to-br from-purple-600 to-pink-600 text-white">
         <div className="w-full max-w-none text-center px-8 sm:px-12 lg:px-16">
-          <h2 className="text-5xl md:text-7xl font-bold mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8">
             🎨✨ Challenge Our Creators!! ✨🎨
           </h2>
-          <div className="text-2xl md:text-4xl mb-12 space-y-12">
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-20 lg:gap-32 text-2xl md:text-4xl font-bold w-full">
+          <div className="text-xl md:text-2xl mb-8 space-y-8">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 text-xl md:text-2xl font-bold w-full">
               <div className="text-center flex-1">
-                <div className="text-3xl md:text-5xl mb-2">🌟</div>
+                <div className="text-2xl md:text-3xl mb-2">🌟</div>
                 <div className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                  <div className="text-2xl md:text-4xl">See If Our</div>
-                  <div className="text-2xl md:text-4xl">Creators Can</div>
+                  <div className="text-xl md:text-2xl">See If Our</div>
+                  <div className="text-xl md:text-2xl">Creators Can</div>
                 </div>
-                <div className="text-3xl md:text-5xl mt-2">🚀</div>
+                <div className="text-2xl md:text-3xl mt-2">🚀</div>
               </div>
               <div className="text-center flex-1">
-                <div className="text-3xl md:text-5xl mb-2">💡</div>
+                <div className="text-2xl md:text-3xl mb-2">💡</div>
                 <div className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
-                  <div className="text-2xl md:text-4xl">Make Your Ideas</div>
-                  <div className="text-2xl md:text-4xl">Come To Life</div>
+                  <div className="text-xl md:text-2xl">Make Your Ideas</div>
+                  <div className="text-xl md:text-2xl">Come To Life</div>
                 </div>
-                <div className="text-3xl md:text-5xl mt-2">🎯</div>
+                <div className="text-2xl md:text-3xl mt-2">🎯</div>
               </div>
             </div>
-            <p className="text-xl md:text-2xl font-semibold">Just Click Below To Get Started:</p>
+            <p className="text-lg md:text-xl font-semibold">Just Click Below To Get Started:</p>
           </div>
           
           <Link
@@ -290,14 +290,14 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-4">
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-3">
+          <div className="grid md:grid-cols-3 gap-6 mt-4">
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-2">
                 1
               </div>
-              <div className="text-4xl mb-2">🎨</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Design</h3>
-              <p className="text-gray-600 mb-3">
+              <div className="text-3xl mb-1">🎨</div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-1">Design</h3>
+              <p className="text-gray-600 mb-2 text-sm">
                 Use our intuitive design tools to create amazing products. Upload your own images or use our templates.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">
@@ -307,13 +307,13 @@ function App() {
               </ul>
             </div>
 
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-3">
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-2">
                 2
               </div>
-              <div className="text-4xl mb-2">💰</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Sell</h3>
-              <p className="text-gray-600 mb-3">
+              <div className="text-3xl mb-1">💰</div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-1">Sell</h3>
+              <p className="text-gray-600 mb-2 text-sm">
                 List your products for sale or share them directly with customers. Set your own prices and profit margins.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">
@@ -323,13 +323,13 @@ function App() {
               </ul>
             </div>
 
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-3">
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-2">
                 3
               </div>
-              <div className="text-4xl mb-2">🚀</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Fulfill</h3>
-              <p className="text-gray-600 mb-3">
+              <div className="text-3xl mb-1">🚀</div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-1">Fulfill</h3>
+              <p className="text-gray-600 mb-2 text-sm">
                 We handle printing, packaging, and shipping. You get paid, and your customers get premium products.
               </p>
               <ul className="text-sm text-gray-500 space-y-1">

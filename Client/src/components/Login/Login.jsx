@@ -99,9 +99,9 @@ const Login = () => {
 
       <div className="max-w-md w-full space-y-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
         <div className="text-center">
-          <div className="flex items-center justify-center mb-4">
+          <div className="flex items-center justify-center gap-3 mb-4">
             <span className="text-4xl">🎨</span>
-            <h1 className="text-3xl font-bold ml-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
           </div>
           <p className="text-gray-600 mt-2">Welcome back to Whitney's Creations</p>
         </div>
