@@ -28,19 +28,32 @@ app.use('/uploads', express.static(require('path').join(__dirname, 'uploads')));
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "http://localhost:5175",
-      "http://localhost:5176",
-      "http://localhost:5177",
-      "https://whitneys-creations-comzejvf4-tabitha-fortners-projects-e06566f7.vercel.app",
-      "https://whitneys-creations-o412nddna-tabitha-fortners-projects-e06566f7.vercel.app",
-      "https://whitneys-creations-n811nju65-tabitha-fortners-projects-e06566f7.vercel.app",
-      "https://whitneys-creations-cau4zvns8-tabitha-fortners-projects-e06566f7.vercel.app",
-      "https://whitneys-creations.vercel.app",
-      "https://whitneyscreations.vercel.app"
-    ],
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:5175",
+        "http://localhost:5176",
+        "http://localhost:5177",
+        "https://whitneys-creations.vercel.app",
+        "https://whitneyscreations.vercel.app"
+      ];
+
+      // Check if origin matches allowed origins
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      // Check if origin matches Vercel deployment pattern
+      if (origin.includes('whitneys-creations') && origin.includes('vercel.app')) {
+        return callback(null, true);
+      }
+
+      callback(new Error('Not allowed by CORS'));
+    },
     credentials: true
   })
 );
