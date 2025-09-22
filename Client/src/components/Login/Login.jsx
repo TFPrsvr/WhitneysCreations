@@ -111,19 +111,19 @@ const Login = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-8 px-4 relative page-container">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-8 px-4 relative page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
       {/* Background decorative elements */}
       <div className="absolute top-10 left-10 text-4xl opacity-20 animate-bounce hidden lg:block" aria-hidden="true">🎨</div>
       <div className="absolute top-20 right-20 text-3xl opacity-20 animate-pulse hidden lg:block" aria-hidden="true">👕</div>
       <div className="absolute bottom-20 left-20 text-3xl opacity-20 animate-bounce delay-1000 hidden lg:block" aria-hidden="true">☕</div>
       <div className="absolute bottom-10 right-10 text-2xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '10s'}} aria-hidden="true">🧢</div>
 
-      <main className="max-w-md w-full space-y-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100" role="main">
+      <main className="max-w-sm w-full space-y-6 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100" role="main" style={{maxWidth: '400px'}}>
         <header className="text-center">
           <div className="text-center mb-4">
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
           </div>
-          <p className="text-gray-600 mt-2">Welcome back to Whitney's Creations</p>
+          <p className="text-gray-800 font-semibold mt-2 drop-shadow-sm">Welcome back to Whitney's Creations</p>
         </header>
 
         {errors.general && (
@@ -134,7 +134,7 @@ const Login = () => {
 
         <form onSubmit={handleSubmit} className="space-y-5" noValidate>
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="username" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
               Username
             </label>
             <input
@@ -161,7 +161,7 @@ const Login = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="password" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
               Password
             </label>
             <div className="relative">
@@ -183,7 +183,7 @@ const Login = () => {
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 transition-colors duration-200"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 transition-colors duration-200 bg-white rounded-r-lg"
                 onClick={() => setShowPassword(!showPassword)}
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
@@ -227,7 +227,7 @@ const Login = () => {
         </form>
 
         <div className="text-center pt-4 border-t border-gray-200">
-          <p className="text-gray-700 text-sm mb-4 font-medium">
+          <p className="text-gray-800 text-base mb-4 font-bold drop-shadow-sm">
             Not a member yet?
           </p>
           <button

@@ -32,7 +32,7 @@ const Contact = () => {
                   <span className="text-xs font-medium text-gray-600 mt-1">Email</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 text-lg mb-2">Email</h3>
+                  <h3 className="font-bold text-gray-900 text-lg mb-2 drop-shadow-sm">Email</h3>
                   <p className="text-gray-700 font-medium">
                     <a href="mailto:support@whitneyscreations.com" className="hover:text-primary-600 transition-colors">
                       support@whitneyscreations.com
@@ -51,7 +51,7 @@ const Contact = () => {
                   <span className="text-xs font-medium text-gray-600 mt-1">Phone</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 text-lg mb-2">Phone</h3>
+                  <h3 className="font-bold text-gray-900 text-lg mb-2 drop-shadow-sm">Phone</h3>
                   <p className="text-gray-700 font-medium">
                     <a href="tel:+15551232738" className="hover:text-primary-600 transition-colors">
                       (555) 123-CRAFT (2738)
@@ -70,10 +70,10 @@ const Contact = () => {
                   <span className="text-xs font-medium text-gray-600 mt-1">Address</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 text-lg mb-2">Address</h3>
+                  <h3 className="font-bold text-gray-900 text-lg mb-2 drop-shadow-sm">Address</h3>
                   <address className="text-gray-700 font-medium not-italic">
-                    123 Creative Avenue<br/>
-                    Design District, NY 10001
+                    3843 Hwy 45<br/>
+                    Kenton, TN 38233
                   </address>
                 </div>
               </div>
@@ -83,10 +83,10 @@ const Contact = () => {
                   <span className="text-xs font-medium text-gray-600 mt-1">Hours</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 text-lg mb-2">Business Hours</h3>
+                  <h3 className="font-bold text-gray-900 text-lg mb-2 drop-shadow-sm">Business Hours</h3>
                   <ul className="text-gray-700 font-medium space-y-1">
-                    <li>Monday - Friday: 9:00 AM - 7:00 PM EST</li>
-                    <li>Saturday: 10:00 AM - 4:00 PM EST</li>
+                    <li>Monday - Friday: 8:00 AM - 6:00 PM CST</li>
+                    <li>Saturday: 9:00 AM - 3:00 PM CST</li>
                     <li>Sunday: Closed</li>
                   </ul>
                 </div>
@@ -104,7 +104,7 @@ const Contact = () => {
             <CardContent>
             <form className="space-y-4" noValidate>
               <div>
-                <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="contact-name" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
                   Full Name
                 </label>
                 <input
@@ -118,7 +118,7 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="contact-email" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
                   Email Address
                 </label>
                 <input
@@ -132,7 +132,7 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="contact-message" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
                   Message
                 </label>
                 <textarea

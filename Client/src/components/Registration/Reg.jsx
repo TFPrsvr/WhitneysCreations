@@ -165,20 +165,20 @@ const Reg = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 flex items-center justify-center py-8 px-4 relative page-container">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 flex items-center justify-center py-8 px-4 relative page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
       {/* Background decorative elements */}
       <div className="absolute top-15 right-15 text-4xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '8s'}} aria-hidden="true">🎨</div>
       <div className="absolute top-32 left-15 text-3xl opacity-20 animate-bounce hidden lg:block" aria-hidden="true">👚</div>
       <div className="absolute bottom-32 right-15 text-3xl opacity-20 animate-pulse hidden lg:block" aria-hidden="true">☕</div>
       <div className="absolute bottom-15 left-15 text-2xl opacity-20 animate-bounce delay-500 hidden lg:block" aria-hidden="true">🧥</div>
       
-      <main className="max-w-md w-full space-y-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100" role="main">
+      <main className="max-w-sm w-full space-y-6 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100" role="main" style={{maxWidth: '450px'}}>
         <header className="text-center">
           <div className="text-center mb-4">
             <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Create Account</h1>
             <span className="text-4xl" aria-hidden="true">👕</span>
           </div>
-          <p className="text-gray-600 mt-2">Join Whitney's Creations today</p>
+          <p className="text-gray-800 font-semibold mt-2 drop-shadow-sm">Join Whitney's Creations today</p>
         </header>
 
         {errors.general && (
@@ -246,7 +246,7 @@ const Reg = () => {
           </div>
 
           <div>
-            <label htmlFor="reg_username" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="reg_username" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
               Username
             </label>
             <input
@@ -326,7 +326,7 @@ const Reg = () => {
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 transition-colors duration-200"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 transition-colors duration-200 bg-white rounded-r-lg"
                 onClick={() => setShowPassword(!showPassword)}
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
               >

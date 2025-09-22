@@ -104,7 +104,7 @@ const CleanNav = () => {
           {/* Logo Header */}
           <Link
             to="/"
-            className="flex items-center space-x-3 text-white hover:text-cyan-400 transition-colors p-4 border-b border-gray-600"
+            className="flex items-center space-x-3 text-white hover:text-cyan-400 transition-colors p-4 border-b border-gray-400"
             aria-label="Whitney's Creations PrintCraft - Go to homepage"
             style={{
               textDecoration: 'none',
@@ -172,7 +172,7 @@ const CleanNav = () => {
           </ul>
 
           {/* Auth Section */}
-          <div className="border-t border-gray-600 mt-2" role="complementary" aria-label="User account section">
+          <div className="border-t border-gray-400 mt-2" role="complementary" aria-label="User account section">
             {isAuthenticated ? (
               <div className="p-3">
                 {/* User Info */}

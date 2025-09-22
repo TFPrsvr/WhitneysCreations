@@ -133,7 +133,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
     { id: "select", name: "Select", icon: "🖱️" },
     { id: "text", name: "Text", icon: "📝" },
     { id: "draw", name: "Draw", icon: "✏️" },
-    { id: "rectangle", name: "Rectangle", icon: "⬛" },
+    { id: "rectangle", name: "Rectangle", icon: "▬" },
     { id: "circle", name: "Circle", icon: "⭕" },
     { id: "line", name: "Line", icon: "📏" },
     { id: "image", name: "Image", icon: "🖼️" },
@@ -1193,7 +1193,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                     style={{ 
                       borderRadius: '20px',
                       fontFamily: 'Comfortaa, cursive',
-                      border: tool === toolItem.id ? '3px solid #f87171' : '2px solid #dc2626',
+                      border: tool === toolItem.id ? '3px solid #ffffff' : '2px solid #ffffff',
                       minHeight: '120px',
                       boxShadow: tool === toolItem.id 
                         ? '0 20px 40px rgba(239, 68, 68, 0.4), 0 0 0 1px rgba(239, 68, 68, 0.1)' 
@@ -1228,7 +1228,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
             <Card className="relative z-10 border-none shadow-none bg-transparent"
                   style={{ fontFamily: 'Comfortaa, cursive' }}>
             <CardHeader>
-              <CardTitle className="text-5xl flex items-center gap-4 font-bold" 
+              <CardTitle className="text-5xl flex items-center justify-center gap-4 font-bold" 
                          style={{ 
                            fontFamily: 'Comfortaa, cursive',
                            color: '#0040ff',
@@ -1361,7 +1361,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                             color: e.target.value,
                           }))
                         }
-                        className="w-full h-8 border-2 border-blue-300 cursor-pointer bg-gradient-to-br from-white via-blue-50 to-indigo-50 transition-all duration-300 hover:shadow-lg hover:border-blue-400 hover:scale-105"
+                        className="w-16 h-6 border-2 border-blue-300 cursor-pointer bg-gradient-to-br from-white via-blue-50 to-indigo-50 transition-all duration-300 hover:shadow-lg hover:border-blue-400 hover:scale-105"
                         style={{ 
                           borderRadius: '10px',
                           boxShadow: '0 4px 15px rgba(59, 130, 246, 0.1)'
@@ -1600,7 +1600,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                             backgroundColor: e.target.value,
                           }))
                         }
-                        className="group relative w-20 h-12 border-2 border-green-300 cursor-pointer bg-gradient-to-br from-white via-green-50 to-emerald-50 transition-all duration-300 hover:shadow-lg hover:border-green-400 hover:scale-105"
+                        className="group relative w-12 h-8 border-2 border-green-300 cursor-pointer bg-gradient-to-br from-white via-green-50 to-emerald-50 transition-all duration-300 hover:shadow-lg hover:border-green-400 hover:scale-105"
                         style={{ 
                           borderRadius: '10px',
                           boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'

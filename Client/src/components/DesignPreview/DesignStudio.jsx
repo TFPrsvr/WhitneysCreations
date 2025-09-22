@@ -436,21 +436,21 @@ const DesignStudio = () => {
             <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center gap-3">
               🛠️ <span>Design Tools</span>
             </h2>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto">
               {tabs.map((tab) => {
                 if (tab.authRequired && !isAuthenticated) return null;
                 return (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`relative px-8 py-4 font-semibold transition-all duration-200 flex items-center space-x-3 rounded-lg min-w-[160px] ${
+                    className={`relative px-6 py-3 font-bold transition-all duration-200 flex items-center justify-center space-x-2 rounded-lg text-center ${
                       activeTab === tab.id
-                        ? "bg-gradient-to-r from-primary-600 to-purple-600 text-white shadow-lg"
-                        : "bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary-100 hover:to-purple-100 text-gray-900 border border-gray-300 hover:border-primary-400 hover:shadow-md"
+                        ? "bg-gradient-to-r from-primary-600 to-purple-600 text-white shadow-lg border-2 border-white"
+                        : "bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary-100 hover:to-purple-100 text-gray-900 border-2 border-white hover:border-primary-400 hover:shadow-md"
                     }`}
                   >
                     <span className="text-xl">{tab.icon}</span>
-                    <span className="text-base font-bold whitespace-nowrap">
+                    <span className="text-sm font-bold whitespace-nowrap text-shadow-lg">
                       {tab.name}
                     </span>
                     {tab.id === "saved" && designs.length > 0 && (

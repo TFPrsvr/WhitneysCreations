@@ -160,25 +160,25 @@ function App() {
       </section>
 
         {/* Features Section */}
-        <section className="py-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative" aria-labelledby="features-title">
+        <section className="py-8 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative" aria-labelledby="features-title">
         <div className="absolute top-10 right-10 text-4xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
         <div className="absolute top-5 left-5 text-4xl opacity-40 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>👕</div>
         <div className="w-full px-4 sm:px-4 lg:px-4">
-          <div className="text-center mb-8">
-            <h2 id="features-title" className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-6">
+            <h2 id="features-title" className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
               Everything You Need to Succeed
             </h2>
-            <p className="text-xl text-gray-600 max-w-xl mx-auto px-4">
+            <p className="text-lg text-gray-800 font-semibold max-w-xl mx-auto px-4 drop-shadow-sm">
               From design to delivery, we've got you covered with professional tools and services.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto px-4">
             {features.map((feature, index) => (
-              <div key={index} className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
-                <div className="text-4xl mb-2">{feature.icon}</div>
-                <h3 className="text-lg font-bold text-gray-900 mb-1 break-words">{feature.title}</h3>
-                <p className="text-gray-600 leading-snug text-sm break-words mb-1">{feature.description}</p>
+              <div key={index} className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" style={{height: '160px'}}>
+                <div className="text-3xl mb-2">{feature.icon}</div>
+                <h3 className="text-base font-bold text-gray-900 mb-1 break-words">{feature.title}</h3>
+                <p className="text-gray-800 font-medium leading-snug text-sm break-words mb-1">{feature.description}</p>
                 <div className="text-xs text-gray-500 space-y-0.5 mt-1">
                   {feature.title === 'Easy Design Tools' && (
                     <>
@@ -295,27 +295,27 @@ function App() {
       </section>
 
       {/* How It Works */}
-      <section className="py-8 bg-white relative">
+      <section className="py-6 bg-white relative">
         <div className="absolute top-5 left-8 text-2xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
         <div className="absolute top-5 right-8 text-2xl opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '0.8s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-0">
+        <div className="max-w-6xl mx-auto px-4 sm:px-4 lg:px-4">
+          <div className="text-center mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
               How It Works
             </h2>
-            <p className="text-xl text-gray-600 max-w-xl mx-auto px-4">
+            <p className="text-lg text-gray-800 font-semibold max-w-xl mx-auto px-4 drop-shadow-sm">
               Get started in just three simple steps
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4 mt-2">
-            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-14 h-14 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-2">
+          <div className="grid md:grid-cols-3 gap-4 mt-4">
+            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '180px'}}>
+              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 1
               </div>
-              <div className="text-4xl mb-1">🎨</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">Design</h3>
-              <p className="text-gray-600 mb-1 text-sm">
+              <div className="text-3xl mb-1">🎨</div>
+              <h3 className="text-base font-semibold text-gray-900 mb-2">Design</h3>
+              <p className="text-gray-800 font-medium mb-1 text-sm leading-relaxed">
                 Use our intuitive design tools to create amazing products. Upload your own images or use our templates.
               </p>
               <ul className="text-sm text-gray-500 space-y-0 mt-1">
@@ -325,13 +325,13 @@ function App() {
               </ul>
             </div>
 
-            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-14 h-14 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-2">
+            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '180px'}}>
+              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 2
               </div>
-              <div className="text-4xl mb-1">💰</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">Sell</h3>
-              <p className="text-gray-600 mb-1 text-sm">
+              <div className="text-3xl mb-1">💰</div>
+              <h3 className="text-base font-semibold text-gray-900 mb-2">Sell</h3>
+              <p className="text-gray-800 font-medium mb-1 text-sm leading-relaxed">
                 List your products for sale or share them directly with customers. Set your own prices and profit margins.
               </p>
               <ul className="text-sm text-gray-500 space-y-0 mt-1">
@@ -341,13 +341,13 @@ function App() {
               </ul>
             </div>
 
-            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-              <div className="w-14 h-14 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-2">
+            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '180px'}}>
+              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 3
               </div>
-              <div className="text-4xl mb-1">🚀</div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">Fulfill</h3>
-              <p className="text-gray-600 mb-1 text-sm">
+              <div className="text-3xl mb-1">🚀</div>
+              <h3 className="text-base font-semibold text-gray-900 mb-2">Fulfill</h3>
+              <p className="text-gray-800 font-medium mb-1 text-sm leading-relaxed">
                 We handle printing, packaging, and shipping. You get paid, and your customers get premium products.
               </p>
               <ul className="text-sm text-gray-500 space-y-0 mt-1">

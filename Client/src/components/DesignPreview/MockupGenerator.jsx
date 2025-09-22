@@ -1280,10 +1280,10 @@ const MockupGenerator = ({ design, onExport }) => {
           </div>
 
           {!isAuthenticated && (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            <div className="bg-yellow-100 border-2 border-yellow-400 rounded-lg p-4 shadow-lg">
               <div className="text-yellow-900">
-                <p className="font-bold mb-1" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>🔒 Sign in to unlock full features</p>
-                <p className="text-sm font-medium" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>Export high-res mockups, access premium templates, and save presets</p>
+                <p className="font-bold mb-2 text-lg" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', color: '#7c2d12' }}>🔒 Sign in to unlock full features</p>
+                <p className="text-base font-bold leading-relaxed" style={{ textShadow: '1px 1px 3px rgba(0, 0, 0, 0.4)', color: '#92400e' }}>Export high-res mockups, access premium templates, and save presets</p>
               </div>
             </div>
           )}

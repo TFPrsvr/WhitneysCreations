@@ -198,10 +198,14 @@ const About = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <div key={index} className="bg-gray-50 rounded-xl p-6 text-center hover:bg-white hover:shadow-lg transition-all duration-300">
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary-100 to-purple-100 flex items-center justify-center">
-                  <div className="text-4xl">{member.emoji}</div>
+                <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden shadow-lg">
+                  <img
+                    src={member.avatar}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-2 drop-shadow-sm">{member.name}</h3>
                 <p className="text-primary-600 font-medium mb-3">{member.role}</p>
                 <div className="text-sm text-gray-500 mb-3">
                   <p className="font-medium">{member.experience}</p>
@@ -244,10 +248,10 @@ const About = () => {
                 </div>
 
                 <div className={`flex ${index % 2 === 0 ? 'justify-end pr-8 md:pr-16' : 'justify-start pl-8 md:pl-16'}`}>
-                  <div className={`bg-white p-3 rounded-lg shadow-sm max-w-md w-full ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>
+                  <div className={`bg-white p-3 rounded-lg shadow-lg max-w-md w-full ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`} style={{marginTop: '0px'}}>
                     <div className="text-primary-600 font-bold text-lg mb-1">{milestone.year}</div>
-                    <h4 className="text-gray-900 font-semibold text-sm mb-1 leading-tight">{milestone.event}</h4>
-                    <p className="text-gray-600 text-xs leading-tight mb-0">{milestone.details}</p>
+                    <h4 className="text-gray-900 font-bold text-base mb-2 leading-tight">{milestone.event}</h4>
+                    <p className="text-gray-800 font-medium text-sm leading-relaxed mb-0">{milestone.details}</p>
                   </div>
                 </div>
               </div>
@@ -280,11 +284,7 @@ const About = () => {
             </Link>
             <Link
               to="/contact"
-              className="bg-gradient-to-r from-emerald-500 to-green-600 text-white border-2 border-emerald-500 px-8 py-4 rounded-lg font-semibold text-lg hover:from-emerald-600 hover:to-green-700 hover:border-emerald-600 transition-all duration-200 shadow-lg"
-              style={{
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
-                WebkitTextStroke: '1px rgba(0, 0, 0, 0.3)'
-              }}
+              className="bg-gradient-to-r from-emerald-500 to-green-600 text-yellow-200 border-2 border-emerald-500 px-8 py-4 rounded-lg font-bold text-lg hover:from-emerald-600 hover:to-green-700 hover:border-emerald-600 transition-all duration-200 shadow-lg"
             >
               Get in Touch
             </Link>
