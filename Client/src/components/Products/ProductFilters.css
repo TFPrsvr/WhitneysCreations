@@ -62,15 +62,20 @@
   display: flex;
   gap: 8px;
   width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .search-input {
   flex: 1;
+  min-width: 0;
   padding: 10px 12px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   font-size: 0.9rem;
   transition: border-color 0.2s;
+  box-sizing: border-box;
 }
 
 .search-input:focus {
@@ -80,21 +85,23 @@
 }
 
 .search-btn {
-  padding: 10px 16px;
+  padding: 10px 12px;
   background: #3b82f6;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 1rem;
-  min-width: 50px;
+  min-width: 44px;
+  max-width: 44px;
+  width: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 44px;
   flex-shrink: 0;
-  justify-content: center;
   transition: background-color 0.2s;
+  box-sizing: border-box;
 }
 
 .search-btn:hover {

@@ -1,7 +1,11 @@
 .product-catalog {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   width: 100%;
-  max-width: 100%;
+  max-width: calc(100vw - 11rem);
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .catalog-header {
@@ -30,16 +34,25 @@
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 30px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .filters-sidebar {
   position: sticky;
   top: 20px;
   align-self: start;
+  max-width: 280px;
+  min-width: 280px;
+  box-sizing: border-box;
 }
 
 .products-main {
   min-width: 0;
+  max-width: calc(100vw - 11rem - 280px - 30px);
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .products-header {

@@ -104,7 +104,24 @@ body::-webkit-scrollbar {
   max-width: calc(100vw - 11rem);
   padding: 0 1rem;
   box-sizing: border-box;
-  width: auto;
+  width: calc(100vw - 11rem);
+  overflow-x: hidden;
+}
+
+/* Global Input/Form Element Constraints */
+input, textarea, select, button {
+  max-width: 20vw; /* Never exceed 20% of viewport */
+  box-sizing: border-box;
+}
+
+/* Exception for search inputs and form containers */
+.search-input, .form-container input, .form-container textarea, .form-container select {
+  max-width: 100%; /* Allow full width within containers */
+}
+
+/* Full-width exceptions for specific use cases */
+.w-full, [class*="w-full"] {
+  max-width: 100% !important;
 }
 
 /* Mobile responsive layout */
@@ -112,7 +129,13 @@ body::-webkit-scrollbar {
   .page-container {
     margin-left: 0;
     max-width: 100vw;
+    width: 100vw;
     padding: 15px;
+  }
+
+  /* More flexible constraints on mobile */
+  input, textarea, select, button {
+    max-width: 80vw;
   }
 
   button, input[type="button"], input[type="submit"] {
@@ -189,20 +212,24 @@ h1 {
 }
 
 button {
-  border-radius: 12%; /* Updated to CLAUDE.md requirements */
+  border-radius: 12px; /* Updated to CLAUDE.md requirements */
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background: linear-gradient(to right, #1a1a1a, #2a2a2a); /* Always use gradients */
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.2s ease;
   max-width: 16vw; /* Never take over 16% of viewport */
   min-height: 35px; /* Minimum touch target */
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 button:hover {
   border-color: #646cff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 button:focus,
 button:focus-visible {
