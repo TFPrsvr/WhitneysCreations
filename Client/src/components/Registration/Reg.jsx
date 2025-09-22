@@ -120,7 +120,7 @@ const Reg = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 flex items-center justify-center py-8 px-4 relative" style={{ marginLeft: '16rem', maxWidth: 'calc(100vw - 16rem)', width: 'calc(100vw - 16rem)' }}>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 flex items-center justify-center py-8 px-4 relative page-container">
       {/* Background decorative elements */}
       <div className="absolute top-15 right-15 text-4xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '8s'}}>🎨</div>
       <div className="absolute top-32 left-15 text-3xl opacity-20 animate-bounce hidden lg:block">👚</div>

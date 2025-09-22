@@ -90,7 +90,7 @@ const Login = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-8 px-4 relative" style={{ marginLeft: '16rem', maxWidth: 'calc(100vw - 16rem)', width: 'calc(100vw - 16rem)' }}>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-8 px-4 relative page-container">
       {/* Background decorative elements */}
       <div className="absolute top-10 left-10 text-4xl opacity-20 animate-bounce hidden lg:block">🎨</div>
       <div className="absolute top-20 right-20 text-3xl opacity-20 animate-pulse hidden lg:block">👕</div>

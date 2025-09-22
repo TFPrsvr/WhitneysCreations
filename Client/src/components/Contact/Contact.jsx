@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import './Contact.css'
 import { Card, CardHeader, CardTitle, CardContent } from '@/lib/ui/card';
-import { Button } from '@/lib/ui/button';
 
 
 
@@ -93,13 +92,12 @@ const Contact = () => {
                   required
                 />
               </div>
-              <Button
+              <button
                 type="submit"
-                className="w-full"
-                size="lg"
+                className="w-full bg-gradient-to-r from-primary-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
               >
                 Send Message
-              </Button>
+              </button>
             </form>
             </CardContent>
           </Card>

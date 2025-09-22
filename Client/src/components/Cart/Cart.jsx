@@ -18,7 +18,7 @@ const Cart = () => {
   };
 
 return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gray-50 pt-20 page-container">
       <div className="max-w-4xl mx-auto px-4 sm:px-4 lg:px-4 py-12">
         <h1 className="header-main text-center mb-8">Your Shopping Cart</h1>
         

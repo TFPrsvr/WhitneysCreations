@@ -137,7 +137,7 @@ const Pricing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 w-full max-w-7xl mx-auto">
+    <div className="min-h-screen bg-gray-50 w-full max-w-7xl mx-auto page-container">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary-600 to-purple-600 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4 text-center">

@@ -86,29 +86,14 @@ body::-webkit-scrollbar {
   }
 }
 
-/* Sidebar Scrollbar Styling */
+/* Sidebar Scrollbar Styling - Hidden */
 .scrollbar-sidebar {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .scrollbar-sidebar::-webkit-scrollbar {
-  width: 8px;
-}
-
-.scrollbar-sidebar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-}
-
-.scrollbar-sidebar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  transition: background 0.3s ease;
-}
-
-.scrollbar-sidebar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  display: none;
 }
 
 /* Page Layout - Universal sidebar spacing */
