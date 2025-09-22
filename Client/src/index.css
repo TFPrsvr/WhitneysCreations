@@ -113,8 +113,8 @@ body::-webkit-scrollbar {
 
 /* Page Layout - Universal sidebar spacing */
 .page-container {
-  margin-left: 12rem;
-  max-width: calc(100vw - 12rem);
+  margin-left: 10rem;
+  max-width: calc(100vw - 10rem);
   padding: 20px;
 }
 

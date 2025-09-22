@@ -143,8 +143,8 @@ function App() {
         </div>
 
         {/* Floating Elements */}
-        <div className="absolute top-20 left-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}}>🎨</div>
-        <div className="absolute top-20 right-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}}>☕</div>
+        <div className="absolute top-5 left-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}}>🎨</div>
+        <div className="absolute top-5 right-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}}>☕</div>
       </section>
 
       {/* Features Section */}
@@ -166,7 +166,7 @@ function App() {
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
                 <div className="text-5xl mb-2">{feature.icon}</div>
                 <h3 className="text-lg font-bold text-gray-900 mb-0 break-words">{feature.title}</h3>
-                <p className="text-gray-600 leading-snug text-sm break-words mb-0">{feature.description}</p>
+                <p className="text-gray-600 leading-snug text-sm break-words mb-1">{feature.description}</p>
                 <div className="text-xs text-gray-500 space-y-0.5">
                   {feature.title === 'Easy Design Tools' && (
                     <>
@@ -205,8 +205,8 @@ function App() {
 
       {/* Product Showcase */}
       <section className="py-8 bg-gray-50 relative">
-        <div className="absolute top-5 left-5 text-2xl opacity-50 animate-bounce hidden lg:block" style={{animationDelay: '1s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
-        <div className="absolute top-5 right-5 text-2xl opacity-50 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🧢</div>
+        <div className="absolute top-5 left-5 text-2xl opacity-50 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🧢</div>
+        <div className="absolute top-5 right-5 text-2xl opacity-50 animate-bounce hidden lg:block" style={{animationDelay: '1s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
         <div className="w-full px-4 sm:px-4 lg:px-4">
           <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -241,9 +241,11 @@ function App() {
       </section>
 
       {/* Challenge Our Creators Section */}
-      <section className="py-12 bg-gradient-to-br from-purple-600 to-pink-600 text-white">
+      <section className="py-12 bg-gradient-to-br from-purple-600 to-pink-600 text-white relative">
+        <div className="absolute top-8 left-8 text-3xl opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '1.5s', filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>💡</div>
+        <div className="absolute top-8 right-8 text-3xl opacity-40 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>✨</div>
         <div className="w-full max-w-none text-center px-8 sm:px-12 lg:px-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-5xl md:text-7xl font-bold mb-4">
             🎨✨ Challenge Our Creators!! ✨🎨
           </h2>
           <div className="text-2xl md:text-3xl mb-6 space-y-6">
@@ -283,11 +285,11 @@ function App() {
 
       {/* How It Works */}
       <section className="py-8 bg-white relative">
-        <div className="absolute top-5 left-8 text-2xl opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '0.8s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
-        <div className="absolute top-5 right-8 text-2xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
+        <div className="absolute top-5 left-8 text-2xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
+        <div className="absolute top-5 right-8 text-2xl opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '0.8s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
               How It Works
             </h2>
             <p className="text-xl text-gray-600 max-w-xl mx-auto px-4">
@@ -295,7 +297,7 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-4">
+          <div className="grid md:grid-cols-3 gap-6 mt-2">
             <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
                 1
@@ -350,8 +352,8 @@ function App() {
 
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-r from-primary-600 to-purple-600 text-white relative">
-        <div className="absolute top-8 left-8 text-3xl opacity-30 animate-bounce hidden lg:block" style={{animationDelay: '2s', filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9))'}}>☕</div>
-        <div className="absolute bottom-8 right-8 text-3xl opacity-30 animate-spin hidden lg:block" style={{animationDuration: '6s', filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>🎨</div>
+        <div className="absolute top-8 left-8 text-3xl opacity-30 animate-spin hidden lg:block" style={{animationDuration: '6s', filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>🎨</div>
+        <div className="absolute top-8 right-8 text-3xl opacity-30 animate-bounce hidden lg:block" style={{animationDelay: '2s', filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9))'}}>☕</div>
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-4 lg:px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)', WebkitTextStroke: '1px rgba(0,0,0,0.3)'}}>
             Ready to Start Your Print-on-Demand Business?
