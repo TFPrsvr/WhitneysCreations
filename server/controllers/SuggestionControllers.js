@@ -194,31 +194,51 @@ module.exports = {
 
  
  getSuggestions: (req, res) => {
-  const token = req.headers.authorization && req.headers.authorization.split(" ")[1]; 
+  const token = req.headers.authorization && req.headers.authorization.split(" ")[1];
   console.log('Incoming request headers:', req.headers)
   console.log('Token from headers for backend:', token);
-  if (!token) {
-    return res.status(401).json({ message: 'No token provided, authorization denied' });
-}
-console.log('Authorization header:', req.headers.authorization);
 
-
-  jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
-    if (err) return res.status(403).json({ message: 'Unauthorized' })
+  // Allow public access - token is optional
+  if (token) {
+    // If token provided, verify it to get user-specific suggestions
+    jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+      if (err) {
+        console.log('Invalid token, serving all public suggestions')
+        return fetchAllSuggestions();
+      }
       console.log('decoded token:', decoded)
-    const userId = decoded._id
-    console.log('userId:', userId)
-    
-      Suggestion.find({user: userId})  
+      const userId = decoded._id
+      console.log('userId:', userId)
+      return fetchUserSuggestions(userId);
+    });
+  } else {
+    // No token provided, serve all public suggestions
+    return fetchAllSuggestions();
+  }
+
+  function fetchAllSuggestions() {
+    Suggestion.find({})
       .then(suggestions => {
-          console.log('Fetched suggestions:', suggestions);
+          console.log('Fetched all suggestions:', suggestions);
+          res.json({suggestions, token: null});
+      })
+      .catch(err => {
+          console.log('Error fetching all suggestions:', err.message);
+          res.status(500).json({ message: 'Error fetching suggestions', error: err.message });
+      });
+  }
+
+  function fetchUserSuggestions(userId) {
+    Suggestion.find({user: userId})
+      .then(suggestions => {
+          console.log('Fetched user suggestions:', suggestions);
           res.json({suggestions, token});
       })
       .catch(err => {
-          console.log('Error fetching suggestions:', err.message);
-          res.status(500).json({ message: 'Error fetching suggestions', error: err.message });
+          console.log('Error fetching user suggestions:', err.message);
+          res.status(500).json({ message: 'Error fetching user suggestions', error: err.message });
       });
- })
+  }
 }
 
 }

@@ -25,7 +25,7 @@ app.get('/api/testing', UserController.getTest)
 app.post('/api/create/suggestion', Auth2, SuggestionController.createSuggestion)
 app.put(`/api/update/suggestions/:id`, Auth2, SuggestionController.updateSuggestion)
 app.delete(`/api/delete/suggestions/:id`, Auth2, SuggestionController.deleteSuggestion)
-app.get('/api/suggestions', Auth2, SuggestionController.getSuggestions)
+app.get('/api/suggestions', SuggestionController.getSuggestions)
 
 
 // app.get('/api/testing', (req, res) => {
