@@ -1,6 +1,7 @@
 const express = require("express");
-const app = express(); 
+const app = express();
 
+// Force Railway redeploy for suggestions auth fix
 const cors = require("cors"); 
 const mongoose = require("mongoose");
 
