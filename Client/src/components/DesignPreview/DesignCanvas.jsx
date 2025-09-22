@@ -1202,7 +1202,11 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute -inset-1 bg-gradient-to-r from-red-400 via-rose-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-30 blur transition-all duration-500"></div>
-                    <div className="text-3xl relative z-10 transform group-hover:scale-110 transition-transform duration-300">{toolItem.icon}</div>
+                    <div className={`text-3xl relative z-10 transform group-hover:scale-110 transition-transform duration-300 ${
+                      toolItem.id === 'rectangle' ? 'text-blue-600' : ''
+                    }`}>
+                      {toolItem.icon}
+                    </div>
                     <div className="text-lg font-bold relative z-10 text-center leading-tight">{toolItem.name}</div>
                   </button>
                 ))}
@@ -1502,8 +1506,8 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
             <Card className="relative z-10 border-none shadow-none bg-transparent"
                   style={{ fontFamily: 'Comfortaa, cursive' }}>
             <CardHeader>
-              <CardTitle className="text-4xl flex items-center gap-3 font-bold" 
-                         style={{ 
+              <CardTitle className="text-4xl flex items-center justify-center gap-3 font-bold"
+                         style={{
                            fontFamily: 'Comfortaa, cursive',
                            color: '#ff6600',
                            textShadow: '0 4px 8px rgba(0, 0, 0, 0.9), -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff, 3px 3px 0 #fff, 0 0 15px rgba(255, 102, 0, 0.5)',
@@ -1590,7 +1594,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                            }}>
                       <span className="text-xl">🌈</span> Background
                     </label>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center items-center">
                       <input
                         type="color"
                         value={canvasSettings.backgroundColor}
@@ -1600,7 +1604,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                             backgroundColor: e.target.value,
                           }))
                         }
-                        className="group relative w-12 h-8 border-2 border-green-300 cursor-pointer bg-gradient-to-br from-white via-green-50 to-emerald-50 transition-all duration-300 hover:shadow-lg hover:border-green-400 hover:scale-105"
+                        className="group relative w-16 h-12 border-2 border-green-300 cursor-pointer bg-gradient-to-br from-white via-green-50 to-emerald-50 transition-all duration-300 hover:shadow-lg hover:border-green-400 hover:scale-105"
                         style={{ 
                           borderRadius: '10px',
                           boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'
