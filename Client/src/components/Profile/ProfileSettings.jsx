@@ -111,9 +111,9 @@ const ProfileSettings = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 page-container">
+    <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
       <div className="max-w-4xl mx-auto p-6">
-      <h1 className="header-main text-center">Profile Settings</h1>
+      <h1 className="text-3xl font-bold text-gray-900 text-center mb-8 drop-shadow-sm">Profile Settings</h1>
 
       {message && (
         <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-green-700 mb-6">
@@ -130,58 +130,58 @@ const ProfileSettings = () => {
       <div className="grid md:grid-cols-2 gap-8">
         {/* Profile Information */}
         <div className="bg-white rounded-xl shadow-sm p-6">
-          <h2 className="header-primary">Profile Information</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-6 drop-shadow-sm">Profile Information</h2>
           
           <form onSubmit={handleProfileUpdate} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">First Name</label>
                 <input
                   type="text"
                   name="first"
                   value={formData.first}
                   onChange={handleInputChange}
-                  className="input-primary"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900" style={{color: '#1f2937'}}
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Last Name</label>
                 <input
                   type="text"
                   name="last"
                   value={formData.last}
                   onChange={handleInputChange}
-                  className="input-primary"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900" style={{color: '#1f2937'}}
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Email</label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="input-primary"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900" style={{color: '#1f2937'}}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
+              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Username</label>
               <input
                 type="text"
                 name="username"
                 value={formData.username}
                 onChange={handleInputChange}
-                className="input-primary"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900" style={{color: '#1f2937'}}
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="btn-action-blue w-full py-3"
+              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
             >
               {loading ? 'Updating...' : 'Update Profile'}
             </button>
@@ -190,46 +190,46 @@ const ProfileSettings = () => {
 
         {/* Password Change */}
         <div className="bg-white rounded-xl shadow-sm p-6">
-          <h2 className="header-primary">Change Password</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-6 drop-shadow-sm">Change Password</h2>
           
           <form onSubmit={handlePasswordChange} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
+              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Current Password</label>
               <input
                 type="password"
                 name="currentPassword"
                 value={formData.currentPassword}
                 onChange={handleInputChange}
-                className="input-primary"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900" style={{color: '#1f2937'}}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">New Password</label>
               <input
                 type="password"
                 name="newPassword"
                 value={formData.newPassword}
                 onChange={handleInputChange}
-                className="input-primary"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900" style={{color: '#1f2937'}}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
+              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Confirm New Password</label>
               <input
                 type="password"
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
-                className="input-primary"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-900" style={{color: '#1f2937'}}
               />
             </div>
 
             <button
               type="submit"
               disabled={loading || !formData.currentPassword || !formData.newPassword || !formData.confirmPassword}
-              className="btn-action-red w-full py-3"
+              className="w-full bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 transition-colors font-semibold"
             >
               {loading ? 'Changing...' : 'Change Password'}
             </button>
@@ -239,15 +239,15 @@ const ProfileSettings = () => {
 
       {/* Account Information */}
       <div className="bg-white rounded-xl shadow-sm p-6 mt-8">
-        <h2 className="header-primary">Account Information</h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-6 drop-shadow-sm">Account Information</h2>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Account Role</label>
+            <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Account Role</label>
             <p className="text-lg font-semibold text-primary-600 capitalize">{user?.role || 'User'}</p>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Member Since</label>
-            <p className="text-lg text-gray-900">
+            <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Member Since</label>
+            <p className="text-lg font-semibold text-gray-900 drop-shadow-sm">
               {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}
             </p>
           </div>

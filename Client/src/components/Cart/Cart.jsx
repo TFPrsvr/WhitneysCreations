@@ -18,24 +18,18 @@ const Cart = () => {
   };
 
 return (
-    <div className="min-h-screen bg-gray-50 pt-20 page-container">
+    <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
       <div className="max-w-4xl mx-auto px-4 sm:px-4 lg:px-4 py-12">
-        <h1 className="header-main text-center mb-8">Your Shopping Cart</h1>
+        <h1 className="text-3xl font-bold text-gray-900 text-center mb-8 drop-shadow-sm">Your Shopping Cart</h1>
         
         {cartItems.length === 0 ? (
           <div className="text-center py-16">
             <div className="text-6xl mb-4">🛒</div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Your cart is empty</h3>
-            <p className="text-gray-600 mb-6">Add some awesome designs to get started!</p>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2 drop-shadow-sm">Your cart is empty</h3>
+            <p className="text-gray-900 font-semibold text-lg mb-6 drop-shadow-sm">Add some awesome designs to get started!</p>
             <Link 
               to="/products"
-              className="inline-block px-12 py-6 bg-green-500 border-2 border-green-600 font-bold hover:bg-green-600 hover:border-green-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              style={{
-                borderRadius: '10%',
-                color: '#ffffff',
-                textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
-                fontSize: '24px'
-              }}
+              className="btn-gradient-primary inline-block px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-1"
             >
               🛍️ Continue Shopping
             </Link>
@@ -44,7 +38,7 @@ return (
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="header-primary mb-6">Cart Items</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-6 drop-shadow-sm">Cart Items</h2>
                 <div className="space-y-4">
                   {cartItems.map((item, index) => (
                     <div key={index} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
@@ -72,7 +66,7 @@ return (
             
             <div className="lg:col-span-1">
               <div className="bg-white rounded-xl shadow-sm p-6">
-                <h2 className="header-primary mb-6">Order Summary</h2>
+                <h2 className="text-xl font-bold text-gray-900 mb-6 drop-shadow-sm">Order Summary</h2>
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Subtotal</span>

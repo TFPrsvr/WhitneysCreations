@@ -68,17 +68,19 @@ const ProjectDashboard = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="max-w-7xl mx-auto p-6">
+      <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
+        <div className="max-w-6xl mx-auto p-6">
         <div className="text-center py-16 bg-gray-50 rounded-xl mt-8">
           <h2 className="text-2xl font-semibold text-gray-700 mb-4">Please log in to access your projects</h2>
           <p className="text-gray-600 text-lg">Sign in to create, save, and manage your design projects.</p>
+        </div>
         </div>
       </div>
     );
   }
 
   return (
-    <>
+    <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
       <div className="max-w-7xl mx-auto p-6 mt-4">
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
@@ -105,33 +107,33 @@ const ProjectDashboard = () => {
           {/* Search and Filters Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
             <div className="lg:col-span-1">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Search Projects</label>
+              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Search Projects</label>
               <ProjectSearch />
             </div>
 
             <div className="lg:col-span-1">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Filter Options</label>
+              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Filter Options</label>
               <ProjectFilters
                 filters={filters}
                 onFilterChange={handleFilterChange} />
             </div>
 
             <div className="lg:col-span-1">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Sort & Order</label>
+              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Sort & Order</label>
               <div className="flex flex-col space-y-3">
                 <select
                   value={sortBy}
                   onChange={(e) => handleSortChange(e.target.value)}
-                  className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-white text-gray-700 font-medium hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                  className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-white text-gray-900 font-semibold hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all" style={{color: '#1f2937'}}
                 >
-                  <option value="modified">Last Modified</option>
-                  <option value="created">Date Created</option>
-                  <option value="name">Name</option>
-                  <option value="opened">Last Opened</option>
+                  <option value="modified" className="text-gray-900 font-semibold">Last Modified</option>
+                  <option value="created" className="text-gray-900 font-semibold">Date Created</option>
+                  <option value="name" className="text-gray-900 font-semibold">Name</option>
+                  <option value="opened" className="text-gray-900 font-semibold">Last Opened</option>
                 </select>
 
                 <button
-                  className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-gradient-to-r from-gray-50 to-gray-100 hover:from-blue-50 hover:to-blue-100 hover:border-blue-400 text-gray-700 font-semibold flex items-center justify-center gap-2 transition-all duration-200"
+                  className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-gradient-to-r from-gray-50 to-gray-100 hover:from-blue-50 hover:to-blue-100 hover:border-blue-400 text-gray-900 font-bold flex items-center justify-center gap-2 transition-all duration-200"
                   onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
                   title={`Sort ${sortOrder === 'asc' ? 'Descending' : 'Ascending'}`}
                 >
@@ -177,8 +179,8 @@ const ProjectDashboard = () => {
         ) : projects.length === 0 ? (
           <div className="text-center py-16 bg-white rounded-xl shadow-sm">
             <div className="text-6xl mb-4">📁</div>
-            <h3 className="text-2xl font-semibold text-gray-700 mb-2">No projects yet</h3>
-            <p className="text-gray-600 text-lg mb-8">Create your first design project to get started!</p>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2 drop-shadow-sm">No projects yet</h3>
+            <p className="text-gray-900 font-semibold text-lg mb-8 drop-shadow-sm">Create your first design project to get started!</p>
             <button
               className="bg-gradient-to-r from-primary-500 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               onClick={handleCreateProject}
@@ -210,7 +212,8 @@ const ProjectDashboard = () => {
           onProjectCreated={handleProjectCreated}
         />
       )}
-    </>
+      </div>
+    </div>
   );
 };
 

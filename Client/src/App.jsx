@@ -261,7 +261,7 @@ function App() {
             🎨✨ Challenge Our Creators!! ✨🎨
           </h2>
           <div className="text-2xl md:text-3xl mb-6 space-y-6">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 text-2xl md:text-3xl font-bold w-full max-w-5xl mx-auto">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 text-2xl md:text-3xl font-bold w-full max-w-5xl mx-auto mt-4">
               <div className="text-center flex-1">
                 <div className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
                   <div className="text-2xl md:text-3xl">See If Our</div>
@@ -295,12 +295,12 @@ function App() {
       </section>
 
       {/* How It Works */}
-      <section className="py-6 bg-white relative">
+      <section className="py-4 bg-white relative">
         <div className="absolute top-5 left-8 text-2xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
         <div className="absolute top-5 right-8 text-2xl opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '0.8s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
         <div className="max-w-6xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+          <div className="text-center mb-2">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
               How It Works
             </h2>
             <p className="text-lg text-gray-800 font-semibold max-w-xl mx-auto px-4 drop-shadow-sm">
@@ -308,8 +308,8 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4 mt-4">
-            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '180px'}}>
+          <div className="grid md:grid-cols-3 gap-4 mt-2">
+            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '150px'}}>
               <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 1
               </div>
@@ -325,7 +325,7 @@ function App() {
               </ul>
             </div>
 
-            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '180px'}}>
+            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '150px'}}>
               <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 2
               </div>
@@ -341,7 +341,7 @@ function App() {
               </ul>
             </div>
 
-            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '180px'}}>
+            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '150px'}}>
               <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 3
               </div>

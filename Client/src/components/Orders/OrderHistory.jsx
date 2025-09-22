@@ -139,7 +139,7 @@ const OrderHistory = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gray-50 pt-20 page-container">
+      <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
         <div className="max-w-6xl mx-auto p-6">
           <div className="text-center py-16 bg-white rounded-xl">
             <h2 className="text-2xl font-semibold text-gray-700 mb-4">Please log in to view your orders</h2>
@@ -151,7 +151,7 @@ const OrderHistory = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 pt-20 page-container">
+      <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
         <div className="max-w-6xl mx-auto p-6">
           <div className="flex flex-col items-center justify-center py-16">
             <div className="w-10 h-10 border-4 border-gray-300 border-t-primary-500 rounded-full animate-spin mb-4"></div>
@@ -163,7 +163,7 @@ const OrderHistory = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 page-container">
+    <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
       <div className="max-w-6xl mx-auto p-6">
       <h1 className="text-4xl font-bold text-gray-900 mb-8">Order History</h1>
 
@@ -195,13 +195,13 @@ const OrderHistory = () => {
                     <h3 className="text-xl font-semibold text-gray-900">
                       Order #{order.orderNumber || order._id?.slice(-8)}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-900 font-semibold">
                       Placed on {new Date(order.createdAt).toLocaleDateString()}
                     </p>
                   </div>
                   <div className="text-right">
                     <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(order.status)}`}>
-                      {order.status || 'Pending'}
+                      {order.status ? order.status.charAt(0).toUpperCase() + order.status.slice(1) : 'Pending'}
                     </span>
                     <p className="text-lg font-semibold text-gray-900 mt-1">
                       ${order.total?.toFixed(2) || '0.00'}
@@ -221,10 +221,10 @@ const OrderHistory = () => {
                             </div>
                             <div>
                               <p className="font-medium text-gray-900">{item.name || 'Custom Design'}</p>
-                              <p className="text-sm text-gray-600">
+                              <p className="text-sm font-semibold text-gray-900">
                                 {item.variant && `${item.variant.size}, ${item.variant.color}`}
                               </p>
-                              <p className="text-sm text-gray-600">Qty: {item.quantity || 1}</p>
+                              <p className="text-sm font-semibold text-gray-900">Qty: {item.quantity || 1}</p>
                             </div>
                           </div>
                           <p className="font-semibold text-gray-900">
@@ -238,8 +238,8 @@ const OrderHistory = () => {
 
                 {order.shippingAddress && (
                   <div className="border-t border-gray-100 pt-4 mt-4">
-                    <h4 className="font-medium text-gray-900 mb-2">Shipping Address</h4>
-                    <p className="text-gray-600">
+                    <h4 className="font-bold text-gray-900 mb-2 drop-shadow-sm">Shipping Address</h4>
+                    <p className="text-gray-900 font-semibold">
                       {order.shippingAddress.street}, {order.shippingAddress.city}, {order.shippingAddress.state} {order.shippingAddress.zip}
                     </p>
                   </div>
@@ -247,8 +247,8 @@ const OrderHistory = () => {
 
                 {order.trackingNumber && (
                   <div className="border-t border-gray-100 pt-4 mt-4">
-                    <h4 className="font-medium text-gray-900 mb-2">Tracking Information</h4>
-                    <p className="text-gray-600">Tracking Number: {order.trackingNumber}</p>
+                    <h4 className="font-bold text-gray-900 mb-2 drop-shadow-sm">Tracking Information</h4>
+                    <p className="text-gray-900 font-semibold">Tracking Number: {order.trackingNumber}</p>
                   </div>
                 )}
 
@@ -286,7 +286,7 @@ const OrderHistory = () => {
       <div className="bg-gradient-to-r from-primary-600 to-purple-600 text-white rounded-xl p-6 mt-8">
         <h2 className="text-2xl font-bold mb-4">Need Help?</h2>
         <p className="text-lg mb-6">Have questions about your orders or need support?</p>
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
             href="/contact"
             className="bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-center"

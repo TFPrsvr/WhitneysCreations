@@ -219,7 +219,7 @@ const CleanNav = () => {
                       borderRadius: '8px',
                       padding: '8px 12px',
                       lineHeight: '1'
-                    }}>🛒</span>
+                    }}>🛍</span>
                     <span className="text-xs font-bold text-white">Cart</span>
                   </Link>
                   
@@ -234,7 +234,7 @@ const CleanNav = () => {
                       borderRadius: '8px',
                       padding: '8px 12px',
                       lineHeight: '1'
-                    }}>👤</span>
+                    }}>👨‍💼</span>
                     <span className="text-xs font-bold text-white">Profile</span>
                   </Link>
                   
@@ -249,7 +249,7 @@ const CleanNav = () => {
                       borderRadius: '8px',
                       padding: '8px 12px',
                       lineHeight: '1'
-                    }}>📦</span>
+                    }}>📋</span>
                     <span className="text-xs font-bold text-white">Orders</span>
                   </Link>
                 </nav>
@@ -286,7 +286,7 @@ const CleanNav = () => {
                       e.target.style.transform = 'translateY(0)';
                     }}
                   >
-                    <span className="text-2xl" aria-hidden="true">🚪</span> Sign Out
+                    Sign Out
                   </button>
                 </div>
               </div>
