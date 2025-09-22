@@ -294,7 +294,7 @@ const OrderHistory = () => {
             Contact Support
           </a>
           <a
-            href="/create"
+            href="/"
             className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors text-center"
           >
             Create New Design

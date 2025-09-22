@@ -48,7 +48,7 @@ const ProjectCard = ({ project, viewMode, onUpdate }) => {
   };
 
   const handleOpenProject = () => {
-    navigate(`/create?projectId=${project._id}`);
+    navigate(`/?projectId=${project._id}`);
   };
 
   const handleDuplicate = async (e) => {

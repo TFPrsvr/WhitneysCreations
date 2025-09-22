@@ -91,7 +91,7 @@ const Login = () => {
 
       if (result.success) {
         console.log("Login successful:", result)
-        nav('/create')
+        nav('/')
       } else {
         console.error("Login failed:", result.error)
         setErrors({ general: result.error || 'Login failed. Please check your credentials.' })

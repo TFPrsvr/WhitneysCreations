@@ -236,7 +236,7 @@ const Pricing = () => {
                   </ul>
 
                   <Link
-                    to={plan.name === 'Enterprise' ? '/contact' : (isAuthenticated ? '/create' : '/reg')}
+                    to={plan.name === 'Enterprise' ? '/contact' : (isAuthenticated ? '/' : '/reg')}
                     className={`block w-full text-center py-3 px-6 rounded-lg font-semibold transition-all duration-200 ${
                       plan.popular
                         ? 'bg-primary-600 text-white hover:bg-primary-700 hover:shadow-lg'
@@ -345,7 +345,7 @@ const Pricing = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to={isAuthenticated ? '/create' : '/reg'}
+              to={isAuthenticated ? '/' : '/reg'}
               className="bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
             >
               {isAuthenticated ? 'Start Designing' : 'Get Started Free'}
