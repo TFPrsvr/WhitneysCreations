@@ -87,16 +87,16 @@ function App() {
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">What You Want</span>
                 </div>
-                <div className="flex items-center -gap-1">
+                <div className="flex items-center">
                   <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0s'}} aria-hidden="true">❗</span>
-                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.2s'}} aria-hidden="true">❗</span>
+                  <span className="text-3xl text-red-500 animate-bounce -ml-2" style={{animationDelay: '0.2s'}} aria-hidden="true">❗</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">How You Want It</span>
                 </div>
-                <div className="flex items-center -gap-1">
+                <div className="flex items-center">
                   <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.1s'}} aria-hidden="true">❗</span>
-                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.3s'}} aria-hidden="true">❗</span>
+                  <span className="text-3xl text-red-500 animate-bounce -ml-2" style={{animationDelay: '0.3s'}} aria-hidden="true">❗</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent">When You Want It</span>
@@ -175,11 +175,11 @@ function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto px-4">
             {features.map((feature, index) => (
-              <div key={index} className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" style={{height: '160px'}}>
+              <div key={index} className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" style={{height: '200px'}}>
                 <div className="text-3xl mb-2">{feature.icon}</div>
                 <h3 className="text-base font-bold text-gray-900 mb-1 break-words">{feature.title}</h3>
                 <p className="text-gray-800 font-medium leading-snug text-sm break-words mb-1">{feature.description}</p>
-                <div className="text-xs text-gray-500 space-y-0.5 mt-1">
+                <div className="text-xs text-gray-800 font-semibold space-y-0.5 mt-1">
                   {feature.title === 'Easy Design Tools' && (
                     <>
                       <div>• Drag-and-drop editor</div>
