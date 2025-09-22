@@ -77,24 +77,26 @@ function App() {
               <p className="text-2xl md:text-3xl font-extrabold mb-4 bg-gradient-to-r from-yellow-400 via-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Creations You Want</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-lg md:text-xl font-bold">
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl animate-pulse">✨</span>
-                  <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">What You Want!!</span>
+                  <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">What You Want</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0s'}}>❗</span>
+                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.2s'}}>❗</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl animate-spin" style={{animationDuration: '3s'}}>🎨</span>
-                  <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">How You Want It!!</span>
+                  <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">How You Want It</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-3xl text-red-500 animate-pulse" style={{animationDelay: '0.1s'}}>❗</span>
+                  <span className="text-3xl text-red-500 animate-pulse" style={{animationDelay: '0.3s'}}>❗</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl animate-bounce" style={{
-                    animation: 'lightning-strike 2s ease-in-out infinite',
-                    filter: 'drop-shadow(0 0 8px rgba(59, 130, 246, 0.8))'
-                  }}>⚡</span>
-                  <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent">When You Want It!!</span>
+                  <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent">When You Want It</span>
                 </div>
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-12 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-20 justify-center items-center">
               {isAuthenticated ? (
                 <>
                   <Link
@@ -259,7 +261,7 @@ function App() {
                 <div className="text-3xl md:text-4xl mt-2">🚀</div>
               </div>
               <div className="text-center flex-none">
-                <div className="text-4xl md:text-5xl" style={{transform: 'translateY(8px)'}}>🧢 👕</div>
+                <div className="text-4xl md:text-5xl" style={{transform: 'translateY(12px)'}}>🧢 👕</div>
               </div>
               <div className="text-center flex-1">
                 <div className="text-3xl md:text-4xl mb-2">💡</div>
@@ -289,7 +291,7 @@ function App() {
         <div className="absolute top-5 right-8 text-2xl opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '0.8s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-0">
               How It Works
             </h2>
             <p className="text-xl text-gray-600 max-w-xl mx-auto px-4">

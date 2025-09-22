@@ -401,7 +401,7 @@ const DesignStudio = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <button
                 onClick={newDesign}
-                className="px-6 py-3 bg-white hover:bg-gray-50 text-gray-800 font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-3 border border-gray-200"
+                className="px-8 py-4 bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary-100 hover:to-purple-100 text-gray-900 font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-200 flex items-center space-x-3 border border-gray-300 hover:border-primary-400 min-w-[140px]"
               >
                 <span className="text-2xl">📄</span>
                 <span>New Design</span>
@@ -410,7 +410,7 @@ const DesignStudio = () => {
                 <>
                   <button
                     onClick={exportToMockup}
-                    className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-3"
+                    className="px-8 py-4 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-200 flex items-center space-x-3 min-w-[140px]"
                   >
                     <span className="text-2xl">👕</span>
                     <span>View Mockup</span>
@@ -418,7 +418,7 @@ const DesignStudio = () => {
                   {isAuthenticated && (
                     <button
                       onClick={() => setShowSaveModal(true)}
-                      className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-xl font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center space-x-3"
+                      className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-200 flex items-center space-x-3 min-w-[140px]"
                     >
                       <span className="text-2xl">💾</span>
                       <span>Save Design</span>
@@ -436,21 +436,21 @@ const DesignStudio = () => {
             <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center gap-3">
               🛠️ <span>Design Tools</span>
             </h2>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-center gap-4">
               {tabs.map((tab) => {
                 if (tab.authRequired && !isAuthenticated) return null;
                 return (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`relative px-6 py-4 font-semibold transition-all duration-300 transform hover:scale-105 flex items-center space-x-3 rounded-xl ${
+                    className={`relative px-8 py-4 font-semibold transition-all duration-200 flex items-center space-x-3 rounded-lg min-w-[160px] ${
                       activeTab === tab.id
                         ? "bg-gradient-to-r from-primary-600 to-purple-600 text-white shadow-lg"
-                        : "bg-white hover:bg-gray-50 text-gray-900 border border-gray-200 hover:border-primary-300 hover:shadow-md font-bold"
+                        : "bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary-100 hover:to-purple-100 text-gray-900 border border-gray-300 hover:border-primary-400 hover:shadow-md"
                     }`}
                   >
                     <span className="text-xl">{tab.icon}</span>
-                    <span className="text-sm font-medium whitespace-nowrap">
+                    <span className="text-base font-bold whitespace-nowrap">
                       {tab.name}
                     </span>
                     {tab.id === "saved" && designs.length > 0 && (

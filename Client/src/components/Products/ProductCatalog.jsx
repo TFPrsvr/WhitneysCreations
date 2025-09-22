@@ -103,7 +103,7 @@ const ProductCatalog = () => {
         { name: 'Red', hex: '#FF4136' },
         { name: 'Royal Blue', hex: '#0074D9' }
       ],
-      image: '👕',
+      image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       featured: true,
       inStock: true
     },
@@ -122,7 +122,7 @@ const ProductCatalog = () => {
         { name: 'Navy', hex: '#001f3f' },
         { name: 'Maroon', hex: '#85144b' }
       ],
-      image: '🧥',
+      image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       featured: true,
       inStock: true
     },
@@ -140,7 +140,7 @@ const ProductCatalog = () => {
         { name: 'Black', hex: '#000000' },
         { name: 'Blue', hex: '#0074D9' }
       ],
-      image: '☕',
+      image: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       featured: true,
       inStock: true
     },
@@ -159,7 +159,7 @@ const ProductCatalog = () => {
         { name: 'Red', hex: '#FF4136' },
         { name: 'White', hex: '#FFFFFF' }
       ],
-      image: '🧢',
+      image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       featured: false,
       inStock: true
     },
@@ -177,7 +177,7 @@ const ProductCatalog = () => {
         { name: 'Black', hex: '#000000' },
         { name: 'Navy', hex: '#001f3f' }
       ],
-      image: '👜',
+      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       featured: false,
       inStock: true
     },
@@ -195,7 +195,7 @@ const ProductCatalog = () => {
         { name: 'Black', hex: '#000000' },
         { name: 'White', hex: '#FFFFFF' }
       ],
-      image: '📱',
+      image: 'https://images.unsplash.com/photo-1601593346740-925612772716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       featured: false,
       inStock: true
     },
@@ -213,7 +213,7 @@ const ProductCatalog = () => {
         { name: 'Black', hex: '#000000' },
         { name: 'Grey', hex: '#808080' }
       ],
-      image: '👔',
+      image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       featured: false,
       inStock: true
     },
@@ -230,7 +230,7 @@ const ProductCatalog = () => {
         { name: 'White', hex: '#FFFFFF' },
         { name: 'Clear', hex: 'transparent' }
       ],
-      image: '🏷️',
+      image: 'https://images.unsplash.com/photo-1594736797933-d0380ba902d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
       featured: true,
       inStock: true
     }
