@@ -1,5 +1,7 @@
 .product-catalog {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  width: 100%;
+  max-width: 100%;
 }
 
 .catalog-header {
@@ -21,7 +23,7 @@
   font-size: 1.1rem;
   color: #666;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .catalog-content {

@@ -59,7 +59,7 @@ const CleanNav = () => {
     { path: '/products', label: 'Products', icon: '🛍️', color: 'from-blue-600 to-cyan-600' },
     { path: '/studio', label: 'Design Studio', icon: '🎭', color: 'from-orange-600 to-red-600' },
     { path: '/mockup', label: 'Mockup Generator', icon: '📸', color: 'from-rose-600 to-pink-600' },
-    { path: '/suggest', label: 'Suggestions', icon: '💡', color: 'from-yellow-600 to-amber-600' },
+    { path: '/suggest', label: 'Suggestions', icon: '💡', color: 'from-purple-600 to-violet-600' },
     ...(isAuthenticated ? [
       { path: '/projects', label: 'My Projects', icon: '📁', badge: stats?.stats?.totalProjects || 0, color: 'from-indigo-600 to-violet-600' }
     ] : []),

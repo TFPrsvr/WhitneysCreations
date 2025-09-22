@@ -24,38 +24,38 @@ const Contact = () => {
               <CardTitle className="text-2xl font-bold text-gray-900">Get In Touch</CardTitle>
             </CardHeader>
             <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl">📧</span>
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                <span className="text-3xl">📧</span>
                 <div>
-                  <p className="font-medium text-gray-900">Email</p>
-                  <p className="text-gray-600">support@whitneyscreations.com</p>
-                  <p className="text-gray-600">orders@whitneyscreations.com</p>
+                  <p className="font-bold text-gray-900 text-lg mb-2">Email</p>
+                  <p className="text-gray-700 font-medium">support@whitneyscreations.com</p>
+                  <p className="text-gray-700 font-medium">orders@whitneyscreations.com</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl">📞</span>
+              <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                <span className="text-3xl">📞</span>
                 <div>
-                  <p className="font-medium text-gray-900">Phone</p>
-                  <p className="text-gray-600">(555) 123-CRAFT (2738)</p>
-                  <p className="text-gray-600">Toll Free: 1-800-WHITNEY-1</p>
+                  <p className="font-bold text-gray-900 text-lg mb-2">Phone</p>
+                  <p className="text-gray-700 font-medium">(555) 123-CRAFT (2738)</p>
+                  <p className="text-gray-700 font-medium">Toll Free: 1-800-WHITNEY-1</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl">🏢</span>
+              <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                <span className="text-3xl">🏢</span>
                 <div>
-                  <p className="font-medium text-gray-900">Address</p>
-                  <p className="text-gray-600">123 Creative Avenue</p>
-                  <p className="text-gray-600">Design District, NY 10001</p>
+                  <p className="font-bold text-gray-900 text-lg mb-2">Address</p>
+                  <p className="text-gray-700 font-medium">123 Creative Avenue</p>
+                  <p className="text-gray-700 font-medium">Design District, NY 10001</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl">🕒</span>
+              <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                <span className="text-3xl">🕒</span>
                 <div>
-                  <p className="font-medium text-gray-900">Business Hours</p>
-                  <p className="text-gray-600">Monday - Friday: 9:00 AM - 7:00 PM EST</p>
-                  <p className="text-gray-600">Saturday: 10:00 AM - 4:00 PM EST</p>
-                  <p className="text-gray-600">Sunday: Closed</p>
+                  <p className="font-bold text-gray-900 text-lg mb-2">Business Hours</p>
+                  <p className="text-gray-700 font-medium">Monday - Friday: 9:00 AM - 7:00 PM EST</p>
+                  <p className="text-gray-700 font-medium">Saturday: 10:00 AM - 4:00 PM EST</p>
+                  <p className="text-gray-700 font-medium">Sunday: Closed</p>
                 </div>
               </div>
             </div>
@@ -94,7 +94,7 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-200"
+                className="w-full bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
               >
                 Send Message
               </button>

@@ -198,17 +198,8 @@ const About = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <div key={index} className="bg-gray-50 rounded-xl p-6 text-center hover:bg-white hover:shadow-lg transition-all duration-300">
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-primary-100 to-purple-100 flex items-center justify-center">
-                  <img
-                    src={member.avatar}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'block';
-                    }}
-                  />
-                  <div className="text-4xl hidden">{member.emoji}</div>
+                <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary-100 to-purple-100 flex items-center justify-center">
+                  <div className="text-4xl">{member.emoji}</div>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
                 <p className="text-primary-600 font-medium mb-3">{member.role}</p>
@@ -253,10 +244,10 @@ const About = () => {
                 </div>
 
                 <div className={`flex ${index % 2 === 0 ? 'justify-end pr-8 md:pr-16' : 'justify-start pl-8 md:pl-16'}`}>
-                  <div className={`bg-white p-4 rounded-lg shadow-sm max-w-md w-full ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>
+                  <div className={`bg-white p-3 rounded-lg shadow-sm max-w-md w-full ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>
                     <div className="text-primary-600 font-bold text-lg mb-1">{milestone.year}</div>
-                    <h4 className="text-gray-900 font-semibold text-sm mb-1 leading-relaxed">{milestone.event}</h4>
-                    <p className="text-gray-600 text-xs leading-relaxed">{milestone.details}</p>
+                    <h4 className="text-gray-900 font-semibold text-sm mb-1 leading-tight">{milestone.event}</h4>
+                    <p className="text-gray-600 text-xs leading-tight mb-0">{milestone.details}</p>
                   </div>
                 </div>
               </div>
@@ -289,7 +280,7 @@ const About = () => {
             </Link>
             <Link
               to="/contact"
-              className="bg-yellow-400 text-gray-900 border-2 border-yellow-400 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-yellow-300 hover:border-yellow-300 transition-all duration-200 shadow-lg"
+              className="bg-gradient-to-r from-emerald-500 to-green-600 text-white border-2 border-emerald-500 px-8 py-4 rounded-lg font-semibold text-lg hover:from-emerald-600 hover:to-green-700 hover:border-emerald-600 transition-all duration-200 shadow-lg"
             >
               Get in Touch
             </Link>

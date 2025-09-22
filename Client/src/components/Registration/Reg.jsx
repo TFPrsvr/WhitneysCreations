@@ -16,6 +16,7 @@ const Reg = () => {
   const [userInfo, setUserInfo] = useState({})
   const [errors, setErrors] = useState({})
   const [isLoading, setIsLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const nav = useNavigate()
 
@@ -39,6 +40,46 @@ const Reg = () => {
         [name]: ''
       });
     }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    const newErrors = { ...errors };
+
+    // Validate specific field on blur
+    if (name === 'email' && value) {
+      if (!/\S+@\S+\.\S+/.test(value)) {
+        newErrors.email = 'Please enter a valid email address';
+      } else {
+        delete newErrors.email;
+      }
+    }
+
+    if (name === 'first_name' && !value.trim()) {
+      newErrors.first_name = 'First name is required';
+    }
+
+    if (name === 'last_name' && !value.trim()) {
+      newErrors.last_name = 'Last name is required';
+    }
+
+    if (name === 'username' && value) {
+      if (value.length < 3) {
+        newErrors.username = 'Username must be at least 3 characters';
+      } else {
+        delete newErrors.username;
+      }
+    }
+
+    if (name === 'password' && value) {
+      if (value.length < 6) {
+        newErrors.password = 'Password must be at least 6 characters';
+      } else {
+        delete newErrors.password;
+      }
+    }
+
+    setErrors(newErrors);
   };
 
   const validateForm = () => {
@@ -150,13 +191,16 @@ const Reg = () => {
               </label>
               <input
                 id="first_name"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
+                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 transition-all bg-white text-gray-900 ${
+                  errors.first_name ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
+                }`}
                 style={{color: '#1f2937'}}
                 type="text"
                 placeholder="Enter first name"
                 name="first_name"
                 value={formData.first_name}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 autocomplete="given-name"
                 required
               />
@@ -170,13 +214,16 @@ const Reg = () => {
               </label>
               <input
                 id="last_name"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
+                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 transition-all bg-white text-gray-900 ${
+                  errors.last_name ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
+                }`}
                 style={{color: '#1f2937'}}
                 type="text"
                 placeholder="Enter last name"
                 name="last_name"
                 value={formData.last_name}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 autocomplete="family-name"
                 required
               />
@@ -192,13 +239,16 @@ const Reg = () => {
             </label>
             <input
               id="reg_username"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
+              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 transition-all bg-white text-gray-900 ${
+                errors.username ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
+              }`}
               style={{color: '#1f2937'}}
               type="text"
               placeholder="Choose a username"
               name="username"
               value={formData.username}
               onChange={handleChange}
+              onBlur={handleBlur}
               autocomplete="username"
               required
             />
@@ -213,13 +263,16 @@ const Reg = () => {
             </label>
             <input
               id="email"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
+              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 transition-all bg-white text-gray-900 ${
+                errors.email ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
+              }`}
               style={{color: '#1f2937'}}
               type="email"
               placeholder="Enter your email address"
               name="email"
               value={formData.email}
               onChange={handleChange}
+              onBlur={handleBlur}
               autocomplete="email"
               required
             />
@@ -232,18 +285,33 @@ const Reg = () => {
             <label htmlFor="reg_password" className="block text-sm font-medium text-gray-700 mb-2">
               Password
             </label>
-            <input
-              id="reg_password"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
-              style={{color: '#1f2937'}}
-              type="password"
-              placeholder="Create a secure password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              autocomplete="new-password"
-              required
-            />
+            <div className="relative">
+              <input
+                id="reg_password"
+                className={`w-full px-3 py-2 pr-12 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900 ${
+                  errors.password ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
+                }`}
+                style={{color: '#1f2937'}}
+                type={showPassword ? "text" : "password"}
+                placeholder="Create a secure password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                autocomplete="new-password"
+                required
+              />
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                onClick={() => setShowPassword(!showPassword)}
+                tabIndex={-1}
+              >
+                <span className="text-xl">
+                  {showPassword ? '🙈' : '👁️'}
+                </span>
+              </button>
+            </div>
             {errors.password && (
               <p className="mt-1 text-sm text-red-600">{errors.password}</p>
             )}

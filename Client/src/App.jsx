@@ -79,14 +79,14 @@ function App() {
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">What You Want</span>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-0">
                   <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0s'}}>❗</span>
                   <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.2s'}}>❗</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">How You Want It</span>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-0">
                   <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.1s'}}>❗</span>
                   <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.3s'}}>❗</span>
                 </div>
@@ -168,8 +168,8 @@ function App() {
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden">
                 <div className="text-5xl mb-2">{feature.icon}</div>
                 <h3 className="text-lg font-bold text-gray-900 mb-0 break-words">{feature.title}</h3>
-                <p className="text-gray-600 leading-snug text-sm break-words mb-1">{feature.description}</p>
-                <div className="text-xs text-gray-500 space-y-0.5">
+                <p className="text-gray-600 leading-snug text-sm break-words mb-0">{feature.description}</p>
+                <div className="text-xs text-gray-500 space-y-0.5 mt-0">
                   {feature.title === 'Easy Design Tools' && (
                     <>
                       <div>• Drag-and-drop editor</div>
@@ -302,10 +302,10 @@ function App() {
               </div>
               <div className="text-5xl mb-0">🎨</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-0">Design</h3>
-              <p className="text-gray-600 mb-0 text-sm">
+              <p className="text-gray-600 mb-1 text-sm">
                 Use our intuitive design tools to create amazing products. Upload your own images or use our templates.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1 mt-0">
+              <ul className="text-sm text-gray-500 space-y-0 mt-1">
                 <li>• Drag-and-drop editor</li>
                 <li>• 1000+ templates</li>
                 <li>• Custom fonts & graphics</li>
@@ -318,10 +318,10 @@ function App() {
               </div>
               <div className="text-5xl mb-0">💰</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-0">Sell</h3>
-              <p className="text-gray-600 mb-0 text-sm">
+              <p className="text-gray-600 mb-1 text-sm">
                 List your products for sale or share them directly with customers. Set your own prices and profit margins.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1 mt-0">
+              <ul className="text-sm text-gray-500 space-y-0 mt-1">
                 <li>• Set your own prices</li>
                 <li>• Direct customer sharing</li>
                 <li>• Profit margin control</li>
@@ -334,10 +334,10 @@ function App() {
               </div>
               <div className="text-5xl mb-0">🚀</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-0">Fulfill</h3>
-              <p className="text-gray-600 mb-0 text-sm">
+              <p className="text-gray-600 mb-1 text-sm">
                 We handle printing, packaging, and shipping. You get paid, and your customers get premium products.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1 mt-0">
+              <ul className="text-sm text-gray-500 space-y-0 mt-1">
                 <li>• Print on demand</li>
                 <li>• Fast worldwide shipping</li>
                 <li>• Quality guaranteed</li>

@@ -15,6 +15,7 @@ const Login = () => {
   const [loginData, setLoginData] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [errors, setErrors] = useState({})
+  const [showPassword, setShowPassword] = useState(false)
   const nav = useNavigate()
 
   const handleChange = (e) => {
@@ -29,6 +30,26 @@ const Login = () => {
         [e.target.name]: ''
       })
     }
+  }
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    const newErrors = { ...errors };
+
+    // Validate specific field on blur
+    if (name === 'username' && !value.trim()) {
+      newErrors.username = 'Username is required';
+    } else if (name === 'username' && value.length < 3) {
+      newErrors.username = 'Username must be at least 3 characters';
+    }
+
+    if (name === 'password' && !value) {
+      newErrors.password = 'Password is required';
+    } else if (name === 'password' && value.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+
+    setErrors(newErrors);
   }
 
   const validateForm = () => {
@@ -127,6 +148,7 @@ const Login = () => {
               placeholder="Enter your username"
               value={formData.username}
               onChange={handleChange}
+              onBlur={handleBlur}
               autocomplete="username"
               required
             />
@@ -139,19 +161,32 @@ const Login = () => {
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
               Password
             </label>
-            <input
-              id="password"
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
-                errors.password ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
-              }`}
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={handleChange}
-              autocomplete="current-password"
-              required
-            />
+            <div className="relative">
+              <input
+                id="password"
+                className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
+                  errors.password ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
+                }`}
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Enter your password"
+                value={formData.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                autocomplete="current-password"
+                required
+              />
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                onClick={() => setShowPassword(!showPassword)}
+                tabIndex={-1}
+              >
+                <span className="text-xl">
+                  {showPassword ? '🙈' : '👁️'}
+                </span>
+              </button>
+            </div>
             {errors.password && (
               <p className="mt-1 text-sm text-red-600">{errors.password}</p>
             )}

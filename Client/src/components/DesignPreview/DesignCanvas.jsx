@@ -1146,10 +1146,10 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
 
       {/* Control Panels Row - Grid Format */}
       <div className="w-full max-w-7xl mx-auto mb-20 px-4">
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '1fr 1fr 1fr', 
-          gap: '48px',
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '24px',
           width: '100%'
         }}>
           {/* Tools Panel */}

@@ -78,9 +78,11 @@ const Suggestions = () => {
   };
 
   return (
-    <div id='Suggestions'>
-      <p>Let Your Imagination Run Wild</p>
-      <h1>Ideas That Come To Life</h1>
+    <div className="min-h-screen bg-gray-50 page-container">
+      <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4 py-8">
+        <div className="text-center mb-12">
+          <p className="text-xl text-gray-600 mb-4">Let Your Imagination Run Wild</p>
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent mb-8">Ideas That Come To Life</h1>
 
       {editingSuggestion ? (
         <SuggestionForm
@@ -96,12 +98,15 @@ const Suggestions = () => {
         />
       ) : (
         <div className="suggestions-list">
-          <h2 id='UrIdeas'>What Can You Imagine?</h2>
-          <button onClick={handleAddSuggestion}>Add a Suggestion</button>
-          <br />
-          <br />
-          
-          <div className="suggestions-grid">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">What Can You Imagine?</h2>
+          <button
+            onClick={handleAddSuggestion}
+            className="bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-200 mb-8"
+          >
+            Add a Suggestion
+          </button>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
             {suggestions.length > 0 ? (
               suggestions.map((suggestion) => (
                 <SuggestionCard
@@ -112,11 +117,15 @@ const Suggestions = () => {
                 />
               ))
             ) : (
-              <p>No suggestions available.</p>
+              <div className="col-span-full text-center py-12">
+                <p className="text-xl text-gray-600">No suggestions available.</p>
+              </div>
             )}
           </div>
         </div>
       )}
+        </div>
+      </div>
     </div>
   );
 };

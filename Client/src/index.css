@@ -99,8 +99,10 @@ body::-webkit-scrollbar {
 /* Page Layout - Universal sidebar spacing */
 .page-container {
   margin-left: 10rem;
+  margin-top: 0;
+  margin-right: 0;
   max-width: calc(100vw - 10rem);
-  padding: 20px;
+  padding: 0;
 }
 
 /* Mobile responsive layout */
@@ -176,7 +178,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  padding: 0 1rem; /* Ensure body has side padding */
+  padding: 0;
 }
 
 h1 {
