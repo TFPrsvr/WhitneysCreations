@@ -73,8 +73,10 @@ const CleanNav = () => {
   return (
     <>
       {/* Vertical Navigation List - Top Left Corner */}
-      <nav 
+      <nav
         className="nav-vertical-left fixed z-[60] w-40 h-screen"
+        role="navigation"
+        aria-label="Main navigation"
         style={{
           position: 'fixed',
           top: '0px',
@@ -100,20 +102,21 @@ const CleanNav = () => {
           }}
         >
           {/* Logo Header */}
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center space-x-3 text-white hover:text-cyan-400 transition-colors p-4 border-b border-gray-600"
-            style={{ 
+            aria-label="Whitney's Creations PrintCraft - Go to homepage"
+            style={{
               textDecoration: 'none',
               fontSize: '1.5rem',
               fontWeight: '800',
               letterSpacing: '0.05em'
             }}
           >
-            <span className="text-3xl animate-pulse">🎨</span>
-            <span 
-              style={{ 
-                display: 'inline-block', 
+            <span className="text-3xl animate-pulse" aria-hidden="true">🎨</span>
+            <span
+              style={{
+                display: 'inline-block',
                 whiteSpace: 'nowrap',
                 background: 'linear-gradient(45deg, #00d4ff, #ff00ff, #ffaa00)',
                 WebkitBackgroundClip: 'text',
@@ -126,48 +129,54 @@ const CleanNav = () => {
           </Link>
 
           {/* Navigation Links List */}
-          <div className="flex flex-col space-y-1 flex-1 overflow-y-auto scrollbar-sidebar">
+          <ul className="flex flex-col space-y-1 flex-1 overflow-y-auto scrollbar-sidebar" role="list">
             {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`px-4 py-3 text-sm font-bold transition-all duration-200 flex items-center justify-between ${
-                  isActive(link.path)
-                    ? `bg-gradient-to-r ${link.color} text-white shadow-lg rounded-lg`
-                    : 'text-gray-200 hover:text-white hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 hover:shadow-md rounded-lg'
-                }`}
-                style={{
-                  textShadow: isActive(link.path) 
-                    ? '2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000' 
-                    : '2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
-                  transform: isActive(link.path) ? 'translateX(4px)' : 'none',
-                  fontWeight: '800',
-                  fontSize: '22px',
-                  margin: '2px 0',
-                  color: isActive(link.path) ? '#ffffff' : '#e2e8f0',
-                  WebkitFontSmoothing: 'antialiased',
-                  MozOsxFontSmoothing: 'grayscale'
-                }}
-              >
-                <div className="flex items-center space-x-3">
-                  <span className="text-4xl">{link.icon}</span>
-                  <span>{link.label}</span>
-                </div>
-                {link.badge !== undefined && link.badge > 0 && (
-                  <span className="bg-primary-500 text-white text-xs rounded-full px-2 py-0.5 min-w-[20px] flex items-center justify-center">
-                    {link.badge > 99 ? '99+' : link.badge}
-                  </span>
-                )}
-              </Link>
+              <li key={link.path} role="none">
+                <Link
+                  to={link.path}
+                  className={`px-4 py-3 text-sm font-bold transition-all duration-200 flex items-center justify-between ${
+                    isActive(link.path)
+                      ? `bg-gradient-to-r ${link.color} text-white shadow-lg rounded-lg`
+                      : 'text-gray-200 hover:text-white hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 hover:shadow-md rounded-lg'
+                  }`}
+                  aria-current={isActive(link.path) ? 'page' : undefined}
+                  aria-label={`${link.label}${link.badge ? ` (${link.badge} items)` : ''}`}
+                  style={{
+                    textShadow: isActive(link.path)
+                      ? '2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+                      : '2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+                    transform: isActive(link.path) ? 'translateX(4px)' : 'none',
+                    fontWeight: '800',
+                    fontSize: '22px',
+                    margin: '2px 0',
+                    color: isActive(link.path) ? '#ffffff' : '#e2e8f0',
+                    WebkitFontSmoothing: 'antialiased',
+                    MozOsxFontSmoothing: 'grayscale'
+                  }}
+                >
+                  <div className="flex items-center space-x-3">
+                    <span className="text-4xl" aria-hidden="true">{link.icon}</span>
+                    <span>{link.label}</span>
+                  </div>
+                  {link.badge !== undefined && link.badge > 0 && (
+                    <span
+                      className="bg-primary-500 text-white text-xs rounded-full px-2 py-0.5 min-w-[20px] flex items-center justify-center"
+                      aria-label={`${link.badge} items`}
+                    >
+                      {link.badge > 99 ? '99+' : link.badge}
+                    </span>
+                  )}
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
 
           {/* Auth Section */}
-          <div className="border-t border-gray-600 mt-2">
+          <div className="border-t border-gray-600 mt-2" role="complementary" aria-label="User account section">
             {isAuthenticated ? (
               <div className="p-3">
                 {/* User Info */}
-                <div className="flex items-center p-2 mb-1 bg-gray-800 rounded-lg">
+                <div className="flex items-center p-2 mb-1 bg-gray-800 rounded-lg" role="region" aria-label="User information">
                   <div className="flex-1 min-w-0">
                     <p className="font-bold truncate"
                        style={{ 
@@ -198,13 +207,13 @@ const CleanNav = () => {
                 </div>
                 
                 {/* Quick Actions - Cart, Profile & Orders in a row */}
-                <div className="flex justify-evenly space-x-0 py-1 mb-1">
-                  <Link 
-                    to="/cart" 
+                <nav className="flex justify-evenly space-x-0 py-1 mb-1" role="navigation" aria-label="Quick actions">
+                  <Link
+                    to="/cart"
                     className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
-                    title="Cart"
+                    aria-label="View shopping cart"
                   >
-                    <span className="text-3xl mb-1" style={{ 
+                    <span className="text-3xl mb-1" aria-hidden="true" style={{
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '8px',
@@ -214,12 +223,12 @@ const CleanNav = () => {
                     <span className="text-xs font-bold text-white">Cart</span>
                   </Link>
                   
-                  <Link 
-                    to="/profile" 
+                  <Link
+                    to="/profile"
                     className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
-                    title="Profile"
+                    aria-label="View user profile"
                   >
-                    <span className="text-3xl mb-1" style={{ 
+                    <span className="text-3xl mb-1" aria-hidden="true" style={{
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '8px',
@@ -229,12 +238,12 @@ const CleanNav = () => {
                     <span className="text-xs font-bold text-white">Profile</span>
                   </Link>
                   
-                  <Link 
-                    to="/orders" 
+                  <Link
+                    to="/orders"
                     className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
-                    title="Orders"
+                    aria-label="View order history"
                   >
-                    <span className="text-3xl mb-1" style={{ 
+                    <span className="text-3xl mb-1" aria-hidden="true" style={{
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '8px',
@@ -243,12 +252,13 @@ const CleanNav = () => {
                     }}>📦</span>
                     <span className="text-xs font-bold text-white">Orders</span>
                   </Link>
-                </div>
+                </nav>
                 
                 <div className="flex justify-center w-full">
                   <button
                     onClick={handleLogout}
                     className="w-full text-center"
+                    aria-label="Sign out of your account"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -276,7 +286,7 @@ const CleanNav = () => {
                       e.target.style.transform = 'translateY(0)';
                     }}
                   >
-                    <span className="text-2xl">🚪</span> Sign Out
+                    <span className="text-2xl" aria-hidden="true">🚪</span> Sign Out
                   </button>
                 </div>
               </div>
@@ -285,6 +295,7 @@ const CleanNav = () => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   <Link
                     to="/login"
+                    aria-label="Sign in to your account"
                     style={{
                       display: 'block',
                       width: '100%',
@@ -314,6 +325,7 @@ const CleanNav = () => {
                   </Link>
                   <Link
                     to="/reg"
+                    aria-label="Create a new account"
                     style={{
                       display: 'block',
                       width: '100%',

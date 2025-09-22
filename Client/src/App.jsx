@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./App.css"
+import './styles/accessibility.css';
 import { Link } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import { useProject } from './contexts/ProjectContext';
+import { accessibility } from './utils/accessibility';
 
 function App() {
   const { isAuthenticated, user } = useAuth();
   const { stats } = useProject();
+
+  // Initialize accessibility features
+  useEffect(() => {
+    accessibility.init();
+  }, []);
 
   const features = [
     {
@@ -62,13 +69,14 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50 w-full max-w-full overflow-x-hidden page-container">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-600 via-purple-600 to-pink-500 text-white w-full">
+      <main id="main-content">
+        <section className="relative bg-gradient-to-br from-primary-600 via-purple-600 to-pink-500 text-white w-full" aria-labelledby="hero-title">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="relative w-full px-4 sm:px-4 lg:px-4 py-2 lg:py-4">
           <div className="text-center">
-            <h1 className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+            <h1 id="hero-title" className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
               <span className="block text-2xl md:text-4xl mb-4">Whitney's Unique Creations</span>
-              <span className="block text-4xl md:text-5xl mb-3">👕 👚</span>
+              <span className="block text-4xl md:text-5xl mb-3" aria-hidden="true">👕 👚</span>
               <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent text-xl md:text-3xl mt-4 font-extrabold">
                 The Place That Lets You Customize Your Ideas
               </span>
@@ -80,15 +88,15 @@ function App() {
                   <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">What You Want</span>
                 </div>
                 <div className="flex items-center gap-0">
-                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0s'}}>❗</span>
-                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.2s'}}>❗</span>
+                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0s'}} aria-hidden="true">❗</span>
+                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.2s'}} aria-hidden="true">❗</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">How You Want It</span>
                 </div>
                 <div className="flex items-center gap-0">
-                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.1s'}}>❗</span>
-                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.3s'}}>❗</span>
+                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.1s'}} aria-hidden="true">❗</span>
+                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.3s'}} aria-hidden="true">❗</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent">When You Want It</span>
@@ -102,14 +110,16 @@ function App() {
                   <Link
                     to="/studio"
                     className="bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    aria-label="Start designing your custom products"
                   >
-                    🎨 Start Designing
+                    <span aria-hidden="true">🎨</span> Start Designing
                   </Link>
                   <Link
                     to="/projects"
                     className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary-600 transition-all duration-200"
+                    aria-label={`View my projects (${stats?.stats?.totalProjects || 0} projects)`}
                   >
-                    📁 My Projects ({stats?.stats?.totalProjects || 0})
+                    <span aria-hidden="true">📁</span> My Projects ({stats?.stats?.totalProjects || 0})
                   </Link>
                 </>
               ) : (
@@ -145,17 +155,17 @@ function App() {
         </div>
 
         {/* Floating Elements */}
-        <div className="absolute top-5 left-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}}>🎨</div>
-        <div className="absolute top-5 right-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}}>☕</div>
+        <div className="absolute top-5 left-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}} aria-hidden="true">🎨</div>
+        <div className="absolute top-5 right-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}} aria-hidden="true">☕</div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative">
+        {/* Features Section */}
+        <section className="py-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative" aria-labelledby="features-title">
         <div className="absolute top-10 right-10 text-4xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
         <div className="absolute top-5 left-5 text-4xl opacity-40 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>👕</div>
         <div className="w-full px-4 sm:px-4 lg:px-4">
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 id="features-title" className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Everything You Need to Succeed
             </h2>
             <p className="text-xl text-gray-600 max-w-xl mx-auto px-4">

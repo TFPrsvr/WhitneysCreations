@@ -72,8 +72,10 @@ const Reg = () => {
     }
 
     if (name === 'password' && value) {
-      if (value.length < 6) {
-        newErrors.password = 'Password must be at least 6 characters';
+      if (value.length < 8) {
+        newErrors.password = 'Password must be at least 8 characters';
+      } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(value)) {
+        newErrors.password = 'Password must include uppercase, lowercase, and number';
       } else {
         delete newErrors.password;
       }
@@ -107,8 +109,10 @@ const Reg = () => {
 
     if (!formData.password) {
       newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
+    } else if (formData.password.length < 8) {
+      newErrors.password = 'Password must be at least 8 characters';
+    } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password)) {
+      newErrors.password = 'Password must include uppercase, lowercase, and number';
     }
 
     setErrors(newErrors);
@@ -163,27 +167,27 @@ const Reg = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 flex items-center justify-center py-8 px-4 relative page-container">
       {/* Background decorative elements */}
-      <div className="absolute top-15 right-15 text-4xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '8s'}}>🎨</div>
-      <div className="absolute top-32 left-15 text-3xl opacity-20 animate-bounce hidden lg:block">👚</div>
-      <div className="absolute bottom-32 right-15 text-3xl opacity-20 animate-pulse hidden lg:block">☕</div>
-      <div className="absolute bottom-15 left-15 text-2xl opacity-20 animate-bounce delay-500 hidden lg:block">🧥</div>
+      <div className="absolute top-15 right-15 text-4xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '8s'}} aria-hidden="true">🎨</div>
+      <div className="absolute top-32 left-15 text-3xl opacity-20 animate-bounce hidden lg:block" aria-hidden="true">👚</div>
+      <div className="absolute bottom-32 right-15 text-3xl opacity-20 animate-pulse hidden lg:block" aria-hidden="true">☕</div>
+      <div className="absolute bottom-15 left-15 text-2xl opacity-20 animate-bounce delay-500 hidden lg:block" aria-hidden="true">🧥</div>
       
-      <div className="max-w-md w-full space-y-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
-        <div className="text-center">
+      <main className="max-w-md w-full space-y-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100" role="main">
+        <header className="text-center">
           <div className="text-center mb-4">
             <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Create Account</h1>
-            <span className="text-4xl">👕</span>
+            <span className="text-4xl" aria-hidden="true">👕</span>
           </div>
           <p className="text-gray-600 mt-2">Join Whitney's Creations today</p>
-        </div>
+        </header>
 
         {errors.general && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm" role="alert" aria-live="polite">
             {errors.general}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label htmlFor="first_name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -201,11 +205,15 @@ const Reg = () => {
                 value={formData.first_name}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                autocomplete="given-name"
+                autoComplete="given-name"
                 required
+                aria-describedby={errors.first_name ? 'first_name-error' : undefined}
+                aria-invalid={errors.first_name ? 'true' : 'false'}
               />
               {errors.first_name && (
-                <p className="mt-1 text-sm text-red-600">{errors.first_name}</p>
+                <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="first_name-error">
+                  {errors.first_name}
+                </p>
               )}
             </div>
             <div>
@@ -224,11 +232,15 @@ const Reg = () => {
                 value={formData.last_name}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                autocomplete="family-name"
+                autoComplete="family-name"
                 required
+                aria-describedby={errors.last_name ? 'last_name-error' : undefined}
+                aria-invalid={errors.last_name ? 'true' : 'false'}
               />
               {errors.last_name && (
-                <p className="mt-1 text-sm text-red-600">{errors.last_name}</p>
+                <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="last_name-error">
+                  {errors.last_name}
+                </p>
               )}
             </div>
           </div>
@@ -249,11 +261,15 @@ const Reg = () => {
               value={formData.username}
               onChange={handleChange}
               onBlur={handleBlur}
-              autocomplete="username"
+              autoComplete="username"
               required
+              aria-describedby={errors.username ? 'username-error' : undefined}
+              aria-invalid={errors.username ? 'true' : 'false'}
             />
             {errors.username && (
-              <p className="mt-1 text-sm text-red-600">{errors.username}</p>
+              <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="username-error">
+                {errors.username}
+              </p>
             )}
           </div>
 
@@ -273,11 +289,15 @@ const Reg = () => {
               value={formData.email}
               onChange={handleChange}
               onBlur={handleBlur}
-              autocomplete="email"
+              autoComplete="email"
               required
+              aria-describedby={errors.email ? 'email-error' : undefined}
+              aria-invalid={errors.email ? 'true' : 'false'}
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+              <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="email-error">
+                {errors.email}
+              </p>
             )}
           </div>
 
@@ -293,36 +313,61 @@ const Reg = () => {
                 }`}
                 style={{color: '#1f2937'}}
                 type={showPassword ? "text" : "password"}
-                placeholder="Create a secure password"
+                placeholder="Create your own secure password (8+ characters)"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                autocomplete="new-password"
+                autoComplete="new-password"
+                data-lpignore="true"
                 required
+                aria-describedby={errors.password ? 'password-error' : undefined}
+                aria-invalid={errors.password ? 'true' : 'false'}
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 transition-colors duration-200"
                 onClick={() => setShowPassword(!showPassword)}
-                tabIndex={-1}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
-                <span className="text-xl">
-                  {showPassword ? '🙈' : '👁️'}
-                </span>
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  {showPassword ? (
+                    // Eye-slash (password hidden)
+                    <>
+                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                      <path stroke="currentColor" strokeWidth="2" d="M4 4l12 12" strokeLinecap="round" />
+                    </>
+                  ) : (
+                    // Regular eye (password visible)
+                    <>
+                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                    </>
+                  )}
+                </svg>
               </button>
             </div>
             {errors.password && (
-              <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+              <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="password-error">
+                {errors.password}
+              </p>
             )}
           </div>
 
           <button
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold hover:from-purple-700 hover:to-pink-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold hover:from-purple-700 hover:to-pink-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             style={{borderRadius: '12px'}}
+            disabled={isLoading}
+            aria-label={isLoading ? 'Creating account...' : 'Create your account'}
           >
-            Create Account
+            {isLoading ? 'Creating Account...' : 'Create Account'}
           </button>
         </form>
 
@@ -334,11 +379,12 @@ const Reg = () => {
             onClick={() => handleLogin()}
             className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
             style={{borderRadius: '12px'}}
+            aria-label="Go to sign in page"
           >
             Sign In
           </button>
         </div>
-      </div>
+      </main>
     </div>
   )
 }

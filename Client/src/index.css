@@ -98,11 +98,13 @@ body::-webkit-scrollbar {
 
 /* Page Layout - Universal sidebar spacing */
 .page-container {
-  margin-left: 10rem;
+  margin-left: 11rem;
   margin-top: 0;
   margin-right: 0;
-  max-width: calc(100vw - 10rem);
-  padding: 0;
+  max-width: calc(100vw - 11rem);
+  padding: 0 1rem;
+  box-sizing: border-box;
+  width: auto;
 }
 
 /* Mobile responsive layout */

@@ -113,27 +113,27 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-8 px-4 relative page-container">
       {/* Background decorative elements */}
-      <div className="absolute top-10 left-10 text-4xl opacity-20 animate-bounce hidden lg:block">🎨</div>
-      <div className="absolute top-20 right-20 text-3xl opacity-20 animate-pulse hidden lg:block">👕</div>
-      <div className="absolute bottom-20 left-20 text-3xl opacity-20 animate-bounce delay-1000 hidden lg:block">☕</div>
-      <div className="absolute bottom-10 right-10 text-2xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '10s'}}>🧢</div>
+      <div className="absolute top-10 left-10 text-4xl opacity-20 animate-bounce hidden lg:block" aria-hidden="true">🎨</div>
+      <div className="absolute top-20 right-20 text-3xl opacity-20 animate-pulse hidden lg:block" aria-hidden="true">👕</div>
+      <div className="absolute bottom-20 left-20 text-3xl opacity-20 animate-bounce delay-1000 hidden lg:block" aria-hidden="true">☕</div>
+      <div className="absolute bottom-10 right-10 text-2xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '10s'}} aria-hidden="true">🧢</div>
 
-      <div className="max-w-md w-full space-y-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
-        <div className="text-center">
+      <main className="max-w-md w-full space-y-6 bg-white rounded-2xl shadow-2xl p-8 border border-gray-100" role="main">
+        <header className="text-center">
           <div className="text-center mb-4">
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
-            <span className="text-4xl">🎨</span>
+            <span className="text-4xl" aria-hidden="true">🎨</span>
           </div>
           <p className="text-gray-600 mt-2">Welcome back to Whitney's Creations</p>
-        </div>
+        </header>
 
         {errors.general && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm" role="alert" aria-live="polite">
             {errors.general}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5" noValidate>
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
               Username
@@ -149,11 +149,15 @@ const Login = () => {
               value={formData.username}
               onChange={handleChange}
               onBlur={handleBlur}
-              autocomplete="username"
+              autoComplete="username"
               required
+              aria-describedby={errors.username ? 'username-error' : undefined}
+              aria-invalid={errors.username ? 'true' : 'false'}
             />
             {errors.username && (
-              <p className="mt-1 text-sm text-red-600">{errors.username}</p>
+              <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="username-error">
+                {errors.username}
+              </p>
             )}
           </div>
 
@@ -173,22 +177,44 @@ const Login = () => {
                 value={formData.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                autocomplete="current-password"
+                autoComplete="current-password"
                 required
+                aria-describedby={errors.password ? 'password-error' : undefined}
+                aria-invalid={errors.password ? 'true' : 'false'}
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 transition-colors duration-200"
                 onClick={() => setShowPassword(!showPassword)}
-                tabIndex={-1}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
-                <span className="text-xl">
-                  {showPassword ? '🙈' : '👁️'}
-                </span>
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  {showPassword ? (
+                    // Eye-slash (password hidden)
+                    <>
+                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                      <path stroke="currentColor" strokeWidth="2" d="M4 4l12 12" strokeLinecap="round" />
+                    </>
+                  ) : (
+                    // Regular eye (password visible)
+                    <>
+                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                    </>
+                  )}
+                </svg>
               </button>
             </div>
             {errors.password && (
-              <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+              <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="password-error">
+                {errors.password}
+              </p>
             )}
           </div>
 
@@ -210,13 +236,14 @@ const Login = () => {
             onClick={() => handleReg()}
             className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
             style={{borderRadius: '12px'}}
+            aria-label="Create a new account"
           >
             <div className="text-center">
-              👕 Create Account
+              <span aria-hidden="true">👕</span> Create Account
             </div>
           </button>
         </div>
-      </div>
+      </main>
     </div>
   )
 }

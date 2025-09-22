@@ -17,12 +17,10 @@ Steps:
 		• Add an onClick handler to each image to trigger the selection logic when clicked. 
 
 
-
-
 • Dropdown Component (SelectDropdown.jsx): 
 	• Create a new file called SelectDropdown.jsx. 
 
 
 
 
-Generative AI is experimental.
+

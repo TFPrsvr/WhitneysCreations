@@ -1,0 +1,467 @@
+/**
+ * Accessibility styles for Whitney's Creations
+ * WCAG 2.1 AA compliant styles and utilities
+ */
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Show screen reader content when focused */
+.sr-only:focus,
+.sr-only:active {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: inherit;
+}
+
+/* Skip links */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  z-index: 1000;
+  font-weight: bold;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Focus indicators */
+*:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+/* Enhanced focus for interactive elements */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.2);
+}
+
+/* High contrast focus for navigation items */
+.nav-item:focus,
+.nav-link:focus {
+  outline: 3px solid #ffff00;
+  outline-offset: 2px;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  /* Increase contrast for text */
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  /* Ensure buttons have proper contrast */
+  button,
+  .btn {
+    border: 2px solid #000000;
+    background: #ffffff;
+    color: #000000;
+  }
+
+  button:hover,
+  .btn:hover {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  /* High contrast links */
+  a {
+    color: #0066cc;
+    text-decoration: underline;
+  }
+
+  a:visited {
+    color: #6600cc;
+  }
+
+  a:hover,
+  a:focus {
+    background: #000000;
+    color: #ffffff;
+  }
+}
+
+/* Dark mode accessibility */
+@media (prefers-color-scheme: dark) {
+  /* Ensure sufficient contrast in dark mode */
+  .text-gray-600 {
+    color: #d1d5db; /* Increased contrast for dark mode */
+  }
+
+  .text-gray-700 {
+    color: #e5e7eb; /* Increased contrast for dark mode */
+  }
+
+  .bg-gray-50 {
+    background-color: #1f2937; /* Dark background */
+  }
+}
+
+/* Error states with proper contrast */
+.error,
+.text-red-600 {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  .error,
+  .text-red-600 {
+    color: #fca5a5; /* Light red for dark mode */
+  }
+}
+
+/* Loading states */
+.loading {
+  position: relative;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e5e7eb;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Ensure sufficient touch targets */
+button,
+a,
+input[type="checkbox"],
+input[type="radio"],
+select {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Form accessibility improvements */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+@media (prefers-color-scheme: dark) {
+  .form-label {
+    color: #f9fafb;
+  }
+}
+
+/* Required field indicator */
+.required::after {
+  content: " *";
+  color: #dc2626;
+  font-weight: bold;
+}
+
+/* Error message styling */
+.error-message {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.error-message::before {
+  content: "⚠";
+  margin-right: 0.25rem;
+  font-weight: bold;
+}
+
+/* Success message styling */
+.success-message {
+  color: #059669;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.success-message::before {
+  content: "✓";
+  margin-right: 0.25rem;
+  font-weight: bold;
+}
+
+/* Landmark regions */
+main {
+  min-height: 50vh;
+}
+
+nav {
+  position: relative;
+}
+
+/* Card accessibility improvements */
+.product-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.product-card:focus-within {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+/* Table accessibility */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+
+/* Modal accessibility */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 1001;
+}
+
+.modal:focus {
+  outline: none;
+}
+
+/* Notification accessibility */
+.notification {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-width: 400px;
+}
+
+.notification.success {
+  border-left: 4px solid #059669;
+}
+
+.notification.error {
+  border-left: 4px solid #dc2626;
+}
+
+.notification.warning {
+  border-left: 4px solid #d97706;
+}
+
+.notification.info {
+  border-left: 4px solid #0284c7;
+}
+
+/* Breadcrumb accessibility */
+.breadcrumb {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: "/";
+  margin: 0 0.5rem;
+  color: #6b7280;
+}
+
+.breadcrumb a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb .current {
+  color: #374151;
+  font-weight: 600;
+}
+
+/* Progress indicator */
+.progress {
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background-color: #3b82f6;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* Color-blind friendly colors */
+.status-success {
+  background-color: #059669; /* Green with good contrast */
+}
+
+.status-warning {
+  background-color: #d97706; /* Orange with good contrast */
+}
+
+.status-error {
+  background-color: #dc2626; /* Red with good contrast */
+}
+
+.status-info {
+  background-color: #0284c7; /* Blue with good contrast */
+}
+
+/* Ensure text meets contrast requirements */
+.text-contrast-aa {
+  color: #1f2937; /* Ensures 4.5:1 contrast on white background */
+}
+
+.text-contrast-aaa {
+  color: #111827; /* Ensures 7:1 contrast on white background */
+}
+
+/* Print styles for accessibility */
+@media print {
+  .skip-link,
+  .sr-only {
+    display: none !important;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+}
+
+/* Focus management for components */
+.focus-trap {
+  position: relative;
+}
+
+.focus-trap:focus {
+  outline: none;
+}
+
+/* Responsive text sizing for better readability */
+@media (max-width: 768px) {
+  .responsive-text {
+    font-size: 1.125rem; /* 18px minimum for mobile */
+    line-height: 1.6;
+  }
+}
+
+/* Ensure adequate spacing for touch targets */
+@media (max-width: 768px) {
+  button,
+  a {
+    padding: 0.75rem 1rem;
+    margin: 0.25rem;
+  }
+}

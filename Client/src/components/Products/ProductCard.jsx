@@ -63,13 +63,14 @@ const ProductCard = ({ product, priceRange }) => {
   };
 
   return (
-    <Card className="product-card h-full flex flex-col">
-      <Link to={`/products/${product._id}`} className="flex-1">
+    <article className="product-card h-full flex flex-col" role="group" aria-labelledby={`product-${product._id}-name`}>
+      <Card className="h-full flex flex-col">
+        <Link to={`/products/${product._id}`} className="flex-1" aria-label={`View details for ${product.name}`}>
         <div className="product-image-container">
           {primaryImage ? (
             <img
               src={primaryImage.url}
-              alt={primaryImage.alt || product.name}
+              alt={primaryImage.alt || `${product.name} - ${getCategoryDisplay(product.category)} ${getTypeDisplay(product.type)}`}
               className="product-image"
               loading="lazy"
             />
@@ -101,7 +102,7 @@ const ProductCard = ({ product, priceRange }) => {
             {getCategoryDisplay(product.category)} • {getTypeDisplay(product.type)}
           </div>
           
-          <CardTitle className="product-name">{product.name}</CardTitle>
+          <CardTitle id={`product-${product._id}-name`} className="product-name">{product.name}</CardTitle>
           
           <CardDescription>{product.description}</CardDescription>
           
@@ -157,25 +158,27 @@ const ProductCard = ({ product, priceRange }) => {
         </CardContent>
       </Link>
 
-      <CardFooter className="flex gap-2 mt-auto">
-        <Button asChild variant="outline" className="flex-1">
-          <Link to={`/products/${product._id}`}>
-            View Details
-          </Link>
-        </Button>
-        <Button 
-          className="flex-1"
-          disabled={!isInStock()}
-          onClick={(e) => {
-            e.preventDefault();
-            // TODO: Open design customizer
-            console.log('Customize product:', product.name);
-          }}
-        >
-          Customize
-        </Button>
-      </CardFooter>
-    </Card>
+        <CardFooter className="flex gap-2 mt-auto">
+          <Button asChild variant="outline" className="flex-1">
+            <Link to={`/products/${product._id}`} aria-label={`View full details for ${product.name}`}>
+              View Details
+            </Link>
+          </Button>
+          <Button
+            className="flex-1"
+            disabled={!isInStock()}
+            onClick={(e) => {
+              e.preventDefault();
+              // TODO: Open design customizer
+              console.log('Customize product:', product.name);
+            }}
+            aria-label={!isInStock() ? `${product.name} is out of stock` : `Customize ${product.name}`}
+          >
+            Customize
+          </Button>
+        </CardFooter>
+      </Card>
+    </article>
   );
 };
 

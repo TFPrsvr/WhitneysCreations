@@ -6,8 +6,6 @@
     width: 100%;
     min-height: 100vh;
     margin: 0;
-    padding-left: 280px; /* Account for sidebar width */
-    padding-right: 20px;
     box-sizing: border-box;
 }
 
@@ -114,6 +112,7 @@ h5 {
 @media (max-width: 768px) {
     #CreationsComp {
         padding: 15px;
+        margin-left: 0;
     }
 
     .whits {
@@ -142,6 +141,7 @@ h5 {
 @media (max-width: 480px) {
     #CreationsComp {
         padding: 10px;
+        margin-left: 0;
     }
 
     .whits {
