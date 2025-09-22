@@ -1017,7 +1017,7 @@ const MockupGenerator = ({ design, onExport }) => {
         <div className="space-y-6">
           {/* Mockup Selection */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Choose Mockup</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-4 drop-shadow-sm">Choose Mockup</h3>
             
             {/* Category Tabs */}
             <div className="flex flex-wrap gap-2 mb-4">
@@ -1044,8 +1044,10 @@ const MockupGenerator = ({ design, onExport }) => {
                   }`}
                   style={{ maxWidth: '100%' }}
                 >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-2xl">{mockup.icon}</span>
+                  <div className="text-center mb-2">
+                    <div className="flex justify-center mb-1">
+                      <span className="text-lg">{mockup.icon}</span>
+                    </div>
                     {mockup.isPremium && (
                       <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
                         Premium
@@ -1062,7 +1064,7 @@ const MockupGenerator = ({ design, onExport }) => {
           {/* Color Selection */}
           {availableColors.length > 0 && (
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Choose Color</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-4 drop-shadow-sm">Choose Color</h3>
               <div className="grid grid-cols-2 gap-3">
                 {availableColors.map(color => {
                   const variant = getProductVariant(selectedMockup, color);
@@ -1098,7 +1100,7 @@ const MockupGenerator = ({ design, onExport }) => {
           {/* Angle Selection */}
           {currentVariant?.images && (
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">View Angle</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-4 drop-shadow-sm">View Angle</h3>
               <div className="grid grid-cols-4 gap-2">
                 {currentVariant.images.map(image => (
                   <button
@@ -1121,12 +1123,12 @@ const MockupGenerator = ({ design, onExport }) => {
 
           {/* Mockup Settings */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Customize Mockup</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-4 drop-shadow-sm">Customize Mockup</h3>
             
             <div className="space-y-4">
               {/* Background Color */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">
                   Background Color
                 </label>
                 <div className="flex items-center space-x-2">
@@ -1147,7 +1149,7 @@ const MockupGenerator = ({ design, onExport }) => {
 
               {/* Mockup Color */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">
                   Product Color
                 </label>
                 <div className="flex items-center space-x-2">
@@ -1168,7 +1170,7 @@ const MockupGenerator = ({ design, onExport }) => {
 
               {/* Design Scale */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">
                   Design Scale ({Math.round(mockupSettings.designScale * 100)}%)
                 </label>
                 <input
@@ -1217,7 +1219,7 @@ const MockupGenerator = ({ design, onExport }) => {
               {/* Design Position */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">
                     X Position
                   </label>
                   <input
@@ -1231,7 +1233,7 @@ const MockupGenerator = ({ design, onExport }) => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">
                     Y Position
                   </label>
                   <input
@@ -1248,7 +1250,7 @@ const MockupGenerator = ({ design, onExport }) => {
 
               {/* Rotation */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">
                   Design Rotation ({mockupSettings.rotation}°)
                 </label>
                 <input
@@ -1263,7 +1265,7 @@ const MockupGenerator = ({ design, onExport }) => {
 
               {/* Shadow Intensity */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">
                   Shadow Intensity ({Math.round(mockupSettings.shadowIntensity * 100)}%)
                 </label>
                 <input
@@ -1292,7 +1294,7 @@ const MockupGenerator = ({ design, onExport }) => {
         {/* Preview Panel */}
         <div className="space-y-6">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Preview</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-4 drop-shadow-sm">Preview</h3>
             
             <div className="border border-gray-300 rounded-lg overflow-hidden bg-gray-50 p-4">
               <canvas
@@ -1360,32 +1362,32 @@ const MockupGenerator = ({ design, onExport }) => {
           {/* Mockup Info */}
           {currentMockup && currentVariant && (
             <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="font-semibold text-gray-900 mb-3">Product Details</h4>
+              <h4 className="font-bold text-gray-900 mb-3 drop-shadow-sm">Product Details</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Product:</span>
+                  <span className="text-gray-900 font-semibold">Product:</span>
                   <span className="font-medium">{currentVariant.name}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Category:</span>
+                  <span className="text-gray-900 font-semibold">Category:</span>
                   <span className="font-medium">{currentMockup.category}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Price:</span>
+                  <span className="text-gray-900 font-semibold">Price:</span>
                   <span className="font-medium text-primary-600">{currentVariant.price}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Dimensions:</span>
+                  <span className="text-gray-900 font-semibold">Dimensions:</span>
                   <span className="font-medium">
                     {currentMockup.dimensions.width} x {currentMockup.dimensions.height}px
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">View Angle:</span>
+                  <span className="text-gray-900 font-semibold">View Angle:</span>
                   <span className="font-medium">{currentAngle}°</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">Type:</span>
+                  <span className="text-gray-900 font-semibold">Type:</span>
                   <span className={`font-medium ${currentMockup.isPremium ? 'text-yellow-600' : 'text-green-600'}`}>
                     {currentMockup.isPremium ? 'Premium' : 'Free'}
                   </span>
@@ -1400,11 +1402,11 @@ const MockupGenerator = ({ design, onExport }) => {
 
           {/* Performance Settings */}
           <div className="bg-blue-50 rounded-lg p-4">
-            <h4 className="font-semibold text-gray-900 mb-3">Performance Settings</h4>
+            <h4 className="font-bold text-gray-900 mb-3 drop-shadow-sm">Performance Settings</h4>
 
             {/* Performance Mode */}
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">
                 Loading Strategy
               </label>
               <select
@@ -1463,7 +1465,7 @@ const MockupGenerator = ({ design, onExport }) => {
           {designLayers.length > 0 && (
             <div className="bg-purple-50 rounded-lg p-4">
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-semibold text-gray-900">Design Layers ({designLayers.length})</h4>
+                <h4 className="font-bold text-gray-900 drop-shadow-sm">Design Layers ({designLayers.length})</h4>
                 <button
                   onClick={() => addLayer()}
                   className="btn-gradient-purple btn-compact"
