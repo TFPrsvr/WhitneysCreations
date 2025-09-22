@@ -33,10 +33,11 @@
 .catalog-content {
   display: grid;
   grid-template-columns: 280px 1fr;
-  gap: 30px;
+  gap: 24px;
   max-width: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
+  width: 100%;
 }
 
 .filters-sidebar {
@@ -53,6 +54,7 @@
   max-width: calc(100vw - 11rem - 280px - 30px);
   overflow-x: hidden;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .products-header {
@@ -188,9 +190,12 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .no-products {

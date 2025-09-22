@@ -122,7 +122,6 @@ const Login = () => {
         <header className="text-center">
           <div className="text-center mb-4">
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
-            <span className="text-4xl" aria-hidden="true">🎨</span>
           </div>
           <p className="text-gray-600 mt-2">Welcome back to Whitney's Creations</p>
         </header>
@@ -195,17 +194,17 @@ const Login = () => {
                   aria-hidden="true"
                 >
                   {showPassword ? (
+                    // Regular eye (password visible)
+                    <>
+                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                    </>
+                  ) : (
                     // Eye-slash (password hidden)
                     <>
                       <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                       <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                       <path stroke="currentColor" strokeWidth="2" d="M4 4l12 12" strokeLinecap="round" />
-                    </>
-                  ) : (
-                    // Regular eye (password visible)
-                    <>
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                     </>
                   )}
                 </svg>
@@ -218,11 +217,10 @@ const Login = () => {
             )}
           </div>
 
-          <button 
+          <button
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            className="w-full btn-gradient-primary disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isLoading}
-            style={{borderRadius: '12px'}}
           >
             {isLoading ? 'Signing In...' : 'Sign In'}
           </button>
@@ -234,13 +232,10 @@ const Login = () => {
           </p>
           <button
             onClick={() => handleReg()}
-            className="w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
-            style={{borderRadius: '12px'}}
+            className="w-full btn-gradient-purple"
             aria-label="Create a new account"
           >
-            <div className="text-center">
-              <span aria-hidden="true">👕</span> Create Account
-            </div>
+            Create Account
           </button>
         </div>
       </main>

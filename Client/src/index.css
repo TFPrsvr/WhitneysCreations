@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 @import "tw-animate-css";
+@import "./styles/buttons.css";
 
 /* Hide scrollbars globally */
 html {
@@ -104,7 +105,7 @@ body::-webkit-scrollbar {
   max-width: calc(100vw - 11rem);
   padding: 0 1rem;
   box-sizing: border-box;
-  width: calc(100vw - 11rem);
+  width: auto;
   overflow-x: hidden;
 }
 

@@ -500,17 +500,17 @@ const DesignStudio = () => {
                 </div>
 
                 {/* Templates Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                   {/* Built-in Templates */}
                   {designTemplates.map((template) => (
                     <div
                       key={template.id}
-                      className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-lg hover:border-primary-300 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
+                      className="bg-white border border-gray-200 rounded-lg p-3 hover:shadow-lg hover:border-primary-300 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
                       onClick={() => loadTemplate(template)}
                     >
-                      <div className="aspect-w-16 aspect-h-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg mb-4 flex items-center justify-center border border-gray-200">
+                      <div className="aspect-w-16 aspect-h-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg mb-3 flex items-center justify-center border border-gray-200">
                         <div className="text-center">
-                          <div className="text-6xl mb-2">{template.thumbnail || '🎨'}</div>
+                          <div className="text-4xl mb-2">{template.thumbnail || '🎨'}</div>
                           <div className="text-xs text-gray-500 bg-white px-2 py-1 rounded-full">
                             {template.dimensions.width} × {template.dimensions.height}
                           </div>
@@ -546,10 +546,10 @@ const DesignStudio = () => {
                   {templates.map((template) => (
                     <div
                       key={template._id}
-                      className="bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-5 hover:shadow-lg hover:border-blue-400 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
+                      className="bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-3 hover:shadow-lg hover:border-blue-400 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
                       onClick={() => loadTemplate(template)}
                     >
-                      <div className="aspect-w-16 aspect-h-12 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+                      <div className="aspect-w-16 aspect-h-12 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
                         {template.previewImage ? (
                           <img
                             src={template.previewImage}

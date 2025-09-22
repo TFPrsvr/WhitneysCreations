@@ -337,17 +337,17 @@ const Reg = () => {
                   aria-hidden="true"
                 >
                   {showPassword ? (
+                    // Regular eye (password visible)
+                    <>
+                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                    </>
+                  ) : (
                     // Eye-slash (password hidden)
                     <>
                       <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                       <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                       <path stroke="currentColor" strokeWidth="2" d="M4 4l12 12" strokeLinecap="round" />
-                    </>
-                  ) : (
-                    // Regular eye (password visible)
-                    <>
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
                     </>
                   )}
                 </svg>
@@ -362,8 +362,7 @@ const Reg = () => {
 
           <button
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold hover:from-purple-700 hover:to-pink-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
-            style={{borderRadius: '12px'}}
+            className="w-full btn-gradient-purple disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isLoading}
             aria-label={isLoading ? 'Creating account...' : 'Create your account'}
           >
@@ -377,8 +376,7 @@ const Reg = () => {
           </p>
           <button
             onClick={() => handleLogin()}
-            className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
-            style={{borderRadius: '12px'}}
+            className="w-full btn-gradient-primary"
             aria-label="Go to sign in page"
           >
             Sign In

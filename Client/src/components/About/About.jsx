@@ -89,14 +89,14 @@ const About = () => {
   return (
     <div className="min-h-screen bg-gray-50 pt-4 page-container">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-600 to-purple-600 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
+      <section className="bg-gradient-to-br from-primary-600 to-purple-600 text-white py-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-4 lg:px-4">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold mb-4">
               About PrintCraft
             </h1>
-            <p className="text-2xl md:text-3xl mb-8 max-w-3xl mx-auto text-gray-100 font-bold">
-              We're on a mission to empower creators worldwide to turn their ideas into successful businesses 
+            <p className="text-lg md:text-xl mb-6 max-w-2xl mx-auto text-gray-100 font-semibold">
+              We're on a mission to empower creators worldwide to turn their ideas into successful businesses
               through high-quality print-on-demand products.
             </p>
           </div>
@@ -104,24 +104,24 @@ const About = () => {
       </section>
 
       {/* Mission Section */}
-      <section className="py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center justify-center">
+      <section className="py-6 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-4 lg:px-4">
+          <div className="grid lg:grid-cols-2 gap-8 items-center justify-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 Our Mission
               </h2>
-              <p className="text-xl text-gray-700 mb-6 font-semibold">
-                At PrintCraft, we believe everyone should have the opportunity to turn their creativity into a 
-                thriving business. That's why we've built the most intuitive, powerful, and accessible 
+              <p className="text-lg text-gray-700 mb-4 font-medium">
+                At PrintCraft, we believe everyone should have the opportunity to turn their creativity into a
+                thriving business. That's why we've built the most intuitive, powerful, and accessible
                 print-on-demand platform in the world.
               </p>
-              <p className="text-xl text-gray-700 mb-4 font-semibold">
+              <p className="text-lg text-gray-700 mb-3 font-medium">
                 Whether you're an artist, entrepreneur, or just someone with great ideas, we provide all the
                 tools you need to design, sell, and fulfill custom products without any upfront investment
                 or inventory management.
               </p>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-base text-gray-600 mb-4">
                 Join thousands of creators who have already built successful businesses with PrintCraft.
                 Start your creative journey today and transform your ideas into profitable products.
               </p>
@@ -134,23 +134,23 @@ const About = () => {
             </div>
             <div className="relative">
               <div className="bg-gradient-to-br from-primary-100 to-purple-100 rounded-2xl p-8 text-center">
-                <div className="text-8xl mb-6">🎨</div>
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <Link to="/projects" className="bg-white rounded-lg p-4 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
-                    <div className="text-2xl font-bold text-primary-600">100K+</div>
-                    <div className="text-sm text-gray-600">Active Creators</div>
+                <div className="text-6xl mb-4">🎨</div>
+                <div className="grid grid-cols-2 gap-3 text-center">
+                  <Link to="/projects" className="bg-white rounded-lg p-3 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
+                    <div className="text-xl font-bold text-primary-600">100K+</div>
+                    <div className="text-xs text-gray-600">Active Creators</div>
                   </Link>
-                  <Link to="/products" className="bg-white rounded-lg p-4 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
-                    <div className="text-2xl font-bold text-primary-600">2M+</div>
-                    <div className="text-sm text-gray-600">Products Sold</div>
+                  <Link to="/products" className="bg-white rounded-lg p-3 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
+                    <div className="text-xl font-bold text-primary-600">2M+</div>
+                    <div className="text-xs text-gray-600">Products Sold</div>
                   </Link>
-                  <Link to="/products" className="bg-white rounded-lg p-4 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
-                    <div className="text-2xl font-bold text-primary-600">150+</div>
-                    <div className="text-sm text-gray-600">Product Types</div>
+                  <Link to="/products" className="bg-white rounded-lg p-3 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
+                    <div className="text-xl font-bold text-primary-600">150+</div>
+                    <div className="text-xs text-gray-600">Product Types</div>
                   </Link>
-                  <Link to="/contact" className="bg-white rounded-lg p-4 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
-                    <div className="text-2xl font-bold text-primary-600">50+</div>
-                    <div className="text-sm text-gray-600">Countries</div>
+                  <Link to="/contact" className="bg-white rounded-lg p-3 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
+                    <div className="text-xl font-bold text-primary-600">50+</div>
+                    <div className="text-xs text-gray-600">Countries</div>
                   </Link>
                 </div>
               </div>
@@ -281,6 +281,10 @@ const About = () => {
             <Link
               to="/contact"
               className="bg-gradient-to-r from-emerald-500 to-green-600 text-white border-2 border-emerald-500 px-8 py-4 rounded-lg font-semibold text-lg hover:from-emerald-600 hover:to-green-700 hover:border-emerald-600 transition-all duration-200 shadow-lg"
+              style={{
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+                WebkitTextStroke: '1px rgba(0, 0, 0, 0.3)'
+              }}
             >
               Get in Touch
             </Link>

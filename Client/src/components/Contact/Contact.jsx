@@ -27,7 +27,10 @@ const Contact = () => {
               <CardContent>
             <div className="space-y-6">
               <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-                <span className="text-3xl" aria-hidden="true">📧</span>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl" aria-hidden="true">📧</span>
+                  <span className="text-xs font-medium text-gray-600 mt-1">Email</span>
+                </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg mb-2">Email</h3>
                   <p className="text-gray-700 font-medium">
@@ -43,7 +46,10 @@ const Contact = () => {
                 </div>
               </div>
               <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-                <span className="text-3xl" aria-hidden="true">📞</span>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl" aria-hidden="true">📞</span>
+                  <span className="text-xs font-medium text-gray-600 mt-1">Phone</span>
+                </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg mb-2">Phone</h3>
                   <p className="text-gray-700 font-medium">
@@ -59,7 +65,10 @@ const Contact = () => {
                 </div>
               </div>
               <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-                <span className="text-3xl" aria-hidden="true">🏢</span>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl" aria-hidden="true">🏢</span>
+                  <span className="text-xs font-medium text-gray-600 mt-1">Address</span>
+                </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg mb-2">Address</h3>
                   <address className="text-gray-700 font-medium not-italic">
@@ -69,7 +78,10 @@ const Contact = () => {
                 </div>
               </div>
               <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
-                <span className="text-3xl" aria-hidden="true">🕒</span>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl" aria-hidden="true">🕒</span>
+                  <span className="text-xs font-medium text-gray-600 mt-1">Hours</span>
+                </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg mb-2">Business Hours</h3>
                   <ul className="text-gray-700 font-medium space-y-1">
@@ -135,6 +147,11 @@ const Contact = () => {
               <button
                 type="submit"
                 className="w-full bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200"
+                style={{
+                  maxWidth: '16vw',
+                  minWidth: '200px',
+                  borderRadius: '12px'
+                }}
                 aria-label="Send your message to Whitney's Creations"
               >
                 Send Message

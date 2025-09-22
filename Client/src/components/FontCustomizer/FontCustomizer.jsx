@@ -167,14 +167,14 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
         <div className="flex space-x-2">
           <button
             onClick={resetToDefaults}
-            className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+            className="btn-secondary btn-small"
           >
             Reset
           </button>
           {isAuthenticated && (
             <button
               onClick={downloadPreview}
-              className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+              className="btn-gradient-primary btn-small"
             >
               Download Preview
             </button>
@@ -194,7 +194,7 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
               type="text"
               value={customText}
               onChange={(e) => setCustomText(e.target.value)}
-              className="w-full max-w-md px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+              className="w-48 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
               placeholder="Enter your text..."
             />
           </div>
@@ -232,7 +232,7 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
                 <select
                   value={fontSettings.family}
                   onChange={(e) => handleSettingChange('family', e.target.value)}
-                  className="w-full max-w-md px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                  className="w-40 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
                 >
                   <optgroup label="Popular Fonts">
                     {popularFonts.map((font) => (
@@ -265,7 +265,7 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
                 max="120"
                 value={fontSettings.size}
                 onChange={(e) => handleSettingChange('size', parseInt(e.target.value))}
-                className="w-full max-w-xs"
+                className="w-32"
               />
             </div>
             <div>
@@ -275,7 +275,7 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
               <select
                 value={fontSettings.weight}
                 onChange={(e) => handleSettingChange('weight', e.target.value)}
-                className="w-full max-w-xs px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                className="w-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
               >
                 {fontWeights.map((weight) => (
                   <option key={weight.value} value={weight.value}>
@@ -303,7 +303,7 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
                   type="text"
                   value={fontSettings.color}
                   onChange={(e) => handleSettingChange('color', e.target.value)}
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                  className="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
                 />
               </div>
             </div>
@@ -322,7 +322,7 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
                   type="text"
                   value={fontSettings.backgroundColor}
                   onChange={(e) => handleSettingChange('backgroundColor', e.target.value)}
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                  className="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
                 />
               </div>
             </div>

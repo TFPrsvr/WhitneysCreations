@@ -996,7 +996,7 @@ const MockupGenerator = ({ design, onExport }) => {
         <button
           onClick={exportMockup}
           disabled={isGenerating || !isAuthenticated}
-          className="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
+          className="btn-gradient-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
         >
           {isGenerating ? (
             <>
@@ -1042,6 +1042,7 @@ const MockupGenerator = ({ design, onExport }) => {
                       ? 'border-primary-500 bg-primary-50'
                       : 'border-gray-300 hover:border-gray-400'
                   }`}
+                  style={{ maxWidth: '100%' }}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-2xl">{mockup.icon}</span>
@@ -1074,6 +1075,7 @@ const MockupGenerator = ({ design, onExport }) => {
                           ? 'border-primary-500 bg-primary-50'
                           : 'border-gray-300 hover:border-gray-400'
                       }`}
+                      style={{ maxWidth: '100%' }}
                     >
                       <div className={`w-8 h-8 rounded-full mx-auto mb-2 border ${
                         color === 'black' ? 'bg-black border-gray-300' :
@@ -1107,6 +1109,7 @@ const MockupGenerator = ({ design, onExport }) => {
                         ? 'border-primary-500 bg-primary-50'
                         : 'border-gray-300 hover:border-gray-400'
                     }`}
+                    style={{ maxWidth: '100%' }}
                   >
                     <div className="text-xs font-medium">{image.angle}°</div>
                     <div className="text-xs text-gray-500">{image.label}</div>
@@ -1187,10 +1190,10 @@ const MockupGenerator = ({ design, onExport }) => {
                   </label>
                   <button
                     onClick={() => setDragMode(!dragMode)}
-                    className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
+                    className={`btn-compact ${
                       dragMode
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        ? 'btn-gradient-primary'
+                        : 'btn-secondary'
                     }`}
                   >
                     {dragMode ? '🖱️ ON' : '🖱️ OFF'}
@@ -1278,9 +1281,9 @@ const MockupGenerator = ({ design, onExport }) => {
 
           {!isAuthenticated && (
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-              <div className="text-yellow-800">
-                <p className="font-medium mb-1">🔒 Sign in to unlock full features</p>
-                <p className="text-sm">Export high-res mockups, access premium templates, and save presets</p>
+              <div className="text-yellow-900">
+                <p className="font-bold mb-1" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}>🔒 Sign in to unlock full features</p>
+                <p className="text-sm font-medium" style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)' }}>Export high-res mockups, access premium templates, and save presets</p>
               </div>
             </div>
           )}
@@ -1463,7 +1466,7 @@ const MockupGenerator = ({ design, onExport }) => {
                 <h4 className="font-semibold text-gray-900">Design Layers ({designLayers.length})</h4>
                 <button
                   onClick={() => addLayer()}
-                  className="px-3 py-1 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm"
+                  className="btn-gradient-purple btn-compact"
                   disabled={!design}
                 >
                   + Add Layer
@@ -1626,7 +1629,7 @@ const MockupGenerator = ({ design, onExport }) => {
           <div className="grid grid-cols-2 gap-3">
             <button
               onClick={() => handleSettingChange('designScale', 1.0)}
-              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm"
+              className="btn-secondary btn-small"
             >
               Reset Scale
             </button>
@@ -1636,7 +1639,7 @@ const MockupGenerator = ({ design, onExport }) => {
                 handleSettingChange('designY', 0);
                 handleSettingChange('rotation', 0);
               }}
-              className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm"
+              className="btn-secondary btn-small"
             >
               Center Design
             </button>

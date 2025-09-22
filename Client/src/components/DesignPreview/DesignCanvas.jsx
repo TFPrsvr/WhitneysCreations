@@ -1206,31 +1206,6 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                     <div className="text-lg font-bold relative z-10 text-center leading-tight">{toolItem.name}</div>
                   </button>
                 ))}
-                {/* Rectangle tool - spans full width */}
-                <div className="col-span-3">
-                  <button
-                    onClick={() => setTool('rectangle')}
-                    className={`group relative w-full h-auto py-4 px-6 flex items-center justify-center gap-4 shadow-lg transition-all duration-300 transform hover:scale-105 hover:rotate-1 overflow-hidden ${
-                      tool === 'rectangle'
-                        ? "bg-gradient-to-br from-red-500 via-rose-600 to-pink-600 text-white shadow-2xl"
-                        : "bg-gradient-to-br from-white via-red-50 to-rose-100 text-red-800 hover:from-red-100 hover:via-rose-200 hover:to-pink-200 hover:text-red-900"
-                    }`}
-                    style={{ 
-                      borderRadius: '20px',
-                      fontFamily: 'Comfortaa, cursive',
-                      border: tool === 'rectangle' ? '3px solid #f87171' : '2px solid #dc2626',
-                      minHeight: '80px',
-                      boxShadow: tool === 'rectangle' 
-                        ? '0 20px 40px rgba(239, 68, 68, 0.4), 0 0 0 1px rgba(239, 68, 68, 0.1)' 
-                        : '0 8px 25px rgba(220, 38, 38, 0.15)'
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute -inset-1 bg-gradient-to-r from-red-400 via-rose-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-30 blur transition-all duration-500"></div>
-                    <div className="text-3xl relative z-10 transform group-hover:scale-110 transition-transform duration-300">⬛</div>
-                    <div className="text-lg font-bold relative z-10 text-center leading-tight">Rectangle</div>
-                  </button>
-                </div>
               </div>
             </CardContent>
           </Card>
@@ -1562,7 +1537,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                       }
                       min="100"
                       max="2000"
-                      className="group relative w-full px-3 py-3 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl text-center"
+                      className="group relative w-24 px-3 py-3 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl text-center mx-auto"
                       style={{ 
                         borderRadius: '10px',
                         fontFamily: 'Comfortaa, cursive',
@@ -1594,7 +1569,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                       }
                       min="100"
                       max="2000"
-                      className="group relative w-full px-3 py-3 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl text-center"
+                      className="group relative w-24 px-3 py-3 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl text-center mx-auto"
                       style={{ 
                         borderRadius: '10px',
                         fontFamily: 'Comfortaa, cursive',
@@ -1625,7 +1600,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                             backgroundColor: e.target.value,
                           }))
                         }
-                        className="group relative w-full h-12 border-2 border-green-300 cursor-pointer bg-gradient-to-br from-white via-green-50 to-emerald-50 transition-all duration-300 hover:shadow-lg hover:border-green-400 hover:scale-105"
+                        className="group relative w-20 h-12 border-2 border-green-300 cursor-pointer bg-gradient-to-br from-white via-green-50 to-emerald-50 transition-all duration-300 hover:shadow-lg hover:border-green-400 hover:scale-105"
                         style={{ 
                           borderRadius: '10px',
                           boxShadow: '0 4px 15px rgba(34, 197, 94, 0.1)'
@@ -1656,7 +1631,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                       }
                       min="10"
                       max="50"
-                      className="group relative w-full px-3 py-3 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl text-center"
+                      className="group relative w-24 px-3 py-3 border-2 border-green-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-gradient-to-br from-white via-green-50 to-emerald-50 text-green-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-green-400 focus:shadow-xl text-center mx-auto"
                       style={{ 
                         borderRadius: '10px',
                         fontFamily: 'Comfortaa, cursive',
