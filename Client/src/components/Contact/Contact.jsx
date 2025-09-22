@@ -12,7 +12,7 @@ const Contact = () => {
     <div className="min-h-screen bg-gray-50 pt-20 page-container">
       <div className="max-w-4xl mx-auto px-4 sm:px-4 lg:px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="header-main">Contact Us</h1>
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">Contact Us</h1>
           <p className="text-gray-600 mt-4 text-lg">
             Get in touch with our team - we're here to help!
           </p>
@@ -21,7 +21,7 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-12">
           <Card>
             <CardHeader>
-              <CardTitle className="header-primary">Get In Touch</CardTitle>
+              <CardTitle className="text-2xl font-bold text-gray-900">Get In Touch</CardTitle>
             </CardHeader>
             <CardContent>
             <div className="space-y-4">
@@ -64,13 +64,13 @@ const Contact = () => {
           
           <Card>
             <CardHeader>
-              <CardTitle className="header-primary">Send Message</CardTitle>
+              <CardTitle className="text-2xl font-bold text-gray-900">Send Message</CardTitle>
             </CardHeader>
             <CardContent>
             <form className="space-y-4">
               <div>
                 <input
-                  className="input-primary"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
                   type="text"
                   placeholder="Your Name"
                   required
@@ -78,7 +78,7 @@ const Contact = () => {
               </div>
               <div>
                 <input
-                  className="input-primary"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
                   type="email"
                   placeholder="Your Email"
                   required
@@ -86,7 +86,7 @@ const Contact = () => {
               </div>
               <div>
                 <textarea
-                  className="input-large"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900"
                   placeholder="Your Message"
                   rows="4"
                   required
@@ -94,7 +94,7 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-primary-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                className="w-full bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-200"
               >
                 Send Message
               </button>

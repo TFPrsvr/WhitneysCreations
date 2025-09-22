@@ -41,7 +41,7 @@ const DesignStudio = () => {
       category: "Business",
       dimensions: { width: 350, height: 200 },
       description: "Professional business card design",
-      thumbnail: "💼",
+      thumbnail: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
       elements: [
         {
           type: "text",
@@ -82,7 +82,7 @@ const DesignStudio = () => {
       category: "Social",
       dimensions: { width: 400, height: 400 },
       description: "Square social media post template",
-      thumbnail: "📱",
+      thumbnail: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
       elements: [
         {
           type: "rectangle",
@@ -115,7 +115,7 @@ const DesignStudio = () => {
       category: "Branding",
       dimensions: { width: 300, height: 300 },
       description: "Basic logo design template",
-      thumbnail: "🎯",
+      thumbnail: "https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
       elements: [
         {
           type: "circle",
@@ -148,7 +148,7 @@ const DesignStudio = () => {
       category: "Marketing",
       dimensions: { width: 300, height: 400 },
       description: "Event poster template",
-      thumbnail: "📅",
+      thumbnail: "https://images.unsplash.com/photo-1594736797933-d0380ba902d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
       elements: [
         {
           type: "rectangle",
@@ -203,7 +203,7 @@ const DesignStudio = () => {
       category: "Fun",
       dimensions: { width: 200, height: 200 },
       description: "Circular sticker template",
-      thumbnail: "🔵",
+      thumbnail: "https://images.unsplash.com/photo-1594736797933-d0380ba902d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
       elements: [
         {
           type: "circle",
@@ -388,7 +388,7 @@ const DesignStudio = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white page-container">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-white/20">
@@ -492,7 +492,7 @@ const DesignStudio = () => {
                   {categories.map((category) => (
                     <span
                       key={category}
-                      className="px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary-100 hover:to-primary-200 text-gray-700 hover:text-primary-800 text-sm rounded-xl font-medium cursor-pointer transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md"
+                      className="px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary-100 hover:to-primary-200 text-gray-700 hover:text-primary-800 text-sm rounded-lg font-medium cursor-pointer transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md"
                     >
                       {category}
                     </span>
@@ -505,7 +505,7 @@ const DesignStudio = () => {
                   {designTemplates.map((template) => (
                     <div
                       key={template.id}
-                      className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-lg hover:border-primary-300 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
+                      className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-lg hover:border-primary-300 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
                       onClick={() => loadTemplate(template)}
                     >
                       <div className="aspect-w-16 aspect-h-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg mb-4 flex items-center justify-center border border-gray-200">
@@ -535,7 +535,7 @@ const DesignStudio = () => {
                           e.stopPropagation();
                           loadTemplate(template);
                         }}
-                        className="w-full px-4 py-2 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
+                        className="w-full px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-200"
                       >
                         Use Template
                       </button>
@@ -546,7 +546,7 @@ const DesignStudio = () => {
                   {templates.map((template) => (
                     <div
                       key={template._id}
-                      className="bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-5 hover:shadow-lg hover:border-blue-400 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
+                      className="bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-5 hover:shadow-lg hover:border-blue-400 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
                       onClick={() => loadTemplate(template)}
                     >
                       <div className="aspect-w-16 aspect-h-12 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
@@ -590,7 +590,7 @@ const DesignStudio = () => {
                           e.stopPropagation();
                           loadTemplate(template);
                         }}
-                        className="w-full px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
+                        className="w-full px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-200"
                       >
                         Use Template
                       </button>
@@ -660,7 +660,7 @@ const DesignStudio = () => {
                     {designs.map((design) => (
                       <div
                         key={design._id}
-                        className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-lg hover:border-primary-300 transition-all duration-300 transform hover:scale-[1.02]"
+                        className="bg-white border border-gray-200 rounded-lg p-5 hover:shadow-lg hover:border-primary-300 transition-all duration-300 transform hover:scale-[1.02]"
                       >
                         <div className="aspect-w-16 aspect-h-12 bg-gray-100 rounded-lg mb-4 overflow-hidden">
                           {design.previewImage ? (
@@ -715,14 +715,14 @@ const DesignStudio = () => {
                         <div className="space-y-2">
                           <button
                             onClick={() => loadDesign(design)}
-                            className="w-full px-4 py-2 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
+                            className="w-full px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-200"
                             disabled={loading}
                           >
                             Open Design
                           </button>
                           <button
                             onClick={() => duplicateDesign(design._id)}
-                            className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 hover:border-primary-300 transition-all duration-200 text-sm font-medium"
+                            className="w-full px-6 py-3 bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary-100 hover:to-purple-100 text-gray-900 rounded-lg border border-gray-300 hover:border-primary-400 transition-all duration-200 font-bold"
                             disabled={loading}
                           >
                             Duplicate
@@ -742,7 +742,7 @@ const DesignStudio = () => {
                     </p>
                     <button
                       onClick={() => setActiveTab("templates")}
-                      className="px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-xl font-semibold transition-all duration-200 transform hover:scale-105"
+                      className="px-8 py-4 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-200"
                     >
                       Browse Templates
                     </button>
@@ -789,14 +789,14 @@ const DesignStudio = () => {
               <div className="flex space-x-4">
                 <button
                   onClick={() => setShowSaveModal(false)}
-                  className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 hover:border-gray-400 transition-all duration-200"
+                  className="flex-1 px-6 py-3 bg-gradient-to-r from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 text-gray-900 rounded-lg font-bold border border-gray-300 hover:border-gray-400 transition-all duration-200"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={saveDesign}
                   disabled={!designName.trim() || loading}
-                  className="flex-1 px-4 py-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-xl font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105"
+                  className="flex-1 px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-200"
                 >
                   {loading
                     ? "Saving..."

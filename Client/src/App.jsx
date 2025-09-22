@@ -60,7 +60,7 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 w-full max-w-full overflow-x-hidden" style={{ marginLeft: '16rem', maxWidth: 'calc(100vw - 16rem)', width: 'calc(100vw - 16rem)' }}>
+    <div className="min-h-screen bg-gray-50 w-full max-w-full overflow-x-hidden page-container">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-600 via-purple-600 to-pink-500 text-white w-full">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
@@ -79,16 +79,16 @@ function App() {
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">What You Want</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
                   <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0s'}}>❗</span>
                   <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.2s'}}>❗</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 bg-clip-text text-transparent">How You Want It</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-3xl text-red-500 animate-pulse" style={{animationDelay: '0.1s'}}>❗</span>
-                  <span className="text-3xl text-red-500 animate-pulse" style={{animationDelay: '0.3s'}}>❗</span>
+                <div className="flex items-center gap-1">
+                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.1s'}}>❗</span>
+                  <span className="text-3xl text-red-500 animate-bounce" style={{animationDelay: '0.3s'}}>❗</span>
                 </div>
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-blue-400 via-cyan-500 to-teal-500 bg-clip-text text-transparent">When You Want It</span>
@@ -253,23 +253,19 @@ function App() {
           <div className="text-2xl md:text-3xl mb-6 space-y-6">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 text-2xl md:text-3xl font-bold w-full max-w-5xl mx-auto">
               <div className="text-center flex-1">
-                <div className="text-3xl md:text-4xl mb-2">🌟</div>
                 <div className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
                   <div className="text-2xl md:text-3xl">See If Our</div>
                   <div className="text-2xl md:text-3xl">Creators Can</div>
                 </div>
-                <div className="text-3xl md:text-4xl mt-2">🚀</div>
               </div>
               <div className="text-center flex-none">
-                <div className="text-4xl md:text-5xl" style={{transform: 'translateY(12px)'}}>🧢 👕</div>
+                <div className="text-4xl md:text-5xl" style={{transform: 'translateY(18px)'}}>🧢 👕</div>
               </div>
               <div className="text-center flex-1">
-                <div className="text-3xl md:text-4xl mb-2">💡</div>
                 <div className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
                   <div className="text-2xl md:text-3xl">Make Your Ideas</div>
                   <div className="text-2xl md:text-3xl">Come To Life</div>
                 </div>
-                <div className="text-3xl md:text-4xl mt-2">🎯</div>
               </div>
             </div>
             <p className="text-lg md:text-xl font-semibold">Just Click Below To Get Started:</p>
@@ -304,12 +300,12 @@ function App() {
               <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
                 1
               </div>
-              <div className="text-5xl mb-1">🎨</div>
+              <div className="text-5xl mb-0">🎨</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-0">Design</h3>
               <p className="text-gray-600 mb-0 text-sm">
                 Use our intuitive design tools to create amazing products. Upload your own images or use our templates.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1">
+              <ul className="text-sm text-gray-500 space-y-1 mt-0">
                 <li>• Drag-and-drop editor</li>
                 <li>• 1000+ templates</li>
                 <li>• Custom fonts & graphics</li>
@@ -320,12 +316,12 @@ function App() {
               <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
                 2
               </div>
-              <div className="text-5xl mb-1">💰</div>
+              <div className="text-5xl mb-0">💰</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-0">Sell</h3>
               <p className="text-gray-600 mb-0 text-sm">
                 List your products for sale or share them directly with customers. Set your own prices and profit margins.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1">
+              <ul className="text-sm text-gray-500 space-y-1 mt-0">
                 <li>• Set your own prices</li>
                 <li>• Direct customer sharing</li>
                 <li>• Profit margin control</li>
@@ -336,12 +332,12 @@ function App() {
               <div className="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-2">
                 3
               </div>
-              <div className="text-5xl mb-1">🚀</div>
+              <div className="text-5xl mb-0">🚀</div>
               <h3 className="text-xl font-semibold text-gray-900 mb-0">Fulfill</h3>
               <p className="text-gray-600 mb-0 text-sm">
                 We handle printing, packaging, and shipping. You get paid, and your customers get premium products.
               </p>
-              <ul className="text-sm text-gray-500 space-y-1">
+              <ul className="text-sm text-gray-500 space-y-1 mt-0">
                 <li>• Print on demand</li>
                 <li>• Fast worldwide shipping</li>
                 <li>• Quality guaranteed</li>

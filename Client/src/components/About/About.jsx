@@ -7,7 +7,8 @@ const About = () => {
       name: 'Whitney Richards',
       role: 'Founder & CEO',
       bio: 'Passionate about empowering creators to build sustainable businesses through print-on-demand. Whitney founded PrintCraft with a vision to democratize custom product creation and help artists worldwide turn their creativity into thriving businesses.',
-      avatar: '👩‍💼',
+      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b29c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+      emoji: '👩‍💼',
       experience: '15+ years in e-commerce',
       expertise: 'Business Strategy, Product Vision',
       linkedin: 'https://linkedin.com/in/whitney-richards'
@@ -16,7 +17,8 @@ const About = () => {
       name: 'Tabitha Fortner',
       role: 'Head of Design',
       bio: '10+ years in product design, focused on creating intuitive and powerful design tools. Tabitha leads our design team in building user-friendly interfaces that make complex design workflows simple and accessible for creators of all skill levels.',
-      avatar: '👩‍🎨',
+      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+      emoji: '👩‍🎨',
       experience: '12+ years in UX/UI Design',
       expertise: 'User Experience, Design Systems',
       linkedin: 'https://linkedin.com/in/tabitha-fortner'
@@ -25,7 +27,8 @@ const About = () => {
       name: 'Terry Green',
       role: 'VP of Operations',
       bio: 'Ensures quality and fast fulfillment across our global network of print partners. Terry oversees our entire supply chain, quality control processes, and partnerships to guarantee every product meets our high standards.',
-      avatar: '👨‍💼',
+      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80',
+      emoji: '👨‍💼',
       experience: '18+ years in Operations',
       expertise: 'Supply Chain, Quality Control',
       linkedin: 'https://linkedin.com/in/terry-green'
@@ -113,10 +116,14 @@ const About = () => {
                 thriving business. That's why we've built the most intuitive, powerful, and accessible 
                 print-on-demand platform in the world.
               </p>
-              <p className="text-xl text-gray-700 mb-8 font-semibold">
-                Whether you're an artist, entrepreneur, or just someone with great ideas, we provide all the 
-                tools you need to design, sell, and fulfill custom products without any upfront investment 
+              <p className="text-xl text-gray-700 mb-4 font-semibold">
+                Whether you're an artist, entrepreneur, or just someone with great ideas, we provide all the
+                tools you need to design, sell, and fulfill custom products without any upfront investment
                 or inventory management.
+              </p>
+              <p className="text-lg text-gray-600 mb-6">
+                Join thousands of creators who have already built successful businesses with PrintCraft.
+                Start your creative journey today and transform your ideas into profitable products.
               </p>
               <Link
                 to="/reg"
@@ -155,7 +162,7 @@ const About = () => {
       {/* Values Section */}
       <section className="py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="text-center mb-8">
+          <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Our Values
             </h2>
@@ -166,9 +173,9 @@ const About = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-sm text-center hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-                <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex-shrink-0">{value.title}</h3>
+              <div key={index} className="bg-white p-4 rounded-xl shadow-sm text-center hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
+                <div className="text-4xl mb-2">{value.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2 flex-shrink-0">{value.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed flex-grow">{value.description}</p>
               </div>
             ))}
@@ -179,7 +186,7 @@ const About = () => {
       {/* Team Section */}
       <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="text-center mb-8">
+          <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Meet Our Team
             </h2>
@@ -191,14 +198,25 @@ const About = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <div key={index} className="bg-gray-50 rounded-xl p-6 text-center hover:bg-white hover:shadow-lg transition-all duration-300">
-                <div className="text-6xl mb-4">{member.avatar}</div>
+                <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gradient-to-br from-primary-100 to-purple-100 flex items-center justify-center">
+                  <img
+                    src={member.avatar}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'block';
+                    }}
+                  />
+                  <div className="text-4xl hidden">{member.emoji}</div>
+                </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
                 <p className="text-primary-600 font-medium mb-3">{member.role}</p>
                 <div className="text-sm text-gray-500 mb-3">
                   <p className="font-medium">{member.experience}</p>
                   <p>{member.expertise}</p>
                 </div>
-                <p className="text-gray-600 mb-6 text-sm">{member.bio}</p>
+                <p className="text-gray-600 mb-0 text-sm">{member.bio}</p>
                 <a
                   href={member.linkedin}
                   target="_blank"
@@ -216,7 +234,7 @@ const About = () => {
       {/* Timeline Section */}
       <section className="py-8 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="text-center mb-8">
+          <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Our Journey
             </h2>
@@ -229,15 +247,15 @@ const About = () => {
             <div className="absolute left-1/2 transform -translate-x-px top-0 bottom-0 w-0.5 bg-primary-200"></div>
             
             {milestones.map((milestone, index) => (
-              <div key={index} className="relative mb-8">
+              <div key={index} className="relative mb-4">
                 <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center z-10">
                   <div className="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                
+
                 <div className={`flex ${index % 2 === 0 ? 'justify-end pr-8 md:pr-16' : 'justify-start pl-8 md:pl-16'}`}>
-                  <div className={`bg-white p-6 rounded-lg shadow-sm max-w-md w-full ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>
-                    <div className="text-primary-600 font-bold text-lg mb-2">{milestone.year}</div>
-                    <h4 className="text-gray-900 font-semibold text-sm mb-3 leading-relaxed">{milestone.event}</h4>
+                  <div className={`bg-white p-4 rounded-lg shadow-sm max-w-md w-full ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>
+                    <div className="text-primary-600 font-bold text-lg mb-1">{milestone.year}</div>
+                    <h4 className="text-gray-900 font-semibold text-sm mb-1 leading-relaxed">{milestone.event}</h4>
                     <p className="text-gray-600 text-xs leading-relaxed">{milestone.details}</p>
                   </div>
                 </div>
