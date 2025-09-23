@@ -74,7 +74,7 @@ const CleanNav = () => {
     <>
       {/* Vertical Navigation List - Top Left Corner */}
       <nav
-        className="nav-vertical-left fixed z-[60] w-40 h-screen"
+        className="nav-vertical-left fixed z-[60] h-screen"
         role="navigation"
         aria-label="Main navigation"
         style={{
@@ -85,7 +85,8 @@ const CleanNav = () => {
           padding: '0px',
           transform: 'none',
           inset: '0px auto auto 0px',
-          borderRadius: '0 25px 25px 0'
+          borderRadius: '0 25px 25px 0',
+          width: '11rem'
         }}
       >
         <div 
