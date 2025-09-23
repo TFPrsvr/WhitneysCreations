@@ -190,7 +190,7 @@ const Reg = () => {
         <form onSubmit={handleSubmit} className="space-y-4" noValidate>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="first_name" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="first_name" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
                 First Name
               </label>
               <input
@@ -217,7 +217,7 @@ const Reg = () => {
               )}
             </div>
             <div>
-              <label htmlFor="last_name" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="last_name" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
                 Last Name
               </label>
               <input
@@ -274,7 +274,7 @@ const Reg = () => {
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="email" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
               Email Address
             </label>
             <input
@@ -302,7 +302,7 @@ const Reg = () => {
           </div>
 
           <div>
-            <label htmlFor="reg_password" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="reg_password" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
               Password
             </label>
             <div className="relative">
@@ -371,7 +371,7 @@ const Reg = () => {
         </form>
 
         <div className="text-center">
-          <p className="text-gray-600">
+          <p className="text-gray-900 font-semibold">
             Already have an account?
           </p>
           <button
