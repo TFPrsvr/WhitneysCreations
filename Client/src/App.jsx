@@ -67,7 +67,7 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 w-full max-w-full overflow-x-hidden page-container">
+    <div className="min-h-screen bg-gray-50 page-container">
       {/* Hero Section */}
       <main id="main-content">
         <section className="relative bg-gradient-to-br from-primary-600 via-purple-600 to-pink-500 text-white w-full" aria-labelledby="hero-title">
@@ -175,7 +175,7 @@ function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto px-4">
             {features.map((feature, index) => (
-              <div key={index} className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden" style={{height: '200px'}}>
+              <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
                 <div className="text-3xl mb-2">{feature.icon}</div>
                 <h3 className="text-base font-bold text-gray-900 mb-1 break-words">{feature.title}</h3>
                 <p className="text-gray-800 font-medium leading-snug text-sm break-words mb-1">{feature.description}</p>
@@ -299,8 +299,8 @@ function App() {
         <div className="absolute top-5 left-8 text-2xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
         <div className="absolute top-5 right-8 text-2xl opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '0.8s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
         <div className="max-w-6xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="text-center mb-2">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               How It Works
             </h2>
             <p className="text-lg text-gray-800 font-semibold max-w-xl mx-auto px-4 drop-shadow-sm">
@@ -308,8 +308,8 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4 mt-2">
-            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '150px'}}>
+          <div className="grid md:grid-cols-3 gap-6 mt-8">
+            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start">
               <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 1
               </div>
@@ -325,7 +325,7 @@ function App() {
               </ul>
             </div>
 
-            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '150px'}}>
+            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start">
               <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 2
               </div>
@@ -341,7 +341,7 @@ function App() {
               </ul>
             </div>
 
-            <div className="text-center p-3 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1" style={{height: '150px'}}>
+            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start">
               <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 3
               </div>
