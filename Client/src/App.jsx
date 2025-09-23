@@ -72,7 +72,7 @@ function App() {
       <main id="main-content">
         <section className="relative bg-gradient-to-br from-primary-600 via-purple-600 to-pink-500 text-white w-full" aria-labelledby="hero-title">
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="relative w-full px-4 sm:px-4 lg:px-4 py-2 lg:py-4">
+        <div className="relative w-full px-6 py-4">
           <div className="text-center">
             <h1 id="hero-title" className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
               <span className="block text-2xl md:text-4xl mb-4">Whitney's Unique Creations</span>
@@ -163,7 +163,7 @@ function App() {
         <section className="py-8 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative" aria-labelledby="features-title">
         <div className="absolute top-10 right-10 text-4xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
         <div className="absolute top-5 left-5 text-4xl opacity-40 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>👕</div>
-        <div className="w-full px-4 sm:px-4 lg:px-4">
+        <div className="w-full px-6">
           <div className="text-center mb-6">
             <h2 id="features-title" className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
               Everything You Need to Succeed
@@ -178,7 +178,7 @@ function App() {
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
                 <div className="text-3xl mb-2">{feature.icon}</div>
                 <h3 className="text-base font-bold text-gray-900 mb-1 break-words">{feature.title}</h3>
-                <p className="text-gray-800 font-medium leading-snug text-sm break-words mb-1">{feature.description}</p>
+                <p className="text-gray-900 font-semibold leading-snug text-sm break-words mb-2">{feature.description}</p>
                 <div className="text-xs text-gray-800 font-semibold space-y-0.5 mt-1">
                   {feature.title === 'Easy Design Tools' && (
                     <>
@@ -219,7 +219,7 @@ function App() {
       <section className="py-8 bg-gray-50 relative">
         <div className="absolute top-5 left-5 text-2xl opacity-50 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🧢</div>
         <div className="absolute top-5 right-5 text-2xl opacity-50 animate-bounce hidden lg:block" style={{animationDelay: '1s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
-        <div className="w-full px-4 sm:px-4 lg:px-4">
+        <div className="w-full px-6">
           <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               Premium Products, Perfect Quality
@@ -298,9 +298,9 @@ function App() {
       <section className="py-4 bg-white relative">
         <div className="absolute top-5 left-8 text-2xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
         <div className="absolute top-5 right-8 text-2xl opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '0.8s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
-        <div className="max-w-6xl mx-auto px-4 sm:px-4 lg:px-4">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
               How It Works
             </h2>
             <p className="text-lg text-gray-800 font-semibold max-w-xl mx-auto px-4 drop-shadow-sm">
@@ -308,14 +308,14 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-8">
+          <div className="grid md:grid-cols-3 gap-6 mt-4">
             <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start">
               <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 1
               </div>
               <div className="text-3xl mb-1">🎨</div>
               <h3 className="text-base font-semibold text-gray-900 mb-2">Design</h3>
-              <p className="text-gray-800 font-medium mb-1 text-sm leading-relaxed">
+              <p className="text-gray-900 font-semibold mb-2 text-sm leading-relaxed">
                 Use our intuitive design tools to create amazing products. Upload your own images or use our templates.
               </p>
               <ul className="text-sm text-gray-500 space-y-0 mt-1">
@@ -331,7 +331,7 @@ function App() {
               </div>
               <div className="text-3xl mb-1">💰</div>
               <h3 className="text-base font-semibold text-gray-900 mb-2">Sell</h3>
-              <p className="text-gray-800 font-medium mb-1 text-sm leading-relaxed">
+              <p className="text-gray-900 font-semibold mb-2 text-sm leading-relaxed">
                 List your products for sale or share them directly with customers. Set your own prices and profit margins.
               </p>
               <ul className="text-sm text-gray-500 space-y-0 mt-1">
@@ -347,7 +347,7 @@ function App() {
               </div>
               <div className="text-3xl mb-1">🚀</div>
               <h3 className="text-base font-semibold text-gray-900 mb-2">Fulfill</h3>
-              <p className="text-gray-800 font-medium mb-1 text-sm leading-relaxed">
+              <p className="text-gray-900 font-semibold mb-2 text-sm leading-relaxed">
                 We handle printing, packaging, and shipping. You get paid, and your customers get premium products.
               </p>
               <ul className="text-sm text-gray-500 space-y-0 mt-1">
@@ -365,7 +365,7 @@ function App() {
       <section className="py-12 bg-gradient-to-r from-primary-600 to-purple-600 text-white relative">
         <div className="absolute top-8 left-8 text-3xl opacity-30 animate-spin hidden lg:block" style={{animationDuration: '6s', filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>🎨</div>
         <div className="absolute top-8 right-8 text-3xl opacity-30 animate-bounce hidden lg:block" style={{animationDelay: '2s', filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9))'}}>☕</div>
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-4 lg:px-4">
+        <div className="max-w-5xl mx-auto text-center px-6">
           <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)', WebkitTextStroke: '1px rgba(0,0,0,0.3)'}}>
             Ready to Start Your Print-on-Demand Business?
           </h2>

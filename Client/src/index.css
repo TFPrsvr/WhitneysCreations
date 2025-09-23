@@ -103,9 +103,9 @@ body::-webkit-scrollbar {
   margin-top: 0;
   margin-right: 0;
   max-width: calc(100vw - 11rem);
-  padding: 0 1rem;
+  padding: 0;
   box-sizing: border-box;
-  width: auto;
+  width: calc(100vw - 11rem);
   overflow-x: hidden;
 }
 
