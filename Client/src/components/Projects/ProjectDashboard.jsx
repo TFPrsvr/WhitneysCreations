@@ -201,7 +201,8 @@ const ProjectDashboard = () => {
                 onUpdate={() => {
                   fetchUserProjects({ sortBy, sortOrder, ...filters });
                   fetchProjectStats();
-                }} />
+                }}
+              />
             ))}
           </div>
         )}
@@ -213,7 +214,6 @@ const ProjectDashboard = () => {
           onProjectCreated={handleProjectCreated}
         />
       )}
-      </div>
     </div>
   );
 };
