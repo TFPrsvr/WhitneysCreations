@@ -111,17 +111,17 @@ const About = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 Our Mission
               </h2>
-              <p className="text-lg text-gray-700 mb-4 font-medium">
+              <p className="text-lg text-gray-900 mb-4 font-semibold">
                 At PrintCraft, we believe everyone should have the opportunity to turn their creativity into a
                 thriving business. That's why we've built the most intuitive, powerful, and accessible
                 print-on-demand platform in the world.
               </p>
-              <p className="text-lg text-gray-700 mb-3 font-medium">
+              <p className="text-lg text-gray-900 mb-3 font-semibold">
                 Whether you're an artist, entrepreneur, or just someone with great ideas, we provide all the
                 tools you need to design, sell, and fulfill custom products without any upfront investment
                 or inventory management.
               </p>
-              <p className="text-base text-gray-600 mb-4">
+              <p className="text-base text-gray-900 font-medium mb-4">
                 Join thousands of creators who have already built successful businesses with PrintCraft.
                 Start your creative journey today and transform your ideas into profitable products.
               </p>
@@ -138,19 +138,19 @@ const About = () => {
                 <div className="grid grid-cols-2 gap-3 text-center">
                   <Link to="/projects" className="bg-white rounded-lg p-3 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
                     <div className="text-xl font-bold text-primary-600">100K+</div>
-                    <div className="text-xs text-gray-600">Active Creators</div>
+                    <div className="text-sm text-gray-900 font-semibold">Active Creators</div>
                   </Link>
                   <Link to="/products" className="bg-white rounded-lg p-3 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
                     <div className="text-xl font-bold text-primary-600">2M+</div>
-                    <div className="text-xs text-gray-600">Products Sold</div>
+                    <div className="text-sm text-gray-900 font-semibold">Products Sold</div>
                   </Link>
                   <Link to="/products" className="bg-white rounded-lg p-3 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
                     <div className="text-xl font-bold text-primary-600">150+</div>
-                    <div className="text-xs text-gray-600">Product Types</div>
+                    <div className="text-sm text-gray-900 font-semibold">Product Types</div>
                   </Link>
                   <Link to="/contact" className="bg-white rounded-lg p-3 hover:bg-primary-50 hover:shadow-lg transition-all duration-200 transform hover:-translate-y-1">
                     <div className="text-xl font-bold text-primary-600">50+</div>
-                    <div className="text-xs text-gray-600">Countries</div>
+                    <div className="text-sm text-gray-900 font-semibold">Countries</div>
                   </Link>
                 </div>
               </div>

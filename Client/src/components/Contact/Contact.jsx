@@ -33,12 +33,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg mb-2 drop-shadow-sm">Email</h3>
-                  <p className="text-gray-700 font-medium">
+                  <p className="text-gray-900 font-semibold">
                     <a href="mailto:support@whitneyscreations.com" className="hover:text-primary-600 transition-colors">
                       support@whitneyscreations.com
                     </a>
                   </p>
-                  <p className="text-gray-700 font-medium">
+                  <p className="text-gray-900 font-semibold">
                     <a href="mailto:orders@whitneyscreations.com" className="hover:text-primary-600 transition-colors">
                       orders@whitneyscreations.com
                     </a>
@@ -52,12 +52,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg mb-2 drop-shadow-sm">Phone</h3>
-                  <p className="text-gray-700 font-medium">
+                  <p className="text-gray-900 font-semibold">
                     <a href="tel:+15551232738" className="hover:text-primary-600 transition-colors">
                       (555) 123-CRAFT (2738)
                     </a>
                   </p>
-                  <p className="text-gray-700 font-medium">
+                  <p className="text-gray-900 font-semibold">
                     <a href="tel:+18009448639" className="hover:text-primary-600 transition-colors">
                       Toll Free: 1-800-WHITNEY-1
                     </a>
@@ -71,7 +71,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg mb-2 drop-shadow-sm">Address</h3>
-                  <address className="text-gray-700 font-medium not-italic">
+                  <address className="text-gray-900 font-semibold not-italic">
                     3843 Hwy 45<br/>
                     Kenton, TN 38233
                   </address>
@@ -84,7 +84,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg mb-2 drop-shadow-sm">Business Hours</h3>
-                  <ul className="text-gray-700 font-medium space-y-1">
+                  <ul className="text-gray-900 font-semibold space-y-1">
                     <li>Monday - Friday: 8:00 AM - 6:00 PM CST</li>
                     <li>Saturday: 9:00 AM - 3:00 PM CST</li>
                     <li>Sunday: Closed</li>
