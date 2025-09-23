@@ -48,8 +48,9 @@ app.use(
         return callback(null, true);
       }
 
-      // Check if origin matches Vercel deployment pattern
-      if (origin.includes('whitneys-creations') && origin.includes('vercel.app')) {
+      // Check if origin matches any Vercel deployment pattern
+      if (origin.includes('vercel.app') &&
+          (origin.includes('whitneys-creations') || origin.includes('whitneyscreations'))) {
         return callback(null, true);
       }
 

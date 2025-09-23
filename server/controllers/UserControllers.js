@@ -15,8 +15,8 @@ module.exports = {
    generateToken:  (userId) => {
       return JWT.sign(
         { id: userId },
-        process.env.JWT_SECRET, 
-        { expiresIn: '2h' } 
+        process.env.SECRET_KEY,
+        { expiresIn: '2h' }
       );
     },
     
