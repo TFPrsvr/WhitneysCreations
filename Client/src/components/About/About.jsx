@@ -87,7 +87,7 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-4 page-container">
+    <div className="min-h-screen bg-gray-50 pt-4 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary-600 to-purple-600 text-white py-6">
         <div className="max-w-6xl mx-auto px-4 sm:px-4 lg:px-4">

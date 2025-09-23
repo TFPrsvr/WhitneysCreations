@@ -292,7 +292,7 @@ const ProductCatalog = () => {
   };
 
   return (
-    <div className="product-catalog page-container">
+    <div className="product-catalog page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
       <div className="catalog-header">
         <h1>Product Catalog</h1>
         <p>Choose from our wide selection of customizable products</p>
