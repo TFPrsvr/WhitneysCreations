@@ -124,7 +124,8 @@ const ProjectDashboard = () => {
                 <select
                   value={sortBy}
                   onChange={(e) => handleSortChange(e.target.value)}
-                  className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-white text-gray-900 font-semibold hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all" style={{color: '#1f2937'}}
+                  className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-white text-gray-900 font-semibold hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+                  style={{color: '#1f2937'}}
                 >
                   <option value="modified" className="text-gray-900 font-semibold">Last Modified</option>
                   <option value="created" className="text-gray-900 font-semibold">Date Created</option>
