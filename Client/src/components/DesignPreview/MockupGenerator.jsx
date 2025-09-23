@@ -1024,7 +1024,7 @@ const MockupGenerator = ({ design, onExport }) => {
               {categories.map(category => (
                 <span
                   key={category}
-                  className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
+                  className="px-3 py-1 bg-gray-200 text-gray-900 font-semibold text-sm rounded-full border border-gray-300 shadow-sm"
                 >
                   {category}
                 </span>
@@ -1045,8 +1045,8 @@ const MockupGenerator = ({ design, onExport }) => {
                   style={{ maxWidth: '100%' }}
                 >
                   <div className="text-center mb-2">
-                    <div className="flex justify-center mb-1">
-                      <span className="text-lg">{mockup.icon}</span>
+                    <div className="flex justify-center">
+                      <span className="text-2xl mb-1">{mockup.icon}</span>
                     </div>
                     {mockup.isPremium && (
                       <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
@@ -1365,30 +1365,30 @@ const MockupGenerator = ({ design, onExport }) => {
               <h4 className="font-bold text-gray-900 mb-3 drop-shadow-sm">Product Details</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-semibold">Product:</span>
-                  <span className="font-medium">{currentVariant.name}</span>
+                  <span className="text-gray-900 font-bold">Product:</span>
+                  <span className="font-semibold text-gray-900">{currentVariant.name}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-semibold">Category:</span>
-                  <span className="font-medium">{currentMockup.category}</span>
+                  <span className="text-gray-900 font-bold">Category:</span>
+                  <span className="font-semibold text-gray-900">{currentMockup.category}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-semibold">Price:</span>
-                  <span className="font-medium text-primary-600">{currentVariant.price}</span>
+                  <span className="text-gray-900 font-bold">Price:</span>
+                  <span className="font-bold text-primary-600">{currentVariant.price}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-semibold">Dimensions:</span>
-                  <span className="font-medium">
+                  <span className="text-gray-900 font-bold">Dimensions:</span>
+                  <span className="font-semibold text-gray-900">
                     {currentMockup.dimensions.width} x {currentMockup.dimensions.height}px
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-semibold">View Angle:</span>
-                  <span className="font-medium">{currentAngle}°</span>
+                  <span className="text-gray-900 font-bold">View Angle:</span>
+                  <span className="font-semibold text-gray-900">{currentAngle}°</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-semibold">Type:</span>
-                  <span className={`font-medium ${currentMockup.isPremium ? 'text-yellow-600' : 'text-green-600'}`}>
+                  <span className="text-gray-900 font-bold">Type:</span>
+                  <span className={`font-bold ${currentMockup.isPremium ? 'text-yellow-700' : 'text-green-700'}`}>
                     {currentMockup.isPremium ? 'Premium' : 'Free'}
                   </span>
                 </div>
@@ -1412,7 +1412,7 @@ const MockupGenerator = ({ design, onExport }) => {
               <select
                 value={performanceMode}
                 onChange={(e) => setPerformanceMode(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 text-sm"
+                className="w-full px-3 py-2 border-2 border-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 text-sm bg-white text-gray-900 font-semibold shadow-sm"
               >
                 <option value="low">Low (Load on demand)</option>
                 <option value="balanced">Balanced (Recommended)</option>
