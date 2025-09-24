@@ -5,7 +5,12 @@ export const navigationIcons = {
   // Main Navigation Icons
   home: {
     emoji: '🏠',
-    professional: null, // Add professional home icon here when available
+    professional: {
+      iconPath: '/images/noun-home-7649013.svg',
+      iconName: 'Home',
+      creator: 'wahya',
+      isNounProject: true
+    }
   },
 
   products: {
@@ -30,12 +35,22 @@ export const navigationIcons = {
 
   mockup: {
     emoji: '📸',
-    professional: null, // Add professional camera/mockup icon here when available
+    professional: {
+      iconPath: '/images/noun-mockup-6206312.svg',
+      iconName: 'Mockup',
+      creator: 'Eklip Studio',
+      isNounProject: true
+    }
   },
 
   suggestions: {
     emoji: '💡',
-    professional: null, // Add professional lightbulb/idea icon here when available
+    professional: {
+      iconPath: '/images/noun-suggestion-6441018.svg',
+      iconName: 'Suggestion',
+      creator: 'SAM Designs',
+      isNounProject: true
+    }
   },
 
   projects: {
@@ -50,12 +65,22 @@ export const navigationIcons = {
 
   about: {
     emoji: 'ℹ️',
-    professional: null, // Add professional info/about icon here when available
+    professional: {
+      iconPath: '/images/noun-about-7459487.svg',
+      iconName: 'About',
+      creator: 'Ashok',
+      isNounProject: true
+    }
   },
 
   contact: {
     emoji: '📞',
-    professional: null, // Add professional phone/contact icon here when available
+    professional: {
+      iconPath: '/images/noun-contact-7380825.svg',
+      iconName: 'Contact',
+      creator: 'Giorgi',
+      isNounProject: true
+    }
   },
 
   // Quick Action Icons
