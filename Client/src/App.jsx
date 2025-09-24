@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import { useProject } from './contexts/ProjectContext';
 import { accessibility } from './utils/accessibility';
+import IconAttributions from './components/Attribution/IconAttributions';
+import ShareWidget from './components/Share/ShareWidget';
 
 function App() {
   const { isAuthenticated, user } = useAuth();
@@ -393,7 +395,21 @@ function App() {
           )}
         </div>
       </section>
+
+      {/* Icon Attributions Footer */}
+      <IconAttributions />
       </main>
+
+      {/* Floating Share Widget */}
+      <ShareWidget
+        position="bottom-right"
+        showOnScroll={true}
+        customShareData={{
+          title: "Whitney's Creations - Custom Print-on-Demand",
+          description: "Create and sell custom designs on premium apparel with PrintCraft"
+        }}
+        hideOnPaths={['/login', '/reg', '/admin']}
+      />
     </div>
   );
 }

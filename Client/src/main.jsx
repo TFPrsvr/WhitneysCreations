@@ -7,6 +7,7 @@ import { GuestProvider } from './contexts/GuestContext.jsx';
 import { ProjectProvider } from './contexts/ProjectContext.jsx';
 import { AdminProvider } from './contexts/AdminContext.jsx';
 import { DesignProvider } from './contexts/DesignContext.jsx';
+import { UserAvatarProvider } from './contexts/UserAvatarContext.jsx';
 import ImageGallery from './components/ImageGallery/ImageGrid.jsx'
 import Login from './components/Login/Login.jsx'
 import Reg from './components/Registration/Reg.jsx'
@@ -31,6 +32,7 @@ import MockupTester from './components/DesignPreview/MockupTester.jsx'
 import PaymentSetup from './components/Payment/PaymentSetup.jsx'
 import ProfileSettings from './components/Profile/ProfileSettings.jsx'
 import OrderHistory from './components/Orders/OrderHistory.jsx'
+import AvatarSettings from './components/Profile/AvatarSettings.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -40,7 +42,8 @@ createRoot(document.getElementById('root')).render(
           <ProjectProvider>
             <AdminProvider>
               <DesignProvider>
-                <CartProvider>
+                <UserAvatarProvider>
+                  <CartProvider>
               <CleanNav />
               <Routes>
                 <Route path='/' element={< App/>} />
@@ -64,6 +67,7 @@ createRoot(document.getElementById('root')).render(
     <Route path='/mockup-test' element={<MockupTester />} />
     <Route path='/payment' element={<PaymentSetup />} />
     <Route path='/profile' element={<ProfileSettings />} />
+    <Route path='/avatar-settings' element={<AvatarSettings />} />
     <Route path='/orders' element={<OrderHistory />} />
     
     <Route path='/cart' element={<Cart />} />
@@ -74,7 +78,8 @@ createRoot(document.getElementById('root')).render(
     {/* <Route path='/getUsers' element={<GetUsers />} /> */}
 
           </Routes>
-                </CartProvider>
+                  </CartProvider>
+                </UserAvatarProvider>
               </DesignProvider>
             </AdminProvider>
           </ProjectProvider>

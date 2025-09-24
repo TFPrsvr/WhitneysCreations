@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useProject } from '../../contexts/ProjectContext';
+import { useUserAvatar } from '../../contexts/UserAvatarContext';
 import SimpleLanguageSelector from '../LanguageSelector/SimpleLanguageSelector';
+import NounProjectIcon from '../Icons/NounProjectIcon';
+import IconRenderer from '../Icons/IconRenderer';
 import './CleanNav.css';
 
 const CleanNav = () => {
@@ -10,6 +13,7 @@ const CleanNav = () => {
   const navigate = useNavigate();
   const { isAuthenticated, user, logout } = useAuth();
   const { stats } = useProject();
+  const { userAvatar } = useUserAvatar();
   
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
@@ -55,19 +59,19 @@ const CleanNav = () => {
   };
 
   const navLinks = [
-    { path: '/', label: 'Home', icon: '🏠', color: 'from-green-600 to-emerald-600' },
-    { path: '/products', label: 'Products', icon: '🛍️', color: 'from-blue-600 to-cyan-600' },
-    { path: '/studio', label: 'Design Studio', icon: '🎭', color: 'from-orange-600 to-red-600' },
-    { path: '/mockup', label: 'Mockup Generator', icon: '📸', color: 'from-rose-600 to-pink-600' },
-    { path: '/suggest', label: 'Suggestions', icon: '💡', color: 'from-purple-600 to-violet-600' },
+    { path: '/', label: 'Home', iconKey: 'home', color: 'from-green-600 to-emerald-600' },
+    { path: '/products', label: 'Products', iconKey: 'products', color: 'from-blue-600 to-cyan-600' },
+    { path: '/studio', label: 'Design Studio', iconKey: 'studio', color: 'from-orange-600 to-red-600' },
+    { path: '/mockup', label: 'Mockup Generator', iconKey: 'mockup', color: 'from-rose-600 to-pink-600' },
+    { path: '/suggest', label: 'Suggestions', iconKey: 'suggestions', color: 'from-purple-600 to-violet-600' },
     ...(isAuthenticated ? [
-      { path: '/projects', label: 'My Projects', icon: '📁', badge: stats?.stats?.totalProjects || 0, color: 'from-indigo-600 to-violet-600' }
+      { path: '/projects', label: 'My Projects', iconKey: 'projects', badge: stats?.stats?.totalProjects || 0, color: 'from-indigo-600 to-violet-600' }
     ] : []),
     ...(user?.role === 'admin' || user?.role === 'superadmin' ? [
-      { path: '/admin', label: 'Admin', icon: '⚙️', color: 'from-slate-600 to-gray-600' }
+      { path: '/admin', label: 'Admin', iconKey: 'admin', color: 'from-slate-600 to-gray-600' }
     ] : []),
-    { path: '/about', label: 'About', icon: 'ℹ️', color: 'from-teal-600 to-cyan-600' },
-    { path: '/contact', label: 'Contact', icon: '📞', color: 'from-emerald-600 to-teal-600' }
+    { path: '/about', label: 'About', iconKey: 'about', color: 'from-teal-600 to-cyan-600' },
+    { path: '/contact', label: 'Contact', iconKey: 'contact', color: 'from-emerald-600 to-teal-600' }
   ];
 
   return (
@@ -86,7 +90,7 @@ const CleanNav = () => {
           transform: 'none',
           inset: '0px auto auto 0px',
           borderRadius: '0 25px 25px 0',
-          width: '9rem'
+          width: '10.5rem'
         }}
       >
         <div 
@@ -105,16 +109,24 @@ const CleanNav = () => {
           {/* Logo Header */}
           <Link
             to="/"
-            className="flex items-center space-x-3 text-white hover:text-cyan-400 transition-colors p-4 border-b border-gray-400"
+            className="flex items-center space-x-2 text-white hover:text-cyan-400 transition-colors p-2 border-b border-gray-400"
             aria-label="Whitney's Creations PrintCraft - Go to homepage"
             style={{
               textDecoration: 'none',
-              fontSize: '1.5rem',
+              fontSize: '1.1rem',
               fontWeight: '800',
-              letterSpacing: '0.05em'
+              letterSpacing: '0.05em',
+              maxWidth: '100%',
+              overflow: 'hidden',
+              boxSizing: 'border-box'
             }}
           >
-            <span className="text-3xl animate-pulse" aria-hidden="true">🎨</span>
+            <IconRenderer
+              iconKey="logo"
+              size="2rem"
+              className="animate-pulse"
+              style={{flexShrink: 0}}
+            />
             <span
               style={{
                 display: 'inline-block',
@@ -122,7 +134,11 @@ const CleanNav = () => {
                 background: 'linear-gradient(45deg, #00d4ff, #ff00ff, #ffaa00)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
+                backgroundClip: 'text',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                maxWidth: 'calc(100% - 2rem)',
+                fontSize: '1rem'
               }}
             >
               PrintCraft
@@ -148,7 +164,7 @@ const CleanNav = () => {
                       : '2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                     transform: isActive(link.path) ? 'translateX(4px)' : 'none',
                     fontWeight: '800',
-                    fontSize: '22px',
+                    fontSize: '16px',
                     margin: '2px 0',
                     color: isActive(link.path) ? '#ffffff' : '#e2e8f0',
                     WebkitFontSmoothing: 'antialiased',
@@ -156,7 +172,11 @@ const CleanNav = () => {
                   }}
                 >
                   <div className="flex items-center space-x-3">
-                    <span className="text-4xl" aria-hidden="true">{link.icon}</span>
+                    <IconRenderer
+                      iconKey={link.iconKey}
+                      size="2rem"
+                      forDarkBackground={true}
+                    />
                     <span>{link.label}</span>
                   </div>
                   {link.badge !== undefined && link.badge > 0 && (
@@ -175,32 +195,34 @@ const CleanNav = () => {
           {/* Auth Section */}
           <div className="border-t border-gray-400 mt-2" role="complementary" aria-label="User account section">
             {isAuthenticated ? (
-              <div className="p-3">
+              <div className="p-2" style={{maxWidth: '100%', overflow: 'hidden'}}>
                 {/* User Info */}
-                <div className="flex items-center p-2 mb-1 bg-gray-800 rounded-lg" role="region" aria-label="User information">
-                  <div className="flex-1 min-w-0">
+                <div className="flex items-center p-1 mb-1 bg-gray-800 rounded-lg" role="region" aria-label="User information" style={{maxWidth: '100%', overflow: 'hidden'}}>
+                  <div className="flex-1 min-w-0" style={{maxWidth: '100%'}}>
                     <p className="font-bold truncate"
-                       style={{ 
+                       style={{
                          overflow: 'hidden',
                          whiteSpace: 'nowrap',
                          textOverflow: 'ellipsis',
                          color: '#00ff88',
-                         fontSize: '16px',
-                         textShadow: '0 3px 6px rgba(0, 0, 0, 0.9), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
+                         fontSize: '14px',
+                         textShadow: '0 3px 6px rgba(0, 0, 0, 0.9), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000',
+                         maxWidth: '100%'
                        }}>
-                      {user?.first && user?.last 
+                      {user?.first && user?.last
                         ? `${String(user.first).charAt(0).toUpperCase()}${String(user.first).slice(1).toLowerCase().replace(/[^a-zA-Z]/g, '')} ${String(user.last).charAt(0).toUpperCase()}${String(user.last).slice(1).toLowerCase().replace(/[^a-zA-Z]/g, '')}`
                         : (user?.username ? String(user.username).replace(/[^a-zA-Z0-9_]/g, '').trim() : 'User')
                       }
                     </p>
-                    <p className="font-medium truncate" 
-                       style={{ 
+                    <p className="font-medium truncate"
+                       style={{
                          overflow: 'hidden',
                          whiteSpace: 'nowrap',
                          textOverflow: 'ellipsis',
                          color: '#66d9ff',
-                         fontSize: '14px',
-                         textShadow: '0 3px 6px rgba(0, 0, 0, 0.9), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
+                         fontSize: '12px',
+                         textShadow: '0 3px 6px rgba(0, 0, 0, 0.9), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000',
+                         maxWidth: '100%'
                        }}>
                       {user?.email ? String(user.email).trim() : ''}
                     </p>
@@ -208,49 +230,78 @@ const CleanNav = () => {
                 </div>
                 
                 {/* Quick Actions - Cart, Profile & Orders in a row */}
-                <nav className="flex justify-evenly space-x-0 py-1 mb-1" role="navigation" aria-label="Quick actions">
+                <nav className="flex justify-evenly space-x-0 py-1 mb-1" role="navigation" aria-label="Quick actions" style={{maxWidth: '100%', overflow: 'hidden'}}>
                   <Link
                     to="/cart"
                     className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
                     aria-label="View shopping cart"
+                    style={{flex: '1', maxWidth: '33%'}}
                   >
-                    <span className="text-3xl mb-1" aria-hidden="true" style={{
+                    <div style={{
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
-                      borderRadius: '8px',
-                      padding: '8px 12px',
-                      lineHeight: '1'
-                    }}>🛍</span>
+                      borderRadius: '6px',
+                      padding: '4px 6px',
+                      lineHeight: '1',
+                      marginBottom: '4px'
+                    }}>
+                      <IconRenderer
+                        iconKey="cart"
+                        size="2rem"
+                        forDarkBackground={false} // Cart emoji should stay colored
+                      />
+                    </div>
                     <span className="text-xs font-bold text-white">Cart</span>
                   </Link>
-                  
+
                   <Link
-                    to="/profile"
+                    to="/avatar-settings"
                     className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
-                    aria-label="View user profile"
+                    aria-label="Customize your avatar"
+                    style={{flex: '1', maxWidth: '33%'}}
                   >
-                    <span className="text-3xl mb-1" aria-hidden="true" style={{
+                    <div style={{
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
-                      borderRadius: '8px',
-                      padding: '8px 12px',
-                      lineHeight: '1'
-                    }}>👨‍💼</span>
-                    <span className="text-xs font-bold text-white">Profile</span>
+                      borderRadius: '6px',
+                      padding: '4px 6px',
+                      lineHeight: '1',
+                      marginBottom: '4px'
+                    }}>
+                      <NounProjectIcon
+                        iconPath={userAvatar?.iconPath || "/images/noun-avatar-2309777.svg"}
+                        iconName={userAvatar?.name || "Avatar"}
+                        creator={userAvatar?.creator || "Nawicon"}
+                        size="2rem"
+                        style={{
+                          filter: 'invert(1)', // Make SVG white for dark background
+                          display: 'block'
+                        }}
+                      />
+                    </div>
+                    <span className="text-xs font-bold text-white">Avatar</span>
                   </Link>
-                  
+
                   <Link
                     to="/orders"
                     className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
                     aria-label="View order history"
+                    style={{flex: '1', maxWidth: '33%'}}
                   >
-                    <span className="text-3xl mb-1" aria-hidden="true" style={{
+                    <div style={{
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
-                      borderRadius: '8px',
-                      padding: '8px 12px',
-                      lineHeight: '1'
-                    }}>📋</span>
+                      borderRadius: '6px',
+                      padding: '4px 6px',
+                      lineHeight: '1',
+                      marginBottom: '4px'
+                    }}>
+                      <IconRenderer
+                        iconKey="orders"
+                        size="2rem"
+                        forDarkBackground={false} // Orders emoji should stay colored
+                      />
+                    </div>
                     <span className="text-xs font-bold text-white">Orders</span>
                   </Link>
                 </nav>
@@ -292,17 +343,17 @@ const CleanNav = () => {
                 </div>
               </div>
             ) : (
-              <div className="p-3">
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div className="p-2" style={{maxWidth: '100%', overflow: 'hidden'}}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxWidth: '100%' }}>
                   <Link
                     to="/login"
                     aria-label="Sign in to your account"
                     style={{
                       display: 'block',
                       width: '100%',
-                      padding: '8px 12px',
+                      padding: '6px 8px',
                       textAlign: 'center',
-                      fontSize: '14px',
+                      fontSize: '13px',
                       fontWeight: 'bold',
                       color: '#ffffff',
                       background: 'linear-gradient(to right, #3b82f6, #1e40af)',
@@ -311,7 +362,9 @@ const CleanNav = () => {
                       textDecoration: 'none',
                       transition: 'all 0.2s',
                       marginBottom: '0',
-                      textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)'
+                      textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)',
+                      maxWidth: '100%',
+                      boxSizing: 'border-box'
                     }}
                     onMouseEnter={(e) => {
                       e.target.style.background = 'linear-gradient(to right, #1e40af, #1d4ed8)';
@@ -330,9 +383,9 @@ const CleanNav = () => {
                     style={{
                       display: 'block',
                       width: '100%',
-                      padding: '8px 12px',
+                      padding: '6px 8px',
                       textAlign: 'center',
-                      fontSize: '14px',
+                      fontSize: '13px',
                       fontWeight: 'bold',
                       color: '#ffffff',
                       background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
@@ -340,7 +393,9 @@ const CleanNav = () => {
                       borderRadius: '6px',
                       textDecoration: 'none',
                       transition: 'all 0.2s',
-                      marginTop: '0'
+                      marginTop: '0',
+                      maxWidth: '100%',
+                      boxSizing: 'border-box'
                     }}
                     onMouseEnter={(e) => {
                       e.target.style.background = 'linear-gradient(to right, #2563eb, #7c3aed)';

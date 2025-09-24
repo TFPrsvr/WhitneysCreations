@@ -1,7 +1,7 @@
 .product-catalog {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   width: 100%;
-  max-width: calc(100vw - 9rem);
+  max-width: calc(100vw - 10.5rem);
   margin-left: 0;
   margin-right: 0;
   box-sizing: border-box;
@@ -51,7 +51,7 @@
 
 .products-main {
   min-width: 0;
-  max-width: calc(100vw - 9rem - 280px - 30px);
+  max-width: calc(100vw - 10.5rem - 280px - 30px);
   overflow-x: hidden;
   box-sizing: border-box;
   width: 100%;
