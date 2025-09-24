@@ -86,7 +86,7 @@ const CleanNav = () => {
           transform: 'none',
           inset: '0px auto auto 0px',
           borderRadius: '0 25px 25px 0',
-          width: '11rem'
+          width: '9rem'
         }}
       >
         <div 

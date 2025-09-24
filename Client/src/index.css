@@ -99,13 +99,13 @@ body::-webkit-scrollbar {
 
 /* Page Layout - Universal sidebar spacing */
 .page-container {
-  margin-left: 11rem;
+  margin-left: 9rem;
   margin-top: 0;
   margin-right: 0;
-  max-width: calc(100vw - 11rem);
+  max-width: calc(100vw - 9rem);
   padding: 0;
   box-sizing: border-box;
-  width: calc(100vw - 11rem);
+  width: calc(100vw - 9rem);
   overflow-x: hidden;
 }
 

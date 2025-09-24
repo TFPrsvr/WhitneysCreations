@@ -68,7 +68,7 @@ const ProjectDashboard = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
+      <div className="min-h-screen bg-gray-50 py-8 page-container">
         <div className="max-w-6xl mx-auto p-6">
         <div className="text-center py-16 bg-gray-50 rounded-xl mt-8">
           <h2 className="text-2xl font-semibold text-gray-700 mb-4">Please log in to access your projects</h2>
@@ -80,7 +80,7 @@ const ProjectDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
+    <div className="min-h-screen bg-gray-50 py-8 page-container">
       <div className="max-w-7xl mx-auto p-6 mt-4">
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">

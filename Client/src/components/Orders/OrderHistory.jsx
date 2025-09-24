@@ -139,7 +139,7 @@ const OrderHistory = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
+      <div className="min-h-screen bg-gray-50 py-8 page-container">
         <div className="max-w-6xl mx-auto p-6">
           <div className="text-center py-16 bg-white rounded-xl">
             <h2 className="text-2xl font-semibold text-gray-700 mb-4">Please log in to view your orders</h2>
@@ -151,7 +151,7 @@ const OrderHistory = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
+      <div className="min-h-screen bg-gray-50 py-8 page-container">
         <div className="max-w-6xl mx-auto p-6">
           <div className="flex flex-col items-center justify-center py-16">
             <div className="w-10 h-10 border-4 border-gray-300 border-t-primary-500 rounded-full animate-spin mb-4"></div>
@@ -163,7 +163,7 @@ const OrderHistory = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
+    <div className="min-h-screen bg-gray-50 py-8 page-container">
       <div className="max-w-6xl mx-auto p-6">
       <h1 className="text-4xl font-bold text-gray-900 mb-8">Order History</h1>
 

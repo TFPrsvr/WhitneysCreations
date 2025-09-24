@@ -111,7 +111,7 @@ const ProfileSettings = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
+    <div className="min-h-screen bg-gray-50 py-8 page-container">
       <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-3xl font-bold text-gray-900 text-center mb-8 drop-shadow-sm">Profile Settings</h1>
 
