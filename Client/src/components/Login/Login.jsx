@@ -111,14 +111,14 @@ const Login = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-8 px-4 relative page-container" style={{maxWidth: 'calc(100vw - 11rem)'}}>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-8 px-4 relative page-container">
       {/* Background decorative elements */}
       <div className="absolute top-10 left-10 text-4xl opacity-20 animate-bounce hidden lg:block" aria-hidden="true">🎨</div>
       <div className="absolute top-20 right-20 text-3xl opacity-20 animate-pulse hidden lg:block" aria-hidden="true">👕</div>
       <div className="absolute bottom-20 left-20 text-3xl opacity-20 animate-bounce delay-1000 hidden lg:block" aria-hidden="true">☕</div>
       <div className="absolute bottom-10 right-10 text-2xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '10s'}} aria-hidden="true">🧢</div>
 
-      <main className="max-w-sm w-full space-y-6 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100" role="main" style={{maxWidth: '400px'}}>
+      <main className="w-full space-y-6 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100" role="main" style={{maxWidth: '380px'}}>
         <header className="text-center">
           <div className="text-center mb-4">
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
