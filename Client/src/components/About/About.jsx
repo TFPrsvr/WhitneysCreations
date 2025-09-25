@@ -37,7 +37,7 @@ const About = () => {
 
   const values = [
     {
-      icon: '🎯',
+      icon: '⭐',
       title: 'Quality First',
       description: 'We never compromise on product quality. Every item is printed on premium materials with vibrant, long-lasting inks.'
     },
@@ -93,7 +93,14 @@ const About = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-4 lg:px-4">
           <div className="text-center">
             <h1 className="text-3xl md:text-5xl font-bold mb-4">
-              About PrintCraft
+              About <span style={{
+                background: 'linear-gradient(45deg, #00d4ff, #ff00ff, #ffaa00)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight: '800',
+                letterSpacing: '0.05em'
+              }}>PrintCraft</span>
             </h1>
             <p className="text-lg md:text-xl mb-6 max-w-2xl mx-auto text-gray-100 font-semibold">
               We're on a mission to empower creators worldwide to turn their ideas into successful businesses
@@ -160,23 +167,23 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-8 bg-gray-50">
+      <section className="py-8 bg-gradient-to-br from-purple-500 via-blue-500 to-teal-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-4">
           <div className="text-center mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
               Our Values
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-white font-semibold max-w-2xl mx-auto drop-shadow-md">
               These principles guide everything we do at PrintCraft
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <div key={index} className="bg-white p-4 rounded-xl shadow-sm text-center hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
+              <div key={index} className="bg-white bg-opacity-90 p-4 rounded-xl shadow-lg text-center hover:shadow-xl hover:bg-opacity-95 transition-all duration-300 h-full flex flex-col">
                 <div className="text-4xl mb-2">{value.icon}</div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2 flex-shrink-0">{value.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed flex-grow">{value.description}</p>
+                <p className="text-gray-700 font-medium text-sm leading-relaxed flex-grow">{value.description}</p>
               </div>
             ))}
           </div>
@@ -190,7 +197,7 @@ const About = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Meet Our Team
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 max-w-2xl mx-auto font-semibold">
               The passionate people behind PrintCraft
             </p>
           </div>
@@ -198,12 +205,10 @@ const About = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <div key={index} className="bg-gray-50 rounded-xl p-6 text-center hover:bg-white hover:shadow-lg transition-all duration-300">
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden shadow-lg">
-                  <img
-                    src={member.avatar}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary-500 to-purple-600 flex items-center justify-center shadow-lg">
+                  <span className="text-2xl font-bold text-white">
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                  </span>
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2 drop-shadow-sm">{member.name}</h3>
                 <p className="text-primary-600 font-medium mb-3">{member.role}</p>
@@ -227,13 +232,13 @@ const About = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-8 bg-gray-50">
+      <section className="py-8 bg-gradient-to-br from-orange-400 via-red-400 to-red-500">
         <div className="max-w-4xl mx-auto px-4 sm:px-4 lg:px-4">
           <div className="text-center mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
               Our Journey
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-white font-semibold drop-shadow-md">
               From startup to global platform
             </p>
           </div>
@@ -251,7 +256,7 @@ const About = () => {
                   <div className={`bg-white p-3 rounded-lg shadow-lg max-w-md w-full ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`} style={{marginTop: '0px'}}>
                     <div className="text-primary-600 font-bold text-lg mb-1">{milestone.year}</div>
                     <h4 className="text-gray-900 font-bold text-base mb-2 leading-tight">{milestone.event}</h4>
-                    <p className="text-gray-800 font-medium text-sm leading-relaxed mb-0">{milestone.details}</p>
+                    <p className="text-gray-800 font-medium text-sm leading-relaxed">{milestone.details}</p>
                   </div>
                 </div>
               </div>
@@ -264,27 +269,38 @@ const About = () => {
       <section className="py-8 bg-gradient-to-r from-primary-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-4 lg:px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{
-            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
-            WebkitTextStroke: '1px rgba(0, 0, 0, 0.3)'
+            background: 'linear-gradient(to right, #1e40af, #7c3aed)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
           }}>
             Ready to Join Our Community?
           </h2>
-          <p className="text-xl mb-8 font-semibold" style={{
-            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
-          }}>
+          <p className="text-xl mb-8 font-semibold text-white drop-shadow-lg">
             Become part of a thriving community of creators who are building successful businesses with PrintCraft.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/reg"
-              className="bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+              className="bg-blue-600 text-gray-200 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+              style={{
+                maxWidth: '16vw',
+                minWidth: '200px',
+                borderRadius: '12px'
+              }}
             >
               Get Started Free
             </Link>
             <Link
               to="/contact"
-              className="bg-gradient-to-r from-emerald-500 to-green-600 text-yellow-200 border-2 border-emerald-500 px-8 py-4 rounded-lg font-bold text-lg hover:from-emerald-600 hover:to-green-700 hover:border-emerald-600 transition-all duration-200 shadow-lg"
+              className="bg-blue-700 text-gray-300 border-2 border-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-800 hover:border-blue-700 transition-all duration-200 shadow-lg"
+              style={{
+                maxWidth: '16vw',
+                minWidth: '200px',
+                borderRadius: '12px'
+              }}
             >
               Get in Touch
             </Link>

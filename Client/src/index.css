@@ -219,7 +219,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background: linear-gradient(to right, #1a1a1a, #2a2a2a); /* Always use gradients */
+  background: linear-gradient(to right, #3b82f6, #8b5cf6); /* Blue to purple gradient */
+  color: white;
   cursor: pointer;
   transition: all 0.2s ease;
   max-width: 16vw; /* Never take over 16% of viewport */
@@ -228,6 +229,7 @@ button {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 button:hover {
+  background: linear-gradient(to right, #2563eb, #7c3aed); /* Darker gradient on hover */
   border-color: #646cff;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -247,7 +249,8 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background: linear-gradient(to right, #3b82f6, #8b5cf6); /* Keep gradient in light mode */
+    color: white;
   }
 }
 

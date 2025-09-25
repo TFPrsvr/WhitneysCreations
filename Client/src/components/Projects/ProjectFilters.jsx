@@ -33,14 +33,24 @@ const ProjectFilters = ({ filters, onFilterChange }) => {
   ];
 
   return (
-    <div className="flex gap-3">
+    <div className="flex flex-col gap-3">
       <select
         value={filters.status}
         onChange={(e) => handleFilterUpdate('status', e.target.value)}
-        className="px-3 py-2 border border-gray-300 rounded-lg bg-white"
+        className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-white text-gray-900 font-semibold hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+        style={{
+          color: '#1f2937',
+          maxWidth: '16vw',
+          minWidth: '180px',
+          borderRadius: '12px'
+        }}
       >
         {statuses.map(status => (
-          <option key={status.value} value={status.value}>
+          <option
+            key={status.value}
+            value={status.value}
+            className="text-gray-900 font-semibold bg-white hover:bg-blue-50 py-2"
+          >
             {status.label}
           </option>
         ))}
@@ -49,10 +59,20 @@ const ProjectFilters = ({ filters, onFilterChange }) => {
       <select
         value={filters.category}
         onChange={(e) => handleFilterUpdate('category', e.target.value)}
-        className="px-3 py-2 border border-gray-300 rounded-lg bg-white"
+        className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-white text-gray-900 font-semibold hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+        style={{
+          color: '#1f2937',
+          maxWidth: '16vw',
+          minWidth: '180px',
+          borderRadius: '12px'
+        }}
       >
         {categories.map(category => (
-          <option key={category.value} value={category.value}>
+          <option
+            key={category.value}
+            value={category.value}
+            className="text-gray-900 font-semibold bg-white hover:bg-blue-50 py-2"
+          >
             {category.label}
           </option>
         ))}
@@ -61,10 +81,20 @@ const ProjectFilters = ({ filters, onFilterChange }) => {
       <select
         value={filters.isTemplate}
         onChange={(e) => handleFilterUpdate('isTemplate', e.target.value)}
-        className="px-3 py-2 border border-gray-300 rounded-lg bg-white"
+        className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-white text-gray-900 font-semibold hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+        style={{
+          color: '#1f2937',
+          maxWidth: '16vw',
+          minWidth: '180px',
+          borderRadius: '12px'
+        }}
       >
         {templateOptions.map(option => (
-          <option key={option.value} value={option.value}>
+          <option
+            key={option.value}
+            value={option.value}
+            className="text-gray-900 font-semibold bg-white hover:bg-blue-50 py-2"
+          >
             {option.label}
           </option>
         ))}

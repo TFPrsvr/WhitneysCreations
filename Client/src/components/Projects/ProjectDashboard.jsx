@@ -18,7 +18,7 @@ const ProjectDashboard = () => {
     clearError 
   } = useProject();
   
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [currentView, setCurrentView] = useState('grid'); // 'grid' or 'list'
   const [sortBy, setSortBy] = useState('modified');
@@ -70,7 +70,7 @@ const ProjectDashboard = () => {
     return (
       <div className="min-h-screen bg-gray-50 py-8 page-container">
         <div className="max-w-6xl mx-auto p-6">
-        <div className="text-center py-16 bg-gray-50 rounded-xl mt-8">
+        <div className="text-center py-16 bg-white bg-opacity-80 rounded-xl mt-8 shadow-lg">
           <h2 className="text-2xl font-semibold text-gray-700 mb-4">Please log in to access your projects</h2>
           <p className="text-gray-600 text-lg">Sign in to create, save, and manage your design projects.</p>
         </div>
@@ -80,14 +80,33 @@ const ProjectDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 page-container">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8 page-container">
       <div className="max-w-7xl mx-auto p-6 mt-4">
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
-            <h1 className="text-4xl font-bold text-gray-900">My Projects</h1>
+            <div className="w-full">
+              {user && (
+                <div>
+                  <p className="font-bold mb-1" style={{color: '#3b82f6', fontSize: '2rem', lineHeight: '1', marginLeft: '-4rem'}}>
+                    Welcome back!
+                  </p>
+                  <h1 className="font-bold text-gray-900 mb-2" style={{marginLeft: '4rem', fontSize: '3rem'}}>
+                    {user.displayName || user.first || user.username || 'User'}'s Projects
+                  </h1>
+                </div>
+              )}
+              {!user && (
+                <h1 className="text-4xl font-bold text-gray-900 mb-2">My Projects</h1>
+              )}
+            </div>
             <button
-              className="bg-gradient-to-r from-primary-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap"
+              className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap"
               onClick={handleCreateProject}
+              style={{
+                maxWidth: '16vw',
+                minWidth: '150px',
+                borderRadius: '12px'
+              }}
             >
               + New Project
             </button>
@@ -104,28 +123,30 @@ const ProjectDashboard = () => {
         {stats && <ProjectStats stats={stats} />}
 
         <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-200">
-          {/* Search and Filters Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            <div className="lg:col-span-1">
-              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Search Projects</label>
-              <ProjectSearch />
-            </div>
-
-            <div className="lg:col-span-1">
+          {/* Filters and Sort Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <div className="lg:col-span-1 text-center">
               <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Filter Options</label>
-              <ProjectFilters
-                filters={filters}
-                onFilterChange={handleFilterChange} />
+              <div className="flex justify-center">
+                <ProjectFilters
+                  filters={filters}
+                  onFilterChange={handleFilterChange} />
+              </div>
             </div>
 
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 text-center">
               <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Sort & Order</label>
-              <div className="flex flex-col space-y-3">
+              <div className="flex flex-col space-y-3 items-center">
                 <select
                   value={sortBy}
                   onChange={(e) => handleSortChange(e.target.value)}
                   className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-white text-gray-900 font-semibold hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                  style={{color: '#1f2937'}}
+                  style={{
+                    color: '#1f2937',
+                    maxWidth: '16vw',
+                    minWidth: '180px',
+                    borderRadius: '12px'
+                  }}
                 >
                   <option value="modified" className="text-gray-900 font-semibold">Last Modified</option>
                   <option value="created" className="text-gray-900 font-semibold">Date Created</option>
@@ -134,9 +155,14 @@ const ProjectDashboard = () => {
                 </select>
 
                 <button
-                  className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-gradient-to-r from-gray-50 to-gray-100 hover:from-blue-50 hover:to-blue-100 hover:border-blue-400 text-gray-900 font-bold flex items-center justify-center gap-2 transition-all duration-200"
+                  className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 hover:border-blue-400 text-white font-bold flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg"
                   onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
                   title={`Sort ${sortOrder === 'asc' ? 'Descending' : 'Ascending'}`}
+                  style={{
+                    maxWidth: '16vw',
+                    minWidth: '180px',
+                    borderRadius: '12px'
+                  }}
                 >
                   {sortOrder === 'asc' ? '↑ Ascending' : '↓ Descending'}
                 </button>
@@ -144,34 +170,56 @@ const ProjectDashboard = () => {
             </div>
           </div>
 
-          {/* View Toggle */}
-          <div className="flex justify-center">
-            <div className="inline-flex border-2 border-gray-300 rounded-lg overflow-hidden bg-gray-50">
-              <button
-                className={`px-6 py-3 font-semibold transition-all duration-200 flex items-center gap-2 ${currentView === 'grid'
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 hover:text-blue-600'}`}
-                onClick={() => setCurrentView('grid')}
-                title="Grid View"
-              >
-                <span className="text-xl">⊞</span>
-                <span>Grid View</span>
-              </button>
-              <button
-                className={`px-6 py-3 font-semibold transition-all duration-200 flex items-center gap-2 ${currentView === 'list'
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 hover:text-blue-600'}`}
-                onClick={() => setCurrentView('list')}
-                title="List View"
-              >
-                <span className="text-xl">☰</span>
-                <span>List View</span>
-              </button>
+          {/* Search Section - Below filters and sorting */}
+          <div className="border-t border-gray-200 pt-6">
+            <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Search Projects</label>
+            <div className="flex justify-center">
+              <ProjectSearch />
             </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* View Toggle - Positioned above projects */}
+      <div className="max-w-7xl mx-auto px-6 mb-6">
+        <div className="flex justify-end">
+          <div className="inline-flex rounded-lg overflow-hidden gap-1">
+            <button
+              className={`px-4 py-2 font-semibold transition-all duration-200 flex items-center gap-2 ${currentView === 'grid'
+                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
+                  : 'bg-white bg-opacity-90 text-gray-800 hover:bg-opacity-100 hover:text-blue-600'}`}
+              onClick={() => setCurrentView('grid')}
+              title="Grid View"
+              style={{
+                maxWidth: '16vw',
+                minWidth: '120px',
+                borderRadius: '8px'
+              }}
+            >
+              <span className="text-xl">⊞</span>
+              <span>Grid View</span>
+            </button>
+            <button
+              className={`px-4 py-2 font-semibold transition-all duration-200 flex items-center gap-2 ${currentView === 'list'
+                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
+                  : 'bg-white bg-opacity-90 text-gray-800 hover:bg-opacity-100 hover:text-blue-600'}`}
+              onClick={() => setCurrentView('list')}
+              title="List View"
+              style={{
+                maxWidth: '16vw',
+                minWidth: '120px',
+                borderRadius: '8px'
+              }}
+            >
+              <span className="text-xl">☰</span>
+              <span>List View</span>
+            </button>
           </div>
         </div>
       </div>
-      <div>
+
+      <div className="max-w-7xl mx-auto px-6">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <div className="w-10 h-10 border-4 border-gray-300 border-t-primary-500 rounded-full animate-spin mb-4"></div>
@@ -180,11 +228,16 @@ const ProjectDashboard = () => {
         ) : projects.length === 0 ? (
           <div className="text-center py-16 bg-white rounded-xl shadow-sm">
             <div className="text-6xl mb-4">📁</div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2 drop-shadow-sm">No projects yet</h3>
-            <p className="text-gray-900 font-semibold text-lg mb-8 drop-shadow-sm">Create your first design project to get started!</p>
+            <h3 className="text-2xl font-black mb-2" style={{color: '#000000'}}>No projects yet</h3>
+            <p className="font-black text-lg mb-8" style={{color: '#000000'}}>Create your first design project to get started!</p>
             <button
-              className="bg-gradient-to-r from-primary-500 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+              className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               onClick={handleCreateProject}
+              style={{
+                maxWidth: '16vw',
+                minWidth: '200px',
+                borderRadius: '12px'
+              }}
             >
               Create Your First Project
             </button>

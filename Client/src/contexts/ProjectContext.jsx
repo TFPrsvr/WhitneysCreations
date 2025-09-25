@@ -144,7 +144,10 @@ export const ProjectProvider = ({ children }) => {
       dispatch({ type: 'SET_PROJECTS', payload: data.projects });
       return data;
     } catch (error) {
-      console.error('Error fetching projects:', error);
+      // Backend not available - fail silently for better UX
+      if (error.code !== 'ERR_NETWORK') {
+        console.error('Error fetching projects:', error);
+      }
     }
   };
 
@@ -271,7 +274,10 @@ export const ProjectProvider = ({ children }) => {
       dispatch({ type: 'SET_STATS', payload: data });
       return data;
     } catch (error) {
-      console.error('Error fetching project stats:', error);
+      // Backend not available - fail silently for better UX
+      if (error.code !== 'ERR_NETWORK') {
+        console.error('Error fetching project stats:', error);
+      }
     }
   };
 

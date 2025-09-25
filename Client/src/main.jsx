@@ -33,6 +33,7 @@ import PaymentSetup from './components/Payment/PaymentSetup.jsx'
 import ProfileSettings from './components/Profile/ProfileSettings.jsx'
 import OrderHistory from './components/Orders/OrderHistory.jsx'
 import AvatarSettings from './components/Profile/AvatarSettings.jsx'
+import AttributionPage from './components/Attribution/AttributionPage.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -52,7 +53,8 @@ createRoot(document.getElementById('root')).render(
     <Route path='/img' element={<ImageGallery />} />
     <Route path='/about' element={<About />} />
     <Route path='/contact' element={<Contact />} />
-    
+    <Route path='/attributions' element={<AttributionPage />} />
+
     <Route path='/order' element={<Order />} />
     <Route path='/suggest' element={<Suggestions />} />
     <Route path='/upload-test' element={<UploadTest />} />

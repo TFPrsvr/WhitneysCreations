@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import { useProject } from './contexts/ProjectContext';
 import { accessibility } from './utils/accessibility';
-import IconAttributions from './components/Attribution/IconAttributions';
+import Footer from './components/Footer/Footer';
 import ShareWidget from './components/Share/ShareWidget';
 
 function App() {
@@ -157,14 +157,22 @@ function App() {
         </div>
 
         {/* Floating Elements */}
-        <div className="absolute top-5 left-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}} aria-hidden="true">🎨</div>
-        <div className="absolute top-5 right-10 text-4xl opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}} aria-hidden="true">☕</div>
+        <div className="absolute top-8 left-10 opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}} aria-hidden="true">
+          <span className="text-4xl">🎨</span>
+        </div>
+        <div className="absolute top-8 right-10 opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))'}} aria-hidden="true">
+          <span className="text-4xl">☕</span>
+        </div>
       </section>
 
         {/* Features Section */}
         <section className="py-8 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative" aria-labelledby="features-title">
-        <div className="absolute top-10 right-10 text-4xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
-        <div className="absolute top-5 left-5 text-4xl opacity-40 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>👕</div>
+        <div className="absolute top-8 right-10 opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>
+          <span className="text-4xl">🎨</span>
+        </div>
+        <div className="absolute top-8 left-10 opacity-40 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>
+          <span className="text-4xl">👕</span>
+        </div>
         <div className="w-full px-6">
           <div className="text-center mb-6">
             <h2 id="features-title" className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
@@ -180,7 +188,7 @@ function App() {
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
                 <div className="text-3xl mb-2">{feature.icon}</div>
                 <h3 className="text-base font-bold text-gray-900 mb-1 break-words">{feature.title}</h3>
-                <p className="text-gray-900 font-semibold leading-snug text-sm break-words mb-2">{feature.description}</p>
+                <p className="text-gray-700 font-medium leading-snug text-sm break-words mb-3">{feature.description}</p>
                 <div className="text-xs text-gray-800 font-semibold space-y-0.5 mt-1">
                   {feature.title === 'Easy Design Tools' && (
                     <>
@@ -219,8 +227,12 @@ function App() {
 
       {/* Product Showcase */}
       <section className="py-8 bg-gray-50 relative">
-        <div className="absolute top-5 left-5 text-2xl opacity-50 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🧢</div>
-        <div className="absolute top-5 right-5 text-2xl opacity-50 animate-bounce hidden lg:block" style={{animationDelay: '1s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
+        <div className="absolute top-8 left-10 opacity-50 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>
+          <span className="text-4xl">🧢</span>
+        </div>
+        <div className="absolute top-8 right-10 opacity-50 animate-bounce hidden lg:block" style={{animationDelay: '1s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>
+          <span className="text-4xl">☕</span>
+        </div>
         <div className="w-full px-6">
           <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -256,34 +268,38 @@ function App() {
 
       {/* Challenge Our Creators Section */}
       <section className="py-12 bg-gradient-to-br from-purple-600 to-pink-600 text-white relative">
-        <div className="absolute top-8 left-8 text-3xl opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '1.5s', filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>💡</div>
-        <div className="absolute top-8 right-8 text-3xl opacity-40 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>✨</div>
+        <div className="absolute top-8 left-10 opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '1.5s', filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>
+          <span className="text-4xl">💡</span>
+        </div>
+        <div className="absolute top-8 right-10 opacity-40 animate-pulse hidden lg:block" style={{filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>
+          <span className="text-4xl">✨</span>
+        </div>
         <div className="w-full max-w-none text-center px-8 sm:px-12 lg:px-16">
           <h2 className="text-5xl md:text-7xl font-bold mb-4">
             🎨✨ Challenge Our Creators!! ✨🎨
           </h2>
-          <div className="text-2xl md:text-3xl mb-6 space-y-6">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 text-2xl md:text-3xl font-bold w-full max-w-5xl mx-auto mt-4">
+          <div className="text-2xl md:text-3xl mb-8 space-y-8">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 text-2xl md:text-3xl font-bold w-full max-w-5xl mx-auto">
               <div className="text-center flex-1">
                 <div className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                  <div className="text-2xl md:text-3xl">See If Our</div>
+                  <div className="text-2xl md:text-3xl mb-1">See If Our</div>
                   <div className="text-2xl md:text-3xl">Creators Can</div>
                 </div>
               </div>
               <div className="text-center flex-none">
-                <div className="text-4xl md:text-5xl flex items-end justify-center gap-1">
+                <div className="text-4xl md:text-5xl flex items-end justify-center gap-2">
                   <span style={{transform: 'translateY(8px)'}}>🧢</span>
                   <span>👕</span>
                 </div>
               </div>
               <div className="text-center flex-1">
                 <div className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
-                  <div className="text-2xl md:text-3xl">Make Your Ideas</div>
+                  <div className="text-2xl md:text-3xl mb-1">Make Your Ideas</div>
                   <div className="text-2xl md:text-3xl">Come To Life</div>
                 </div>
               </div>
             </div>
-            <p className="text-lg md:text-xl font-semibold">Just Click Below To Get Started:</p>
+            <p className="text-lg md:text-xl font-semibold mt-6">Just Click Below To Get Started:</p>
           </div>
           
           <Link
@@ -298,11 +314,15 @@ function App() {
 
       {/* How It Works */}
       <section className="py-4 bg-white relative">
-        <div className="absolute top-5 left-8 text-2xl opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>🎨</div>
-        <div className="absolute top-5 right-8 text-2xl opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '0.8s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>☕</div>
+        <div className="absolute top-8 left-10 opacity-40 animate-spin hidden lg:block" style={{animationDuration: '4s', filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))'}}>
+          <span className="text-4xl">🎨</span>
+        </div>
+        <div className="absolute top-8 right-10 opacity-40 animate-bounce hidden lg:block" style={{animationDelay: '0.8s', filter: 'drop-shadow(2px 2px 4px rgba(255,140,0,0.6))'}}>
+          <span className="text-4xl">☕</span>
+        </div>
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+          <div className="text-center mb-2">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
               How It Works
             </h2>
             <p className="text-lg text-gray-800 font-semibold max-w-xl mx-auto px-4 drop-shadow-sm">
@@ -310,14 +330,14 @@ function App() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-4">
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start">
+          <div className="grid md:grid-cols-3 gap-6 mt-2">
+            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl hover:bg-pink-50 transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start group">
               <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 1
               </div>
-              <div className="text-3xl mb-1">🎨</div>
-              <h3 className="text-base font-semibold text-gray-900 mb-2">Design</h3>
-              <p className="text-gray-900 font-semibold mb-2 text-sm leading-relaxed">
+              <div className="text-3xl">🎨</div>
+              <h3 className="text-base font-semibold text-gray-900 mb-2 group-hover:text-purple-600">Design</h3>
+              <p className="text-gray-700 font-medium mb-2 text-sm leading-relaxed">
                 Use our intuitive design tools to create amazing products. Upload your own images or use our templates.
               </p>
               <ul className="text-sm text-gray-500 space-y-0 mt-1">
@@ -327,13 +347,13 @@ function App() {
               </ul>
             </div>
 
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start">
+            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl hover:bg-pink-50 transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start group">
               <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 2
               </div>
-              <div className="text-3xl mb-1">💰</div>
-              <h3 className="text-base font-semibold text-gray-900 mb-2">Sell</h3>
-              <p className="text-gray-900 font-semibold mb-2 text-sm leading-relaxed">
+              <div className="text-3xl">💰</div>
+              <h3 className="text-base font-semibold text-gray-900 mb-2 group-hover:text-purple-600">Sell</h3>
+              <p className="text-gray-700 font-medium mb-2 text-sm leading-relaxed">
                 List your products for sale or share them directly with customers. Set your own prices and profit margins.
               </p>
               <ul className="text-sm text-gray-500 space-y-0 mt-1">
@@ -343,13 +363,13 @@ function App() {
               </ul>
             </div>
 
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start">
+            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl hover:bg-pink-50 transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start group">
               <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto mb-2">
                 3
               </div>
-              <div className="text-3xl mb-1">🚀</div>
-              <h3 className="text-base font-semibold text-gray-900 mb-2">Fulfill</h3>
-              <p className="text-gray-900 font-semibold mb-2 text-sm leading-relaxed">
+              <div className="text-3xl">🚀</div>
+              <h3 className="text-base font-semibold text-gray-900 mb-2 group-hover:text-purple-600">Fulfill</h3>
+              <p className="text-gray-700 font-medium mb-2 text-sm leading-relaxed">
                 We handle printing, packaging, and shipping. You get paid, and your customers get premium products.
               </p>
               <ul className="text-sm text-gray-500 space-y-0 mt-1">
@@ -365,8 +385,12 @@ function App() {
 
       {/* CTA Section */}
       <section className="py-12 bg-gradient-to-r from-primary-600 to-purple-600 text-white relative">
-        <div className="absolute top-8 left-8 text-3xl opacity-30 animate-spin hidden lg:block" style={{animationDuration: '6s', filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>🎨</div>
-        <div className="absolute top-8 right-8 text-3xl opacity-30 animate-bounce hidden lg:block" style={{animationDelay: '2s', filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9))'}}>☕</div>
+        <div className="absolute top-8 left-10 opacity-30 animate-spin hidden lg:block" style={{animationDuration: '6s', filter: 'drop-shadow(2px 2px 4px rgba(255,255,255,0.8))'}}>
+          <span className="text-4xl">🎨</span>
+        </div>
+        <div className="absolute top-8 right-10 opacity-30 animate-bounce hidden lg:block" style={{animationDelay: '2s', filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9))'}}>
+          <span className="text-4xl">☕</span>
+        </div>
         <div className="max-w-5xl mx-auto text-center px-6">
           <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)', WebkitTextStroke: '1px rgba(0,0,0,0.3)'}}>
             Ready to Start Your Print-on-Demand Business?
@@ -396,8 +420,8 @@ function App() {
         </div>
       </section>
 
-      {/* Icon Attributions Footer */}
-      <IconAttributions />
+      {/* Footer */}
+      <Footer />
       </main>
 
       {/* Floating Share Widget */}

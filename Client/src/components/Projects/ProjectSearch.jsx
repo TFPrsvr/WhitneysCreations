@@ -51,7 +51,12 @@ const ProjectSearch = () => {
       <button
         type="submit"
         disabled={!query.trim() || isSearching}
-        className="px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 disabled:bg-gray-300 disabled:cursor-not-allowed"
+        className="px-6 py-2 bg-gradient-to-r from-primary-500 to-purple-600 text-white rounded-lg hover:bg-primary-600 disabled:bg-gray-300 disabled:cursor-not-allowed font-semibold text-center flex items-center justify-center hover:shadow-lg transition-all duration-200"
+        style={{
+          maxWidth: '16vw',
+          minWidth: '140px',
+          borderRadius: '12px'
+        }}
       >
         {isSearching ? 'Searching...' : 'Search'}
       </button>

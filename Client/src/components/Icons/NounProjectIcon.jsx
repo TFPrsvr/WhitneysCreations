@@ -23,7 +23,7 @@ const NounProjectIcon = ({
     <>
       <img
         src={iconPath}
-        alt={iconName}
+        alt=""
         style={iconStyle}
         className={className}
         aria-hidden="true"

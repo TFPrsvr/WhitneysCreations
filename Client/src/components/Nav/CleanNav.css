@@ -11,7 +11,7 @@
   bottom: auto !important;
   z-index: 9999 !important;
   width: 10.5rem !important; /* 168px */
-  background-color: rgba(17, 24, 39, 0.95) !important;
+  background-color: rgba(229, 231, 235, 0.95) !important;
   border-right: 1px solid rgba(75, 85, 99, 0.3) !important;
   border-bottom: 1px solid rgba(75, 85, 99, 0.3) !important;
 }

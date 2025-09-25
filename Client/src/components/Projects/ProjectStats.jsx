@@ -10,40 +10,40 @@ const ProjectStats = ({ stats }) => {
       title: 'Total Projects',
       value: projectStats.totalProjects || 0,
       icon: '📁',
-      color: 'bg-blue-500'
+      color: 'bg-gradient-to-r from-blue-500 to-cyan-500'
     },
     {
       title: 'Draft Projects',
       value: projectStats.draftProjects || 0,
-      icon: '✏️',
-      color: 'bg-yellow-500'
+      icon: '🖊️',
+      color: 'bg-gradient-to-r from-orange-500 to-red-500'
     },
     {
       title: 'Completed',
       value: projectStats.completedProjects || 0,
       icon: '✅',
-      color: 'bg-green-500'
+      color: 'bg-gradient-to-r from-emerald-500 to-green-500'
     },
     {
       title: 'Templates',
       value: projectStats.templates || 0,
-      icon: '📋',
-      color: 'bg-purple-500'
+      icon: '📄',
+      color: 'bg-gradient-to-r from-purple-500 to-pink-500'
     }
   ];
 
   return (
     <div className="mb-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6 justify-items-center">
         {statCards.map((card, index) => (
-          <div key={index} className="bg-white rounded-xl shadow-sm p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">{card.title}</p>
-                <p className="text-3xl font-bold text-gray-900">{card.value}</p>
-              </div>
-              <div className={`${card.color} w-12 h-12 rounded-lg flex items-center justify-center text-white text-xl`}>
+          <div key={index} className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-200 w-full max-w-sm">
+            <div className="flex flex-col items-center space-y-3">
+              <div className="text-4xl mb-2">
                 {card.icon}
+              </div>
+              <div className="text-center">
+                <p className="text-lg font-medium mb-2" style={{color: '#1f2937'}}>{card.title}</p>
+                <p className="text-4xl font-semibold" style={{color: '#111827'}}>{card.value}</p>
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ShareButton from './ShareButton';
+import IconRenderer from '../Icons/IconRenderer';
 
 const ShareWidget = ({
   position = 'bottom-right', // 'bottom-right', 'bottom-left', 'top-right', 'top-left'
@@ -109,13 +110,14 @@ const ShareWidget = ({
         }}
         title="Share Whitney's Creations"
         >
-          <span style={{
-            fontSize: '1.5rem',
-            color: 'white',
-            textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
-          }}>
-            📤
-          </span>
+          <IconRenderer
+            iconKey="share"
+            size="1.5rem"
+            style={{
+              color: 'white',
+              filter: 'brightness(1.2) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))'
+            }}
+          />
         </div>
       ) : (
         // Expanded share panel
@@ -139,9 +141,17 @@ const ShareWidget = ({
               margin: 0,
               fontSize: '1rem',
               fontWeight: '600',
-              color: '#1f2937'
+              color: '#1f2937',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
             }}>
-              📤 Share Whitney's
+              <IconRenderer
+                iconKey="share"
+                size="1rem"
+                style={{ color: '#1f2937' }}
+              />
+              Share Whitney's
             </h4>
             <button
               onClick={() => setIsMinimized(true)}

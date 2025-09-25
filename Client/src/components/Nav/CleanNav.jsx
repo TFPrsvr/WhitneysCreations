@@ -96,7 +96,7 @@ const CleanNav = () => {
         <div 
           className="flex flex-col shadow-lg h-full"
           style={{
-            backgroundColor: 'rgba(173, 216, 230, 0.95)',
+            backgroundColor: '#e5e7eb !important',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
             borderRight: '1px solid rgba(75, 85, 99, 0.3)',
@@ -123,7 +123,7 @@ const CleanNav = () => {
           >
             <IconRenderer
               iconKey="logo"
-              size="2rem"
+              size="1.2rem"
               className="animate-pulse"
               style={{flexShrink: 0}}
             />
@@ -159,14 +159,12 @@ const CleanNav = () => {
                   aria-current={isActive(link.path) ? 'page' : undefined}
                   aria-label={`${link.label}${link.badge ? ` (${link.badge} items)` : ''}`}
                   style={{
-                    textShadow: isActive(link.path)
-                      ? '2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
-                      : '2px 2px 4px rgba(0, 0, 0, 0.9), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+                    textShadow: 'none',
                     transform: isActive(link.path) ? 'translateX(4px)' : 'none',
-                    fontWeight: '800',
+                    fontWeight: '500',
                     fontSize: '16px',
                     margin: '2px 0',
-                    color: isActive(link.path) ? '#ffffff' : '#e2e8f0',
+                    color: '#1e40af',
                     WebkitFontSmoothing: 'antialiased',
                     MozOsxFontSmoothing: 'grayscale'
                   }}
@@ -175,7 +173,7 @@ const CleanNav = () => {
                     <IconRenderer
                       iconKey={link.iconKey}
                       size="2rem"
-                      forDarkBackground={true}
+                      forDarkBackground={false}
                     />
                     <span>{link.label}</span>
                   </div>
@@ -241,17 +239,22 @@ const CleanNav = () => {
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '6px',
-                      padding: '4px 6px',
+                      padding: '6px 8px',
                       lineHeight: '1',
-                      marginBottom: '4px'
+                      marginBottom: '4px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      minWidth: '2.5rem',
+                      minHeight: '2.5rem'
                     }}>
                       <IconRenderer
                         iconKey="cart"
-                        size="2rem"
-                        forDarkBackground={false} // Cart emoji should stay colored
+                        size="1.8rem"
+                        forDarkBackground={false}
                       />
                     </div>
-                    <span className="text-xs font-bold text-white">Cart</span>
+                    <span className="text-xs font-bold" style={{color: '#1e40af'}}>Cart</span>
                   </Link>
 
                   <Link
@@ -264,22 +267,27 @@ const CleanNav = () => {
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '6px',
-                      padding: '4px 6px',
+                      padding: '6px 8px',
                       lineHeight: '1',
-                      marginBottom: '4px'
+                      marginBottom: '4px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      minWidth: '2.5rem',
+                      minHeight: '2.5rem'
                     }}>
                       <NounProjectIcon
                         iconPath={userAvatar?.iconPath || "/images/noun-avatar-2309777.svg"}
                         iconName={userAvatar?.name || "Avatar"}
                         creator={userAvatar?.creator || "Nawicon"}
-                        size="2rem"
+                        size="1.8rem"
                         style={{
-                          filter: 'invert(1)', // Make SVG white for dark background
+                          filter: 'sepia(0.3) saturate(2) hue-rotate(200deg) brightness(2.1) contrast(0.4)', // Light blue/teal outline
                           display: 'block'
                         }}
                       />
                     </div>
-                    <span className="text-xs font-bold text-white">Avatar</span>
+                    <span className="text-xs font-bold" style={{color: '#1e40af'}}>Avatar</span>
                   </Link>
 
                   <Link
@@ -292,17 +300,22 @@ const CleanNav = () => {
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '6px',
-                      padding: '4px 6px',
+                      padding: '6px 8px',
                       lineHeight: '1',
-                      marginBottom: '4px'
+                      marginBottom: '4px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      minWidth: '2.5rem',
+                      minHeight: '2.5rem'
                     }}>
                       <IconRenderer
                         iconKey="orders"
-                        size="2rem"
-                        forDarkBackground={false} // Orders emoji should stay colored
+                        size="1.8rem"
+                        forDarkBackground={false}
                       />
                     </div>
-                    <span className="text-xs font-bold text-white">Orders</span>
+                    <span className="text-xs font-bold" style={{color: '#1e40af'}}>Orders</span>
                   </Link>
                 </nav>
                 

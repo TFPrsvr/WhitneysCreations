@@ -5,7 +5,12 @@ export const navigationIcons = {
   // Main Navigation Icons
   home: {
     emoji: '🏠',
-    professional: null, // Add professional home icon here when available
+    professional: {
+      iconPath: '/images/noun-home-7649013.svg',
+      iconName: 'Home',
+      creator: 'wahya',
+      isNounProject: true
+    }
   },
 
   products: {
@@ -30,38 +35,73 @@ export const navigationIcons = {
 
   mockup: {
     emoji: '📸',
-    professional: null, // Add professional camera/mockup icon here when available
+    professional: {
+      iconPath: '/images/noun-mockup-6206312.svg',
+      iconName: 'Mockup',
+      creator: 'Eklip Studio',
+      isNounProject: true
+    }
   },
 
   suggestions: {
     emoji: '💡',
-    professional: null, // Add professional lightbulb/idea icon here when available
+    professional: {
+      iconPath: '/images/noun-suggestion-6441018.svg',
+      iconName: 'Suggestion',
+      creator: 'SAM Designs',
+      isNounProject: true
+    }
   },
 
   projects: {
     emoji: '📁',
-    professional: null, // Add professional folder/projects icon here when available
+    professional: {
+      iconPath: '/images/noun-project-8074483.svg',
+      iconName: 'Project',
+      creator: 'Side Project',
+      isNounProject: true
+    }
   },
 
   admin: {
     emoji: '⚙️',
-    professional: null, // Add professional settings/admin icon here when available
+    professional: {
+      iconPath: '/images/noun-setting-2550045.svg',
+      iconName: 'Setting',
+      creator: 'Flatart',
+      isNounProject: true
+    }
   },
 
   about: {
     emoji: 'ℹ️',
-    professional: null, // Add professional info/about icon here when available
+    professional: {
+      iconPath: '/images/noun-about-7459487.svg',
+      iconName: 'About',
+      creator: 'Ashok',
+      isNounProject: true
+    }
   },
 
   contact: {
     emoji: '📞',
-    professional: null, // Add professional phone/contact icon here when available
+    professional: {
+      iconPath: '/images/noun-contact-7380825.svg',
+      iconName: 'Contact',
+      creator: 'Giorgi',
+      isNounProject: true
+    }
   },
 
   // Quick Action Icons
   cart: {
     emoji: '🛒',
-    professional: null, // Add professional shopping cart icon here when available
+    professional: {
+      iconPath: '/images/noun-cart-4632422.svg',
+      iconName: 'Cart',
+      creator: 'PEBIAN',
+      isNounProject: true
+    }
   },
 
   avatar: {
@@ -76,7 +116,23 @@ export const navigationIcons = {
 
   orders: {
     emoji: '📋',
-    professional: null, // Add professional clipboard/orders icon here when available
+    professional: {
+      iconPath: '/images/noun-orders-list-6478417.svg',
+      iconName: 'Orders List',
+      creator: 'Iconbunny',
+      isNounProject: true
+    }
+  },
+
+  // Share Icon
+  share: {
+    emoji: '📤',
+    professional: {
+      iconPath: '/images/noun-share-7649014.svg',
+      iconName: 'Share',
+      creator: 'Feri Saputra',
+      isNounProject: true
+    }
   },
 
   // Logo/Brand Icons
