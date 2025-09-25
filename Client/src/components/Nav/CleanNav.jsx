@@ -63,7 +63,6 @@ const CleanNav = () => {
     { path: '/products', label: 'Products', iconKey: 'products', color: 'from-blue-600 to-cyan-600' },
     { path: '/studio', label: 'Design Studio', iconKey: 'studio', color: 'from-orange-600 to-red-600' },
     { path: '/mockup', label: 'Mockup Generator', iconKey: 'mockup', color: 'from-rose-600 to-pink-600' },
-    { path: '/suggest', label: 'Suggestions', iconKey: 'suggestions', color: 'from-purple-600 to-violet-600' },
     ...(isAuthenticated ? [
       { path: '/projects', label: 'My Projects', iconKey: 'projects', badge: stats?.stats?.totalProjects || 0, color: 'from-indigo-600 to-violet-600' }
     ] : []),
@@ -153,8 +152,8 @@ const CleanNav = () => {
                   to={link.path}
                   className={`px-4 py-3 text-sm font-bold transition-all duration-200 flex items-center justify-between ${
                     isActive(link.path)
-                      ? `bg-gradient-to-r ${link.color} text-white shadow-lg rounded-lg`
-                      : 'text-gray-200 hover:text-white hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 hover:shadow-md rounded-lg'
+                      ? 'bg-gradient-to-r from-pink-300 to-pink-400 text-white shadow-lg rounded-lg'
+                      : 'text-gray-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-500 hover:shadow-md rounded-lg'
                   }`}
                   aria-current={isActive(link.path) ? 'page' : undefined}
                   aria-label={`${link.label}${link.badge ? ` (${link.badge} items)` : ''}`}

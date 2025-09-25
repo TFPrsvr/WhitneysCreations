@@ -80,17 +80,17 @@ const ProjectDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8 page-container">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8 page-container" style={{overflowX: 'visible'}}>
       <div className="max-w-7xl mx-auto p-6 mt-4">
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
             <div className="w-full">
               {user && (
-                <div>
-                  <p className="font-bold mb-1" style={{color: '#3b82f6', fontSize: '2rem', lineHeight: '1', marginLeft: '-4rem'}}>
+                <div style={{position: 'relative'}}>
+                  <p className="font-bold mb-1" style={{color: '#3b82f6', fontSize: '2rem', lineHeight: '1', position: 'absolute', left: '-3rem', top: '0'}}>
                     Welcome back!
                   </p>
-                  <h1 className="font-bold text-gray-900 mb-2" style={{marginLeft: '4rem', fontSize: '3rem'}}>
+                  <h1 className="font-bold text-gray-900 mb-2" style={{marginLeft: '4rem', fontSize: '3rem', paddingTop: '2.5rem'}}>
                     {user.displayName || user.first || user.username || 'User'}'s Projects
                   </h1>
                 </div>
@@ -100,11 +100,11 @@ const ProjectDashboard = () => {
               )}
             </div>
             <button
-              className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap"
+              className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap flex items-center justify-center"
               onClick={handleCreateProject}
               style={{
-                maxWidth: '16vw',
-                minWidth: '150px',
+                maxWidth: '20vw',
+                minWidth: '180px',
                 borderRadius: '12px'
               }}
             >
@@ -171,51 +171,13 @@ const ProjectDashboard = () => {
           </div>
 
           {/* Search Section - Below filters and sorting */}
-          <div className="border-t border-gray-200 pt-6">
-            <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Search Projects</label>
+          <div className="border-t border-gray-200 pt-4">
+            <label className="block text-sm font-bold text-gray-900 mb-1 drop-shadow-sm">Search Projects</label>
             <div className="flex justify-center">
               <ProjectSearch />
             </div>
           </div>
 
-        </div>
-      </div>
-
-      {/* View Toggle - Positioned above projects */}
-      <div className="max-w-7xl mx-auto px-6 mb-6">
-        <div className="flex justify-end">
-          <div className="inline-flex rounded-lg overflow-hidden gap-1">
-            <button
-              className={`px-4 py-2 font-semibold transition-all duration-200 flex items-center gap-2 ${currentView === 'grid'
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-                  : 'bg-white bg-opacity-90 text-gray-800 hover:bg-opacity-100 hover:text-blue-600'}`}
-              onClick={() => setCurrentView('grid')}
-              title="Grid View"
-              style={{
-                maxWidth: '16vw',
-                minWidth: '120px',
-                borderRadius: '8px'
-              }}
-            >
-              <span className="text-xl">⊞</span>
-              <span>Grid View</span>
-            </button>
-            <button
-              className={`px-4 py-2 font-semibold transition-all duration-200 flex items-center gap-2 ${currentView === 'list'
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-                  : 'bg-white bg-opacity-90 text-gray-800 hover:bg-opacity-100 hover:text-blue-600'}`}
-              onClick={() => setCurrentView('list')}
-              title="List View"
-              style={{
-                maxWidth: '16vw',
-                minWidth: '120px',
-                borderRadius: '8px'
-              }}
-            >
-              <span className="text-xl">☰</span>
-              <span>List View</span>
-            </button>
-          </div>
         </div>
       </div>
 
@@ -228,35 +190,74 @@ const ProjectDashboard = () => {
         ) : projects.length === 0 ? (
           <div className="text-center py-16 bg-white rounded-xl shadow-sm">
             <div className="text-6xl mb-4">📁</div>
-            <h3 className="text-2xl font-black mb-2" style={{color: '#000000'}}>No projects yet</h3>
-            <p className="font-black text-lg mb-8" style={{color: '#000000'}}>Create your first design project to get started!</p>
+            <h3 className="text-2xl font-semibold mb-2" style={{color: '#1f2937'}}>No projects yet</h3>
+            <p className="font-medium text-lg mb-8" style={{color: '#4b5563'}}>Create your first design project to get started!</p>
             <button
-              className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+              className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center"
               onClick={handleCreateProject}
               style={{
-                maxWidth: '16vw',
-                minWidth: '200px',
-                borderRadius: '12px'
+                maxWidth: '20vw',
+                minWidth: '220px',
+                borderRadius: '12px',
+                color: 'white'
               }}
             >
               Create Your First Project
             </button>
           </div>
         ) : (
-          <div className={`${currentView === 'grid'
-              ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
-              : 'flex flex-col gap-4'}`}>
-            {projects.map(project => (
-              <ProjectCard
-                key={project._id}
-                project={project}
-                viewMode={currentView}
-                onUpdate={() => {
-                  fetchUserProjects({ sortBy, sortOrder, ...filters });
-                  fetchProjectStats();
-                }}
-              />
-            ))}
+          <div>
+            {/* View Toggle - Inside project list section at top right */}
+            <div className="flex justify-end mb-6">
+              <div className="inline-flex rounded-lg overflow-hidden gap-1">
+                <button
+                  className={`px-4 py-2 font-semibold transition-all duration-200 flex items-center gap-2 ${currentView === 'grid'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
+                      : 'bg-white bg-opacity-90 text-gray-800 hover:bg-opacity-100 hover:text-blue-600'}`}
+                  onClick={() => setCurrentView('grid')}
+                  title="Grid View"
+                  style={{
+                    maxWidth: '16vw',
+                    minWidth: '120px',
+                    borderRadius: '8px'
+                  }}
+                >
+                  <span className="text-xl">⊞</span>
+                  <span>Grid View</span>
+                </button>
+                <button
+                  className={`px-4 py-2 font-semibold transition-all duration-200 flex items-center gap-2 ${currentView === 'list'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
+                      : 'bg-white bg-opacity-90 text-gray-800 hover:bg-opacity-100 hover:text-blue-600'}`}
+                  onClick={() => setCurrentView('list')}
+                  title="List View"
+                  style={{
+                    maxWidth: '16vw',
+                    minWidth: '120px',
+                    borderRadius: '8px'
+                  }}
+                >
+                  <span className="text-xl">☰</span>
+                  <span>List View</span>
+                </button>
+              </div>
+            </div>
+
+            <div className={`${currentView === 'grid'
+                ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
+                : 'flex flex-col gap-4'}`}>
+              {projects.map(project => (
+                <ProjectCard
+                  key={project._id}
+                  project={project}
+                  viewMode={currentView}
+                  onUpdate={() => {
+                    fetchUserProjects({ sortBy, sortOrder, ...filters });
+                    fetchProjectStats();
+                  }}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>
