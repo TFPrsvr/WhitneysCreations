@@ -19,7 +19,6 @@ import Contact from './components/Contact/Contact.jsx'
 import Order from './components/Order/Order.jsx'
 import Suggestions from './components/Suggestions/Suggestions.jsx'
 import Cart from './components/Cart/Cart.jsx'
-import UploadTest from './components/Upload/UploadTest.jsx'
 import ProductCatalog from './components/Products/ProductCatalog.jsx'
 import ProjectDashboard from './components/Projects/ProjectDashboard.jsx'
 import Pricing from './components/Pricing/Pricing.jsx'
@@ -55,7 +54,6 @@ createRoot(document.getElementById('root')).render(
     
     <Route path='/order' element={<Order />} />
     <Route path='/suggest' element={<Suggestions />} />
-    <Route path='/upload-test' element={<UploadTest />} />
     <Route path='/products' element={<ProductCatalog />} />
     <Route path='/projects' element={<ProjectDashboard />} />
     <Route path='/pricing' element={<Pricing />} />

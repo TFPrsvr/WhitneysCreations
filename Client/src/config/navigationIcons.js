@@ -55,12 +55,22 @@ export const navigationIcons = {
 
   projects: {
     emoji: '📁',
-    professional: null, // Add professional folder/projects icon here when available
+    professional: {
+      iconPath: '/images/noun-project-8074483.svg',
+      iconName: 'Project',
+      creator: 'Side Project',
+      isNounProject: true
+    }
   },
 
   admin: {
     emoji: '⚙️',
-    professional: null, // Add professional settings/admin icon here when available
+    professional: {
+      iconPath: '/images/noun-setting-2550045.svg',
+      iconName: 'Setting',
+      creator: 'Flatart',
+      isNounProject: true
+    }
   },
 
   about: {
@@ -86,7 +96,12 @@ export const navigationIcons = {
   // Quick Action Icons
   cart: {
     emoji: '🛒',
-    professional: null, // Add professional shopping cart icon here when available
+    professional: {
+      iconPath: '/images/noun-cart-4632422.svg',
+      iconName: 'Cart',
+      creator: 'PEBIAN',
+      isNounProject: true
+    }
   },
 
   avatar: {
@@ -101,7 +116,12 @@ export const navigationIcons = {
 
   orders: {
     emoji: '📋',
-    professional: null, // Add professional clipboard/orders icon here when available
+    professional: {
+      iconPath: '/images/noun-orders-list-6478417.svg',
+      iconName: 'Orders List',
+      creator: 'Iconbunny',
+      isNounProject: true
+    }
   },
 
   // Logo/Brand Icons

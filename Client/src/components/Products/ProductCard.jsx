@@ -169,8 +169,7 @@ const ProductCard = ({ product, priceRange }) => {
             disabled={!isInStock()}
             onClick={(e) => {
               e.preventDefault();
-              // TODO: Open design customizer
-              console.log('Customize product:', product.name);
+              window.location.href = '/design-studio';
             }}
             aria-label={!isInStock() ? `${product.name} is out of stock` : `Customize ${product.name}`}
           >
