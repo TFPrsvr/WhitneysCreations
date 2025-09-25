@@ -139,7 +139,7 @@ const OrderHistory = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8 page-container">
+      <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-8 page-container">
         <div className="max-w-6xl mx-auto p-6">
           <div className="text-center py-16 bg-white rounded-xl">
             <h2 className="text-2xl font-semibold text-gray-700 mb-4">Please log in to view your orders</h2>
@@ -151,11 +151,11 @@ const OrderHistory = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8 page-container">
+      <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-8 page-container">
         <div className="max-w-6xl mx-auto p-6">
           <div className="flex flex-col items-center justify-center py-16">
-            <div className="w-10 h-10 border-4 border-gray-300 border-t-primary-500 rounded-full animate-spin mb-4"></div>
-            <p className="text-gray-600">Loading orders...</p>
+            <div className="w-10 h-10 border-4 border-white border-t-yellow-400 rounded-full animate-spin mb-4"></div>
+            <p className="text-white font-semibold text-lg drop-shadow-md">Loading orders...</p>
           </div>
         </div>
       </div>
@@ -163,9 +163,9 @@ const OrderHistory = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 page-container">
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-8 page-container">
       <div className="max-w-6xl mx-auto p-6">
-      <h1 className="text-4xl font-bold text-gray-900 mb-8">Order History</h1>
+      <h1 className="text-4xl font-bold text-white mb-8 drop-shadow-md">Order History</h1>
 
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 mb-6">
@@ -176,8 +176,8 @@ const OrderHistory = () => {
       {orders.length === 0 ? (
         <div className="text-center py-16 bg-white rounded-xl shadow-sm">
           <div className="text-6xl mb-4">📦</div>
-          <h3 className="text-2xl font-semibold text-gray-700 mb-2">No orders yet</h3>
-          <p className="text-gray-600 text-lg mb-8">Start creating and ordering some amazing designs!</p>
+          <h3 className="text-2xl font-semibold text-gray-900 mb-2">No orders yet</h3>
+          <p className="text-gray-700 text-lg mb-8 font-semibold">Start creating and ordering some amazing designs!</p>
           <a
             href="/products"
             className="bg-gradient-to-r from-primary-500 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"

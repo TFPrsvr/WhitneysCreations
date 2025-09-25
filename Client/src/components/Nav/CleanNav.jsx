@@ -68,9 +68,7 @@ const CleanNav = () => {
     ] : []),
     ...(user?.role === 'admin' || user?.role === 'superadmin' ? [
       { path: '/admin', label: 'Admin', iconKey: 'admin', color: 'from-slate-600 to-gray-600' }
-    ] : []),
-    { path: '/about', label: 'About', iconKey: 'about', color: 'from-teal-600 to-cyan-600' },
-    { path: '/contact', label: 'Contact', iconKey: 'contact', color: 'from-emerald-600 to-teal-600' }
+    ] : [])
   ];
 
   return (
@@ -230,7 +228,11 @@ const CleanNav = () => {
                 <nav className="flex justify-evenly space-x-0 py-1 mb-1" role="navigation" aria-label="Quick actions" style={{maxWidth: '100%', overflow: 'hidden'}}>
                   <Link
                     to="/cart"
-                    className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
+                    className={`flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-105 ${
+                      location.pathname === '/cart'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg scale-105'
+                        : 'hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600'
+                    }`}
                     aria-label="View shopping cart"
                     style={{flex: '1', maxWidth: '33%'}}
                   >
@@ -253,12 +255,19 @@ const CleanNav = () => {
                         forDarkBackground={false}
                       />
                     </div>
-                    <span className="text-xs font-bold" style={{color: '#1e40af'}}>Cart</span>
+                    <span className="text-xs font-bold" style={{
+                      color: '#ffffff',
+                      textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
+                    }}>Cart</span>
                   </Link>
 
                   <Link
                     to="/avatar-settings"
-                    className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
+                    className={`flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-105 ${
+                      location.pathname === '/avatar-settings'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg scale-105'
+                        : 'hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600'
+                    }`}
                     aria-label="Customize your avatar"
                     style={{flex: '1', maxWidth: '33%'}}
                   >
@@ -286,12 +295,19 @@ const CleanNav = () => {
                         }}
                       />
                     </div>
-                    <span className="text-xs font-bold" style={{color: '#1e40af'}}>Avatar</span>
+                    <span className="text-xs font-bold" style={{
+                      color: '#ffffff',
+                      textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
+                    }}>Profile</span>
                   </Link>
 
                   <Link
                     to="/orders"
-                    className="flex flex-col items-center justify-center p-1 hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600 rounded-lg transition-all duration-200 hover:scale-105"
+                    className={`flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-105 ${
+                      location.pathname === '/orders'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg scale-105'
+                        : 'hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600'
+                    }`}
                     aria-label="View order history"
                     style={{flex: '1', maxWidth: '33%'}}
                   >
@@ -314,7 +330,10 @@ const CleanNav = () => {
                         forDarkBackground={false}
                       />
                     </div>
-                    <span className="text-xs font-bold" style={{color: '#1e40af'}}>Orders</span>
+                    <span className="text-xs font-bold" style={{
+                      color: '#ffffff',
+                      textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
+                    }}>Orders</span>
                   </Link>
                 </nav>
                 

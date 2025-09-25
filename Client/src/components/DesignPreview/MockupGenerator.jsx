@@ -3,6 +3,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { productAPI } from '../../utils/api';
 import { productImageConfig, getProductImage, getProductVariant, getAllProductTypes, getAvailableColors } from '../../data/productImages';
 import { useImagePreloader } from '../../utils/imagePreloader';
+import IconRenderer from '../Icons/IconRenderer';
 
 const MockupGenerator = ({ design, onExport }) => {
   const { isAuthenticated, user } = useAuth();
@@ -35,6 +36,7 @@ const MockupGenerator = ({ design, onExport }) => {
   const [nextLayerId, setNextLayerId] = useState(1);
   const [isHoveringDesign, setIsHoveringDesign] = useState(false);
   const [dragPreview, setDragPreview] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   // Available mockup templates - now dynamic from configuration
   const mockupTemplates = [
@@ -95,7 +97,7 @@ const MockupGenerator = ({ design, onExport }) => {
     {
       id: 'phonecases',
       name: 'Phone Case',
-      category: 'Accessories',
+      category: 'Office',
       icon: '📱',
       isPremium: true,
       dimensions: { width: 200, height: 400 },
@@ -112,7 +114,7 @@ const MockupGenerator = ({ design, onExport }) => {
     }
   ];
 
-  const categories = [...new Set(mockupTemplates.map(m => m.category))];
+  const categories = ['All', ...new Set(mockupTemplates.map(m => m.category))];
 
   const currentMockup = mockupTemplates.find(m => m.id === selectedMockup);
   const currentVariant = getProductVariant(selectedMockup, selectedColor);
@@ -497,8 +499,23 @@ const MockupGenerator = ({ design, onExport }) => {
     const ctx = canvas.getContext('2d');
     const { width, height } = currentMockup.dimensions;
 
-    canvas.width = width;
-    canvas.height = height;
+    // Get device pixel ratio for high-DPI displays
+    const devicePixelRatio = window.devicePixelRatio || 1;
+
+    // Set actual canvas size (higher resolution)
+    canvas.width = width * devicePixelRatio;
+    canvas.height = height * devicePixelRatio;
+
+    // Set display size (CSS pixels)
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+
+    // Scale the drawing context
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+
+    // Improve rendering quality
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
 
     // Clear canvas
     ctx.fillStyle = mockupSettings.backgroundColor;
@@ -589,28 +606,49 @@ const MockupGenerator = ({ design, onExport }) => {
 
   // Individual mockup drawing functions
   const drawTShirt = (ctx, width, height) => {
+    // Create a more realistic t-shirt with proper proportions and shading
+    const centerX = width / 2;
+    const centerY = height / 2;
+
+    // Main t-shirt body with realistic proportions
     ctx.fillStyle = mockupSettings.mockupColor;
-    
-    // T-shirt body
     ctx.beginPath();
-    ctx.moveTo(width * 0.25, height * 0.3);
-    ctx.lineTo(width * 0.2, height * 0.25);
-    ctx.lineTo(width * 0.15, height * 0.3);
-    ctx.lineTo(width * 0.15, height * 0.35);
-    ctx.lineTo(width * 0.2, height * 0.4);
-    ctx.lineTo(width * 0.2, height * 0.85);
-    ctx.lineTo(width * 0.8, height * 0.85);
-    ctx.lineTo(width * 0.8, height * 0.4);
-    ctx.lineTo(width * 0.85, height * 0.35);
-    ctx.lineTo(width * 0.85, height * 0.3);
-    ctx.lineTo(width * 0.8, height * 0.25);
-    ctx.lineTo(width * 0.75, height * 0.3);
+    ctx.moveTo(centerX - width * 0.25, centerY - height * 0.15);
+    ctx.quadraticCurveTo(centerX - width * 0.3, centerY - height * 0.25, centerX - width * 0.15, centerY - height * 0.25);
+    ctx.lineTo(centerX - width * 0.1, centerY - height * 0.2);
+    ctx.lineTo(centerX - width * 0.08, centerY - height * 0.1);
+    ctx.quadraticCurveTo(centerX, centerY - height * 0.12, centerX + width * 0.08, centerY - height * 0.1);
+    ctx.lineTo(centerX + width * 0.1, centerY - height * 0.2);
+    ctx.lineTo(centerX + width * 0.15, centerY - height * 0.25);
+    ctx.quadraticCurveTo(centerX + width * 0.3, centerY - height * 0.25, centerX + width * 0.25, centerY - height * 0.15);
+    ctx.lineTo(centerX + width * 0.2, centerY + height * 0.3);
+    ctx.lineTo(centerX - width * 0.2, centerY + height * 0.3);
     ctx.closePath();
     ctx.fill();
-    
-    // Add some shading
-    ctx.fillStyle = 'rgba(0,0,0,0.1)';
-    ctx.fillRect(width * 0.2, height * 0.7, width * 0.6, height * 0.05);
+
+    // Add realistic shadows and highlights
+    const shadowGradient = ctx.createLinearGradient(0, 0, width, height);
+    shadowGradient.addColorStop(0, `rgba(0,0,0,${mockupSettings.shadowIntensity * 0.15})`);
+    shadowGradient.addColorStop(1, `rgba(255,255,255,${mockupSettings.shadowIntensity * 0.1})`);
+
+    ctx.fillStyle = shadowGradient;
+    ctx.globalCompositeOperation = 'overlay';
+    ctx.fill();
+    ctx.globalCompositeOperation = 'source-over';
+
+    // Add subtle fabric texture
+    ctx.fillStyle = `rgba(255,255,255,${0.05})`;
+    for (let i = 0; i < 30; i++) {
+      ctx.beginPath();
+      ctx.arc(
+        centerX - width * 0.2 + Math.random() * (width * 0.4),
+        centerY - height * 0.2 + Math.random() * (height * 0.5),
+        Math.random() * 1.5,
+        0,
+        Math.PI * 2
+      );
+      ctx.fill();
+    }
   };
 
   const drawHoodie = (ctx, width, height) => {
@@ -643,20 +681,49 @@ const MockupGenerator = ({ design, onExport }) => {
   };
 
   const drawMug = (ctx, width, height) => {
-    // Mug body
+    const centerX = width / 2;
+    const centerY = height / 2;
+
+    // Create cylindrical mug with perspective
     ctx.fillStyle = mockupSettings.mockupColor;
-    ctx.fillRect(width * 0.2, height * 0.3, width * 0.5, height * 0.5);
-    
-    // Handle
-    ctx.strokeStyle = mockupSettings.mockupColor;
-    ctx.lineWidth = 8;
+
+    // Main mug body with cylindrical shape
     ctx.beginPath();
-    ctx.arc(width * 0.75, height * 0.55, width * 0.08, -Math.PI/2, Math.PI/2);
+    ctx.ellipse(centerX, centerY + height * 0.1, width * 0.25, height * 0.08, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Mug sides
+    ctx.fillRect(centerX - width * 0.25, centerY - height * 0.2, width * 0.5, height * 0.3);
+
+    // Top rim with perspective
+    ctx.fillStyle = '#f0f0f0';
+    ctx.beginPath();
+    ctx.ellipse(centerX, centerY - height * 0.2, width * 0.25, height * 0.05, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Inner rim shadow
+    ctx.fillStyle = 'rgba(0,0,0,0.2)';
+    ctx.beginPath();
+    ctx.ellipse(centerX, centerY - height * 0.2, width * 0.22, height * 0.04, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Handle with realistic curve
+    ctx.strokeStyle = mockupSettings.mockupColor;
+    ctx.lineWidth = width * 0.025;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(centerX + width * 0.25, centerY - height * 0.1);
+    ctx.quadraticCurveTo(centerX + width * 0.35, centerY - height * 0.05, centerX + width * 0.35, centerY + height * 0.05);
+    ctx.quadraticCurveTo(centerX + width * 0.35, centerY + height * 0.1, centerX + width * 0.25, centerY + height * 0.08);
     ctx.stroke();
-    
-    // Top rim
-    ctx.fillStyle = 'rgba(0,0,0,0.1)';
-    ctx.fillRect(width * 0.2, height * 0.3, width * 0.5, height * 0.02);
+
+    // Add ceramic shine effect
+    const shineGradient = ctx.createLinearGradient(centerX - width * 0.2, centerY - height * 0.2, centerX + width * 0.1, centerY + height * 0.1);
+    shineGradient.addColorStop(0, 'rgba(255,255,255,0.3)');
+    shineGradient.addColorStop(1, 'rgba(255,255,255,0)');
+
+    ctx.fillStyle = shineGradient;
+    ctx.fillRect(centerX - width * 0.25, centerY - height * 0.2, width * 0.5, height * 0.3);
   };
 
   const drawPoster = (ctx, width, height) => {
@@ -985,12 +1052,15 @@ const MockupGenerator = ({ design, onExport }) => {
     }
   };
 
-  const filteredMockups = mockupTemplates.filter(mockup => 
-    !mockup.isPremium || (isAuthenticated && user?.role === 'premium')
-  );
+  const filteredMockups = mockupTemplates.filter(mockup => {
+    const isPremiumAllowed = !mockup.isPremium || (isAuthenticated && user?.role === 'premium');
+    const isCategoryMatch = selectedCategory === 'All' || mockup.category === selectedCategory;
+    return isPremiumAllowed && isCategoryMatch;
+  });
 
   return (
     <div className="bg-white rounded-xl shadow-lg page-container">
+      <div className="px-4">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Mockup Generator</h2>
         <button
@@ -1005,7 +1075,12 @@ const MockupGenerator = ({ design, onExport }) => {
             </>
           ) : (
             <>
-              <span>📥</span>
+              <IconRenderer
+                iconKey="share"
+                size="1.2rem"
+                forDarkBackground={true}
+                style={{ marginRight: '0.5rem' }}
+              />
               <span>Export Mockup</span>
             </>
           )}
@@ -1020,42 +1095,48 @@ const MockupGenerator = ({ design, onExport }) => {
             <h3 className="text-lg font-bold text-gray-900 mb-4 drop-shadow-sm">Choose Mockup</h3>
             
             {/* Category Tabs */}
-            <div className="flex flex-wrap gap-2 mb-4">
+            <div className="grid grid-cols-3 gap-2 mb-4">
               {categories.map(category => (
-                <span
+                <button
                   key={category}
-                  className="px-3 py-1 bg-gray-200 text-gray-900 font-semibold text-sm rounded-full border border-gray-300 shadow-sm"
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 font-bold text-sm rounded-lg border-2 shadow-sm transition-all duration-200 ${
+                    selectedCategory === category
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white border-blue-600 shadow-lg transform scale-105'
+                      : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50 hover:border-gray-400 hover:shadow-md'
+                  }`}
+                  style={{
+                    textShadow: selectedCategory === category ? '0 1px 2px rgba(0,0,0,0.8)' : 'none'
+                  }}
                 >
                   {category}
-                </span>
+                </button>
               ))}
             </div>
 
             {/* Mockup Grid */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2">
               {filteredMockups.map(mockup => (
                 <button
                   key={mockup.id}
                   onClick={() => handleProductChange(mockup.id)}
-                  className={`p-4 border rounded-lg text-left transition-colors ${
+                  className={`p-2 border-2 rounded-lg text-center transition-all duration-200 ${
                     selectedMockup === mockup.id
-                      ? 'border-primary-500 bg-primary-50'
-                      : 'border-gray-300 hover:border-gray-400'
+                      ? 'border-blue-500 bg-blue-50 shadow-lg scale-105'
+                      : 'border-gray-300 hover:border-gray-400 hover:shadow-md'
                   }`}
                   style={{ maxWidth: '100%' }}
                 >
-                  <div className="text-center mb-2">
-                    <div className="flex justify-center">
-                      <span className="text-2xl mb-1">{mockup.icon}</span>
-                    </div>
+                  <div className="flex flex-col items-center">
+                    <span className="text-xl mb-1">{mockup.icon}</span>
                     {mockup.isPremium && (
-                      <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
+                      <span className="text-xs bg-yellow-100 text-yellow-800 px-1 py-0.5 rounded-full mb-1">
                         Premium
                       </span>
                     )}
+                    <div className="font-bold text-sm text-gray-900 leading-tight">{mockup.name}</div>
+                    <div className="text-xs text-gray-700 font-medium mt-0.5 leading-tight">{mockup.description}</div>
                   </div>
-                  <div className="font-medium text-gray-900">{mockup.name}</div>
-                  <div className="text-xs text-gray-500">{mockup.description}</div>
                 </button>
               ))}
             </div>
@@ -1063,33 +1144,49 @@ const MockupGenerator = ({ design, onExport }) => {
 
           {/* Color Selection */}
           {availableColors.length > 0 && (
-            <div>
+            <div className="bg-blue-50 rounded-lg p-4 mb-4">
               <h3 className="text-lg font-bold text-gray-900 mb-4 drop-shadow-sm">Choose Color</h3>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-4 gap-2">
                 {availableColors.map(color => {
                   const variant = getProductVariant(selectedMockup, color);
                   return (
                     <button
                       key={color}
                       onClick={() => handleColorChange(color)}
-                      className={`p-3 border rounded-lg text-left transition-colors ${
+                      className={`p-2 border-2 rounded-lg text-center transition-all duration-200 ${
                         selectedColor === color
-                          ? 'border-primary-500 bg-primary-50'
-                          : 'border-gray-300 hover:border-gray-400'
+                          ? 'border-blue-500 bg-blue-50 shadow-lg scale-105'
+                          : 'border-gray-300 hover:border-gray-400 hover:shadow-md'
                       }`}
                       style={{ maxWidth: '100%' }}
                     >
-                      <div className={`w-8 h-8 rounded-full mx-auto mb-2 border ${
-                        color === 'black' ? 'bg-black border-gray-300' :
-                        color === 'white' ? 'bg-white border-gray-400' :
-                        color === 'red' ? 'bg-red-600 border-red-700' :
-                        color === 'blue' ? 'bg-blue-600 border-blue-700' :
-                        color === 'navy' ? 'bg-blue-900 border-blue-800' :
-                        color === 'clear' ? 'bg-transparent border-gray-400' :
-                        'bg-gray-600'
-                      }`}></div>
-                      <div className="text-sm font-medium text-gray-900">{variant?.name}</div>
-                      <div className="text-xs text-gray-500">{variant?.price}</div>
+                      <div className="flex flex-col items-center">
+                        <div className={`w-6 h-6 rounded-full mb-1 border-2 ${
+                          color === 'black' ? 'bg-black border-gray-400' :
+                          color === 'white' ? 'bg-white border-gray-500' :
+                          color === 'red' ? 'bg-red-600 border-red-700' :
+                          color === 'blue' ? 'bg-blue-600 border-blue-700' :
+                          color === 'navy' ? 'bg-blue-900 border-blue-800' :
+                          color === 'green' ? 'bg-green-600 border-green-700' :
+                          color === 'yellow' ? 'bg-yellow-400 border-yellow-500' :
+                          color === 'purple' ? 'bg-purple-600 border-purple-700' :
+                          color === 'pink' ? 'bg-pink-500 border-pink-600' :
+                          color === 'orange' ? 'bg-orange-500 border-orange-600' :
+                          color === 'teal' ? 'bg-teal-500 border-teal-600' :
+                          color === 'cyan' ? 'bg-cyan-500 border-cyan-600' :
+                          color === 'indigo' ? 'bg-indigo-600 border-indigo-700' :
+                          color === 'lime' ? 'bg-lime-500 border-lime-600' :
+                          color === 'emerald' ? 'bg-emerald-600 border-emerald-700' :
+                          color === 'rose' ? 'bg-rose-500 border-rose-600' :
+                          color === 'amber' ? 'bg-amber-500 border-amber-600' :
+                          color === 'violet' ? 'bg-violet-600 border-violet-700' :
+                          color === 'slate' ? 'bg-slate-600 border-slate-700' :
+                          color === 'clear' ? 'bg-transparent border-gray-500' :
+                          'bg-gray-600 border-gray-700'
+                        }`}></div>
+                        <div className="text-xs font-bold text-gray-900 leading-tight">{variant?.name || color}</div>
+                        <div className="text-xs text-gray-700 font-semibold leading-tight">{variant?.price}</div>
+                      </div>
                     </button>
                   );
                 })}
@@ -1099,22 +1196,24 @@ const MockupGenerator = ({ design, onExport }) => {
 
           {/* Angle Selection */}
           {currentVariant?.images && (
-            <div>
+            <div className="bg-blue-50 rounded-lg p-4 mb-4">
               <h3 className="text-lg font-bold text-gray-900 mb-4 drop-shadow-sm">View Angle</h3>
               <div className="grid grid-cols-4 gap-2">
                 {currentVariant.images.map(image => (
                   <button
                     key={image.angle}
                     onClick={() => handleAngleChange(image.angle)}
-                    className={`p-2 border rounded-lg text-center transition-colors ${
+                    className={`p-2 border-2 rounded-lg text-center transition-all duration-200 ${
                       currentAngle === image.angle
-                        ? 'border-primary-500 bg-primary-50'
-                        : 'border-gray-300 hover:border-gray-400'
+                        ? 'border-blue-500 bg-blue-50 shadow-lg scale-105'
+                        : 'border-gray-300 hover:border-gray-400 hover:shadow-md'
                     }`}
                     style={{ maxWidth: '100%' }}
                   >
-                    <div className="text-xs font-medium">{image.angle}°</div>
-                    <div className="text-xs text-gray-500">{image.label}</div>
+                    <div className="flex flex-col items-center">
+                      <div className="text-sm font-bold text-gray-900 leading-tight">{image.angle}°</div>
+                      <div className="text-xs text-gray-700 font-semibold leading-tight mt-0.5">{image.label}</div>
+                    </div>
                   </button>
                 ))}
               </div>
@@ -1122,49 +1221,52 @@ const MockupGenerator = ({ design, onExport }) => {
           )}
 
           {/* Mockup Settings */}
-          <div>
+          <div className="bg-blue-50 rounded-lg p-4 mb-4">
             <h3 className="text-lg font-bold text-gray-900 mb-4 drop-shadow-sm">Customize Mockup</h3>
             
             <div className="space-y-4">
-              {/* Background Color */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">
-                  Background Color
-                </label>
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="color"
-                    value={mockupSettings.backgroundColor}
-                    onChange={(e) => handleSettingChange('backgroundColor', e.target.value)}
-                    className="w-12 h-10 border border-gray-300 rounded cursor-pointer"
-                  />
-                  <input
-                    type="text"
-                    value={mockupSettings.backgroundColor}
-                    onChange={(e) => handleSettingChange('backgroundColor', e.target.value)}
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
-                  />
+              {/* Color Settings */}
+              <div className="flex justify-center gap-6">
+                {/* Background Color */}
+                <div className="flex flex-col items-center">
+                  <label className="text-sm font-bold text-gray-900 mb-2 drop-shadow-sm text-center">
+                    Background Color
+                  </label>
+                  <div className="flex items-center space-x-1">
+                    <input
+                      type="color"
+                      value={mockupSettings.backgroundColor}
+                      onChange={(e) => handleSettingChange('backgroundColor', e.target.value)}
+                      className="w-6 h-6 border border-gray-300 rounded cursor-pointer"
+                    />
+                    <input
+                      type="text"
+                      value={mockupSettings.backgroundColor}
+                      onChange={(e) => handleSettingChange('backgroundColor', e.target.value)}
+                      className="w-14 px-1 py-0.5 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 text-xs font-mono"
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Mockup Color */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">
-                  Product Color
-                </label>
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="color"
-                    value={mockupSettings.mockupColor}
-                    onChange={(e) => handleSettingChange('mockupColor', e.target.value)}
-                    className="w-12 h-10 border border-gray-300 rounded cursor-pointer"
-                  />
-                  <input
-                    type="text"
-                    value={mockupSettings.mockupColor}
-                    onChange={(e) => handleSettingChange('mockupColor', e.target.value)}
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
-                  />
+                {/* Product Color */}
+                <div className="flex flex-col items-center">
+                  <label className="text-sm font-bold text-gray-900 mb-2 drop-shadow-sm text-center">
+                    Product Color
+                  </label>
+                  <div className="flex items-center space-x-1">
+                    <input
+                      type="color"
+                      value={mockupSettings.mockupColor}
+                      onChange={(e) => handleSettingChange('mockupColor', e.target.value)}
+                      className="w-6 h-6 border border-gray-300 rounded cursor-pointer"
+                    />
+                    <input
+                      type="text"
+                      value={mockupSettings.mockupColor}
+                      onChange={(e) => handleSettingChange('mockupColor', e.target.value)}
+                      className="w-14 px-1 py-0.5 border border-gray-300 rounded focus:ring-2 focus:ring-primary-500 text-xs font-mono"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -1180,22 +1282,22 @@ const MockupGenerator = ({ design, onExport }) => {
                   step="0.1"
                   value={mockupSettings.designScale}
                   onChange={(e) => handleSettingChange('designScale', parseFloat(e.target.value))}
-                  className="w-full"
+                  className="w-3/4 mx-auto block"
                 />
               </div>
 
               {/* Drag Mode Toggle */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-bold" style={{ color: '#000000' }}>
                     Drag & Drop Mode
                   </label>
                   <button
                     onClick={() => setDragMode(!dragMode)}
-                    className={`btn-compact ${
+                    className={`px-3 py-1 rounded-lg font-bold text-sm transition-all duration-200 ${
                       dragMode
-                        ? 'btn-gradient-primary'
-                        : 'btn-secondary'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white border-2 border-blue-600 shadow-lg'
+                        : 'bg-gray-200 text-gray-700 border-2 border-gray-300 hover:bg-gray-300 hover:border-gray-400'
                     }`}
                   >
                     {dragMode ? '🖱️ ON' : '🖱️ OFF'}
@@ -1229,7 +1331,7 @@ const MockupGenerator = ({ design, onExport }) => {
                     step="0.01"
                     value={mockupSettings.designX}
                     onChange={(e) => handleSettingChange('designX', parseFloat(e.target.value))}
-                    className="w-full"
+                    className="w-4/5"
                   />
                 </div>
                 <div>
@@ -1243,7 +1345,7 @@ const MockupGenerator = ({ design, onExport }) => {
                     step="0.01"
                     value={mockupSettings.designY}
                     onChange={(e) => handleSettingChange('designY', parseFloat(e.target.value))}
-                    className="w-full"
+                    className="w-4/5"
                   />
                 </div>
               </div>
@@ -1264,7 +1366,7 @@ const MockupGenerator = ({ design, onExport }) => {
               </div>
 
               {/* Shadow Intensity */}
-              <div>
+              <div className="mb-4">
                 <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">
                   Shadow Intensity ({Math.round(mockupSettings.shadowIntensity * 100)}%)
                 </label>
@@ -1307,7 +1409,7 @@ const MockupGenerator = ({ design, onExport }) => {
                   isHoveringDesign && dragMode ? 'ring-2 ring-blue-400 ring-opacity-50' : ''
                 }`}
                 style={{
-                  imageRendering: 'crisp-edges',
+                  imageRendering: 'auto',
                   border: dragMode && designLayers.length > 0 ? '2px dashed #3b82f6' : '1px solid #e5e7eb',
                   borderRadius: '8px',
                   boxShadow: isDragging
@@ -1361,33 +1463,33 @@ const MockupGenerator = ({ design, onExport }) => {
 
           {/* Mockup Info */}
           {currentMockup && currentVariant && (
-            <div className="bg-gray-50 rounded-lg p-4">
+            <div className="bg-blue-50 rounded-lg p-4">
               <h4 className="font-bold text-gray-900 mb-3 drop-shadow-sm">Product Details</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-bold">Product:</span>
-                  <span className="font-semibold text-gray-900">{currentVariant.name}</span>
+                  <span className="font-bold drop-shadow-sm" style={{ color: '#000000' }}>Product:</span>
+                  <span className="font-bold" style={{ color: '#000000' }}>{currentVariant.name}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-bold">Category:</span>
-                  <span className="font-semibold text-gray-900">{currentMockup.category}</span>
+                  <span className="font-bold drop-shadow-sm" style={{ color: '#000000' }}>Category:</span>
+                  <span className="font-bold" style={{ color: '#000000' }}>{currentMockup.category}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-bold">Price:</span>
+                  <span className="font-bold drop-shadow-sm" style={{ color: '#000000' }}>Price:</span>
                   <span className="font-bold text-primary-600">{currentVariant.price}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-bold">Dimensions:</span>
-                  <span className="font-semibold text-gray-900">
+                  <span className="font-bold drop-shadow-sm" style={{ color: '#000000' }}>Dimensions:</span>
+                  <span className="font-bold" style={{ color: '#000000' }}>
                     {currentMockup.dimensions.width} x {currentMockup.dimensions.height}px
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-bold">View Angle:</span>
-                  <span className="font-semibold text-gray-900">{currentAngle}°</span>
+                  <span className="font-bold drop-shadow-sm" style={{ color: '#000000' }}>View Angle:</span>
+                  <span className="font-bold" style={{ color: '#000000' }}>{currentAngle}°</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-900 font-bold">Type:</span>
+                  <span className="font-bold drop-shadow-sm" style={{ color: '#000000' }}>Type:</span>
                   <span className={`font-bold ${currentMockup.isPremium ? 'text-yellow-700' : 'text-green-700'}`}>
                     {currentMockup.isPremium ? 'Premium' : 'Free'}
                   </span>
@@ -1395,7 +1497,7 @@ const MockupGenerator = ({ design, onExport }) => {
               </div>
 
               <div className="mt-3 pt-3 border-t border-gray-200">
-                <p className="text-sm text-gray-600">{currentMockup.description}</p>
+                <p className="text-sm font-bold" style={{ color: '#000000' }}>{currentMockup.description}</p>
               </div>
             </div>
           )}
@@ -1412,7 +1514,7 @@ const MockupGenerator = ({ design, onExport }) => {
               <select
                 value={performanceMode}
                 onChange={(e) => setPerformanceMode(e.target.value)}
-                className="w-full px-3 py-2 border-2 border-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 text-sm bg-white text-gray-900 font-semibold shadow-sm"
+                className="w-3/4 mx-auto block px-2 py-1.5 border-2 border-gray-400 rounded-lg focus:ring-2 focus:ring-primary-500 text-sm bg-white text-gray-900 font-semibold shadow-sm"
               >
                 <option value="low">Low (Load on demand)</option>
                 <option value="balanced">Balanced (Recommended)</option>
@@ -1428,7 +1530,7 @@ const MockupGenerator = ({ design, onExport }) => {
             {/* Preload Progress */}
             {preloadProgress < 100 && (
               <div className="mb-3">
-                <div className="flex justify-between text-xs text-gray-600 mb-1">
+                <div className="flex justify-between text-sm text-gray-600 font-medium mb-1">
                   <span>Preloading images...</span>
                   <span>{preloadProgress}%</span>
                 </div>
@@ -1486,7 +1588,7 @@ const MockupGenerator = ({ design, onExport }) => {
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-1">
                         <button
                           onClick={() => setActiveLayerIndex(index)}
                           className="text-left flex-1"
@@ -1628,25 +1730,29 @@ const MockupGenerator = ({ design, onExport }) => {
           )}
 
           {/* Quick Actions */}
-          <div className="grid grid-cols-2 gap-3">
-            <button
-              onClick={() => handleSettingChange('designScale', 1.0)}
-              className="btn-secondary btn-small"
-            >
-              Reset Scale
-            </button>
-            <button
-              onClick={() => {
-                handleSettingChange('designX', 0);
-                handleSettingChange('designY', 0);
-                handleSettingChange('rotation', 0);
-              }}
-              className="btn-secondary btn-small"
-            >
-              Center Design
-            </button>
+          <div className="bg-green-50 rounded-lg p-4">
+            <h4 className="font-bold text-gray-900 mb-3 drop-shadow-sm">Quick Actions</h4>
+            <div className="flex justify-center gap-4">
+              <button
+                onClick={() => handleSettingChange('designScale', 1.0)}
+                className="px-4 py-2 bg-gray-200 text-gray-900 font-bold rounded-lg border-2 border-gray-300 hover:bg-gray-300 hover:border-gray-400 transition-all duration-200 flex-1 max-w-32"
+              >
+                Reset Scale
+              </button>
+              <button
+                onClick={() => {
+                  handleSettingChange('designX', 0);
+                  handleSettingChange('designY', 0);
+                  handleSettingChange('rotation', 0);
+                }}
+                className="px-4 py-2 bg-gray-200 text-gray-900 font-bold rounded-lg border-2 border-gray-300 hover:bg-gray-300 hover:border-gray-400 transition-all duration-200 flex-1 max-w-32"
+              >
+                Center Design
+              </button>
+            </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

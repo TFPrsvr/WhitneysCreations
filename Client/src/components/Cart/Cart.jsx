@@ -4,12 +4,13 @@ import { useCart } from '../../contexts/CartContext';
 import './CartDD.css'
 
 const Cart = () => {
-  const { cartItems, removeFromCart, subtotal, tax, total, shipping } = useCart();
+  const { cartItems, removeFromCart, subtotal, tax, total, shipping, updateQuantity } = useCart();
+  const [quantities, setQuantities] = useState({});
 
-    const { addToCart } = useCart();
+  const { addToCart } = useCart();
 
-    const handleAdd = () => {
-     const newItem = {
+  const handleAdd = () => {
+    const newItem = {
       id: Date.now(),
       name: "Custom Hoodie",
       price: 45.99,
@@ -17,16 +18,29 @@ const Cart = () => {
     addToCart(newItem);
   };
 
+  const handleQuantityChange = (itemId, newQuantity) => {
+    if (newQuantity < 1) return;
+    setQuantities({...quantities, [itemId]: newQuantity});
+    if (updateQuantity) {
+      updateQuantity(itemId, newQuantity);
+    }
+  };
+
+  const addToWishlist = (item) => {
+    // Wishlist functionality to be implemented
+    console.log('Added to wishlist:', item);
+  };
+
 return (
-    <div className="min-h-screen bg-gray-50 py-8 page-container">
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-8 page-container">
       <div className="max-w-4xl mx-auto px-4 sm:px-4 lg:px-4 py-12">
-        <h1 className="text-3xl font-bold text-gray-900 text-center mb-8 drop-shadow-sm">Your Shopping Cart</h1>
-        
+        <h1 className="text-3xl font-bold text-white text-center mb-8 drop-shadow-md">Your Shopping Cart</h1>
+
         {cartItems.length === 0 ? (
           <div className="text-center py-16">
             <div className="text-6xl mb-4">🛒</div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2 drop-shadow-sm">Your cart is empty</h3>
-            <p className="text-gray-900 font-semibold text-lg mb-6 drop-shadow-sm">Add some awesome designs to get started!</p>
+            <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-md">Your cart is empty</h3>
+            <p className="text-white font-semibold text-lg mb-6 drop-shadow-md">Add some awesome designs to get started!</p>
             <Link 
               to="/products"
               className="btn-gradient-primary inline-block px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-1"

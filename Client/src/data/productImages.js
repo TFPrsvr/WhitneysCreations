@@ -47,6 +47,111 @@ export const productImageConfig = {
         { angle: 315, label: "Front-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_red_front_left' },
       ],
       designArea: { x: 0.3, y: 0.35, width: 0.4, height: 0.3 }
+    },
+    blue: {
+      name: 'Blue T-Shirt',
+      price: '$19.99',
+      images: [
+        { angle: 0, label: "Front View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_blue_front' },
+        { angle: 45, label: "Front-Right View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_blue_front_right' },
+        { angle: 90, label: "Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_blue_side' },
+        { angle: 135, label: "Side-Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_blue_side_back' },
+        { angle: 180, label: "Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_blue_back' },
+        { angle: 225, label: "Back-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_blue_back_left' },
+        { angle: 270, label: "Left Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_blue_left' },
+        { angle: 315, label: "Front-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_blue_front_left' },
+      ],
+      designArea: { x: 0.3, y: 0.35, width: 0.4, height: 0.3 }
+    },
+    navy: {
+      name: 'Navy T-Shirt',
+      price: '$19.99',
+      images: [
+        { angle: 0, label: "Front View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_navy_front' },
+        { angle: 45, label: "Front-Right View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_navy_front_right' },
+        { angle: 90, label: "Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_navy_side' },
+        { angle: 135, label: "Side-Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_navy_side_back' },
+        { angle: 180, label: "Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_navy_back' },
+        { angle: 225, label: "Back-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_navy_back_left' },
+        { angle: 270, label: "Left Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_navy_left' },
+        { angle: 315, label: "Front-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_navy_front_left' },
+      ],
+      designArea: { x: 0.3, y: 0.35, width: 0.4, height: 0.3 }
+    },
+    green: {
+      name: 'Green T-Shirt',
+      price: '$19.99',
+      images: [
+        { angle: 0, label: "Front View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_green_front' },
+        { angle: 45, label: "Front-Right View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_green_front_right' },
+        { angle: 90, label: "Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_green_side' },
+        { angle: 135, label: "Side-Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_green_side_back' },
+        { angle: 180, label: "Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_green_back' },
+        { angle: 225, label: "Back-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_green_back_left' },
+        { angle: 270, label: "Left Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_green_left' },
+        { angle: 315, label: "Front-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_green_front_left' },
+      ],
+      designArea: { x: 0.3, y: 0.35, width: 0.4, height: 0.3 }
+    },
+    yellow: {
+      name: 'Yellow T-Shirt',
+      price: '$19.99',
+      images: [
+        { angle: 0, label: "Front View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_yellow_front' },
+        { angle: 45, label: "Front-Right View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_yellow_front_right' },
+        { angle: 90, label: "Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_yellow_side' },
+        { angle: 135, label: "Side-Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_yellow_side_back' },
+        { angle: 180, label: "Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_yellow_back' },
+        { angle: 225, label: "Back-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_yellow_back_left' },
+        { angle: 270, label: "Left Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_yellow_left' },
+        { angle: 315, label: "Front-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_yellow_front_left' },
+      ],
+      designArea: { x: 0.3, y: 0.35, width: 0.4, height: 0.3 }
+    },
+    purple: {
+      name: 'Purple T-Shirt',
+      price: '$19.99',
+      images: [
+        { angle: 0, label: "Front View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_purple_front' },
+        { angle: 45, label: "Front-Right View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_purple_front_right' },
+        { angle: 90, label: "Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_purple_side' },
+        { angle: 135, label: "Side-Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_purple_side_back' },
+        { angle: 180, label: "Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_purple_back' },
+        { angle: 225, label: "Back-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_purple_back_left' },
+        { angle: 270, label: "Left Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_purple_left' },
+        { angle: 315, label: "Front-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_purple_front_left' },
+      ],
+      designArea: { x: 0.3, y: 0.35, width: 0.4, height: 0.3 }
+    },
+    pink: {
+      name: 'Pink T-Shirt',
+      price: '$19.99',
+      images: [
+        { angle: 0, label: "Front View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_pink_front' },
+        { angle: 45, label: "Front-Right View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_pink_front_right' },
+        { angle: 90, label: "Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_pink_side' },
+        { angle: 135, label: "Side-Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_pink_side_back' },
+        { angle: 180, label: "Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_pink_back' },
+        { angle: 225, label: "Back-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_pink_back_left' },
+        { angle: 270, label: "Left Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_pink_left' },
+        { angle: 315, label: "Front-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_pink_front_left' },
+      ],
+      designArea: { x: 0.3, y: 0.35, width: 0.4, height: 0.3 }
+    },
+    orange: {
+      name: 'Orange T-Shirt',
+      price: '$19.99',
+      images: [
+        { angle: 0, label: "Front View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_orange_front' },
+        { angle: 45, label: "Front-Right View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_orange_front_right' },
+        { angle: 90, label: "Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_orange_side' },
+        { angle: 135, label: "Side-Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_orange_side_back' },
+        { angle: 180, label: "Back View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_orange_back' },
+        { angle: 225, label: "Back-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_orange_back_left' },
+        { angle: 270, label: "Left Side View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_orange_left' },
+        { angle: 315, label: "Front-Left View", src: "/images/products/tshirts/white/front-view.svg", mockup: 'tshirt_orange_front_left' },
+      ],
+      designArea: { x: 0.3, y: 0.35, width: 0.4, height: 0.3 }
     }
   },
   hoodies: {
@@ -77,6 +182,51 @@ export const productImageConfig = {
         { angle: 225, label: "Back-Left View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_black_back_left' },
         { angle: 270, label: "Left Side View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_black_left' },
         { angle: 315, label: "Front-Left View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_black_front_left' },
+      ],
+      designArea: { x: 0.3, y: 0.4, width: 0.4, height: 0.25 }
+    },
+    red: {
+      name: 'Red Hoodie',
+      price: '$39.99',
+      images: [
+        { angle: 0, label: "Front View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_red_front' },
+        { angle: 45, label: "Front-Right View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_red_front_right' },
+        { angle: 90, label: "Side View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_red_side' },
+        { angle: 135, label: "Side-Back View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_red_side_back' },
+        { angle: 180, label: "Back View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_red_back' },
+        { angle: 225, label: "Back-Left View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_red_back_left' },
+        { angle: 270, label: "Left Side View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_red_left' },
+        { angle: 315, label: "Front-Left View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_red_front_left' },
+      ],
+      designArea: { x: 0.3, y: 0.4, width: 0.4, height: 0.25 }
+    },
+    navy: {
+      name: 'Navy Hoodie',
+      price: '$39.99',
+      images: [
+        { angle: 0, label: "Front View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_navy_front' },
+        { angle: 45, label: "Front-Right View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_navy_front_right' },
+        { angle: 90, label: "Side View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_navy_side' },
+        { angle: 135, label: "Side-Back View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_navy_side_back' },
+        { angle: 180, label: "Back View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_navy_back' },
+        { angle: 225, label: "Back-Left View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_navy_back_left' },
+        { angle: 270, label: "Left Side View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_navy_left' },
+        { angle: 315, label: "Front-Left View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_navy_front_left' },
+      ],
+      designArea: { x: 0.3, y: 0.4, width: 0.4, height: 0.25 }
+    },
+    gray: {
+      name: 'Gray Hoodie',
+      price: '$39.99',
+      images: [
+        { angle: 0, label: "Front View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_gray_front' },
+        { angle: 45, label: "Front-Right View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_gray_front_right' },
+        { angle: 90, label: "Side View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_gray_side' },
+        { angle: 135, label: "Side-Back View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_gray_side_back' },
+        { angle: 180, label: "Back View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_gray_back' },
+        { angle: 225, label: "Back-Left View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_gray_back_left' },
+        { angle: 270, label: "Left Side View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_gray_left' },
+        { angle: 315, label: "Front-Left View", src: "/images/products/hoodies/white/front-view.svg", mockup: 'hoodie_gray_front_left' },
       ],
       designArea: { x: 0.3, y: 0.4, width: 0.4, height: 0.25 }
     }

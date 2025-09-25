@@ -115,11 +115,11 @@ export const navigationIcons = {
   },
 
   orders: {
-    emoji: '📋',
+    emoji: '📦',
     professional: {
-      iconPath: '/images/noun-orders-list-6478417.svg',
-      iconName: 'Orders List',
-      creator: 'Iconbunny',
+      iconPath: '/images/noun-package-7649015.svg',
+      iconName: 'Package',
+      creator: 'wahya',
       isNounProject: true
     }
   },
