@@ -113,10 +113,10 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-8 px-4 relative page-container">
       {/* Background decorative elements */}
-      <div className="absolute top-10 left-10 text-4xl opacity-20 animate-bounce hidden lg:block" aria-hidden="true">🎨</div>
-      <div className="absolute top-20 right-20 text-3xl opacity-20 animate-pulse hidden lg:block" aria-hidden="true">👕</div>
-      <div className="absolute bottom-20 left-20 text-3xl opacity-20 animate-bounce delay-1000 hidden lg:block" aria-hidden="true">☕</div>
-      <div className="absolute bottom-10 right-10 text-2xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '10s'}} aria-hidden="true">🧢</div>
+      <div className="absolute text-4xl opacity-20 animate-bounce hidden lg:block" style={{top: '1rem', left: '1rem'}} aria-hidden="true">🎨</div>
+      <div className="absolute text-3xl opacity-20 animate-pulse hidden lg:block" style={{top: '1rem', right: '1rem'}} aria-hidden="true">👕</div>
+      <div className="absolute text-3xl opacity-20 animate-bounce delay-1000 hidden lg:block" style={{bottom: '1rem', left: '1rem'}} aria-hidden="true">☕</div>
+      <div className="absolute text-2xl opacity-20 animate-spin hidden lg:block" style={{bottom: '1rem', right: '1rem', animationDuration: '10s'}} aria-hidden="true">🧢</div>
 
       <main className="w-full space-y-6 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100" role="main" style={{maxWidth: '380px'}}>
         <header className="text-center">
@@ -139,7 +139,7 @@ const Login = () => {
             </label>
             <input
               id="username"
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
+              className={`w-3/4 mx-auto block px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
                 errors.username ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
               }`}
               type="text"
@@ -164,7 +164,7 @@ const Login = () => {
             <label htmlFor="password" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
               Password
             </label>
-            <div className="relative">
+            <div className="w-3/4 mx-auto relative">
               <input
                 id="password"
                 className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
@@ -219,7 +219,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full btn-gradient-primary disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-3/4 mx-auto block btn-gradient-primary disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isLoading}
           >
             {isLoading ? 'Signing In...' : 'Sign In'}
@@ -227,12 +227,12 @@ const Login = () => {
         </form>
 
         <div className="text-center pt-4 border-t border-gray-200">
-          <p className="text-gray-800 text-base mb-4 font-bold drop-shadow-sm">
+          <p className="text-black text-base mb-4 font-black drop-shadow-lg">
             Not a member yet?
           </p>
           <button
             onClick={() => handleReg()}
-            className="w-full btn-gradient-purple"
+            className="w-3/4 mx-auto block btn-gradient-purple"
             aria-label="Create a new account"
           >
             Create Account

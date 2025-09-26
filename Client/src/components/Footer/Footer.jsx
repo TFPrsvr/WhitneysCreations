@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-3 mt-4">
+    <footer className="bg-gray-800 text-white py-2 mt-4">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
@@ -34,7 +34,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-gray-600 text-center">
+        <div className="mt-3 pt-3 border-t border-gray-600 text-center">
           <p className="text-gray-400 text-xs">
             Professional icons from The Noun Project • Used under CC BY 3.0 license
           </p>

@@ -346,27 +346,29 @@ const CleanNav = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      padding: '6px 24px',
-                      fontSize: '14px',
+                      width: '100%',
+                      padding: '6px 8px',
+                      textAlign: 'center',
+                      fontSize: '13px',
                       fontWeight: 'bold',
                       color: '#ffffff',
                       background: 'linear-gradient(to right, #dc2626, #b91c1c)',
                       border: 'none',
-                      borderRadius: '12px',
+                      borderRadius: '6px',
                       textDecoration: 'none',
                       transition: 'all 0.2s',
-                      margin: '4px auto',
-                      textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
+                      marginBottom: '0',
+                      textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)',
+                      maxWidth: '100%',
+                      boxSizing: 'border-box'
                     }}
                     onMouseEnter={(e) => {
                       e.target.style.background = 'linear-gradient(to right, #b91c1c, #991b1b)';
                       e.target.style.boxShadow = '0 4px 12px rgba(220, 38, 38, 0.4)';
-                      e.target.style.transform = 'translateY(-2px)';
                     }}
                     onMouseLeave={(e) => {
                       e.target.style.background = 'linear-gradient(to right, #dc2626, #b91c1c)';
                       e.target.style.boxShadow = 'none';
-                      e.target.style.transform = 'translateY(0)';
                     }}
                   >
                     Sign Out
@@ -380,7 +382,9 @@ const CleanNav = () => {
                     to="/login"
                     aria-label="Sign in to your account"
                     style={{
-                      display: 'block',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                       width: '100%',
                       padding: '6px 8px',
                       textAlign: 'center',
@@ -412,7 +416,9 @@ const CleanNav = () => {
                     to="/reg"
                     aria-label="Create a new account"
                     style={{
-                      display: 'block',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                       width: '100%',
                       padding: '6px 8px',
                       textAlign: 'center',

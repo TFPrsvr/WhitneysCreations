@@ -100,7 +100,7 @@ const ProjectDashboard = () => {
               )}
             </div>
             <button
-              className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap flex items-center justify-center"
+              className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200 whitespace-nowrap flex items-center justify-center"
               onClick={handleCreateProject}
               style={{
                 maxWidth: '20vw',
@@ -115,7 +115,7 @@ const ProjectDashboard = () => {
           {error && (
             <div className="flex justify-between items-center bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 mb-4">
               <span>{error}</span>
-              <button onClick={clearError} className="text-red-500 hover:text-red-700 text-xl font-bold">×</button>
+              <button onClick={clearError} className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-3 py-1 rounded font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">×</button>
             </div>
           )}
         </div>
