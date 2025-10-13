@@ -496,24 +496,28 @@ const MockupGenerator = ({ design, onExport }) => {
     const canvas = canvasRef.current;
     if (!canvas || !currentMockup || !currentImageSrc) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', {
+      alpha: true,
+      desynchronized: false,
+      willReadFrequently: false
+    });
     const { width, height } = currentMockup.dimensions;
 
-    // Get device pixel ratio for high-DPI displays
-    const devicePixelRatio = window.devicePixelRatio || 1;
+    // Get device pixel ratio for high-DPI displays (capped at 3 for performance)
+    const devicePixelRatio = Math.min(window.devicePixelRatio || 1, 3);
 
-    // Set actual canvas size (higher resolution)
-    canvas.width = width * devicePixelRatio;
-    canvas.height = height * devicePixelRatio;
+    // Set actual canvas size (higher resolution for crisp rendering)
+    canvas.width = width * devicePixelRatio * 2;
+    canvas.height = height * devicePixelRatio * 2;
 
     // Set display size (CSS pixels)
     canvas.style.width = width + 'px';
     canvas.style.height = height + 'px';
 
-    // Scale the drawing context
-    ctx.scale(devicePixelRatio, devicePixelRatio);
+    // Scale the drawing context to match the increased resolution
+    ctx.scale(devicePixelRatio * 2, devicePixelRatio * 2);
 
-    // Improve rendering quality
+    // Enable maximum quality rendering
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
 
@@ -551,14 +555,29 @@ const MockupGenerator = ({ design, onExport }) => {
       // Check if image is already cached in preloader
       if (imagePreloader.hasImage(currentImageSrc)) {
         const img = imagePreloader.getImage(currentImageSrc);
+
+        // Use high-quality rendering for the product image
+        ctx.save();
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+
+        // Draw image with anti-aliasing
         ctx.drawImage(img, 0, 0, width, height);
+        ctx.restore();
+
         setImageLoadingStatus('loaded');
         return;
       }
 
-      // Preload the image
+      // Preload the image with high quality settings
       const img = await imagePreloader.preloadImage(currentImageSrc);
+
+      ctx.save();
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
       ctx.drawImage(img, 0, 0, width, height);
+      ctx.restore();
+
       setImageLoadingStatus('loaded');
     } catch (error) {
       console.error('Failed to load product image:', currentImageSrc, error);
@@ -1409,7 +1428,11 @@ const MockupGenerator = ({ design, onExport }) => {
                   isHoveringDesign && dragMode ? 'ring-2 ring-blue-400 ring-opacity-50' : ''
                 }`}
                 style={{
-                  imageRendering: 'auto',
+                  imageRendering: '-webkit-optimize-contrast',
+                  WebkitFontSmoothing: 'antialiased',
+                  MozOsxFontSmoothing: 'grayscale',
+                  backfaceVisibility: 'hidden',
+                  transform: isDragging ? 'translateZ(0) scale(1.02)' : 'translateZ(0) scale(1)',
                   border: dragMode && designLayers.length > 0 ? '2px dashed #3b82f6' : '1px solid #e5e7eb',
                   borderRadius: '8px',
                   boxShadow: isDragging
@@ -1417,7 +1440,6 @@ const MockupGenerator = ({ design, onExport }) => {
                     : isHoveringDesign && dragMode
                     ? '0 10px 25px -3px rgba(0, 0, 0, 0.1)'
                     : '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                  transform: isDragging ? 'scale(1.02)' : 'scale(1)',
                   transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
                 onMouseDown={handleMouseDown}

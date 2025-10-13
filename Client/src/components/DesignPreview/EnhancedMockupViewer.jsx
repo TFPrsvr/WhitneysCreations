@@ -85,9 +85,30 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
     const canvas = canvasRef.current;
     if (!canvas || !currentVariant) return;
 
-    const ctx = canvas.getContext('2d');
-    canvas.width = 400;
-    canvas.height = 500;
+    // Get device pixel ratio for high-DPI displays (capped at 3 for performance)
+    const devicePixelRatio = Math.min(window.devicePixelRatio || 1, 3);
+    const scaleFactor = devicePixelRatio * 2;
+
+    const ctx = canvas.getContext('2d', {
+      alpha: true,
+      desynchronized: false,
+      willReadFrequently: false
+    });
+
+    // Set high resolution canvas
+    canvas.width = 400 * scaleFactor;
+    canvas.height = 500 * scaleFactor;
+
+    // Set display size
+    canvas.style.width = '400px';
+    canvas.style.height = '500px';
+
+    // Scale drawing context
+    ctx.scale(scaleFactor, scaleFactor);
+
+    // Enable maximum quality rendering
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
 
     // Clear canvas
     ctx.fillStyle = '#f8f9fa';
@@ -124,7 +145,11 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
     return new Promise((resolve, reject) => {
       // Check if image is already loaded
       if (loadedImages[imageSrc]) {
+        ctx.save();
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
         ctx.drawImage(loadedImages[imageSrc], 0, 0, 400, 500);
+        ctx.restore();
         resolve();
         return;
       }
@@ -140,7 +165,11 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
           [imageSrc]: img
         }));
 
+        ctx.save();
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
         ctx.drawImage(img, 0, 0, 400, 500);
+        ctx.restore();
         resolve();
       };
 
@@ -689,7 +718,11 @@ const EnhancedMockupViewer = ({ design, onExport }) => {
                 ref={canvasRef}
                 className="max-w-none object-contain transition-all duration-300 ease-out shadow-lg rounded-lg"
                 style={{
-                  transform: `scale(${zoomLevel / 100})`,
+                  imageRendering: '-webkit-optimize-contrast',
+                  WebkitFontSmoothing: 'antialiased',
+                  MozOsxFontSmoothing: 'grayscale',
+                  backfaceVisibility: 'hidden',
+                  transform: `translateZ(0) scale(${zoomLevel / 100})`,
                   maxWidth: `${100 * (zoomLevel / 100)}%`,
                   maxHeight: `${100 * (zoomLevel / 100)}%`
                 }}
