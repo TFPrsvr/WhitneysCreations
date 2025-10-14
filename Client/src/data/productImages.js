@@ -455,34 +455,94 @@ export const productImageConfig = {
   }
 };
 
+// High-quality stock photos from Unsplash and other sources
+export const stockPhotos = {
+  tshirts: {
+    white: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1200&q=95',
+    black: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=1200&q=95',
+    red: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=1200&q=95',
+    blue: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=1200&q=95',
+    navy: 'https://images.unsplash.com/photo-1622445275463-afa2ab738c34?w=1200&q=95',
+    green: 'https://images.unsplash.com/photo-1622445275576-721325763afe?w=1200&q=95',
+    yellow: 'https://images.unsplash.com/photo-1622445275456-fc7a6b7238b4?w=1200&q=95',
+    purple: 'https://images.unsplash.com/photo-1622445271453-879d4b2f2e5e?w=1200&q=95',
+    pink: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=1200&q=95',
+    orange: 'https://images.unsplash.com/photo-1622445275623-42b7e3a4a2d3?w=1200&q=95',
+  },
+  hoodies: {
+    white: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=1200&q=95',
+    black: 'https://images.unsplash.com/photo-1542406775-ade58c52d2e4?w=1200&q=95',
+    red: 'https://images.unsplash.com/photo-1578932750355-5eb30ece2a04?w=1200&q=95',
+    navy: 'https://images.unsplash.com/photo-1578932750294-f5075e85f44a?w=1200&q=95',
+    gray: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=1200&q=95',
+  },
+  mugs: {
+    white: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=1200&q=95',
+    black: 'https://images.unsplash.com/photo-1582991956147-0c6e3d1a2a57?w=1200&q=95',
+    blue: 'https://images.unsplash.com/photo-1572443178835-bd0c88b6e3f4?w=1200&q=95',
+  },
+  hats: {
+    white: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=1200&q=95',
+    black: 'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?w=1200&q=95',
+    navy: 'https://images.unsplash.com/photo-1608828532223-82959a47d5bc?w=1200&q=95',
+  },
+  mousepads: {
+    black: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=1200&q=95',
+    white: 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=1200&q=95',
+  },
+  totebags: {
+    white: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=1200&q=95',
+    black: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=1200&q=95',
+  },
+  phonecases: {
+    clear: 'https://images.unsplash.com/photo-1601593346740-925612772716?w=1200&q=95',
+    black: 'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=1200&q=95',
+  },
+  stickers: {
+    white: 'https://images.unsplash.com/photo-1594736797933-d0380ba902d8?w=1200&q=95',
+    clear: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&q=95',
+  },
+};
+
 export const fallbackImages = {
-  tshirts: '/images/products/fallback/tshirt-placeholder.jpg',
-  hoodies: '/images/products/fallback/hoodie-placeholder.jpg',
-  mugs: '/images/products/fallback/mug-placeholder.jpg',
-  hats: '/images/products/fallback/hat-placeholder.jpg',
-  mousepads: '/images/products/fallback/mousepad-placeholder.jpg',
-  totebags: '/images/products/fallback/totebag-placeholder.jpg',
-  phonecases: '/images/products/fallback/phonecase-placeholder.jpg',
-  stickers: '/images/products/fallback/sticker-placeholder.jpg'
+  tshirts: stockPhotos.tshirts.white,
+  hoodies: stockPhotos.hoodies.white,
+  mugs: stockPhotos.mugs.white,
+  hats: stockPhotos.hats.white,
+  mousepads: stockPhotos.mousepads.black,
+  totebags: stockPhotos.totebags.white,
+  phonecases: stockPhotos.phonecases.clear,
+  stickers: stockPhotos.stickers.white
 };
 
 export const getProductImage = (productType, color, angle = 0) => {
   const product = productImageConfig[productType];
+
+  // Try to get stock photo first if available
+  const stockPhoto = stockPhotos[productType]?.[color];
+
   if (!product || !product[color]) {
-    // Return fallback placeholder if available
-    return fallbackImages[productType] || generateProductPlaceholder(productType, color);
+    // Return stock photo, fallback, or placeholder
+    return stockPhoto || fallbackImages[productType] || generateProductPlaceholder(productType, color);
   }
 
   const colorVariant = product[color];
   if (!colorVariant.images || colorVariant.images.length === 0) {
-    return fallbackImages[productType] || generateProductPlaceholder(productType, color);
+    return stockPhoto || fallbackImages[productType] || generateProductPlaceholder(productType, color);
   }
 
   const normalizedAngle = ((angle % 360) + 360) % 360;
   const angleStep = 45;
   const closestAngleIndex = Math.round(normalizedAngle / angleStep) % colorVariant.images.length;
 
-  return colorVariant.images[closestAngleIndex]?.src || generateProductPlaceholder(productType, color);
+  const imageSrc = colorVariant.images[closestAngleIndex]?.src;
+
+  // Return stock photo if SVG doesn't exist or as fallback
+  if (!imageSrc || imageSrc.includes('.svg')) {
+    return stockPhoto || imageSrc || generateProductPlaceholder(productType, color);
+  }
+
+  return imageSrc;
 };
 
 export const getProductVariant = (productType, color) => {
