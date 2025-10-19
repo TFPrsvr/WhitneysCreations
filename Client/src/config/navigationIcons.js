@@ -6,7 +6,7 @@ export const navigationIcons = {
   home: {
     emoji: '🏠',
     professional: {
-      iconPath: '/images/noun-home-7649013.svg?v=4',
+      iconPath: '/images/noun-home-7649013.svg?v=10',
       iconName: 'Home',
       creator: 'wahya',
       isNounProject: true
@@ -36,7 +36,7 @@ export const navigationIcons = {
   mockup: {
     emoji: '📸',
     professional: {
-      iconPath: '/images/noun-mockup-6206312.svg?v=9',
+      iconPath: '/images/noun-mockup-6206312.svg?v=10',
       iconName: 'Mockup Generator',
       creator: 'Noun Project',
       isNounProject: true
@@ -56,7 +56,7 @@ export const navigationIcons = {
   projects: {
     emoji: '📁',
     professional: {
-      iconPath: '/images/noun-project-8074483.svg?v=4',
+      iconPath: '/images/noun-project-8074483.svg?v=10',
       iconName: 'Project',
       creator: 'Side Project',
       isNounProject: true

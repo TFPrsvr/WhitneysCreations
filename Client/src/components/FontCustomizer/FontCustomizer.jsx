@@ -187,41 +187,41 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
         <div className="space-y-6 max-w-lg">
           {/* Text Input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-base font-bold text-gray-900 mb-2">
               Preview Text
             </label>
             <input
               type="text"
               value={customText}
               onChange={(e) => setCustomText(e.target.value)}
-              className="w-48 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+              className="w-full max-w-md px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 text-gray-900 font-medium"
               placeholder="Enter your text..."
             />
           </div>
 
           {/* Font Family */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-base font-bold text-gray-900 mb-2">
               Font Family
             </label>
             <div className="space-y-3">
               {/* Popular Fonts */}
               <div>
-                <p className="text-xs font-medium text-gray-500 mb-2">POPULAR</p>
+                <p className="text-sm font-bold text-gray-900 mb-2">POPULAR</p>
                 <div className="grid grid-cols-2 gap-2">
                   {popularFonts.map((font) => (
                     <button
                       key={font.name}
                       onClick={() => handleSettingChange('family', font.name)}
-                      className={`text-left border rounded-lg transition-colors ${
+                      className={`text-left border-2 rounded-lg transition-colors ${
                         fontSettings.family === font.name
                           ? 'border-primary-500 bg-primary-50'
                           : 'border-gray-300 hover:border-gray-400'
                       }`}
                       style={{padding: '0.5rem', fontFamily: font.name}}
                     >
-                      <div className="font-medium text-sm">{font.name}</div>
-                      <div className="text-xs text-gray-500">{font.category}</div>
+                      <div className="font-bold text-sm text-gray-900">{font.name}</div>
+                      <div className="text-sm font-semibold text-gray-700">{font.category}</div>
                     </button>
                   ))}
                 </div>
@@ -232,7 +232,7 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
                 <select
                   value={fontSettings.family}
                   onChange={(e) => handleSettingChange('family', e.target.value)}
-                  className="w-40 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                  className="w-full max-w-md px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 text-gray-900 font-medium"
                 >
                   <optgroup label="Popular Fonts">
                     {popularFonts.map((font) => (
@@ -256,7 +256,7 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
           {/* Font Size & Weight */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-base font-bold text-gray-900 mb-2">
                 Size ({fontSettings.size}px)
               </label>
               <input
@@ -265,17 +265,17 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
                 max="120"
                 value={fontSettings.size}
                 onChange={(e) => handleSettingChange('size', parseInt(e.target.value))}
-                className="w-32"
+                className="w-full"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-base font-bold text-gray-900 mb-2">
                 Weight
               </label>
               <select
                 value={fontSettings.weight}
                 onChange={(e) => handleSettingChange('weight', e.target.value)}
-                className="w-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 text-gray-900 font-medium"
               >
                 {fontWeights.map((weight) => (
                   <option key={weight.value} value={weight.value}>
@@ -289,7 +289,7 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
           {/* Text Color & Background */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-base font-bold text-gray-900 mb-2">
                 Text Color
               </label>
               <div className="flex items-center space-x-2">
@@ -297,18 +297,18 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
                   type="color"
                   value={fontSettings.color}
                   onChange={(e) => handleSettingChange('color', e.target.value)}
-                  className="w-12 h-10 border border-gray-300 rounded cursor-pointer"
+                  className="w-14 h-12 border-2 border-gray-300 rounded cursor-pointer"
                 />
                 <input
                   type="text"
                   value={fontSettings.color}
                   onChange={(e) => handleSettingChange('color', e.target.value)}
-                  className="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                  className="flex-1 px-3 py-2 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 text-gray-900 font-medium"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-base font-bold text-gray-900 mb-2">
                 Background
               </label>
               <div className="flex items-center space-x-2">
@@ -316,13 +316,13 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
                   type="color"
                   value={fontSettings.backgroundColor}
                   onChange={(e) => handleSettingChange('backgroundColor', e.target.value)}
-                  className="w-12 h-10 border border-gray-300 rounded cursor-pointer"
+                  className="w-14 h-12 border-2 border-gray-300 rounded cursor-pointer"
                 />
                 <input
                   type="text"
                   value={fontSettings.backgroundColor}
                   onChange={(e) => handleSettingChange('backgroundColor', e.target.value)}
-                  className="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                  className="flex-1 px-3 py-2 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 text-gray-900 font-medium"
                 />
               </div>
             </div>
@@ -330,7 +330,7 @@ const FontCustomizer = ({ onFontChange, initialText = 'Sample Text' }) => {
 
           {/* Text Alignment */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-base font-bold text-gray-900 mb-2">
               Text Alignment
             </label>
             <div className="flex space-x-2">
