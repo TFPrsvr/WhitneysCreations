@@ -72,7 +72,7 @@ function App() {
     <div className="min-h-screen bg-gray-50 page-container">
       {/* Hero Section */}
       <main id="main-content">
-        <section className="relative bg-gradient-to-r from-purple-600 via-blue-500 to-teal-500 text-white w-full" aria-labelledby="hero-title" style={{zoom: 1.08}}>
+        <section className="relative bg-gradient-to-r from-purple-600 via-blue-500 to-teal-500 text-white w-full" aria-labelledby="hero-title">
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">✨</span>
         </div>
@@ -81,16 +81,16 @@ function App() {
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="relative w-full px-8 py-6">
-          <div className="text-center max-w-6xl mx-auto" style={{zoom: 0.9}}>
-            <h1 id="hero-title" className="text-2xl md:text-4xl font-bold mb-6 leading-tight">
-              <span className="block text-2xl md:text-4xl mb-4">Whitney's Unique Creations</span>
-              <span className="block text-4xl md:text-5xl mb-4" aria-hidden="true">👕 👚</span>
-              <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent text-xl md:text-3xl mt-2 font-extrabold">
+          <div className="text-center max-w-6xl mx-auto">
+            <h1 id="hero-title" className="text-xl md:text-3xl font-bold mb-6 leading-tight">
+              <span className="block text-xl md:text-3xl mb-4">Whitney's Unique Creations</span>
+              <span className="block text-3xl md:text-4xl mb-4" aria-hidden="true">👕 👚</span>
+              <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent text-lg md:text-2xl mt-2 font-extrabold">
                 The Place That Lets You Customize Your Ideas
               </span>
             </h1>
-            <div className="text-xl md:text-2xl mb-6 text-gray-100 max-w-5xl mx-auto">
-              <p className="text-2xl md:text-3xl font-extrabold mb-4 bg-gradient-to-r from-yellow-400 via-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Creations You Want</p>
+            <div className="text-lg md:text-xl mb-6 text-gray-100 max-w-5xl mx-auto">
+              <p className="text-xl md:text-2xl font-extrabold mb-4 bg-gradient-to-r from-yellow-400 via-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Creations You Want</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-lg md:text-xl font-bold">
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">What You Want</span>
@@ -184,7 +184,7 @@ function App() {
       </section>
 
         {/* Features Section */}
-        <section className="py-8 bg-gradient-to-l from-pink-500 via-red-500 to-orange-500 text-white relative" aria-labelledby="features-title" style={{zoom: 1.08}}>
+        <section className="py-8 bg-gradient-to-l from-pink-500 via-red-500 to-orange-500 text-white relative" aria-labelledby="features-title">
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">⚡</span>
         </div>
@@ -244,7 +244,7 @@ function App() {
       </section>
 
       {/* Product Showcase */}
-      <section className="py-8 bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-500 text-white relative" style={{zoom: 1.08}}>
+      <section className="py-8 bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-500 text-white relative">
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">👕</span>
         </div>
@@ -287,7 +287,7 @@ function App() {
       </section>
 
       {/* Challenge Our Creators Section */}
-      <section className="py-8 bg-gradient-to-l from-indigo-600 via-purple-600 to-pink-600 text-white relative" style={{zoom: 1.08}}>
+      <section className="py-8 bg-gradient-to-l from-indigo-600 via-purple-600 to-pink-600 text-white relative">
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">💡</span>
         </div>
@@ -332,7 +332,7 @@ function App() {
       </section>
 
       {/* How It Works */}
-      <section className="py-8 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white relative" style={{zoom: 1.08}}>
+      <section className="py-8 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white relative">
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">🔧</span>
         </div>
@@ -394,7 +394,7 @@ function App() {
 
 
       {/* CTA Section */}
-      <section className="py-8 bg-gradient-to-l from-rose-500 via-pink-500 to-purple-600 text-white relative" style={{zoom: 1.08}}>
+      <section className="py-8 bg-gradient-to-l from-rose-500 via-pink-500 to-purple-600 text-white relative">
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">🚀</span>
         </div>

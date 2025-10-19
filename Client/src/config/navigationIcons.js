@@ -16,7 +16,7 @@ export const navigationIcons = {
   products: {
     emoji: '🛍️',
     professional: {
-      iconPath: '/images/noun-tshirt-7743963.svg?v=5',
+      iconPath: '/images/noun-tshirt-7743963.svg?v=8',
       iconName: 'Tshirt',
       creator: 'Anggara Putra',
       isNounProject: true
@@ -26,7 +26,7 @@ export const navigationIcons = {
   studio: {
     emoji: '🎭',
     professional: {
-      iconPath: '/images/noun-scissors-24853.svg?v=5',
+      iconPath: '/images/noun-scissors-24853.svg?v=8',
       iconName: 'Scissors',
       creator: 'André Luiz',
       isNounProject: true
