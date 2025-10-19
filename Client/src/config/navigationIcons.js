@@ -36,7 +36,7 @@ export const navigationIcons = {
   mockup: {
     emoji: '📸',
     professional: {
-      iconPath: '/images/noun-mockup-6206312.svg?v=4',
+      iconPath: '/images/noun-mockup-6206312.svg?v=9',
       iconName: 'Mockup Generator',
       creator: 'Noun Project',
       isNounProject: true
