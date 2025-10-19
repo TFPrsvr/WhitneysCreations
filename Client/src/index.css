@@ -109,6 +109,13 @@ body::-webkit-scrollbar {
   overflow-x: hidden;
 }
 
+/* Zoom content inside page-container */
+.page-container #main-content {
+  zoom: 0.536271;
+  -moz-transform: scale(0.536271);
+  -moz-transform-origin: top center;
+}
+
 /* Global Input/Form Element Constraints */
 input, textarea, select, button {
   max-width: 20vw; /* Never exceed 20% of viewport */
@@ -213,7 +220,7 @@ h1 {
 }
 
 button {
-  border-radius: 12px; /* Updated to CLAUDE.md requirements */
+  border-radius: 12px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;

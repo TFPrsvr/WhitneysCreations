@@ -72,7 +72,7 @@ function App() {
     <div className="min-h-screen bg-gray-50 page-container">
       {/* Hero Section */}
       <main id="main-content">
-        <section className="relative bg-gradient-to-r from-purple-600 via-blue-500 to-teal-500 text-white w-full" aria-labelledby="hero-title">
+        <section className="relative bg-gradient-to-r from-purple-600 via-blue-500 to-teal-500 text-white w-full" aria-labelledby="hero-title" style={{zoom: 1.08}}>
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">✨</span>
         </div>
@@ -80,16 +80,16 @@ function App() {
           <span className="text-2xl">🎯</span>
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="relative w-full px-6 py-4">
-          <div className="text-center">
-            <h1 id="hero-title" className="text-2xl md:text-4xl font-bold mb-4 leading-tight">
+        <div className="relative w-full px-8 py-6">
+          <div className="text-center max-w-6xl mx-auto" style={{zoom: 0.9}}>
+            <h1 id="hero-title" className="text-2xl md:text-4xl font-bold mb-6 leading-tight">
               <span className="block text-2xl md:text-4xl mb-4">Whitney's Unique Creations</span>
-              <span className="block text-4xl md:text-5xl mb-3" aria-hidden="true">👕 👚</span>
-              <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent text-xl md:text-3xl mt-4 font-extrabold">
+              <span className="block text-4xl md:text-5xl mb-4" aria-hidden="true">👕 👚</span>
+              <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent text-xl md:text-3xl mt-2 font-extrabold">
                 The Place That Lets You Customize Your Ideas
               </span>
             </h1>
-            <div className="text-xl md:text-2xl mb-8 text-gray-100 max-w-5xl mx-auto">
+            <div className="text-xl md:text-2xl mb-6 text-gray-100 max-w-5xl mx-auto">
               <p className="text-2xl md:text-3xl font-extrabold mb-4 bg-gradient-to-r from-yellow-400 via-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Creations You Want</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-lg md:text-xl font-bold">
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
@@ -112,7 +112,7 @@ function App() {
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-20 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-6">
               {isAuthenticated ? (
                 <>
                   <Link
@@ -184,30 +184,30 @@ function App() {
       </section>
 
         {/* Features Section */}
-        <section className="py-8 bg-gradient-to-l from-pink-500 via-red-500 to-orange-500 text-white relative" aria-labelledby="features-title">
+        <section className="py-8 bg-gradient-to-l from-pink-500 via-red-500 to-orange-500 text-white relative" aria-labelledby="features-title" style={{zoom: 1.08}}>
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">⚡</span>
         </div>
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">🚀</span>
         </div>
-        <div className="w-full px-6">
-          <div className="text-center mb-6">
-            <h2 id="features-title" className="text-2xl md:text-3xl font-bold text-white mb-3">
+        <div className="w-full px-8 max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 id="features-title" className="text-2xl md:text-3xl font-bold text-white mb-4" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               Everything You Need to Succeed
             </h2>
-            <p className="text-lg text-white font-bold max-w-xl mx-auto px-4 drop-shadow-md" style={{color: '#ffffff', textShadow: '1px 1px 2px rgba(0,0,0,0.3)'}}>
+            <p className="text-lg text-white font-bold max-w-xl mx-auto drop-shadow-md mb-2" style={{color: '#ffffff', textShadow: '1px 1px 2px rgba(0,0,0,0.3)'}}>
               From design to delivery, we've got you covered with professional tools and services.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto px-4">
+          <div className="flex flex-col lg:flex-row justify-between gap-4 max-w-6xl mx-auto px-4">
             {features.map((feature, index) => (
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
                 <div className="text-3xl mb-2">{feature.icon}</div>
-                <h3 className="text-base font-bold text-gray-900 mb-1 break-words">{feature.title}</h3>
-                <p className="text-gray-900 font-medium leading-snug text-sm break-words mb-3">{feature.description}</p>
-                <div className="text-xs text-gray-800 font-semibold space-y-0.5 mt-1">
+                <h3 className="text-base font-bold text-gray-900 mb-3 break-words">{feature.title}</h3>
+                <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>{feature.description}</p>
+                <div className="text-xs font-bold space-y-0.5 mt-1" style={{color: '#4b5563'}}>
                   {feature.title === 'Easy Design Tools' && (
                     <>
                       <div>• Drag-and-drop editor</div>
@@ -244,32 +244,34 @@ function App() {
       </section>
 
       {/* Product Showcase */}
-      <section className="py-8 bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-500 text-white relative">
+      <section className="py-8 bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-500 text-white relative" style={{zoom: 1.08}}>
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">👕</span>
         </div>
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">☕</span>
         </div>
-        <div className="w-full px-6">
-          <div className="text-center mb-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
+        <div className="w-full px-8 max-w-6xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               Premium Products, Perfect Quality
             </h2>
-            <p className="text-xl text-white max-w-2xl mx-auto">
+            <p className="text-xl text-white max-w-2xl mx-auto mb-2" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.7)'}}>
               Choose from our carefully curated selection of high-quality products.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto px-4">
+          <div className="flex flex-col sm:flex-row justify-evenly gap-4 max-w-6xl mx-auto px-4">
             {productShowcase.map((product, index) => (
-              <div key={index} className="bg-white rounded-md shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2 p-3 text-center">
-                <div className="mb-2 bg-gradient-to-br from-gray-100 to-gray-200 rounded-md p-4 flex items-center justify-center">
-                  <span className="text-4xl">{product.image}</span>
+              <Link key={index} to="/products" className="bg-white rounded-md shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2 p-4 text-center flex-1 min-h-[220px] flex flex-col justify-between">
+                <div>
+                  <div className="mb-3 bg-gradient-to-br from-gray-100 to-gray-200 rounded-md p-4 flex items-center justify-center">
+                    <span className="text-4xl">{product.image}</span>
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 mb-4">{product.name}</h3>
                 </div>
-                <h3 className="text-sm font-semibold text-gray-900 mb-1">{product.name}</h3>
-                <p className="text-primary-600 font-semibold text-sm">{product.price}</p>
-              </div>
+                <p className="font-bold text-base mt-auto" style={{color: '#1f2937'}}>{product.price}</p>
+              </Link>
             ))}
           </div>
 
@@ -285,116 +287,106 @@ function App() {
       </section>
 
       {/* Challenge Our Creators Section */}
-      <section className="py-12 bg-gradient-to-l from-indigo-600 via-purple-600 to-pink-600 text-white relative">
+      <section className="py-8 bg-gradient-to-l from-indigo-600 via-purple-600 to-pink-600 text-white relative" style={{zoom: 1.08}}>
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">💡</span>
         </div>
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">✨</span>
         </div>
-        <div className="w-full max-w-none text-center px-8 sm:px-12 lg:px-16">
-          <h2 className="text-5xl md:text-7xl font-bold mb-6">
+        <div className="w-full max-w-6xl mx-auto text-center px-8 flex flex-col justify-between min-h-[350px] py-6">
+          <h2 className="text-5xl md:text-7xl font-bold mb-8" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
             🎨✨ Challenge Our Creators!! ✨🎨
           </h2>
-          <div className="text-2xl md:text-3xl mb-2 space-y-8">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 text-2xl md:text-3xl font-bold w-full max-w-5xl mx-auto">
-              <div className="text-center flex-1">
-                <div className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                  <div className="text-2xl md:text-3xl mb-1">See If Our</div>
-                  <div className="text-2xl md:text-3xl">Creators Can</div>
-                </div>
-              </div>
-              <div className="text-center flex-none">
-                <div className="text-4xl md:text-5xl flex items-end justify-center gap-2">
-                  <span style={{transform: 'translateY(8px)'}}>🧢</span>
-                  <span>👕</span>
-                </div>
-              </div>
-              <div className="text-center flex-1">
-                <div className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
-                  <div className="text-2xl md:text-3xl mb-1">Make Your Ideas</div>
-                  <div className="text-2xl md:text-3xl">Come To Life</div>
-                </div>
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 text-2xl md:text-3xl font-bold w-full max-w-5xl mx-auto">
+            <div className="text-center flex-1">
+              <div className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+                <div className="text-2xl md:text-3xl mb-1">See If Our</div>
+                <div className="text-2xl md:text-3xl">Creators Can</div>
               </div>
             </div>
-            <p className="text-lg md:text-xl font-semibold mt-6">Just Click Below To Get Started:</p>
+            <div className="text-center flex-none">
+              <div className="text-4xl md:text-5xl flex items-end justify-center gap-2">
+                <span style={{transform: 'translateY(8px)'}}>🧢</span>
+                <span>👕</span>
+              </div>
+            </div>
+            <div className="text-center flex-1">
+              <div className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
+                <div className="text-2xl md:text-3xl mb-1">Make Your Ideas</div>
+                <div className="text-2xl md:text-3xl">Come To Life</div>
+              </div>
+            </div>
           </div>
-          
-          <Link
-            to="/suggest"
-            className="inline-block bg-gradient-to-r from-emerald-400 to-cyan-500 text-white px-4 py-2 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-            style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8)'}}
-          >
-            ✨ What's Your Creation Idea? ✨
-          </Link>
+          <div>
+            <p className="text-lg md:text-xl font-semibold mb-4">Just Click Below To Get Started:</p>
+            <Link
+              to="/suggest"
+              className="inline-block bg-gradient-to-r from-emerald-400 to-cyan-500 text-white px-4 py-2 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+              style={{textShadow: '0 1px 2px rgba(0, 100, 100, 0.5)'}}
+            >
+              ✨ What's Your Creation Idea? ✨
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="py-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white relative">
+      <section className="py-8 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white relative" style={{zoom: 1.08}}>
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">🔧</span>
         </div>
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">📝</span>
         </div>
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-2">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-1">
+        <div className="max-w-6xl mx-auto px-8">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               How It Works
             </h2>
-            <p className="text-lg text-white font-bold max-w-xl mx-auto px-4 drop-shadow-md" style={{color: '#ffffff', textShadow: '1px 1px 2px rgba(0,0,0,0.3)'}}>
+            <p className="text-lg text-white font-bold max-w-xl mx-auto drop-shadow-md mb-2" style={{color: '#ffffff', textShadow: '1px 1px 3px rgba(0,0,0,0.7)'}}>
               Get started in just three simple steps
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-2">
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl hover:bg-pink-50 transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start group">
-              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto">
-                1
-              </div>
-              <div className="text-3xl">🎨</div>
-              <h3 className="text-base font-semibold text-gray-900 mb-2 group-hover:text-purple-600">Design</h3>
-              <p className="text-gray-900 font-medium mb-2 text-sm leading-relaxed">
+          <div className="flex flex-col lg:flex-row justify-between gap-4 max-w-6xl mx-auto px-4">
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
+              <div className="text-3xl mb-2">🎨</div>
+              <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Design</h3>
+              <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>
                 Use our intuitive design tools to create amazing products. Upload your own images or use our templates.
               </p>
-              <ul className="text-sm text-gray-500 space-y-0 mt-1">
-                <li>• Drag-and-drop editor</li>
-                <li>• 1000+ templates</li>
-                <li>• Custom fonts & graphics</li>
-              </ul>
+              <div className="text-xs font-bold space-y-0.5 mt-1" style={{color: '#4b5563'}}>
+                <div>• Drag-and-drop editor</div>
+                <div>• 1000+ templates</div>
+                <div>• Custom fonts & graphics</div>
+              </div>
             </div>
 
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl hover:bg-pink-50 transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start group">
-              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto">
-                2
-              </div>
-              <div className="text-3xl">💰</div>
-              <h3 className="text-base font-semibold text-gray-900 mb-2 group-hover:text-purple-600">Sell</h3>
-              <p className="text-gray-900 font-medium mb-2 text-sm leading-relaxed">
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
+              <div className="text-3xl mb-2">💰</div>
+              <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Sell</h3>
+              <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>
                 List your products for sale or share them directly with customers. Set your own prices and profit margins.
               </p>
-              <ul className="text-sm text-gray-500 space-y-0 mt-1">
-                <li>• Set your own prices</li>
-                <li>• Direct customer sharing</li>
-                <li>• Profit margin control</li>
-              </ul>
+              <div className="text-xs font-bold space-y-0.5 mt-1" style={{color: '#4b5563'}}>
+                <div>• Set your own prices</div>
+                <div>• Direct customer sharing</div>
+                <div>• Profit margin control</div>
+              </div>
             </div>
 
-            <div className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl hover:bg-pink-50 transition-all duration-300 transform hover:-translate-y-1 min-h-[200px] flex flex-col justify-start group">
-              <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-base font-bold mx-auto">
-                3
-              </div>
-              <div className="text-3xl">🚀</div>
-              <h3 className="text-base font-semibold text-gray-900 mb-2 group-hover:text-purple-600">Fulfill</h3>
-              <p className="text-gray-900 font-medium mb-2 text-sm leading-relaxed">
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
+              <div className="text-3xl mb-2">🚀</div>
+              <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Fulfill</h3>
+              <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>
                 We handle printing, packaging, and shipping. You get paid, and your customers get premium products.
               </p>
-              <ul className="text-sm text-gray-500 space-y-0 mt-1">
-                <li>• Print on demand</li>
-                <li>• Fast worldwide shipping</li>
-                <li>• Quality guaranteed</li>
-              </ul>
+              <div className="text-xs font-bold space-y-0.5 mt-1" style={{color: '#4b5563'}}>
+                <div>• Print on demand</div>
+                <div>• Fast worldwide shipping</div>
+                <div>• Quality guaranteed</div>
+              </div>
             </div>
           </div>
         </div>
@@ -402,7 +394,7 @@ function App() {
 
 
       {/* CTA Section */}
-      <section className="py-8 bg-gradient-to-l from-rose-500 via-pink-500 to-purple-600 text-white relative">
+      <section className="py-8 bg-gradient-to-l from-rose-500 via-pink-500 to-purple-600 text-white relative" style={{zoom: 1.08}}>
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">🚀</span>
         </div>
@@ -445,7 +437,7 @@ function App() {
       {/* Floating Share Widget */}
       <ShareWidget
         position="bottom-right"
-        showOnScroll={true}
+        showOnScroll={false}
         customShareData={{
           title: "Whitney's Creations - Custom Print-on-Demand",
           description: "Create and sell custom designs on premium apparel with PrintCraft"

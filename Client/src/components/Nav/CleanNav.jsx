@@ -90,7 +90,7 @@ const CleanNav = () => {
           width: '10.5rem'
         }}
       >
-        <div 
+        <div
           className="flex flex-col shadow-lg h-full"
           style={{
             backgroundColor: '#e5e7eb !important',
@@ -100,50 +100,59 @@ const CleanNav = () => {
             borderBottom: '1px solid rgba(75, 85, 99, 0.3)',
             margin: 0,
             padding: 0,
-            minHeight: '100vh'
+            minHeight: '100vh',
+            zoom: 0.5,
+            MozTransform: 'scale(0.5)',
+            MozTransformOrigin: 'top left'
           }}
         >
           {/* Logo Header */}
           <Link
             to="/"
-            className="flex items-center space-x-2 text-white hover:text-cyan-400 transition-colors p-2 border-b border-gray-400"
+            className="flex items-center justify-between text-white hover:text-cyan-400 transition-colors px-4 py-2 border-b border-gray-400"
             aria-label="Whitney's Creations PrintCraft - Go to homepage"
             style={{
               textDecoration: 'none',
               fontSize: '1.1rem',
               fontWeight: '800',
               letterSpacing: '0.05em',
+              width: '100%',
               maxWidth: '100%',
               overflow: 'hidden',
-              boxSizing: 'border-box'
+              boxSizing: 'border-box',
+              zoom: 1.5625,
+              MozTransform: 'scale(1.5625)',
+              MozTransformOrigin: 'top left'
             }}
           >
             <IconRenderer
               iconKey="logo"
-              size="1.2rem"
+              size="2rem"
               className="animate-pulse"
               style={{flexShrink: 0}}
             />
             <span
               style={{
                 display: 'inline-block',
+                textAlign: 'center',
                 whiteSpace: 'nowrap',
                 background: 'linear-gradient(45deg, #00d4ff, #ff00ff, #ffaa00)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                maxWidth: 'calc(100% - 2rem)',
-                fontSize: '1rem'
+                fontSize: '1.5rem',
+                flex: 1,
+                marginLeft: '8px',
+                marginRight: '8px'
               }}
             >
               PrintCraft
             </span>
+            <div style={{width: '2rem', flexShrink: 0}}></div>
           </Link>
 
           {/* Navigation Links List */}
-          <ul className="flex flex-col space-y-1 flex-1 overflow-y-auto scrollbar-sidebar" role="list">
+          <ul className="flex flex-col space-y-1 flex-1 overflow-y-auto scrollbar-sidebar" role="list" style={{zoom: 1.5625, MozTransform: 'scale(1.5625)', MozTransformOrigin: 'top left'}}>
             {navLinks.map((link) => (
               <li key={link.path} role="none">
                 <Link
@@ -163,8 +172,10 @@ const CleanNav = () => {
                     margin: '2px 0',
                     color: '#1e40af',
                     WebkitFontSmoothing: 'antialiased',
-                    MozOsxFontSmoothing: 'grayscale'
+                    MozOsxFontSmoothing: 'grayscale',
+                    outline: 'none'
                   }}
+                  onFocus={(e) => e.target.style.outline = 'none'}
                 >
                   <div className="flex items-center space-x-3">
                     <IconRenderer
@@ -190,9 +201,9 @@ const CleanNav = () => {
           {/* Auth Section */}
           <div className="border-t border-gray-400 mt-2" role="complementary" aria-label="User account section">
             {isAuthenticated ? (
-              <div className="p-2" style={{maxWidth: '100%', overflow: 'hidden'}}>
+              <div className="p-4" style={{maxWidth: '100%', overflow: 'hidden'}}>
                 {/* User Info */}
-                <div className="flex items-center p-1 mb-1 bg-gray-800 rounded-lg" role="region" aria-label="User information" style={{maxWidth: '100%', overflow: 'hidden'}}>
+                <div className="flex items-center p-3 mb-3 bg-gray-800 rounded-lg" role="region" aria-label="User information" style={{maxWidth: '100%', overflow: 'hidden'}}>
                   <div className="flex-1 min-w-0" style={{maxWidth: '100%'}}>
                     <p className="font-bold truncate"
                        style={{
@@ -225,7 +236,7 @@ const CleanNav = () => {
                 </div>
                 
                 {/* Quick Actions - Cart, Profile & Orders in a row */}
-                <nav className="flex justify-evenly space-x-0 py-1 mb-1" role="navigation" aria-label="Quick actions" style={{maxWidth: '100%', overflow: 'hidden'}}>
+                <nav className="flex justify-evenly space-x-0 py-6 mb-3" role="navigation" aria-label="Quick actions" style={{maxWidth: '100%', overflow: 'hidden'}}>
                   <Link
                     to="/cart"
                     className={`flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-105 ${
@@ -240,22 +251,22 @@ const CleanNav = () => {
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '6px',
-                      padding: '6px 8px',
+                      padding: '12px 14px',
                       lineHeight: '1',
-                      marginBottom: '4px',
+                      marginBottom: '6px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      minWidth: '2.5rem',
-                      minHeight: '2.5rem'
+                      minWidth: '4rem',
+                      minHeight: '4rem'
                     }}>
                       <IconRenderer
                         iconKey="cart"
-                        size="1.8rem"
+                        size="2.6rem"
                         forDarkBackground={false}
                       />
                     </div>
-                    <span className="text-xs font-bold" style={{
+                    <span className="text-sm font-bold" style={{
                       color: '#ffffff',
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                     }}>Cart</span>
@@ -275,27 +286,27 @@ const CleanNav = () => {
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '6px',
-                      padding: '6px 8px',
+                      padding: '12px 14px',
                       lineHeight: '1',
-                      marginBottom: '4px',
+                      marginBottom: '6px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      minWidth: '2.5rem',
-                      minHeight: '2.5rem'
+                      minWidth: '4rem',
+                      minHeight: '4rem'
                     }}>
                       <NounProjectIcon
                         iconPath={userAvatar?.iconPath || "/images/noun-avatar-2309777.svg"}
                         iconName={userAvatar?.name || "Avatar"}
                         creator={userAvatar?.creator || "Nawicon"}
-                        size="1.8rem"
+                        size="2.6rem"
                         style={{
                           filter: 'sepia(0.3) saturate(2) hue-rotate(200deg) brightness(2.1) contrast(0.4)', // Light blue/teal outline
                           display: 'block'
                         }}
                       />
                     </div>
-                    <span className="text-xs font-bold" style={{
+                    <span className="text-sm font-bold" style={{
                       color: '#ffffff',
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                     }}>Profile</span>
@@ -315,29 +326,29 @@ const CleanNav = () => {
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
                       background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '6px',
-                      padding: '6px 8px',
+                      padding: '12px 14px',
                       lineHeight: '1',
-                      marginBottom: '4px',
+                      marginBottom: '6px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      minWidth: '2.5rem',
-                      minHeight: '2.5rem'
+                      minWidth: '4rem',
+                      minHeight: '4rem'
                     }}>
                       <IconRenderer
                         iconKey="orders"
-                        size="1.8rem"
+                        size="2.6rem"
                         forDarkBackground={false}
                       />
                     </div>
-                    <span className="text-xs font-bold" style={{
+                    <span className="text-sm font-bold" style={{
                       color: '#ffffff',
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                     }}>Orders</span>
                   </Link>
                 </nav>
-                
-                <div className="flex justify-center w-full">
+
+                <div className="flex justify-center w-full mt-2" style={{zoom: 0.9}}>
                   <button
                     onClick={handleLogout}
                     className="w-full text-center"
@@ -347,9 +358,9 @@ const CleanNav = () => {
                       alignItems: 'center',
                       justifyContent: 'center',
                       width: '100%',
-                      padding: '6px 8px',
+                      padding: '12px 16px',
                       textAlign: 'center',
-                      fontSize: '13px',
+                      fontSize: '16px',
                       fontWeight: 'bold',
                       color: '#ffffff',
                       background: 'linear-gradient(to right, #dc2626, #b91c1c)',

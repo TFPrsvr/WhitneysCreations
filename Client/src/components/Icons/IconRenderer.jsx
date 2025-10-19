@@ -36,12 +36,12 @@ const IconRenderer = ({
       } else {
         // Filters for light backgrounds (outline-only, no fill)
         const lightFilterMap = {
-          home: 'sepia(0.1) saturate(1.0) hue-rotate(90deg) brightness(3.5) contrast(0.01)',     // No fill, outline only, minimal boldness
+          home: 'opacity(0.3) drop-shadow(0 0 1px rgba(0,0,0,0.5))',     // Outline only, no fill
           products: 'sepia(0.3) saturate(2.0) hue-rotate(15deg) brightness(1.8) contrast(0.4)',   // Strong orange color with extra boldness
           studio: 'sepia(0.08) saturate(0.8) hue-rotate(240deg) brightness(3.2) contrast(0.04)',   // Light purple outline, minimal boldness
-          mockup: 'sepia(0.1) saturate(1.0) hue-rotate(180deg) brightness(3.5) contrast(0.01)', // No fill, outline only, minimal boldness
+          mockup: 'opacity(0.3) drop-shadow(0 0 1px rgba(0,0,0,0.5))', // Outline only, no fill
           suggestions: 'sepia(0.05) saturate(0.6) hue-rotate(50deg) brightness(3.2) contrast(0.04)', // Light yellow outline, minimal boldness
-          projects: 'sepia(0.1) saturate(1.0) hue-rotate(210deg) brightness(3.5) contrast(0.01)', // No fill, outline only, minimal boldness
+          projects: 'opacity(0.3) drop-shadow(0 0 1px rgba(0,0,0,0.5))', // Outline only, no fill
           admin: 'sepia(0.08) saturate(0.8) hue-rotate(0deg) brightness(3.2) contrast(0.04)',      // Light red outline, minimal boldness
           about: 'sepia(0.08) saturate(0.8) hue-rotate(120deg) brightness(3.2) contrast(0.04)',    // Light emerald outline, minimal boldness
           contact: 'sepia(0.08) saturate(0.8) hue-rotate(20deg) brightness(3.2) contrast(0.04)',   // Light orange outline, minimal boldness

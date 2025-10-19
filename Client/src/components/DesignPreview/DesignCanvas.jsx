@@ -386,13 +386,42 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
     ctx.textAlign = element.textAlign || "left";
     ctx.textBaseline = "top";
 
+    const text = element.text || "";
+    const maxWidth = element.maxWidth || 300; // Default max width
+    const lineHeight = (element.fontSize || 32) * 1.2;
+
+    // Wrap text if it exceeds maxWidth
+    const words = text.split(' ');
+    let line = '';
+    let y = element.y;
+
+    for (let i = 0; i < words.length; i++) {
+      const testLine = line + words[i] + ' ';
+      const metrics = ctx.measureText(testLine);
+      const testWidth = metrics.width;
+
+      if (testWidth > maxWidth && i > 0) {
+        // Draw the current line
+        if (element.outline) {
+          ctx.strokeStyle = element.outlineColor || "#000000";
+          ctx.lineWidth = element.outlineWidth || 2;
+          ctx.strokeText(line, element.x, y);
+        }
+        ctx.fillText(line, element.x, y);
+        line = words[i] + ' ';
+        y += lineHeight;
+      } else {
+        line = testLine;
+      }
+    }
+
+    // Draw the last line
     if (element.outline) {
       ctx.strokeStyle = element.outlineColor || "#000000";
       ctx.lineWidth = element.outlineWidth || 2;
-      ctx.strokeText(element.text || "", element.x, element.y);
+      ctx.strokeText(line, element.x, y);
     }
-
-    ctx.fillText(element.text || "", element.x, element.y);
+    ctx.fillText(line, element.x, y);
   };
 
   const drawRectangleElement = (ctx, element) => {
@@ -1142,7 +1171,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
             }}
           >
             <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            <span className="mr-2 text-xl relative z-10">🗑️</span>
+            <span className="mr-2 text-xl relative z-10">✖️</span>
             <span className={`${isMobile ? "hidden" : "font-bold"} relative z-10`}>Clear</span>
           </Button>
           
@@ -1174,7 +1203,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
             }}
           >
             <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            <span className="mr-2 text-xl relative z-10">📤</span>
+            <span className="mr-2 text-xl relative z-10">⬇️</span>
             <span className={`${isMobile ? "hidden" : "font-bold"} relative z-10`}>Export</span>
           </Button>
         </div>
@@ -1183,10 +1212,11 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
       {/* Control Panels Row - Grid Format */}
       <div className="w-full max-w-7xl mx-auto mb-20 px-4">
         <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '24px',
-          width: '100%'
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: '16px',
+          width: '100%',
+          zoom: 0.85
         }}>
           {/* Tools Panel */}
           <div 
@@ -1334,7 +1364,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                         }))
                       }
                       className="w-full px-3 py-2 border-2 border-blue-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gradient-to-br from-white via-blue-50 to-indigo-50 text-blue-900 font-semibold transition-all duration-300 hover:shadow-lg hover:border-blue-400 focus:shadow-xl cursor-pointer text-sm"
-                      style={{ 
+                      style={{
                         borderRadius: '10px',
                         fontFamily: 'Comfortaa, cursive',
                         boxShadow: '0 4px 15px rgba(59, 130, 246, 0.1)'
@@ -1344,7 +1374,17 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                       <option value="Helvetica">Helvetica</option>
                       <option value="Times New Roman">Times New Roman</option>
                       <option value="Georgia">Georgia</option>
+                      <option value="Verdana">Verdana</option>
+                      <option value="Courier New">Courier New</option>
+                      <option value="Comic Sans MS">Comic Sans MS</option>
                       <option value="Impact">Impact</option>
+                      <option value="Trebuchet MS">Trebuchet MS</option>
+                      <option value="Palatino">Palatino</option>
+                      <option value="Garamond">Garamond</option>
+                      <option value="Bookman">Bookman</option>
+                      <option value="Tahoma">Tahoma</option>
+                      <option value="Lucida Console">Lucida Console</option>
+                      <option value="Brush Script MT">Brush Script MT</option>
                     </select>
                   </div>
 
@@ -1699,7 +1739,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                           gridEnabled: e.target.checked,
                         }))
                       }
-                      className="w-3 h-3 text-orange-600 bg-white border-2 border-orange-400 rounded focus:ring-orange-500 focus:ring-1 cursor-pointer"
+                      className="w-2.5 h-2.5 text-orange-600 bg-white border-2 border-orange-400 rounded focus:ring-orange-500 focus:ring-1 cursor-pointer"
                     />
                     <span className="text-xs font-bold"
                           style={{ 
@@ -1724,7 +1764,7 @@ const DesignCanvas = ({ onDesignChange, initialDesign = null }) => {
                           snapToGrid: e.target.checked,
                         }))
                       }
-                      className="w-3 h-3 text-orange-600 bg-white border-2 border-orange-400 rounded focus:ring-orange-500 focus:ring-1 cursor-pointer"
+                      className="w-2.5 h-2.5 text-orange-600 bg-white border-2 border-orange-400 rounded focus:ring-orange-500 focus:ring-1 cursor-pointer"
                     />
                     <span className="text-xs font-bold"
                           style={{ 

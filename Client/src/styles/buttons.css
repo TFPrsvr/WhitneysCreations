@@ -1,20 +1,21 @@
-/* Universal Button Styles - Based on Home Page Standards */
+/* Universal Button Styles - Consistent Design System */
 
+/* Style 1: White button with blue text - Clean & Professional */
 .btn-primary {
   background: #ffffff;
   color: #2563eb; /* primary-600 */
-  padding: 16px 32px; /* py-4 px-8 */
+  padding: 12px 24px; /* Reduced from 16px 32px for better proportions */
   border-radius: 12px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px; /* Reduced from 18px */
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.2s ease;
   max-width: 16vw;
-  min-width: 140px;
+  min-width: 120px; /* Reduced from 140px */
   min-height: 35px;
   transform: translateY(0);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -23,56 +24,62 @@
 }
 
 .btn-primary:hover {
-  background: #f9fafb; /* hover:bg-gray-100 */
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  background: #f9fafb;
+  transform: translateY(-2px); /* Reduced from -4px */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   color: #2563eb;
   text-decoration: none;
 }
 
+/* Style 2: Glass morphism button - Modern & Elegant */
 .btn-secondary {
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
   border: 2px solid #ffffff;
-  padding: 16px 32px;
+  padding: 12px 24px;
   border-radius: 12px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease;
   max-width: 16vw;
-  min-width: 140px;
+  min-width: 120px;
   min-height: 35px;
   transform: translateY(0);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
   background: #ffffff;
   color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   text-decoration: none;
 }
 
+/* Style 3: Blue gradient - Standard Primary Action */
 .btn-gradient-primary {
-  background: linear-gradient(to right, #2563eb, #1d4ed8); /* primary-600 to primary-700 */
+  background: linear-gradient(to right, #3b82f6, #8b5cf6); /* blue-500 to purple-500 */
   color: #ffffff;
-  padding: 16px 32px;
+  padding: 12px 24px;
   border-radius: 12px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
   max-width: 16vw;
-  min-width: 140px;
+  min-width: 120px;
   min-height: 35px;
   transform: translateY(0);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -81,28 +88,29 @@
 }
 
 .btn-gradient-primary:hover {
-  background: linear-gradient(to right, #1d4ed8, #1e40af); /* primary-700 to primary-800 */
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to right, #2563eb, #7c3aed); /* darker blue to purple */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   color: #ffffff;
   text-decoration: none;
 }
 
+/* Style 4: Purple gradient - Secondary Action/Premium */
 .btn-gradient-purple {
   background: linear-gradient(to right, #8b5cf6, #7c3aed); /* purple-500 to purple-600 */
   color: #ffffff;
-  padding: 16px 32px;
+  padding: 12px 24px;
   border-radius: 12px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
   max-width: 16vw;
-  min-width: 140px;
+  min-width: 120px;
   min-height: 35px;
   transform: translateY(0);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -111,41 +119,73 @@
 }
 
 .btn-gradient-purple:hover {
-  background: linear-gradient(to right, #7c3aed, #6d28d9); /* purple-600 to purple-700 */
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to right, #7c3aed, #6d28d9);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   color: #ffffff;
   text-decoration: none;
 }
 
+/* Style 5: Emerald-Cyan gradient - Success/CTA Action */
 .btn-gradient-emerald {
   background: linear-gradient(to right, #10b981, #06b6d4); /* emerald-500 to cyan-500 */
   color: #ffffff;
-  padding: 16px 32px;
+  padding: 12px 24px;
   border-radius: 12px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
   max-width: 16vw;
-  min-width: 140px;
+  min-width: 120px;
   min-height: 35px;
   transform: translateY(0);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .btn-gradient-emerald:hover {
-  background: linear-gradient(to right, #059669, #0891b2); /* emerald-600 to cyan-600 */
-  transform: translateY(-4px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to right, #059669, #0891b2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Style 6: Red gradient - Danger/Logout Actions */
+.btn-gradient-red {
+  background: linear-gradient(to right, #dc2626, #b91c1c); /* red-600 to red-700 */
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  max-width: 16vw;
+  min-width: 120px;
+  min-height: 35px;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.btn-gradient-red:hover {
+  background: linear-gradient(to right, #b91c1c, #991b1b);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
   color: #ffffff;
   text-decoration: none;
 }
@@ -168,7 +208,8 @@
 .btn-secondary:focus,
 .btn-gradient-primary:focus,
 .btn-gradient-purple:focus,
-.btn-gradient-emerald:focus {
+.btn-gradient-emerald:focus,
+.btn-gradient-red:focus {
   outline: 3px solid #4A90E2;
   outline-offset: 2px;
 }
@@ -178,7 +219,8 @@
 .btn-secondary:disabled,
 .btn-gradient-primary:disabled,
 .btn-gradient-purple:disabled,
-.btn-gradient-emerald:disabled {
+.btn-gradient-emerald:disabled,
+.btn-gradient-red:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
@@ -188,9 +230,10 @@
 .btn-secondary:disabled:hover,
 .btn-gradient-primary:disabled:hover,
 .btn-gradient-purple:disabled:hover,
-.btn-gradient-emerald:disabled:hover {
+.btn-gradient-emerald:disabled:hover,
+.btn-gradient-red:disabled:hover {
   transform: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Mobile responsive */
@@ -199,10 +242,36 @@
   .btn-secondary,
   .btn-gradient-primary,
   .btn-gradient-purple,
-  .btn-gradient-emerald {
+  .btn-gradient-emerald,
+  .btn-gradient-red {
     max-width: 80vw;
     min-height: 44px;
     padding: 12px 20px;
     font-size: 16px;
   }
 }
+
+/* Button Style Guide:
+ *
+ * Style 1 - btn-primary: White button with blue text
+ *   Use for: Clean professional actions on colored backgrounds
+ *
+ * Style 2 - btn-secondary: Glass morphism button
+ *   Use for: Modern elegant secondary actions on dark/image backgrounds
+ *
+ * Style 3 - btn-gradient-primary: Blue to Purple gradient
+ *   Use for: Standard primary actions (Sign In, Get Started, Submit)
+ *
+ * Style 4 - btn-gradient-purple: Purple gradient
+ *   Use for: Premium/special features, secondary CTAs
+ *
+ * Style 5 - btn-gradient-emerald: Emerald to Cyan gradient
+ *   Use for: Success states, positive CTAs, "Start Creating" type actions
+ *
+ * Style 6 - btn-gradient-red: Red gradient
+ *   Use for: Destructive actions (Sign Out, Delete, Cancel)
+ *
+ * Size Modifiers:
+ * - btn-small: Smaller padding and font for compact layouts
+ * - btn-compact: Very compact for tight spaces (badges, inline actions)
+ */

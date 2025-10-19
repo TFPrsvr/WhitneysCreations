@@ -443,14 +443,14 @@ const DesignStudio = () => {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`relative px-6 py-3 font-bold transition-all duration-200 flex items-center justify-center space-x-2 rounded-lg text-center ${
+                    className={`relative px-6 py-3 transition-all duration-200 flex items-center justify-center space-x-2 rounded-lg text-center ${
                       activeTab === tab.id
                         ? "bg-gradient-to-r from-primary-600 to-purple-600 text-white shadow-lg border-2 border-white"
-                        : "bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary-100 hover:to-purple-100 text-gray-900 font-bold border-2 border-white hover:border-primary-400 hover:shadow-md"
+                        : "bg-gradient-to-r from-gray-100 to-gray-200 hover:from-primary-100 hover:to-purple-100 text-gray-900 border-2 border-white hover:border-primary-400 hover:shadow-md"
                     }`}
                   >
-                    <span className="text-xl">{tab.icon}</span>
-                    <span className={`text-sm font-bold whitespace-nowrap ${
+                    <span className="text-lg">{tab.icon}</span>
+                    <span className={`text-sm whitespace-nowrap ${
                       activeTab === tab.id
                         ? "text-white drop-shadow-lg"
                         : "text-gray-900 drop-shadow-sm"
@@ -504,33 +504,33 @@ const DesignStudio = () => {
                 </div>
 
                 {/* Templates Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {/* Built-in Templates */}
                   {designTemplates.map((template) => (
                     <div
                       key={template.id}
-                      className="bg-white border border-gray-200 rounded-lg p-3 hover:shadow-lg hover:border-primary-300 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
+                      className="bg-white border-2 border-gray-300 rounded-xl p-4 hover:shadow-xl hover:border-primary-400 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] flex flex-col h-full"
                       onClick={() => loadTemplate(template)}
                     >
-                      <div className="aspect-w-16 aspect-h-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg mb-3 flex items-center justify-center border border-gray-200">
+                      <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg mb-4 flex items-center justify-center border-2 border-gray-200 h-40">
                         <div className="text-center">
-                          <div className="text-4xl mb-2">{template.thumbnail || '🎨'}</div>
-                          <div className="text-xs text-gray-500 bg-white px-2 py-1 rounded-full">
+                          <div className="text-6xl mb-2">{template.thumbnail || '🎨'}</div>
+                          <div className="text-sm font-semibold text-gray-700 bg-white px-3 py-1.5 rounded-full shadow-sm">
                             {template.dimensions.width} × {template.dimensions.height}
                           </div>
                         </div>
                       </div>
 
-                      <div className="flex justify-between items-start mb-2">
-                        <h3 className="font-semibold text-gray-900">
+                      <div className="flex justify-between items-start mb-3 flex-grow">
+                        <h3 className="font-bold text-base text-gray-900">
                           {template.name}
                         </h3>
-                        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
+                        <span className="text-sm bg-gray-200 text-gray-700 font-semibold px-2.5 py-1 rounded-full">
                           {template.category}
                         </span>
                       </div>
 
-                      <p className="text-sm text-gray-600 mb-4">
+                      <p className="text-sm text-gray-700 mb-4 font-medium">
                         {template.description}
                       </p>
 
@@ -539,7 +539,7 @@ const DesignStudio = () => {
                           e.stopPropagation();
                           loadTemplate(template);
                         }}
-                        className="w-full px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-200"
+                        className="w-full px-6 py-3.5 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-bold text-base shadow-lg hover:shadow-xl transition-all duration-200 mt-auto"
                       >
                         Use Template
                       </button>
@@ -550,10 +550,10 @@ const DesignStudio = () => {
                   {templates.map((template) => (
                     <div
                       key={template._id}
-                      className="bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200 rounded-lg p-3 hover:shadow-lg hover:border-blue-400 transition-all duration-300 cursor-pointer transform hover:scale-[1.02]"
+                      className="bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-300 rounded-xl p-4 hover:shadow-xl hover:border-blue-500 transition-all duration-300 cursor-pointer transform hover:scale-[1.02] flex flex-col h-full"
                       onClick={() => loadTemplate(template)}
                     >
-                      <div className="aspect-w-16 aspect-h-12 bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                      <div className="bg-gray-100 rounded-lg mb-4 flex items-center justify-center h-40 border-2 border-gray-200">
                         {template.previewImage ? (
                           <img
                             src={template.previewImage}
@@ -562,8 +562,8 @@ const DesignStudio = () => {
                           />
                         ) : (
                           <div className="text-center">
-                            <div className="text-4xl mb-2">🎨</div>
-                            <div className="text-xs text-gray-500">
+                            <div className="text-6xl mb-2">🎨</div>
+                            <div className="text-sm font-semibold text-gray-700 bg-white px-3 py-1.5 rounded-full shadow-sm">
                               {template.dimensions.width} ×{" "}
                               {template.dimensions.height}
                             </div>
@@ -571,21 +571,21 @@ const DesignStudio = () => {
                         )}
                       </div>
 
-                      <div className="flex justify-between items-start mb-2">
-                        <h3 className="font-semibold text-gray-900">
+                      <div className="flex justify-between items-start mb-3 flex-grow">
+                        <h3 className="font-bold text-base text-gray-900">
                           {template.name}
                         </h3>
                         <div className="flex flex-col items-end gap-1">
-                          <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">
+                          <span className="text-sm bg-blue-200 text-blue-700 font-semibold px-2.5 py-1 rounded-full">
                             {template.category}
                           </span>
-                          <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full">
+                          <span className="text-sm bg-green-200 text-green-700 font-semibold px-2.5 py-1 rounded-full">
                             Pro
                           </span>
                         </div>
                       </div>
 
-                      <p className="text-sm text-gray-600 mb-4">
+                      <p className="text-sm text-gray-700 mb-4 font-medium">
                         {template.description}
                       </p>
 
@@ -594,7 +594,7 @@ const DesignStudio = () => {
                           e.stopPropagation();
                           loadTemplate(template);
                         }}
-                        className="w-full px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-bold shadow-lg hover:shadow-xl transition-all duration-200"
+                        className="w-full px-6 py-3.5 bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white rounded-lg font-bold text-base shadow-lg hover:shadow-xl transition-all duration-200 mt-auto"
                       >
                         Use Template
                       </button>

@@ -6,7 +6,7 @@ export const navigationIcons = {
   home: {
     emoji: '🏠',
     professional: {
-      iconPath: '/images/noun-home-7649013.svg',
+      iconPath: '/images/noun-home-7649013.svg?v=4',
       iconName: 'Home',
       creator: 'wahya',
       isNounProject: true
@@ -16,7 +16,7 @@ export const navigationIcons = {
   products: {
     emoji: '🛍️',
     professional: {
-      iconPath: '/images/noun-tshirt-7743963.svg',
+      iconPath: '/images/noun-tshirt-7743963.svg?v=5',
       iconName: 'Tshirt',
       creator: 'Anggara Putra',
       isNounProject: true
@@ -26,7 +26,7 @@ export const navigationIcons = {
   studio: {
     emoji: '🎭',
     professional: {
-      iconPath: '/images/noun-scissors-24853.svg',
+      iconPath: '/images/noun-scissors-24853.svg?v=5',
       iconName: 'Scissors',
       creator: 'André Luiz',
       isNounProject: true
@@ -36,9 +36,9 @@ export const navigationIcons = {
   mockup: {
     emoji: '📸',
     professional: {
-      iconPath: '/images/noun-mockup-6206312.svg',
-      iconName: 'Mockup',
-      creator: 'Eklip Studio',
+      iconPath: '/images/noun-mockup-6206312.svg?v=4',
+      iconName: 'Mockup Generator',
+      creator: 'Noun Project',
       isNounProject: true
     }
   },
@@ -56,7 +56,7 @@ export const navigationIcons = {
   projects: {
     emoji: '📁',
     professional: {
-      iconPath: '/images/noun-project-8074483.svg',
+      iconPath: '/images/noun-project-8074483.svg?v=4',
       iconName: 'Project',
       creator: 'Side Project',
       isNounProject: true
@@ -97,7 +97,7 @@ export const navigationIcons = {
   cart: {
     emoji: '🛒',
     professional: {
-      iconPath: '/images/noun-cart-4632422.svg',
+      iconPath: '/images/noun-cart-4632422.svg?v=5',
       iconName: 'Cart',
       creator: 'PEBIAN',
       isNounProject: true
@@ -117,9 +117,9 @@ export const navigationIcons = {
   orders: {
     emoji: '📦',
     professional: {
-      iconPath: '/images/noun-package-7649015.svg',
-      iconName: 'Package',
-      creator: 'wahya',
+      iconPath: '/images/noun-orders-list-6478417.svg?v=2',
+      iconName: 'Orders List',
+      creator: 'Noun Project',
       isNounProject: true
     }
   },

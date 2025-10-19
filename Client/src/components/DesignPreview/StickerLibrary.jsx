@@ -173,7 +173,7 @@ const StickerLibrary = ({ onStickerSelect }) => {
               <span className="text-base">{category.icon}</span>
               <span className="hidden sm:inline">{category.name}</span>
               <span className="sm:hidden text-xs">{category.name.slice(0,3)}</span>
-              <span className="bg-white px-1.5 py-0.5 rounded-full text-xs">{category.count}</span>
+              <span className="bg-white px-2 py-1 rounded-full text-sm font-bold shadow-sm border border-gray-200">{category.count}</span>
             </button>
           ))}
         </div>

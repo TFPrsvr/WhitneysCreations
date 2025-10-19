@@ -89,8 +89,8 @@ const ShareWidget = ({
         <div style={{
           background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
           borderRadius: '50%',
-          width: '56px',
-          height: '56px',
+          width: '32px',
+          height: '32px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -112,7 +112,7 @@ const ShareWidget = ({
         >
           <IconRenderer
             iconKey="share"
-            size="1.5rem"
+            size="1rem"
             style={{
               color: 'white',
               filter: 'brightness(1.2) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))'

@@ -195,7 +195,7 @@ const Reg = () => {
               </label>
               <input
                 id="first_name"
-                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 transition-all bg-white text-gray-900 ${
+                className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 transition-all bg-white text-gray-900 ${
                   errors.first_name ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
                 }`}
                 style={{color: '#1f2937'}}
@@ -222,7 +222,7 @@ const Reg = () => {
               </label>
               <input
                 id="last_name"
-                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 transition-all bg-white text-gray-900 ${
+                className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 transition-all bg-white text-gray-900 ${
                   errors.last_name ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
                 }`}
                 style={{color: '#1f2937'}}
@@ -251,7 +251,7 @@ const Reg = () => {
             </label>
             <input
               id="reg_username"
-              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 transition-all bg-white text-gray-900 ${
+              className={`w-full max-w-md px-4 py-3 border-2 rounded-xl focus:ring-2 transition-all bg-white text-gray-900 ${
                 errors.username ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
               }`}
               style={{color: '#1f2937'}}
