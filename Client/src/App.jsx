@@ -203,7 +203,7 @@ function App() {
 
           <div className="flex flex-row justify-between gap-12 max-w-6xl mx-auto px-4 mb-12">
             {features.map((feature, index) => (
-              <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.05)'}}>
+              <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.1)'}}>
                 <div className="text-3xl mb-2">{feature.icon}</div>
                 <h3 className="text-base font-bold text-gray-900 mb-3 break-words">{feature.title}</h3>
                 <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>{feature.description}</p>
@@ -263,7 +263,7 @@ function App() {
 
           <div className="flex flex-row justify-evenly gap-12 max-w-6xl mx-auto px-4 mb-12">
             {productShowcase.map((product, index) => (
-              <Link key={index} to="/products" className="bg-white rounded-md shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2 p-4 text-center flex-1 min-h-[220px] flex flex-col justify-between">
+              <Link key={index} to="/products" className="bg-white rounded-md shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2 p-4 text-center flex-1 min-h-[220px] flex flex-col justify-between" style={{transform: 'scale(1.1)'}}>
                 <div>
                   <div className="mb-3 bg-gradient-to-br from-gray-100 to-gray-200 rounded-md p-4 flex items-center justify-center">
                     <span className="text-4xl">{product.image}</span>
@@ -350,7 +350,7 @@ function App() {
           </div>
 
           <div className="flex flex-row justify-between gap-12 max-w-6xl mx-auto px-4 mb-12">
-            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.1)'}}>
               <div className="text-3xl mb-2">🎨</div>
               <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Design</h3>
               <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>
@@ -363,7 +363,7 @@ function App() {
               </div>
             </div>
 
-            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.1)'}}>
               <div className="text-3xl mb-2">💰</div>
               <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Sell</h3>
               <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>
@@ -376,7 +376,7 @@ function App() {
               </div>
             </div>
 
-            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.1)'}}>
               <div className="text-3xl mb-2">🚀</div>
               <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Fulfill</h3>
               <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>
