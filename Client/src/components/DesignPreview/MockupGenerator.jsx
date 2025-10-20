@@ -38,6 +38,32 @@ const MockupGenerator = ({ design, onExport }) => {
   const [dragPreview, setDragPreview] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
 
+  // Color name to hex mapping for mockup rendering
+  const COLOR_MAP = {
+    white: '#ffffff',
+    black: '#1a1a1a',
+    red: '#dc2626',
+    blue: '#2563eb',
+    navy: '#1e3a8a',
+    green: '#16a34a',
+    yellow: '#facc15',
+    purple: '#9333ea',
+    pink: '#ec4899',
+    orange: '#f97316',
+    gray: '#6b7280',
+    grey: '#6b7280',
+    teal: '#14b8a6',
+    cyan: '#06b6d4',
+    indigo: '#6366f1',
+    lime: '#84cc16',
+    emerald: '#10b981',
+    rose: '#f43f5e',
+    amber: '#f59e0b',
+    violet: '#8b5cf6',
+    slate: '#64748b',
+    clear: 'transparent'
+  };
+
   // Available mockup templates - now dynamic from configuration
   const mockupTemplates = [
     {
@@ -1019,9 +1045,18 @@ const MockupGenerator = ({ design, onExport }) => {
     // Reset to first available color for new product
     const colors = getAvailableColors(productId);
     if (colors.length > 0) {
-      setSelectedColor(colors[0]);
+      const firstColor = colors[0];
+      setSelectedColor(firstColor);
+
+      // Update mockup color to match selected product color
+      const hexColor = COLOR_MAP[firstColor.toLowerCase()] || '#ffffff';
+      setMockupSettings(prev => ({
+        ...prev,
+        mockupColor: hexColor
+      }));
+
       // Preload images for the selected product and color
-      imagePreloader.preloadProductImages(productId, colors[0]);
+      imagePreloader.preloadProductImages(productId, firstColor);
     }
     setCurrentAngle(0);
 
@@ -1033,6 +1068,14 @@ const MockupGenerator = ({ design, onExport }) => {
 
   const handleColorChange = (color) => {
     setSelectedColor(color);
+
+    // Update mockup color to match selected product color
+    const hexColor = COLOR_MAP[color.toLowerCase()] || '#ffffff';
+    setMockupSettings(prev => ({
+      ...prev,
+      mockupColor: hexColor
+    }));
+
     // Preload images for the new color
     imagePreloader.preloadProductImages(selectedMockup, color);
   };
