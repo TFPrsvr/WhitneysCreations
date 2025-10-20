@@ -119,7 +119,7 @@ function App() {
                     to="/studio"
                     className="bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                     aria-label="Start designing your custom products"
-                    style={{textShadow: '1px 1px 2px rgba(0,0,0,0.1)'}}
+                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}
                   >
                     <span aria-hidden="true">🎨</span> Start Designing
                   </Link>
@@ -127,7 +127,7 @@ function App() {
                     to="/projects"
                     className="bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                     aria-label={`View my projects (${stats?.stats?.totalProjects || 0} projects)`}
-                    style={{textShadow: '1px 1px 2px rgba(0,0,0,0.1)'}}
+                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}
                   >
                     <span aria-hidden="true">📁</span> My Projects ({stats?.stats?.totalProjects || 0})
                   </Link>
