@@ -80,7 +80,7 @@ function App() {
           <span className="text-2xl">🎯</span>
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="relative w-full px-8 py-6" style={{transform: 'scale(1.1)', transformOrigin: 'top center'}}>
+        <div className="relative w-full px-8 py-6" style={{transform: 'scale(1.05)', transformOrigin: 'top center'}}>
           <div className="text-center max-w-6xl mx-auto">
             <h1 id="hero-title" className="text-xl md:text-3xl font-bold mb-6 leading-tight">
               <span className="block text-xl md:text-3xl mb-4">Whitney's Unique Creations</span>
@@ -134,7 +134,7 @@ function App() {
                   <Link
                     to="/gallery"
                     className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-                    style={{textShadow: '1px 1px 2px rgba(0,0,0,0.2)'}}
+                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}
                   >
                     Whitney's Creations
                   </Link>
@@ -144,21 +144,21 @@ function App() {
                   <Link
                     to="/reg"
                     className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-green-600 hover:to-emerald-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-                    style={{textShadow: '1px 1px 2px rgba(0,0,0,0.2)'}}
+                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}
                   >
                     Get Started Free
                   </Link>
                   <Link
                     to="/products"
                     className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-blue-600 hover:to-purple-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-                    style={{textShadow: '1px 1px 2px rgba(0,0,0,0.2)'}}
+                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}
                   >
                     Browse Products
                   </Link>
                   <Link
                     to="/gallery"
                     className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-                    style={{textShadow: '1px 1px 2px rgba(0,0,0,0.2)'}}
+                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}
                   >
                     Whitney's Creations
                   </Link>
