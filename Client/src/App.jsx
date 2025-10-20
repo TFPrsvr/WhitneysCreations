@@ -201,7 +201,7 @@ function App() {
             </p>
           </div>
 
-          <div className="flex flex-row justify-between gap-4 max-w-6xl mx-auto px-4 mb-12">
+          <div className="flex flex-row justify-between gap-8 max-w-6xl mx-auto px-4 mb-12">
             {features.map((feature, index) => (
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.05)'}}>
                 <div className="text-3xl mb-2">{feature.icon}</div>
@@ -261,7 +261,7 @@ function App() {
             </p>
           </div>
 
-          <div className="flex flex-row justify-evenly gap-4 max-w-6xl mx-auto px-4 mb-12">
+          <div className="flex flex-row justify-evenly gap-8 max-w-6xl mx-auto px-4 mb-12">
             {productShowcase.map((product, index) => (
               <Link key={index} to="/products" className="bg-white rounded-md shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2 p-4 text-center flex-1 min-h-[220px] flex flex-col justify-between">
                 <div>
@@ -349,7 +349,7 @@ function App() {
             </p>
           </div>
 
-          <div className="flex flex-row justify-between gap-4 max-w-6xl mx-auto px-4 mb-12">
+          <div className="flex flex-row justify-between gap-8 max-w-6xl mx-auto px-4 mb-12">
             <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
               <div className="text-3xl mb-2">🎨</div>
               <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Design</h3>
