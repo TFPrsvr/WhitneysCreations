@@ -203,7 +203,7 @@ function App() {
 
           <div className="flex flex-row justify-between gap-4 max-w-6xl mx-auto px-4 mb-12">
             {features.map((feature, index) => (
-              <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.02)'}}>
+              <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.05)'}}>
                 <div className="text-3xl mb-2">{feature.icon}</div>
                 <h3 className="text-base font-bold text-gray-900 mb-3 break-words">{feature.title}</h3>
                 <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>{feature.description}</p>
