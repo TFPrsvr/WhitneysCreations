@@ -80,7 +80,7 @@ function App() {
           <span className="text-2xl">🎯</span>
         </div>
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="relative w-full px-8 py-6">
+        <div className="relative w-full px-8 py-6" style={{transform: 'scale(0.65)', transformOrigin: 'top center'}}>
           <div className="text-center max-w-6xl mx-auto">
             <h1 id="hero-title" className="text-xl md:text-3xl font-bold mb-6 leading-tight">
               <span className="block text-xl md:text-3xl mb-4">Whitney's Unique Creations</span>
@@ -191,7 +191,7 @@ function App() {
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">🚀</span>
         </div>
-        <div className="w-full px-8 max-w-6xl mx-auto">
+        <div className="w-full px-8 max-w-6xl mx-auto" style={{transform: 'scale(0.65)', transformOrigin: 'top center'}}>
           <div className="text-center mb-8">
             <h2 id="features-title" className="text-2xl md:text-3xl font-bold text-white mb-4" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               Everything You Need to Succeed
@@ -201,7 +201,7 @@ function App() {
             </p>
           </div>
 
-          <div className="flex flex-col lg:flex-row justify-between gap-4 max-w-6xl mx-auto px-4">
+          <div className="flex flex-row justify-between gap-4 max-w-6xl mx-auto px-4">
             {features.map((feature, index) => (
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
                 <div className="text-3xl mb-2">{feature.icon}</div>
@@ -251,7 +251,7 @@ function App() {
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">☕</span>
         </div>
-        <div className="w-full px-8 max-w-6xl mx-auto">
+        <div className="w-full px-8 max-w-6xl mx-auto" style={{transform: 'scale(0.65)', transformOrigin: 'top center'}}>
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               Premium Products, Perfect Quality
@@ -261,7 +261,7 @@ function App() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-evenly gap-4 max-w-6xl mx-auto px-4">
+          <div className="flex flex-row justify-evenly gap-4 max-w-6xl mx-auto px-4">
             {productShowcase.map((product, index) => (
               <Link key={index} to="/products" className="bg-white rounded-md shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2 p-4 text-center flex-1 min-h-[220px] flex flex-col justify-between">
                 <div>
@@ -294,11 +294,11 @@ function App() {
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">✨</span>
         </div>
-        <div className="w-full max-w-6xl mx-auto text-center px-8 flex flex-col justify-between min-h-[350px] py-6">
+        <div className="w-full max-w-6xl mx-auto text-center px-8 flex flex-col justify-between min-h-[350px] py-6" style={{transform: 'scale(0.65)', transformOrigin: 'top center'}}>
           <h2 className="text-5xl md:text-7xl font-bold mb-8" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
             🎨✨ Challenge Our Creators!! ✨🎨
           </h2>
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 text-2xl md:text-3xl font-bold w-full max-w-5xl mx-auto">
+          <div className="flex flex-row items-center justify-center gap-8 lg:gap-16 text-2xl md:text-3xl font-bold w-full max-w-5xl mx-auto">
             <div className="text-center flex-1">
               <div className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
                 <div className="text-2xl md:text-3xl mb-1">See If Our</div>
@@ -339,7 +339,7 @@ function App() {
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">📝</span>
         </div>
-        <div className="max-w-6xl mx-auto px-8">
+        <div className="max-w-6xl mx-auto px-8" style={{transform: 'scale(0.65)', transformOrigin: 'top center'}}>
           <div className="text-center mb-6">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               How It Works
@@ -349,7 +349,7 @@ function App() {
             </p>
           </div>
 
-          <div className="flex flex-col lg:flex-row justify-between gap-4 max-w-6xl mx-auto px-4">
+          <div className="flex flex-row justify-between gap-4 max-w-6xl mx-auto px-4">
             <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
               <div className="text-3xl mb-2">🎨</div>
               <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Design</h3>
@@ -401,7 +401,7 @@ function App() {
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
           <span className="text-2xl">🎆</span>
         </div>
-        <div className="max-w-5xl mx-auto text-center px-6">
+        <div className="max-w-5xl mx-auto text-center px-6" style={{transform: 'scale(0.65)', transformOrigin: 'top center'}}>
           <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)', WebkitTextStroke: '1px rgba(0,0,0,0.3)'}}>
             Ready to Start Your Print-on-Demand Business?
           </h2>
