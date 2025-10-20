@@ -192,7 +192,7 @@ function App() {
           <span className="text-2xl">🚀</span>
         </div>
         <div className="w-full px-8 max-w-6xl mx-auto" style={{transform: 'scale(1.06)', transformOrigin: 'top center'}}>
-          <div className="text-center mb-8">
+          <div className="text-center mb-12">
             <h2 id="features-title" className="text-2xl md:text-3xl font-bold text-white mb-4" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               Everything You Need to Succeed
             </h2>
@@ -201,7 +201,7 @@ function App() {
             </p>
           </div>
 
-          <div className="flex flex-row justify-between gap-4 max-w-6xl mx-auto px-4">
+          <div className="flex flex-row justify-between gap-4 max-w-6xl mx-auto px-4 mb-12">
             {features.map((feature, index) => (
               <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
                 <div className="text-3xl mb-2">{feature.icon}</div>
@@ -252,7 +252,7 @@ function App() {
           <span className="text-2xl">☕</span>
         </div>
         <div className="w-full px-8 max-w-6xl mx-auto" style={{transform: 'scale(1.06)', transformOrigin: 'top center'}}>
-          <div className="text-center mb-8">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               Premium Products, Perfect Quality
             </h2>
@@ -261,7 +261,7 @@ function App() {
             </p>
           </div>
 
-          <div className="flex flex-row justify-evenly gap-4 max-w-6xl mx-auto px-4">
+          <div className="flex flex-row justify-evenly gap-4 max-w-6xl mx-auto px-4 mb-12">
             {productShowcase.map((product, index) => (
               <Link key={index} to="/products" className="bg-white rounded-md shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2 p-4 text-center flex-1 min-h-[220px] flex flex-col justify-between">
                 <div>
@@ -275,7 +275,7 @@ function App() {
             ))}
           </div>
 
-          <div className="text-center mt-6">
+          <div className="text-center mt-12">
             <Link
               to="/products"
               className="bg-primary-600 text-white px-8 py-4 rounded-md font-semibold text-lg hover:bg-primary-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
@@ -340,7 +340,7 @@ function App() {
           <span className="text-2xl">📝</span>
         </div>
         <div className="max-w-6xl mx-auto px-8" style={{transform: 'scale(1.06)', transformOrigin: 'top center'}}>
-          <div className="text-center mb-6">
+          <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               How It Works
             </h2>
@@ -349,7 +349,7 @@ function App() {
             </p>
           </div>
 
-          <div className="flex flex-row justify-between gap-4 max-w-6xl mx-auto px-4">
+          <div className="flex flex-row justify-between gap-4 max-w-6xl mx-auto px-4 mb-12">
             <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start">
               <div className="text-3xl mb-2">🎨</div>
               <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Design</h3>
