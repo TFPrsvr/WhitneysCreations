@@ -90,7 +90,6 @@ function App() {
               </span>
             </h1>
             <div className="text-lg md:text-xl mb-6 text-gray-100 max-w-5xl mx-auto">
-              <p className="text-xl md:text-2xl font-extrabold mb-4 bg-gradient-to-r from-yellow-400 via-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">Creations You Want</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-lg md:text-xl font-bold">
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">What You Want</span>
@@ -117,7 +116,7 @@ function App() {
                 <>
                   <Link
                     to="/studio"
-                    className="bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                     aria-label="Start designing your custom products"
                     style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}
                   >
@@ -125,7 +124,7 @@ function App() {
                   </Link>
                   <Link
                     to="/projects"
-                    className="bg-white text-primary-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                     aria-label={`View my projects (${stats?.stats?.totalProjects || 0} projects)`}
                     style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}
                   >
@@ -133,7 +132,7 @@ function App() {
                   </Link>
                   <Link
                     to="/gallery"
-                    className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-lg font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                     style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}
                   >
                     Whitney's Creations
@@ -143,21 +142,21 @@ function App() {
                 <>
                   <Link
                     to="/reg"
-                    className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-green-600 hover:to-emerald-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    className="bg-gradient-to-r from-green-500 to-emerald-600 text-black px-8 py-4 rounded-lg font-semibold text-lg hover:from-green-600 hover:to-emerald-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                     style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}
                   >
                     Get Started Free
                   </Link>
                   <Link
                     to="/products"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-blue-600 hover:to-purple-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-black px-8 py-4 rounded-lg font-semibold text-lg hover:from-blue-600 hover:to-purple-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    style={{textShadow: '2px 2px 6px rgba(0,0,0,0.8)'}}
                   >
                     Browse Products
                   </Link>
                   <Link
                     to="/gallery"
-                    className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-lg font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                     style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}
                   >
                     Whitney's Creations
