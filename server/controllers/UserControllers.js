@@ -144,8 +144,14 @@ module.exports = {
       
       loginUser: (req, res) => {
         // const user = {username: username, password: password, _id: user._id}
-  
+
         const { username, password, _id } = req.body;
+
+        // Validate required fields
+        if (!username || !password) {
+          console.log("Missing credentials - username:", username, "password:", password ? "[provided]" : "[missing]");
+          return res.status(400).json({ msg: "Username and password are required" });
+        }
 
         const trimmedUsername = username.trim();
         const trimmedPassword = password.trim();
