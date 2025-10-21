@@ -289,7 +289,7 @@ const ShareWidget = ({
         </div>
       )}
 
-      <style jsx>{`
+      <style>{`
         @keyframes pulse {
           0% {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
