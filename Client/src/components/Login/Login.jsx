@@ -139,7 +139,7 @@ const Login = () => {
             </label>
             <input
               id="username"
-              className={`w-full max-w-sm mx-auto block px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
+              className={`w-full max-w-xs mx-auto block px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
                 errors.username ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
               }`}
               type="text"
@@ -164,7 +164,7 @@ const Login = () => {
             <label htmlFor="password" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
               Password
             </label>
-            <div className="w-full max-w-sm mx-auto relative">
+            <div className="w-full max-w-xs mx-auto relative">
               <input
                 id="password"
                 className={`w-full px-4 py-3 pr-12 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${

@@ -143,26 +143,18 @@ module.exports = {
       },
       
       loginUser: (req, res) => {
-        // const user = {username: username, password: password, _id: user._id}
-
         const { username, password, _id } = req.body;
 
         // Validate required fields
         if (!username || !password) {
-          console.log("Missing credentials - username:", username, "password:", password ? "[provided]" : "[missing]");
           return res.status(400).json({ msg: "Username and password are required" });
         }
 
         const trimmedUsername = username.trim();
         const trimmedPassword = password.trim();
-    
-        // User.findOne({ username: username }).then((user) => {  ****1st  try 
-          User.findOne({ username: trimmedUsername }).then((user) => {   //2nd try
-// @ 2 is successful
-            // User.findOne({ username: { $regex: '^' + trimmedUsername + '$', $options: 'i' } })
-// ****3rd try if 2 doesn't work
-          console.log("Req body:", req.body);
-          console.log("Found user:", user); 
+
+        User.findOne({ username: trimmedUsername })
+          .then((user) => { 
         if (!user) {
             return res.status(400).json({ msg: "Invalid User Not Found" });
         }

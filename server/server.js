@@ -21,12 +21,7 @@ const Router = require("./routes/routes");
 
 const cookieParser = require('cookie-parser')
 
-app.use(express.json());
-app.use(cookieParser());
-
-// Serve uploaded files statically
-app.use('/uploads', express.static(require('path').join(__dirname, 'uploads')));
-
+// CORS must come FIRST before any other middleware
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -56,9 +51,20 @@ app.use(
 
       callback(new Error('Not allowed by CORS'));
     },
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    optionsSuccessStatus: 200
   })
 );
+
+// Body parsers come AFTER CORS
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+// Serve uploaded files statically
+app.use('/uploads', express.static(require('path').join(__dirname, 'uploads')));
 
 
 // Improved error handling middleware
