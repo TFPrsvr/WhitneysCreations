@@ -87,35 +87,43 @@ const ShareWidget = ({
       {isMinimized ? (
         // Minimized floating button
         <div style={{
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.75) 0%, rgba(118, 75, 162, 0.75) 100%)',
           borderRadius: '50%',
-          width: '32px',
-          height: '32px',
+          width: '48px',
+          height: '48px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           cursor: 'pointer',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
+          boxShadow: '0 3px 15px rgba(0, 0, 0, 0.2)',
           transition: 'all 0.3s ease',
-          animation: 'pulse 2s infinite'
+          animation: 'pulse 2s infinite',
+          opacity: 0.85,
+          padding: '8px'
         }}
         onClick={() => setIsMinimized(false)}
         onMouseEnter={(e) => {
           e.target.style.transform = 'scale(1.1)';
-          e.target.style.boxShadow = '0 6px 25px rgba(0, 0, 0, 0.3)';
+          e.target.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.25)';
+          e.target.style.opacity = '1';
         }}
         onMouseLeave={(e) => {
           e.target.style.transform = 'scale(1)';
-          e.target.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.25)';
+          e.target.style.boxShadow = '0 3px 15px rgba(0, 0, 0, 0.2)';
+          e.target.style.opacity = '0.85';
         }}
         title="Share Whitney's Creations"
         >
           <IconRenderer
             iconKey="share"
-            size="1rem"
+            size="1.5rem"
+            forDarkBackground={true}
             style={{
               color: 'white',
-              filter: 'brightness(1.2) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))'
+              filter: 'invert(1) brightness(2.5) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))',
+              display: 'block',
+              width: '100%',
+              height: '100%'
             }}
           />
         </div>

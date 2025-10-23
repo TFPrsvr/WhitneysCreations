@@ -7,6 +7,7 @@ import { useProject } from './contexts/ProjectContext';
 import { accessibility } from './utils/accessibility';
 import Footer from './components/Footer/Footer';
 import ShareWidget from './components/Share/ShareWidget';
+import IconRenderer from './components/Icons/IconRenderer';
 
 function App() {
   const { isAuthenticated, user } = useAuth();
@@ -72,19 +73,12 @@ function App() {
     <div className="min-h-screen bg-gray-50 page-container">
       {/* Hero Section */}
       <main id="main-content">
-        <section className="relative bg-gradient-to-r from-purple-600 via-blue-500 to-teal-500 text-white w-full" aria-labelledby="hero-title">
-        <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">✨</span>
-        </div>
-        <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">🎯</span>
-        </div>
-        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="relative w-full px-8 py-6" style={{transform: 'scale(1.05)', transformOrigin: 'top center'}}>
+        <section className="relative text-white w-full" aria-labelledby="hero-title" style={{position: 'relative', background: 'linear-gradient(to bottom, #9333ea 0%, #3b82f6 40%, #14b8a6 100%)'}}>
+        <div className="absolute inset-0 bg-black bg-opacity-20 z-0"></div>
+        <div className="relative w-full px-8 py-6 z-10" style={{transform: 'scale(1.066)', transformOrigin: 'top center'}}>
           <div className="text-center max-w-6xl mx-auto">
             <h1 id="hero-title" className="text-xl md:text-3xl font-bold mb-6 leading-tight">
               <span className="block text-xl md:text-3xl mb-4">Whitney's Unique Creations</span>
-              <span className="block text-3xl md:text-4xl mb-4" aria-hidden="true">👕 👚</span>
               <span className="block bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent text-lg md:text-2xl mt-2 font-extrabold">
                 The Place That Lets You Customize Your Ideas
               </span>
@@ -111,29 +105,29 @@ function App() {
               </div>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-6">
+            <div className="flex flex-col sm:flex-row gap-10 justify-center items-center mt-6">
               {isAuthenticated ? (
                 <>
                   <Link
                     to="/studio"
-                    className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-orange-600 hover:to-red-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                     aria-label="Start designing your custom products"
-                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}
+                    style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8), 2px 2px 4px rgba(0,0,0,0.5)', color: '#ffffff'}}
                   >
                     <span aria-hidden="true">🎨</span> Start Designing
                   </Link>
                   <Link
                     to="/projects"
-                    className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-indigo-600 hover:to-purple-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
                     aria-label={`View my projects (${stats?.stats?.totalProjects || 0} projects)`}
-                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}
+                    style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8), 2px 2px 4px rgba(0,0,0,0.5)', color: '#ffffff'}}
                   >
                     <span aria-hidden="true">📁</span> My Projects ({stats?.stats?.totalProjects || 0})
                   </Link>
                   <Link
                     to="/gallery"
-                    className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-lg font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}
+                    className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8), 2px 2px 4px rgba(0,0,0,0.5)', color: '#ffffff', filter: 'none', backfaceVisibility: 'hidden', WebkitFontSmoothing: 'antialiased'}}
                   >
                     Whitney's Creations
                   </Link>
@@ -142,22 +136,22 @@ function App() {
                 <>
                   <Link
                     to="/reg"
-                    className="bg-gradient-to-r from-green-500 to-emerald-600 text-black px-8 py-4 rounded-lg font-semibold text-lg hover:from-green-600 hover:to-emerald-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}
+                    className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-green-600 hover:to-emerald-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)', color: '#ffffff'}}
                   >
                     Get Started Free
                   </Link>
                   <Link
                     to="/products"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-black px-8 py-4 rounded-lg font-semibold text-lg hover:from-blue-600 hover:to-purple-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-                    style={{textShadow: '2px 2px 6px rgba(0,0,0,0.8)'}}
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-blue-600 hover:to-purple-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)', color: '#ffffff'}}
                   >
                     Browse Products
                   </Link>
                   <Link
                     to="/gallery"
-                    className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-8 py-4 rounded-lg font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-                    style={{textShadow: '2px 2px 4px rgba(0,0,0,0.6)'}}
+                    className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:from-yellow-500 hover:to-orange-600 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+                    style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8), 2px 2px 4px rgba(0,0,0,0.5)', color: '#ffffff', filter: 'none', backfaceVisibility: 'hidden', WebkitFontSmoothing: 'antialiased'}}
                   >
                     Whitney's Creations
                   </Link>
@@ -186,17 +180,19 @@ function App() {
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{filter: 'drop-shadow(3px 3px 6px rgba(255,165,0,0.9)) drop-shadow(0 0 10px rgba(255,140,0,0.7))', animation: 'float 3s ease-in-out infinite reverse'}} aria-hidden="true">
           <span className="text-2xl">☕</span>
         </div>
+        {/* Blur transition at bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-20 pointer-events-none z-0" style={{backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', maskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 100%)'}}></div>
       </section>
 
         {/* Features Section */}
-        <section className="py-8 bg-gradient-to-l from-pink-500 via-red-500 to-orange-500 text-white relative" aria-labelledby="features-title">
+        <section className="py-8 text-white relative" aria-labelledby="features-title" style={{background: 'linear-gradient(to bottom, #14b8a6 0%, #ec4899 20%, #ef4444 50%, #f97316 100%)'}}>
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">⚡</span>
+          <span className="text-2xl" style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,200,100,0.8)', filter: 'brightness(1.5) contrast(1.2)'}}>👕</span>
         </div>
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">🚀</span>
+          <span className="text-2xl" style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,200,100,0.8)', filter: 'brightness(1.5) contrast(1.2)'}}>🚀</span>
         </div>
-        <div className="w-full px-8 max-w-6xl mx-auto" style={{transform: 'scale(1.06)', transformOrigin: 'top center'}}>
+        <div className="w-full px-8 max-w-6xl mx-auto" style={{transform: 'scale(1.076)', transformOrigin: 'top center'}}>
           <div className="text-center mb-12">
             <h2 id="features-title" className="text-2xl md:text-3xl font-bold text-white mb-4" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               Everything You Need to Succeed
@@ -206,9 +202,9 @@ function App() {
             </p>
           </div>
 
-          <div className="flex flex-row justify-between gap-12 max-w-6xl mx-auto px-4 mb-12">
+          <div className="flex flex-row justify-between gap-24 max-w-6xl mx-auto px-4 mb-12">
             {features.map((feature, index) => (
-              <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.1)'}}>
+              <div key={index} className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.117)'}}>
                 <div className="text-3xl mb-2">{feature.icon}</div>
                 <h3 className="text-base font-bold text-gray-900 mb-3 break-words">{feature.title}</h3>
                 <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>{feature.description}</p>
@@ -249,26 +245,26 @@ function App() {
       </section>
 
       {/* Product Showcase */}
-      <section className="py-8 bg-gradient-to-r from-green-500 via-emerald-500 to-cyan-500 text-white relative">
+      <section className="py-8 text-white relative" style={{background: 'linear-gradient(to bottom, #f97316 0%, #10b981 20%, #10b981 50%, #06b6d4 100%)'}}>
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">👕</span>
+          <span className="text-2xl" style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,200,100,0.8)', filter: 'brightness(1.5) contrast(1.2)'}}>⚡</span>
         </div>
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">☕</span>
+          <span className="text-2xl" style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,200,100,0.8)', filter: 'brightness(1.5) contrast(1.2)'}}>☕</span>
         </div>
-        <div className="w-full px-8 max-w-6xl mx-auto" style={{transform: 'scale(1.06)', transformOrigin: 'top center'}}>
+        <div className="w-full px-8 max-w-6xl mx-auto" style={{transform: 'scale(1.076)', transformOrigin: 'top center'}}>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               Premium Products, Perfect Quality
             </h2>
-            <p className="text-xl text-white max-w-2xl mx-auto mb-2" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.7)'}}>
+            <p className="text-xl text-white font-bold max-w-2xl mx-auto mb-2" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.7)'}}>
               Choose from our carefully curated selection of high-quality products.
             </p>
           </div>
 
-          <div className="flex flex-row justify-evenly gap-12 max-w-6xl mx-auto px-4 mb-12">
+          <div className="flex flex-row justify-evenly gap-24 max-w-6xl mx-auto px-4 mb-12">
             {productShowcase.map((product, index) => (
-              <Link key={index} to="/products" className="bg-white rounded-md shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2 p-4 text-center flex-1 min-h-[220px] flex flex-col justify-between" style={{transform: 'scale(1.1)'}}>
+              <Link key={index} to="/products" className="bg-white rounded-md shadow-lg hover:shadow-xl border border-gray-200 hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2 p-4 text-center flex-1 min-h-[220px] flex flex-col justify-between" style={{transform: 'scale(1.117)'}}>
                 <div>
                   <div className="mb-3 bg-gradient-to-br from-gray-100 to-gray-200 rounded-md p-4 flex items-center justify-center">
                     <span className="text-4xl">{product.image}</span>
@@ -284,6 +280,7 @@ function App() {
             <Link
               to="/products"
               className="bg-primary-600 text-white px-8 py-4 rounded-md font-semibold text-lg hover:bg-primary-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
+              style={{textShadow: '1px 1px 2px rgba(0,0,0,0.6)', filter: 'none', backfaceVisibility: 'hidden', WebkitFontSmoothing: 'antialiased', color: '#ffffff'}}
             >
               View All Products
             </Link>
@@ -292,14 +289,14 @@ function App() {
       </section>
 
       {/* Challenge Our Creators Section */}
-      <section className="py-8 bg-gradient-to-l from-indigo-600 via-purple-600 to-pink-600 text-white relative">
+      <section className="py-8 text-white relative" style={{background: 'linear-gradient(to bottom, #06b6d4 0%, #4f46e5 20%, #9333ea 50%, #db2777 100%)'}}>
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">💡</span>
+          <span className="text-2xl" style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,200,100,0.8)', filter: 'brightness(1.5) contrast(1.2)'}}>💡</span>
         </div>
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">✨</span>
+          <span className="text-2xl" style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,200,100,0.8)', filter: 'brightness(1.5) contrast(1.2)'}}>✨</span>
         </div>
-        <div className="w-full max-w-6xl mx-auto text-center px-8 flex flex-col justify-between min-h-[350px] py-6" style={{transform: 'scale(1.06)', transformOrigin: 'top center'}}>
+        <div className="w-full max-w-6xl mx-auto text-center px-8 flex flex-col justify-between min-h-[350px] py-6" style={{transform: 'scale(1.076)', transformOrigin: 'top center'}}>
           <h2 className="text-5xl md:text-7xl font-bold mb-8" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
             🎨✨ Challenge Our Creators!! ✨🎨
           </h2>
@@ -337,14 +334,14 @@ function App() {
       </section>
 
       {/* How It Works */}
-      <section className="py-8 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white relative">
+      <section className="py-8 text-white relative" style={{background: 'linear-gradient(to bottom, #db2777 0%, #06b6d4 20%, #3b82f6 50%, #4f46e5 100%)'}}>
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">🔧</span>
+          <span className="text-2xl" style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,200,100,0.8)', filter: 'brightness(1.5) contrast(1.2)'}}>🎆</span>
         </div>
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">📝</span>
+          <span className="text-2xl" style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,200,100,0.8)', filter: 'brightness(1.5) contrast(1.2)'}}>📝</span>
         </div>
-        <div className="max-w-6xl mx-auto px-8" style={{transform: 'scale(1.06)', transformOrigin: 'top center'}}>
+        <div className="max-w-6xl mx-auto px-8" style={{transform: 'scale(1.076)', transformOrigin: 'top center'}}>
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               How It Works
@@ -354,8 +351,8 @@ function App() {
             </p>
           </div>
 
-          <div className="flex flex-row justify-between gap-12 max-w-6xl mx-auto px-4 mb-12">
-            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.1)'}}>
+          <div className="flex flex-row justify-between gap-24 max-w-6xl mx-auto px-4 mb-12">
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.117)'}}>
               <div className="text-3xl mb-2">🎨</div>
               <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Design</h3>
               <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>
@@ -368,7 +365,7 @@ function App() {
               </div>
             </div>
 
-            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.1)'}}>
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.117)'}}>
               <div className="text-3xl mb-2">💰</div>
               <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Sell</h3>
               <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>
@@ -381,7 +378,7 @@ function App() {
               </div>
             </div>
 
-            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.1)'}}>
+            <div className="text-center p-4 bg-white rounded-lg shadow-lg hover:shadow-xl border border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 min-h-[250px] flex flex-col justify-start" style={{transform: 'scale(1.117)'}}>
               <div className="text-3xl mb-2">🚀</div>
               <h3 className="text-base font-bold text-gray-900 mb-3 break-words">Fulfill</h3>
               <p className="font-medium leading-snug text-sm break-words mb-3 text-center" style={{color: '#374151'}}>
@@ -399,14 +396,21 @@ function App() {
 
 
       {/* CTA Section */}
-      <section className="py-8 bg-gradient-to-l from-rose-500 via-pink-500 to-purple-600 text-white relative">
+      <section className="py-8 text-white relative" style={{background: 'linear-gradient(to bottom, #4f46e5 0%, #f43f5e 20%, #ec4899 50%, #9333ea 100%)'}}>
         <div className="absolute top-8 left-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">🚀</span>
+          <span className="text-2xl" style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,200,100,0.8)', filter: 'brightness(1.5) contrast(1.2)'}}>🚀</span>
         </div>
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <span className="text-2xl">🎆</span>
+          <IconRenderer
+            iconKey="settings"
+            size="2rem"
+            forDarkBackground={true}
+            style={{
+              filter: 'invert(1) brightness(2.5) drop-shadow(0 0 8px rgba(255, 255, 255, 1)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.8))'
+            }}
+          />
         </div>
-        <div className="max-w-5xl mx-auto text-center px-6" style={{transform: 'scale(1.06)', transformOrigin: 'top center'}}>
+        <div className="max-w-5xl mx-auto text-center px-6" style={{transform: 'scale(1.076)', transformOrigin: 'top center'}}>
           <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)', WebkitTextStroke: '1px rgba(0,0,0,0.3)'}}>
             Ready to Start Your Print-on-Demand Business?
           </h2>

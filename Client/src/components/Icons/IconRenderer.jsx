@@ -17,31 +17,31 @@ const IconRenderer = ({
     // Define color filters for different icon types
     const getIconFilter = (iconKey, forDark) => {
       if (forDark) {
-        // Filters for dark backgrounds (invert and colorize)
+        // Filters for dark backgrounds (inverted with high saturation for strong contrast against blue/pink gradients)
         const darkFilterMap = {
-          home: 'invert(1) sepia(1) saturate(5) hue-rotate(90deg) brightness(1.2)',      // Green
-          products: 'invert(1) sepia(1) saturate(8) hue-rotate(15deg) brightness(1.6) contrast(1.5)',  // Bright Orange
-          studio: 'invert(1) sepia(1) saturate(5) hue-rotate(240deg) brightness(1.2)',   // Purple
-          mockup: 'invert(1) sepia(1) saturate(5) hue-rotate(180deg) brightness(1.2)',   // Cyan
-          suggestions: 'invert(1) sepia(1) saturate(5) hue-rotate(50deg) brightness(1.5)', // Yellow
-          projects: 'invert(1) sepia(1) saturate(5) hue-rotate(210deg) brightness(1.2)',  // Blue
-          admin: 'invert(1) sepia(1) saturate(5) hue-rotate(0deg) brightness(1.2)',      // Red
-          about: 'invert(1) sepia(1) saturate(5) hue-rotate(120deg) brightness(1.2)',    // Emerald
-          contact: 'invert(1) sepia(1) saturate(5) hue-rotate(20deg) brightness(1.2)',   // Orange
-          cart: 'invert(1) sepia(1) saturate(5) hue-rotate(300deg) brightness(1.2)',     // Pink
-          orders: 'invert(1) sepia(1) saturate(5) hue-rotate(250deg) brightness(1.2)',   // Indigo
-          avatar: 'invert(1) sepia(1) saturate(5) hue-rotate(160deg) brightness(1.2)'    // Teal
+          home: 'invert(1) sepia(1) saturate(10) hue-rotate(90deg) brightness(1.8) contrast(1.3)',      // Bright Green
+          products: 'invert(1) sepia(1) saturate(12) hue-rotate(15deg) brightness(2.0) contrast(1.8)',  // Very Bright Orange
+          studio: 'invert(1) sepia(1) saturate(10) hue-rotate(240deg) brightness(1.8) contrast(1.3)',   // Bright Purple
+          mockup: 'invert(1) sepia(1) saturate(10) hue-rotate(180deg) brightness(1.8) contrast(1.3)',   // Bright Cyan
+          suggestions: 'invert(1) sepia(1) saturate(10) hue-rotate(50deg) brightness(2.0) contrast(1.3)', // Bright Yellow
+          projects: 'invert(1) sepia(1) saturate(10) hue-rotate(210deg) brightness(1.8) contrast(1.3)',  // Bright Blue
+          admin: 'invert(1) sepia(1) saturate(10) hue-rotate(0deg) brightness(1.8) contrast(1.3)',      // Bright Red
+          about: 'invert(1) sepia(1) saturate(10) hue-rotate(120deg) brightness(1.8) contrast(1.3)',    // Bright Emerald
+          contact: 'invert(1) sepia(1) saturate(10) hue-rotate(20deg) brightness(1.8) contrast(1.3)',   // Bright Orange
+          cart: 'invert(1) sepia(1) saturate(10) hue-rotate(300deg) brightness(1.8) contrast(1.3)',     // Bright Pink
+          orders: 'invert(1) sepia(1) saturate(10) hue-rotate(250deg) brightness(1.8) contrast(1.3)',   // Bright Indigo
+          avatar: 'invert(1) sepia(1) saturate(10) hue-rotate(160deg) brightness(1.8) contrast(1.3)'    // Bright Teal
         };
-        return darkFilterMap[iconKey] || 'invert(1) brightness(1.2)';
+        return darkFilterMap[iconKey] || 'invert(1) brightness(1.8) contrast(1.3)';
       } else {
         // Filters for light backgrounds (outline-only, no fill)
         const lightFilterMap = {
-          home: 'opacity(0.3) drop-shadow(0 0 1px rgba(0,0,0,0.5))',     // Outline only, no fill
-          products: 'sepia(0.3) saturate(2.0) hue-rotate(15deg) brightness(1.8) contrast(0.4)',   // Strong orange color with extra boldness
+          home: 'sepia(0.35) saturate(2.5) hue-rotate(120deg) brightness(1.8) contrast(0.5)',     // Maximum filler/boldness with green tone
+          products: 'sepia(0.4) saturate(2.5) hue-rotate(15deg) brightness(1.6) contrast(0.6)',   // Strong orange color with extra boldness
           studio: 'sepia(0.08) saturate(0.8) hue-rotate(240deg) brightness(3.2) contrast(0.04)',   // Light purple outline, minimal boldness
-          mockup: 'opacity(0.3) drop-shadow(0 0 1px rgba(0,0,0,0.5))', // Outline only, no fill
+          mockup: 'sepia(0.12) saturate(1.0) hue-rotate(320deg) brightness(2.8) contrast(0.08)', // Very light pink/rose tint
           suggestions: 'sepia(0.05) saturate(0.6) hue-rotate(50deg) brightness(3.2) contrast(0.04)', // Light yellow outline, minimal boldness
-          projects: 'opacity(0.3) drop-shadow(0 0 1px rgba(0,0,0,0.5))', // Outline only, no fill
+          projects: 'sepia(1.0) saturate(15.0) hue-rotate(240deg) brightness(0.35) contrast(6.0)', // Maximum indigo/purple fill with extreme boldness
           admin: 'sepia(0.08) saturate(0.8) hue-rotate(0deg) brightness(3.2) contrast(0.04)',      // Light red outline, minimal boldness
           about: 'sepia(0.08) saturate(0.8) hue-rotate(120deg) brightness(3.2) contrast(0.04)',    // Light emerald outline, minimal boldness
           contact: 'sepia(0.08) saturate(0.8) hue-rotate(20deg) brightness(3.2) contrast(0.04)',   // Light orange outline, minimal boldness

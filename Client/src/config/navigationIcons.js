@@ -6,9 +6,9 @@ export const navigationIcons = {
   home: {
     emoji: '🏠',
     professional: {
-      iconPath: '/images/noun-home-7649013.svg?v=11',
+      iconPath: '/images/noun-home-8126094.svg?v=1',
       iconName: 'Home',
-      creator: 'wahya',
+      creator: 'Fitrapratama',
       isNounProject: true
     }
   },
@@ -36,9 +36,9 @@ export const navigationIcons = {
   mockup: {
     emoji: '📸',
     professional: {
-      iconPath: '/images/noun-mockup-6206312.svg?v=11',
-      iconName: 'Mockup Generator',
-      creator: 'Noun Project',
+      iconPath: '/images/noun-mockup-eklip-studio.svg?v=1',
+      iconName: 'Mockup',
+      creator: 'Eklip Studio',
       isNounProject: true
     }
   },
@@ -56,9 +56,9 @@ export const navigationIcons = {
   projects: {
     emoji: '📁',
     professional: {
-      iconPath: '/images/noun-project-8074483.svg?v=11',
-      iconName: 'Project',
-      creator: 'Side Project',
+      iconPath: '/images/noun-work-project-folder-3020191.svg?v=1',
+      iconName: 'Work Project Folder',
+      creator: 'IconforYou',
       isNounProject: true
     }
   },
@@ -120,6 +120,16 @@ export const navigationIcons = {
       iconPath: '/images/noun-orders-list-6478417.svg?v=2',
       iconName: 'Orders List',
       creator: 'Noun Project',
+      isNounProject: true
+    }
+  },
+
+  settings: {
+    emoji: '⚙️',
+    professional: {
+      iconPath: '/images/noun-setting-2550045.svg',
+      iconName: 'Setting',
+      creator: 'Flatart',
       isNounProject: true
     }
   },

@@ -97,6 +97,43 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+/* Skin Tone Button Override - Prevent gradient from overriding actual skin tone colors */
+.skin-tone-button {
+  background-image: none !important;
+}
+
+.skin-tone-button:hover {
+  background-image: none !important;
+}
+
+/* Cart & Avatar Button Override - Prevent global button styles from affecting icon buttons */
+.cart-button,
+.avatar-button {
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  max-width: none !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.cart-button:hover,
+.avatar-button:hover {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Hide attribution text embedded in Noun Project SVG files */
+.noun-icon-no-attribution text,
+.noun-icon-no-attribution tspan {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
 /* Page Layout - Universal sidebar spacing */
 .page-container {
   margin-left: 10.5rem;
@@ -152,7 +189,7 @@ input, textarea, select, button {
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Comfortaa', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -212,6 +249,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   padding: 0;
+  font-family: 'Comfortaa', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 h1 {

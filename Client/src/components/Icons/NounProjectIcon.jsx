@@ -16,33 +16,21 @@ const NounProjectIcon = ({
     height: size,
     display: 'inline-block',
     fill: 'currentColor',
+    overflow: 'hidden',
     ...style
   };
 
   return (
-    <>
+    <div style={{ display: 'inline-block', overflow: 'hidden', width: size, height: size }}>
       <img
         src={iconPath}
         alt=""
+        title=""
         style={iconStyle}
-        className={className}
+        className={`${className} noun-icon-no-attribution`}
         aria-hidden="true"
       />
-      {showAttribution && (
-        <span className="sr-only">
-          {iconName} by {creator} from{' '}
-          <a
-            href={attributionUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            title={`${iconName} Icons`}
-          >
-            Noun Project
-          </a>{' '}
-          (CC BY 3.0)
-        </span>
-      )}
-    </>
+    </div>
   );
 };
 
