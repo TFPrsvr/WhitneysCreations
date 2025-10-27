@@ -80,14 +80,14 @@ const ProjectDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8 page-container" style={{overflowX: 'visible'}}>
-      <div className="max-w-7xl mx-auto p-6 mt-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-8 page-container">
+      <div className="w-full p-6 mt-4" style={{zoom: '0.8'}}>
         <div className="mb-8">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
             <div className="w-full">
               {user && (
-                <div style={{position: 'relative'}}>
-                  <p className="font-bold mb-1" style={{color: '#3b82f6', fontSize: '2rem', lineHeight: '1', position: 'absolute', left: '-3rem', top: '0'}}>
+                <div style={{position: 'relative', marginTop: '0.5rem'}}>
+                  <p className="font-bold mb-1" style={{color: '#3b82f6', fontSize: '2rem', lineHeight: '1', position: 'absolute', left: '0', top: '0'}}>
                     Welcome back!
                   </p>
                   <h1 className="font-bold text-gray-900 mb-2" style={{marginLeft: '4rem', fontSize: '3rem', paddingTop: '2.5rem'}}>
@@ -100,15 +100,17 @@ const ProjectDashboard = () => {
               )}
             </div>
             <button
-              className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200 whitespace-nowrap flex items-center justify-center"
+              className="bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200 whitespace-nowrap flex items-center justify-center gap-2"
               onClick={handleCreateProject}
               style={{
                 maxWidth: '20vw',
                 minWidth: '180px',
-                borderRadius: '12px'
+                borderRadius: '12px',
+                marginTop: '2rem'
               }}
             >
-              + New Project
+              <span style={{marginRight: '0.25rem'}}>+</span>
+              <span>New Project</span>
             </button>
           </div>
 
@@ -123,56 +125,52 @@ const ProjectDashboard = () => {
         {stats && <ProjectStats stats={stats} />}
 
         <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-200">
-          {/* Filters and Sort Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div className="lg:col-span-1 text-center">
-              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Filter Options</label>
-              <div className="flex justify-center">
-                <ProjectFilters
-                  filters={filters}
-                  onFilterChange={handleFilterChange} />
-              </div>
-            </div>
+          {/* Header */}
+          <h2 className="text-lg font-bold text-gray-900 text-center mb-6 drop-shadow-sm">Sort, Filter & Order Options</h2>
 
-            <div className="lg:col-span-1 text-center">
-              <label className="block text-sm font-bold text-gray-900 mb-2 drop-shadow-sm">Sort & Order</label>
-              <div className="flex flex-col space-y-3 items-center">
-                <select
-                  value={sortBy}
-                  onChange={(e) => handleSortChange(e.target.value)}
-                  className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-white text-gray-900 font-semibold hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
-                  style={{
-                    color: '#1f2937',
-                    maxWidth: '16vw',
-                    minWidth: '180px',
-                    borderRadius: '12px'
-                  }}
-                >
-                  <option value="modified" className="text-gray-900 font-semibold">Last Modified</option>
-                  <option value="created" className="text-gray-900 font-semibold">Date Created</option>
-                  <option value="name" className="text-gray-900 font-semibold">Name</option>
-                  <option value="opened" className="text-gray-900 font-semibold">Last Opened</option>
-                </select>
+          {/* All Dropdowns in a Row */}
+          <div className="flex flex-wrap justify-center gap-4 mb-6">
+            <ProjectFilters
+              filters={filters}
+              onFilterChange={handleFilterChange} />
 
-                <button
-                  className="px-4 py-2 border-2 border-gray-300 rounded-lg bg-gradient-to-r from-primary-500 to-purple-600 hover:from-primary-600 hover:to-purple-700 hover:border-blue-400 text-white font-bold flex items-center justify-center gap-2 transition-all duration-200 shadow-md hover:shadow-lg"
-                  onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-                  title={`Sort ${sortOrder === 'asc' ? 'Descending' : 'Ascending'}`}
-                  style={{
-                    maxWidth: '16vw',
-                    minWidth: '180px',
-                    borderRadius: '12px'
-                  }}
-                >
-                  {sortOrder === 'asc' ? '↑ Ascending' : '↓ Descending'}
-                </button>
-              </div>
-            </div>
+            <select
+              value={sortBy}
+              onChange={(e) => handleSortChange(e.target.value)}
+              className="px-4 py-2 border-2 border-gray-300 bg-white text-gray-900 font-semibold hover:border-blue-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
+              style={{
+                color: '#1f2937',
+                width: 'auto',
+                minWidth: 'fit-content',
+                borderRadius: '12px'
+              }}
+            >
+              <option value="modified" className="text-gray-900 font-semibold" style={{borderRadius: '12px'}}>Last Modified</option>
+              <option value="created" className="text-gray-900 font-semibold" style={{borderRadius: '12px'}}>Date Created</option>
+              <option value="name" className="text-gray-900 font-semibold" style={{borderRadius: '12px'}}>Name</option>
+              <option value="opened" className="text-gray-900 font-semibold" style={{borderRadius: '12px'}}>Last Opened</option>
+            </select>
+
+            <button
+              className="px-4 py-2 border-2 border-gray-300 bg-white hover:bg-gray-50 text-gray-700 font-bold flex items-center justify-center gap-2 transition-all duration-200"
+              onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+              title={`Sort ${sortOrder === 'asc' ? 'Descending' : 'Ascending'}`}
+              style={{
+                width: 'auto',
+                minWidth: 'fit-content',
+                borderRadius: '12px'
+              }}
+            >
+              <span style={{marginRight: '0.5rem', position: 'relative', top: '-2px'}}>
+                {sortOrder === 'asc' ? '↑' : '↓'}
+              </span>
+              <span>{sortOrder === 'asc' ? 'Ascending' : 'Descending'}</span>
+            </button>
           </div>
 
           {/* Search Section - Below filters and sorting */}
           <div className="border-t border-gray-200 pt-4">
-            <label className="block text-sm font-bold text-gray-900 mb-1 drop-shadow-sm">Search Projects</label>
+            <label className="block text-lg font-bold text-gray-900 mb-4 drop-shadow-sm">Search Projects</label>
             <div className="flex justify-center">
               <ProjectSearch />
             </div>
@@ -181,14 +179,14 @@ const ProjectDashboard = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="w-full px-6" style={{zoom: '0.8', position: 'relative'}}>
         {loading ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <div className="w-10 h-10 border-4 border-gray-300 border-t-primary-500 rounded-full animate-spin mb-4"></div>
             <p className="text-gray-600">Loading projects...</p>
           </div>
         ) : projects.length === 0 ? (
-          <div className="text-center py-16 bg-white rounded-xl shadow-sm">
+          <div className="py-16 bg-white rounded-xl shadow-sm flex flex-col items-center justify-center">
             <div className="text-6xl mb-4">📁</div>
             <h3 className="text-2xl font-semibold mb-2" style={{color: '#1f2937'}}>No projects yet</h3>
             <p className="font-medium text-lg mb-8" style={{color: '#4b5563'}}>Create your first design project to get started!</p>
@@ -245,7 +243,8 @@ const ProjectDashboard = () => {
 
             <div className={`${currentView === 'grid'
                 ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
-                : 'flex flex-col gap-4'}`}>
+                : 'flex flex-col gap-4'}`}
+                style={{zoom: '0.85'}}>
               {projects.map(project => (
                 <ProjectCard
                   key={project._id}

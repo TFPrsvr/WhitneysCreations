@@ -26,16 +26,20 @@ const ProjectSearch = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="flex gap-2">
+    <form onSubmit={handleSearch} className="flex gap-6 items-center">
       <div className="relative">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search projects..."
-          className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent w-64"
+          className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          style={{
+            width: '400px',
+            height: '42px'
+          }}
         />
-        <div className="absolute left-3 top-2.5 text-gray-400">
+        <div className="absolute left-3 text-gray-400" style={{top: '50%', transform: 'translateY(-50%)'}}>
           🔍
         </div>
         {query && (
@@ -51,10 +55,10 @@ const ProjectSearch = () => {
       <button
         type="submit"
         disabled={!query.trim() || isSearching}
-        className="px-6 py-2 bg-gradient-to-r from-primary-500 to-purple-600 text-white rounded-lg hover:bg-primary-600 disabled:bg-gray-300 disabled:cursor-not-allowed font-semibold text-center flex items-center justify-center hover:shadow-lg transition-all duration-200"
+        className="bg-gradient-to-r from-primary-500 to-purple-600 text-white rounded-lg hover:bg-primary-600 disabled:bg-gray-300 disabled:cursor-not-allowed font-semibold text-center flex items-center justify-center hover:shadow-lg transition-all duration-200"
         style={{
-          maxWidth: '16vw',
-          minWidth: '140px',
+          width: '140px',
+          height: '42px',
           borderRadius: '12px'
         }}
       >

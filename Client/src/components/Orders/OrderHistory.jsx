@@ -163,7 +163,7 @@ const OrderHistory = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-8 page-container">
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 py-8 page-container" style={{zoom: '2'}}>
       <div className="max-w-6xl mx-auto p-6">
       <h1 className="text-4xl font-bold text-white mb-8 drop-shadow-md">Order History</h1>
 
@@ -181,6 +181,7 @@ const OrderHistory = () => {
           <a
             href="/products"
             className="bg-gradient-to-r from-primary-500 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+            style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}
           >
             Browse Products
           </a>
@@ -284,7 +285,7 @@ const OrderHistory = () => {
 
       {/* Quick Actions */}
       <div className="bg-gradient-to-r from-primary-600 to-purple-600 text-white rounded-xl p-6 mt-8">
-        <h2 className="text-2xl font-bold mb-4">Need Help?</h2>
+        <h2 className="text-2xl font-bold mb-4" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>Need Help?</h2>
         <p className="text-lg mb-6">Have questions about your orders or need support?</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
@@ -295,7 +296,7 @@ const OrderHistory = () => {
           </a>
           <a
             href="/"
-            className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors text-center"
+            className="bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-center"
           >
             Create New Design
           </a>

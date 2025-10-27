@@ -41,11 +41,13 @@ return (
             <div className="text-6xl mb-4">🛒</div>
             <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-md">Your cart is empty</h3>
             <p className="text-white font-semibold text-lg mb-6 drop-shadow-md">Add some awesome designs to get started!</p>
-            <Link 
+            <Link
               to="/products"
-              className="btn-gradient-primary inline-block px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-1"
+              className="btn-gradient-primary inline-block px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 transform hover:-translate-y-1 flex items-center justify-center gap-2"
+              style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)', color: '#ffffff'}}
             >
-              🛍️ Continue Shopping
+              <span style={{fontSize: '1.5rem'}}>🛍️</span>
+              <span>Continue Shopping</span>
             </Link>
           </div>
         ) : (

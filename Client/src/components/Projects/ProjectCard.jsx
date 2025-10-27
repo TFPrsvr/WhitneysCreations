@@ -195,7 +195,7 @@ const ProjectCard = ({ project, viewMode, onUpdate }) => {
 
   // Grid view
   return (
-    <div 
+    <div
       className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer overflow-hidden"
       onClick={handleOpenProject}
     >
@@ -256,11 +256,11 @@ const ProjectCard = ({ project, viewMode, onUpdate }) => {
         )}
       </div>
 
-      <div className="p-4">
-        <div className="flex items-center justify-between mb-2">
+      <div className="p-4" style={{paddingLeft: '0.5rem', paddingRight: '0.5rem'}}>
+        <div className="flex items-center justify-between mb-2" style={{marginLeft: '-0.5rem'}}>
           <h3 className="font-semibold text-gray-900 truncate">{project.name}</h3>
           <div className="flex gap-2">
-            {project.isTemplate && 
+            {project.isTemplate &&
               <span className="px-2 py-1 text-xs bg-purple-100 text-purple-800 rounded-full">Template</span>
             }
             <span className={`px-2 py-1 text-xs rounded-full ${getStatusColor(project.status)}`}>
@@ -269,11 +269,11 @@ const ProjectCard = ({ project, viewMode, onUpdate }) => {
           </div>
         </div>
 
-        <p className="text-sm text-gray-600 mb-2 truncate">
+        <p className="text-sm text-gray-600 mb-2 truncate" style={{marginLeft: '-0.5rem'}}>
           {project.product?.name || 'No product selected'}
         </p>
 
-        <div className="flex items-center justify-between text-xs text-gray-500">
+        <div className="flex items-center justify-between text-xs text-gray-500" style={{marginLeft: '-0.5rem'}}>
           <div className="flex gap-2">
             <span>{project.metadata.totalElements} elements</span>
             <span>{getComplexityIcon(project.metadata.complexity)} {project.metadata.complexity}</span>

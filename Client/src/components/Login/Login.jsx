@@ -113,17 +113,17 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center py-8 px-4 relative page-container">
       {/* Background decorative elements */}
-      <div className="absolute text-4xl opacity-20 animate-bounce hidden lg:block" style={{top: '1rem', left: '1rem'}} aria-hidden="true">🎨</div>
-      <div className="absolute text-3xl opacity-20 animate-pulse hidden lg:block" style={{top: '1rem', right: '1rem'}} aria-hidden="true">👕</div>
-      <div className="absolute text-3xl opacity-20 animate-bounce delay-1000 hidden lg:block" style={{bottom: '1rem', left: '1rem'}} aria-hidden="true">☕</div>
-      <div className="absolute text-2xl opacity-20 animate-spin hidden lg:block" style={{bottom: '1rem', right: '1rem', animationDuration: '10s'}} aria-hidden="true">🧢</div>
+      <div className="absolute text-3xl animate-pulse hidden lg:block" style={{top: '1rem', left: '1rem', filter: 'brightness(1.2) drop-shadow(0 0 40px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 2px rgba(0, 0, 0, 1))', background: 'radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 30%, transparent 80%)', backdropFilter: 'blur(30px)', borderRadius: '50%', padding: '0.2rem'}} aria-hidden="true">🎨</div>
+      <div className="absolute text-3xl animate-pulse hidden lg:block" style={{top: '1rem', right: '1rem', animationDuration: '3s', filter: 'brightness(1.2) drop-shadow(0 0 40px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 2px rgba(0, 0, 0, 1))', background: 'radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 30%, transparent 80%)', backdropFilter: 'blur(30px)', borderRadius: '50%', padding: '0.2rem'}} aria-hidden="true">👕</div>
+      <div className="absolute text-3xl animate-pulse hidden lg:block" style={{bottom: '1rem', left: '1rem', animationDuration: '2s', filter: 'brightness(1.2) drop-shadow(0 0 40px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 2px rgba(0, 0, 0, 1))', background: 'radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 30%, transparent 80%)', backdropFilter: 'blur(30px)', borderRadius: '50%', padding: '0.2rem'}} aria-hidden="true">☕</div>
+      <div className="absolute text-3xl animate-bounce hidden lg:block" style={{bottom: '1rem', right: '1rem', animationDuration: '2s', filter: 'brightness(1.2) drop-shadow(0 0 40px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 2px rgba(0, 0, 0, 1))', background: 'radial-gradient(circle, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 30%, transparent 80%)', backdropFilter: 'blur(30px)', borderRadius: '50%', padding: '0.2rem'}} aria-hidden="true">🧢</div>
 
       <main className="w-full space-y-6 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100" role="main" style={{maxWidth: '380px'}}>
         <header className="text-center">
           <div className="text-center mb-4">
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sign In</h1>
           </div>
-          <p className="text-gray-800 font-semibold mt-2 drop-shadow-sm">Welcome back to Whitney's Creations</p>
+          <p className="font-semibold mt-2" style={{color: '#9ca3af', textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)'}}>Welcome back to Whitney's Creations</p>
         </header>
 
         {errors.general && (
@@ -139,7 +139,7 @@ const Login = () => {
             </label>
             <input
               id="username"
-              className={`w-full max-w-xs mx-auto block px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
+              className={`w-full mx-auto block px-4 py-3 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
                 errors.username ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
               }`}
               type="text"
@@ -152,6 +152,7 @@ const Login = () => {
               required
               aria-describedby={errors.username ? 'username-error' : undefined}
               aria-invalid={errors.username ? 'true' : 'false'}
+              style={{maxWidth: '95%'}}
             />
             {errors.username && (
               <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="username-error">
@@ -164,7 +165,7 @@ const Login = () => {
             <label htmlFor="password" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
               Password
             </label>
-            <div className="w-full max-w-xs mx-auto relative">
+            <div className="w-full mx-auto relative" style={{maxWidth: '95%'}}>
               <input
                 id="password"
                 className={`w-full px-4 py-3 pr-12 border-2 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-white text-gray-900 ${
@@ -183,7 +184,7 @@ const Login = () => {
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 transition-colors duration-200 bg-white rounded-r-lg"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 transition-colors duration-200 bg-white rounded-r-xl"
                 onClick={() => setShowPassword(!showPassword)}
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
@@ -221,13 +222,14 @@ const Login = () => {
             type="submit"
             className="w-3/4 mx-auto block btn-gradient-primary disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={isLoading}
+            style={{fontSize: '22.5px !important', padding: '14px 24px !important', fontWeight: 'bold'}}
           >
             {isLoading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
 
         <div className="text-center pt-4 border-t border-gray-200">
-          <p className="text-black text-base mb-4 font-black drop-shadow-lg">
+          <p className="text-base mb-4 font-semibold" style={{color: '#9ca3af', textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)'}}>
             Not a member yet?
           </p>
           <button

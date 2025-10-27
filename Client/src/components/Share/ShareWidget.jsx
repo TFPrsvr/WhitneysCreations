@@ -87,36 +87,36 @@ const ShareWidget = ({
       {isMinimized ? (
         // Minimized floating button
         <div style={{
-          background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.75) 0%, rgba(118, 75, 162, 0.75) 100%)',
+          background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.4) 100%)',
           borderRadius: '50%',
-          width: '48px',
-          height: '48px',
+          width: '32px',
+          height: '32px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           cursor: 'pointer',
-          boxShadow: '0 3px 15px rgba(0, 0, 0, 0.2)',
+          boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)',
           transition: 'all 0.3s ease',
           animation: 'pulse 2s infinite',
-          opacity: 0.85,
-          padding: '8px'
+          opacity: 0.6,
+          padding: '6px'
         }}
         onClick={() => setIsMinimized(false)}
         onMouseEnter={(e) => {
           e.target.style.transform = 'scale(1.1)';
-          e.target.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.25)';
-          e.target.style.opacity = '1';
+          e.target.style.boxShadow = '0 3px 15px rgba(0, 0, 0, 0.2)';
+          e.target.style.opacity = '0.85';
         }}
         onMouseLeave={(e) => {
           e.target.style.transform = 'scale(1)';
-          e.target.style.boxShadow = '0 3px 15px rgba(0, 0, 0, 0.2)';
-          e.target.style.opacity = '0.85';
+          e.target.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.15)';
+          e.target.style.opacity = '0.6';
         }}
         title="Share Whitney's Creations"
         >
           <IconRenderer
             iconKey="share"
-            size="1.5rem"
+            size="1rem"
             forDarkBackground={true}
             style={{
               color: 'white',

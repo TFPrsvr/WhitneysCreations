@@ -75,7 +75,7 @@ function App() {
       <main id="main-content">
         <section className="relative text-white w-full" aria-labelledby="hero-title" style={{position: 'relative', background: 'linear-gradient(to bottom, #9333ea 0%, #3b82f6 40%, #14b8a6 100%)'}}>
         <div className="absolute inset-0 bg-black bg-opacity-20 z-0"></div>
-        <div className="relative w-full px-8 py-6 z-10" style={{transform: 'scale(1.066)', transformOrigin: 'top center'}}>
+        <div className="relative w-full px-8 py-6 z-10" style={{transform: 'scale(1.066)', transformOrigin: 'top center', paddingBottom: '2rem'}}>
           <div className="text-center max-w-6xl mx-auto">
             <h1 id="hero-title" className="text-xl md:text-3xl font-bold mb-6 leading-tight">
               <span className="block text-xl md:text-3xl mb-4">Whitney's Unique Creations</span>
@@ -83,7 +83,7 @@ function App() {
                 The Place That Lets You Customize Your Ideas
               </span>
             </h1>
-            <div className="text-lg md:text-xl mb-6 text-gray-100 max-w-5xl mx-auto">
+            <div className="text-lg md:text-xl mb-6 text-gray-100 max-w-5xl mx-auto" style={{marginTop: '-20px'}}>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-lg md:text-xl font-bold">
                 <div className="flex items-center gap-2 transform hover:scale-110 transition-transform duration-300">
                   <span className="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent">What You Want</span>
@@ -325,7 +325,7 @@ function App() {
             <Link
               to="/suggest"
               className="inline-block bg-gradient-to-r from-emerald-400 to-cyan-500 text-white px-4 py-2 rounded-lg font-semibold text-lg hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"
-              style={{textShadow: '0 1px 2px rgba(0, 100, 100, 0.5)'}}
+              style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)', color: '#ffffff'}}
             >
               ✨ What's Your Creation Idea? ✨
             </Link>
@@ -401,14 +401,7 @@ function App() {
           <span className="text-2xl" style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,200,100,0.8)', filter: 'brightness(1.5) contrast(1.2)'}}>🚀</span>
         </div>
         <div className="absolute top-8 right-4 opacity-80 hidden lg:block z-10" style={{animation: 'float 3s ease-in-out infinite'}}>
-          <IconRenderer
-            iconKey="settings"
-            size="2rem"
-            forDarkBackground={true}
-            style={{
-              filter: 'invert(1) brightness(2.5) drop-shadow(0 0 8px rgba(255, 255, 255, 1)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.8))'
-            }}
-          />
+          <span className="text-2xl" style={{textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,200,100,0.8)', filter: 'brightness(1.5) contrast(1.2)'}}>🔧</span>
         </div>
         <div className="max-w-5xl mx-auto text-center px-6" style={{transform: 'scale(1.076)', transformOrigin: 'top center'}}>
           <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)', WebkitTextStroke: '1px rgba(0,0,0,0.3)'}}>
@@ -420,7 +413,7 @@ function App() {
           
           {isAuthenticated ? (
             <div className="space-y-4">
-              <p className="text-lg">Welcome back, {user?.first}! 👋</p>
+              <p className="text-2xl font-bold" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>Welcome back, {user?.first}! 👋</p>
               <Link
                 to="/studio"
                 className="inline-block bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold text-base hover:bg-gray-100 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200"

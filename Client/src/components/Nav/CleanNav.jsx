@@ -244,6 +244,7 @@ const CleanNav = () => {
                       fontWeight: '500',
                       fontSize: '16px',
                       margin: '2px 0',
+                      marginRight: isLinkActive ? '4px' : '0',
                       color: '#1e40af',
                       WebkitFontSmoothing: 'antialiased',
                       MozOsxFontSmoothing: 'grayscale',
@@ -257,7 +258,7 @@ const CleanNav = () => {
                       <IconRenderer
                         iconKey={link.iconKey}
                         size="2rem"
-                        forDarkBackground={isLinkActive || isHovered}
+                        forDarkBackground={isHovered && !isLinkActive}
                       />
                       <span>{link.label}</span>
                     </div>
@@ -280,7 +281,7 @@ const CleanNav = () => {
             {isAuthenticated ? (
               <div className="p-4" style={{maxWidth: '100%', overflow: 'hidden'}}>
                 {/* User Info */}
-                <div className="flex items-center p-3 mb-3 bg-gray-800 rounded-lg" role="region" aria-label="User information" style={{maxWidth: '100%', overflow: 'hidden', marginTop: '32px'}}>
+                <div className="flex items-center px-3 py-2 mb-3 bg-gray-800 rounded-lg" role="region" aria-label="User information" style={{maxWidth: '100%', overflow: 'hidden', marginTop: '8px'}}>
                   <div className="flex-1 min-w-0" style={{maxWidth: '100%'}}>
                     <p className="font-bold truncate"
                        style={{
@@ -288,7 +289,7 @@ const CleanNav = () => {
                          whiteSpace: 'nowrap',
                          textOverflow: 'ellipsis',
                          color: '#00ff88',
-                         fontSize: '18px',
+                         fontSize: '22px',
                          fontWeight: '700',
                          textShadow: '0 3px 6px rgba(0, 0, 0, 0.9), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000',
                          maxWidth: '100%'
@@ -304,7 +305,7 @@ const CleanNav = () => {
                          whiteSpace: 'nowrap',
                          textOverflow: 'ellipsis',
                          color: '#66d9ff',
-                         fontSize: '16px',
+                         fontSize: '20px',
                          fontWeight: '600',
                          textShadow: '0 3px 6px rgba(0, 0, 0, 0.9), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000',
                          maxWidth: '100%'
@@ -313,15 +314,15 @@ const CleanNav = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 {/* Quick Actions - Cart, Profile & Orders in a row */}
-                <nav className="flex justify-evenly space-x-0 py-6 mb-3" role="navigation" aria-label="Quick actions" style={{maxWidth: '100%', overflow: 'hidden'}}>
+                <nav className="flex justify-evenly space-x-0 py-3 mb-3" role="navigation" aria-label="Quick actions" style={{maxWidth: '100%', overflow: 'hidden'}}>
                   <Link
                     to="/cart"
-                    className={`flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-105 ${
+                    className={`flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-102 ${
                       location.pathname === '/cart'
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg scale-105'
-                        : 'hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-md scale-102'
+                        : ''
                     }`}
                     aria-label="View shopping cart"
                     style={{flex: '1', maxWidth: '33%'}}
@@ -353,10 +354,10 @@ const CleanNav = () => {
 
                   <button
                     onClick={toggleProfileDropdown}
-                    className={`profile-button flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-105 ${
+                    className={`profile-button flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-102 ${
                       isProfileDropdownOpen
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg scale-105'
-                        : 'hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-md scale-102'
+                        : ''
                     }`}
                     aria-label="Open settings menu"
                     style={{flex: '1', maxWidth: '33%'}}
@@ -392,10 +393,10 @@ const CleanNav = () => {
 
                   <Link
                     to="/orders"
-                    className={`flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-105 ${
+                    className={`flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-102 ${
                       location.pathname === '/orders'
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg scale-105'
-                        : 'hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-600'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-md scale-102'
+                        : ''
                     }`}
                     aria-label="View order history"
                     style={{flex: '1', maxWidth: '33%'}}
@@ -551,7 +552,7 @@ const CleanNav = () => {
                   </div>
                 )}
 
-                <div className="flex justify-center w-full mt-2">
+                <div className="flex justify-center w-full" style={{marginTop: '-8px'}}>
                   <button
                     onClick={handleLogout}
                     className="w-full text-center"
@@ -561,9 +562,9 @@ const CleanNav = () => {
                       alignItems: 'center',
                       justifyContent: 'center',
                       width: '100%',
-                      padding: '16px 20px',
+                      padding: '20px 24px',
                       textAlign: 'center',
-                      fontSize: '18px',
+                      fontSize: '20px',
                       fontWeight: 'bold',
                       color: '#ffffff',
                       background: 'linear-gradient(to right, #dc2626, #b91c1c)',
@@ -600,14 +601,14 @@ const CleanNav = () => {
                       alignItems: 'center',
                       justifyContent: 'center',
                       width: '100%',
-                      padding: '6px 8px',
+                      padding: '16px 20px',
                       textAlign: 'center',
-                      fontSize: '13px',
+                      fontSize: '18px',
                       fontWeight: 'bold',
                       color: '#ffffff',
                       background: 'linear-gradient(to right, #3b82f6, #1e40af)',
                       border: 'none',
-                      borderRadius: '6px',
+                      borderRadius: '8px',
                       textDecoration: 'none',
                       transition: 'all 0.2s',
                       marginBottom: '0',
@@ -634,17 +635,18 @@ const CleanNav = () => {
                       alignItems: 'center',
                       justifyContent: 'center',
                       width: '100%',
-                      padding: '6px 8px',
+                      padding: '16px 20px',
                       textAlign: 'center',
-                      fontSize: '13px',
+                      fontSize: '18px',
                       fontWeight: 'bold',
                       color: '#ffffff',
                       background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
                       border: 'none',
-                      borderRadius: '6px',
+                      borderRadius: '8px',
                       textDecoration: 'none',
                       transition: 'all 0.2s',
                       marginTop: '0',
+                      textShadow: '0 2px 4px rgba(0, 0, 0, 0.6)',
                       maxWidth: '100%',
                       boxSizing: 'border-box'
                     }}
@@ -708,7 +710,7 @@ const CleanNav = () => {
                 size="1.4rem"
                 forDarkBackground={false}
                 style={{
-                  filter: 'invert(1) brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))',
+                  filter: 'invert(0) brightness(0.3) drop-shadow(0 0 2px rgba(255, 255, 255, 0.9))',
                   display: 'block',
                   dropShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
                 }}
@@ -1082,7 +1084,7 @@ const CleanNav = () => {
               creator={userAvatar?.creator || "Nawicon"}
               size="2rem"
               style={{
-                filter: 'invert(1) brightness(1.5) drop-shadow(0 0 4px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))',
+                filter: 'invert(0) brightness(0.3) drop-shadow(0 0 2px rgba(255, 255, 255, 0.9))',
                 dropShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
               }}
             />
