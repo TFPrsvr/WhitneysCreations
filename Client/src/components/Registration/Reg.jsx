@@ -167,40 +167,42 @@ const Reg = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 flex items-center justify-center py-8 px-4 relative page-container">
       {/* Background decorative elements */}
-      <div className="absolute top-15 right-15 text-4xl opacity-20 animate-spin hidden lg:block" style={{animationDuration: '8s'}} aria-hidden="true">🎨</div>
-      <div className="absolute top-32 left-15 text-3xl opacity-20 animate-bounce hidden lg:block" aria-hidden="true">👚</div>
-      <div className="absolute bottom-32 right-15 text-3xl opacity-20 animate-pulse hidden lg:block" aria-hidden="true">☕</div>
-      <div className="absolute bottom-15 left-15 text-2xl opacity-20 animate-bounce delay-500 hidden lg:block" aria-hidden="true">🧥</div>
+      <div className="absolute text-3xl opacity-20 hidden lg:block" style={{top: '1rem', left: '1rem'}} aria-hidden="true">🎨</div>
+      <div className="absolute text-3xl opacity-20 hidden lg:block" style={{top: '1rem', right: '1rem'}} aria-hidden="true">👚</div>
+      <div className="absolute text-3xl opacity-20 hidden lg:block" style={{bottom: '1rem', left: '1rem'}} aria-hidden="true">☕</div>
+      <div className="absolute text-3xl opacity-20 hidden lg:block" style={{bottom: '1rem', right: '1rem'}} aria-hidden="true">🧥</div>
       
-      <main className="w-full space-y-6 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100" role="main" style={{maxWidth: '420px'}}>
+      <main className="w-full space-y-3 bg-white rounded-2xl shadow-2xl p-3 border border-gray-100" role="main" style={{maxWidth: '280px'}}>
         <header className="text-center">
-          <div className="text-center mb-4">
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Create Account</h1>
-            <span className="text-4xl" aria-hidden="true">👕</span>
+          <div className="text-center mb-1">
+            <h1 className="text-[10px] font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Create Account</h1>
+            <span className="text-sm" aria-hidden="true">👕</span>
           </div>
-          <p className="text-gray-800 font-semibold mt-2 drop-shadow-sm">Join Whitney's Creations today</p>
+          <p className="font-semibold mt-0.5 drop-shadow-sm text-[8px]">
+            <span style={{color: '#6b7280'}}>Join Whitney's unique Creations today</span>
+          </p>
         </header>
 
         {errors.general && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm" role="alert" aria-live="polite">
+          <div className="bg-red-50 border border-red-200 text-red-700 px-2.5 py-1.5 rounded-lg text-[10px] mx-auto" role="alert" aria-live="polite" style={{maxWidth: '85%'}}>
             {errors.general}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-          <div className="grid grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit} className="space-y-3 mx-auto" noValidate style={{maxWidth: '70%'}}>
+          <div className="grid grid-cols-2 gap-2">
             <div>
-              <label htmlFor="first_name" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
+              <label htmlFor="first_name" className="block text-[10px] font-semibold text-gray-900 mb-0.5 drop-shadow-sm">
                 First Name
               </label>
               <input
                 id="first_name"
-                className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 transition-all bg-white text-gray-900 ${
+                className={`w-full px-2 py-1 border-2 rounded focus:ring-1 transition-all bg-white text-gray-900 text-[10px] ${
                   errors.first_name ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
                 }`}
                 style={{color: '#1f2937'}}
                 type="text"
-                placeholder="Enter first name"
+                placeholder="First"
                 name="first_name"
                 value={formData.first_name}
                 onChange={handleChange}
@@ -211,23 +213,23 @@ const Reg = () => {
                 aria-invalid={errors.first_name ? 'true' : 'false'}
               />
               {errors.first_name && (
-                <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="first_name-error">
+                <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="first_name-error">
                   {errors.first_name}
                 </p>
               )}
             </div>
             <div>
-              <label htmlFor="last_name" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
+              <label htmlFor="last_name" className="block text-[10px] font-semibold text-gray-900 mb-0.5 drop-shadow-sm">
                 Last Name
               </label>
               <input
                 id="last_name"
-                className={`w-full px-4 py-3 border-2 rounded-xl focus:ring-2 transition-all bg-white text-gray-900 ${
+                className={`w-full px-2 py-1 border-2 rounded focus:ring-1 transition-all bg-white text-gray-900 text-[10px] ${
                   errors.last_name ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
                 }`}
                 style={{color: '#1f2937'}}
                 type="text"
-                placeholder="Enter last name"
+                placeholder="Last"
                 name="last_name"
                 value={formData.last_name}
                 onChange={handleChange}
@@ -238,7 +240,7 @@ const Reg = () => {
                 aria-invalid={errors.last_name ? 'true' : 'false'}
               />
               {errors.last_name && (
-                <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="last_name-error">
+                <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="last_name-error">
                   {errors.last_name}
                 </p>
               )}
@@ -246,17 +248,17 @@ const Reg = () => {
           </div>
 
           <div>
-            <label htmlFor="reg_username" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
+            <label htmlFor="reg_username" className="block text-[10px] font-semibold text-gray-900 mb-0.5 drop-shadow-sm">
               Username
             </label>
             <input
               id="reg_username"
-              className={`w-full max-w-md px-4 py-3 border-2 rounded-xl focus:ring-2 transition-all bg-white text-gray-900 ${
+              className={`w-full px-2 py-1 border-2 rounded focus:ring-1 transition-all bg-white text-gray-900 text-[10px] ${
                 errors.username ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
               }`}
               style={{color: '#1f2937'}}
               type="text"
-              placeholder="Choose a username"
+              placeholder="Username"
               name="username"
               value={formData.username}
               onChange={handleChange}
@@ -267,24 +269,24 @@ const Reg = () => {
               aria-invalid={errors.username ? 'true' : 'false'}
             />
             {errors.username && (
-              <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="username-error">
+              <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="username-error">
                 {errors.username}
               </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
-              Email Address
+            <label htmlFor="email" className="block text-[10px] font-semibold text-gray-900 mb-0.5 drop-shadow-sm">
+              Email
             </label>
             <input
               id="email"
-              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 transition-all bg-white text-gray-900 ${
+              className={`w-full px-2 py-1 border-2 rounded focus:ring-1 transition-all bg-white text-gray-900 text-[10px] ${
                 errors.email ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
               }`}
               style={{color: '#1f2937'}}
               type="email"
-              placeholder="Enter your email address"
+              placeholder="Email"
               name="email"
               value={formData.email}
               onChange={handleChange}
@@ -295,25 +297,25 @@ const Reg = () => {
               aria-invalid={errors.email ? 'true' : 'false'}
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="email-error">
+              <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="email-error">
                 {errors.email}
               </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="reg_password" className="block text-base font-bold text-gray-900 mb-2 drop-shadow-sm">
+            <label htmlFor="reg_password" className="block text-[10px] font-semibold text-gray-900 mb-0.5 drop-shadow-sm">
               Password
             </label>
             <div className="relative">
               <input
                 id="reg_password"
-                className={`w-full px-3 py-2 pr-12 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900 ${
+                className={`w-full px-2 py-1 pr-7 border-2 rounded focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900 text-[10px] ${
                   errors.password ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
                 }`}
-                style={{color: '#1f2937'}}
+                style={{color: '#1f2937', height: '28px'}}
                 type={showPassword ? "text" : "password"}
-                placeholder="Create your own secure password (8+ characters)"
+                placeholder="Password (8+)"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
@@ -326,35 +328,37 @@ const Reg = () => {
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700 transition-colors duration-200 bg-white rounded-r-lg"
+                className="absolute inset-y-0 right-0 flex items-center justify-center rounded-r"
+                style={{width: '28px', height: '28px', backgroundColor: 'transparent', color: '#000000'}}
                 onClick={() => setShowPassword(!showPassword)}
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-3 h-3"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   aria-hidden="true"
+                  style={{color: '#000000'}}
                 >
                   {showPassword ? (
                     // Regular eye (password visible)
                     <>
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" fill="#000000" />
+                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" fill="#000000" />
                     </>
                   ) : (
                     // Eye-slash (password hidden)
                     <>
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
-                      <path stroke="currentColor" strokeWidth="2" d="M4 4l12 12" strokeLinecap="round" />
+                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" fill="#000000" />
+                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" fill="#000000" />
+                      <path stroke="#000000" strokeWidth="2" d="M4 4l12 12" strokeLinecap="round" />
                     </>
                   )}
                 </svg>
               </button>
             </div>
             {errors.password && (
-              <p className="mt-1 text-sm text-red-600" role="alert" aria-live="polite" id="password-error">
+              <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="password-error">
                 {errors.password}
               </p>
             )}
@@ -362,7 +366,7 @@ const Reg = () => {
 
           <button
             type="submit"
-            className="w-full btn-gradient-purple disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full btn-gradient-purple disabled:opacity-50 disabled:cursor-not-allowed text-[9px] py-0.5 font-semibold"
             disabled={isLoading}
             aria-label={isLoading ? 'Creating account...' : 'Create your account'}
           >
@@ -370,13 +374,13 @@ const Reg = () => {
           </button>
         </form>
 
-        <div className="text-center">
-          <p className="text-gray-900 font-semibold">
+        <div className="text-center pt-1.5 border-t border-gray-200 mx-auto" style={{maxWidth: '70%'}}>
+          <p className="text-gray-900 font-bold text-[9px] mb-1">
             Already have an account?
           </p>
           <button
             onClick={() => handleLogin()}
-            className="w-full btn-gradient-primary"
+            className="w-full btn-gradient-primary text-[9px] py-0.5 font-semibold"
             aria-label="Go to sign in page"
           >
             Sign In
