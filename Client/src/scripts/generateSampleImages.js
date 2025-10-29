@@ -2,6 +2,8 @@ import { generateProductPlaceholder } from '../utils/placeholderGenerator.js';
 import { productImageConfig } from '../data/productImages.js';
 import fs from 'fs';
 import path from 'path';
+import { Buffer } from 'buffer';
+import process from 'process';
 
 // Convert SVG data URL to actual SVG file content
 const convertDataUrlToSvg = (dataUrl) => {
@@ -36,8 +38,7 @@ const generateAllSampleImages = async () => {
       }
 
       // Generate images for each angle
-      variant.images.forEach((imageData, index) => {
-        const angle = imageData.angle;
+      variant.images.forEach((imageData) => {
         const filename = `${imageData.label.toLowerCase().replace(/\s+/g, '-')}.svg`;
         const filePath = path.join(colorDir, filename);
 
