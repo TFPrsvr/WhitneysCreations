@@ -321,7 +321,7 @@ const CleanNav = () => {
                     to="/cart"
                     className={`flex flex-col items-center justify-center p-0.5 rounded-lg transition-all duration-200 hover:scale-102 ${
                       location.pathname === '/cart'
-                        ? 'bg-gradient-to-r from-blue-300 to-purple-400 shadow-sm scale-102'
+                        ? 'bg-gradient-to-r from-pink-300 to-rose-400 scale-102'
                         : ''
                     }`}
                     aria-label="View shopping cart"
@@ -346,7 +346,7 @@ const CleanNav = () => {
                         forDarkBackground={false}
                       />
                     </div>
-                    <span className="text-sm font-bold" style={{
+                    <span className="text-lg font-bold" style={{
                       color: '#22d3ee',
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                     }}>Cart</span>
@@ -356,7 +356,7 @@ const CleanNav = () => {
                     onClick={toggleProfileDropdown}
                     className={`profile-button flex flex-col items-center justify-center p-0.5 rounded-lg transition-all duration-200 hover:scale-102 ${
                       isProfileDropdownOpen
-                        ? 'bg-gradient-to-r from-blue-300 to-purple-400 shadow-sm scale-102'
+                        ? 'bg-gradient-to-r from-pink-300 to-rose-400 scale-102'
                         : ''
                     }`}
                     aria-label="Open settings menu"
@@ -364,7 +364,6 @@ const CleanNav = () => {
                   >
                     <div style={{
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
-                      background: 'rgba(255, 255, 255, 0.2)',
                       borderRadius: '6px',
                       padding: '12px 14px',
                       lineHeight: '1',
@@ -373,19 +372,16 @@ const CleanNav = () => {
                       alignItems: 'center',
                       justifyContent: 'center',
                       minWidth: '3rem',
-                      minHeight: '3rem'
+                      minHeight: '3rem',
+                      opacity: '0.7'
                     }}>
                       <IconRenderer
                         iconKey="settings"
                         size="3rem"
-                        forDarkBackground={false}
-                        style={{
-                          filter: 'sepia(0.3) saturate(2) hue-rotate(200deg) brightness(2.1) contrast(0.4)', // Light blue/teal outline
-                          display: 'block'
-                        }}
+                        forDarkBackground={true}
                       />
                     </div>
-                    <span className="text-sm font-bold" style={{
+                    <span className="text-lg font-bold" style={{
                       color: '#22d3ee',
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                     }}>Settings</span>
@@ -395,7 +391,7 @@ const CleanNav = () => {
                     to="/orders"
                     className={`flex flex-col items-center justify-center p-0.5 rounded-lg transition-all duration-200 hover:scale-102 ${
                       location.pathname === '/orders'
-                        ? 'bg-gradient-to-r from-blue-300 to-purple-400 shadow-sm scale-102'
+                        ? 'bg-gradient-to-r from-pink-300 to-rose-400 scale-102'
                         : ''
                     }`}
                     aria-label="View order history"
@@ -420,7 +416,7 @@ const CleanNav = () => {
                         forDarkBackground={false}
                       />
                     </div>
-                    <span className="text-sm font-bold" style={{
+                    <span className="text-lg font-bold" style={{
                       color: '#22d3ee',
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000'
                     }}>Orders</span>

@@ -30,7 +30,8 @@ const IconRenderer = ({
           contact: 'invert(1) sepia(1) saturate(10) hue-rotate(20deg) brightness(1.8) contrast(1.3)',   // Bright Orange
           cart: 'invert(1) sepia(1) saturate(10) hue-rotate(300deg) brightness(1.8) contrast(1.3)',     // Bright Pink
           orders: 'invert(1) sepia(1) saturate(10) hue-rotate(250deg) brightness(1.8) contrast(1.3)',   // Bright Indigo
-          avatar: 'invert(1) sepia(1) saturate(10) hue-rotate(160deg) brightness(1.8) contrast(1.3)'    // Bright Teal
+          avatar: 'invert(1) sepia(1) saturate(10) hue-rotate(160deg) brightness(1.8) contrast(1.3)',    // Bright Teal
+          settings: 'invert(1) sepia(1) saturate(10) hue-rotate(320deg) brightness(1.8) contrast(1.3)'  // Bright Magenta/Pink
         };
         return darkFilterMap[iconKey] || 'invert(1) brightness(1.8) contrast(1.3)';
       } else {
@@ -47,7 +48,8 @@ const IconRenderer = ({
           contact: 'sepia(0.08) saturate(0.8) hue-rotate(20deg) brightness(3.2) contrast(0.04)',   // Light orange outline, minimal boldness
           cart: 'sepia(0.15) saturate(1.2) hue-rotate(300deg) brightness(2.8) contrast(0.05)',     // Subtle pink, minimal bold
           orders: 'sepia(0.2) saturate(1.5) hue-rotate(250deg) brightness(2.5) contrast(0.15)',   // Visible indigo but minimal bold
-          avatar: 'sepia(0.15) saturate(1.2) hue-rotate(200deg) brightness(2.8) contrast(0.05)'    // Subtle teal, minimal bold
+          avatar: 'sepia(0.15) saturate(1.2) hue-rotate(200deg) brightness(2.8) contrast(0.05)',   // Subtle teal, minimal bold
+          settings: 'invert(1) grayscale(1) brightness(1.5) contrast(0.8)' // Invert to white, grayscale, visible
         };
         return lightFilterMap[iconKey] || 'brightness(2.5) contrast(0.2)';
       }

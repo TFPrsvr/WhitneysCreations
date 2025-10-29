@@ -34,6 +34,9 @@ import ProfileSettings from './components/Profile/ProfileSettings.jsx'
 import OrderHistory from './components/Orders/OrderHistory.jsx'
 import AvatarSettings from './components/Profile/AvatarSettings.jsx'
 import AttributionPage from './components/Attribution/AttributionPage.jsx'
+import Settings from './components/Settings/Settings.jsx'
+import NotificationSettings from './components/Settings/NotificationSettings.jsx'
+import PrivacySettings from './components/Settings/PrivacySettings.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -71,7 +74,10 @@ createRoot(document.getElementById('root')).render(
     <Route path='/profile' element={<ProfileSettings />} />
     <Route path='/avatar-settings' element={<AvatarSettings />} />
     <Route path='/orders' element={<OrderHistory />} />
-    
+    <Route path='/settings' element={<Settings />} />
+    <Route path='/settings/notifications' element={<NotificationSettings />} />
+    <Route path='/settings/privacy' element={<PrivacySettings />} />
+
     <Route path='/cart' element={<Cart />} />
 
 
