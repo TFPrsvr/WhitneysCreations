@@ -233,7 +233,7 @@ const CleanNav = () => {
                     to={link.path}
                     className={`px-4 py-3 text-sm font-bold transition-all duration-200 flex items-center justify-between ${
                       isLinkActive
-                        ? 'bg-gradient-to-r from-pink-300 to-pink-400 text-white shadow-lg rounded-lg'
+                        ? 'bg-gradient-to-r from-pink-100 to-pink-200 text-white shadow-sm rounded-lg'
                         : 'text-gray-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-500 hover:shadow-md rounded-lg'
                     }`}
                     aria-current={isLinkActive ? 'page' : undefined}
@@ -319,9 +319,9 @@ const CleanNav = () => {
                 <nav className="flex justify-evenly space-x-0 py-3 mb-3" role="navigation" aria-label="Quick actions" style={{maxWidth: '100%', overflow: 'hidden'}}>
                   <Link
                     to="/cart"
-                    className={`flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-102 ${
+                    className={`flex flex-col items-center justify-center p-0.5 rounded-lg transition-all duration-200 hover:scale-102 ${
                       location.pathname === '/cart'
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-md scale-102'
+                        ? 'bg-gradient-to-r from-blue-300 to-purple-400 shadow-sm scale-102'
                         : ''
                     }`}
                     aria-label="View shopping cart"
@@ -337,12 +337,12 @@ const CleanNav = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      minWidth: '4rem',
-                      minHeight: '4rem'
+                      minWidth: '3rem',
+                      minHeight: '3rem'
                     }}>
                       <IconRenderer
                         iconKey="cart"
-                        size="4rem"
+                        size="3rem"
                         forDarkBackground={false}
                       />
                     </div>
@@ -354,9 +354,9 @@ const CleanNav = () => {
 
                   <button
                     onClick={toggleProfileDropdown}
-                    className={`profile-button flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-102 ${
+                    className={`profile-button flex flex-col items-center justify-center p-0.5 rounded-lg transition-all duration-200 hover:scale-102 ${
                       isProfileDropdownOpen
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-md scale-102'
+                        ? 'bg-gradient-to-r from-blue-300 to-purple-400 shadow-sm scale-102'
                         : ''
                     }`}
                     aria-label="Open settings menu"
@@ -372,12 +372,12 @@ const CleanNav = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      minWidth: '4rem',
-                      minHeight: '4rem'
+                      minWidth: '3rem',
+                      minHeight: '3rem'
                     }}>
                       <IconRenderer
                         iconKey="settings"
-                        size="4rem"
+                        size="3rem"
                         forDarkBackground={false}
                         style={{
                           filter: 'sepia(0.3) saturate(2) hue-rotate(200deg) brightness(2.1) contrast(0.4)', // Light blue/teal outline
@@ -393,9 +393,9 @@ const CleanNav = () => {
 
                   <Link
                     to="/orders"
-                    className={`flex flex-col items-center justify-center p-1 rounded-lg transition-all duration-200 hover:scale-102 ${
+                    className={`flex flex-col items-center justify-center p-0.5 rounded-lg transition-all duration-200 hover:scale-102 ${
                       location.pathname === '/orders'
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 shadow-md scale-102'
+                        ? 'bg-gradient-to-r from-blue-300 to-purple-400 shadow-sm scale-102'
                         : ''
                     }`}
                     aria-label="View order history"
@@ -411,12 +411,12 @@ const CleanNav = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      minWidth: '4rem',
-                      minHeight: '4rem'
+                      minWidth: '3rem',
+                      minHeight: '3rem'
                     }}>
                       <IconRenderer
                         iconKey="orders"
-                        size="4rem"
+                        size="3rem"
                         forDarkBackground={false}
                       />
                     </div>

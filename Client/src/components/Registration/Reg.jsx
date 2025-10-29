@@ -12,11 +12,13 @@ const Reg = () => {
     username: '',
     email: '',
     password: '',
+    confirmPassword: '',
   })
   const [userInfo, setUserInfo] = useState({})
   const [errors, setErrors] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const nav = useNavigate()
 
@@ -79,6 +81,25 @@ const Reg = () => {
       } else {
         delete newErrors.password;
       }
+
+      // Check if confirm password matches
+      if (formData.confirmPassword && value !== formData.confirmPassword) {
+        newErrors.confirmPassword = 'Passwords must match';
+        newErrors.password = 'Passwords must match';
+      } else if (formData.confirmPassword && value === formData.confirmPassword) {
+        delete newErrors.confirmPassword;
+        delete newErrors.password;
+      }
+    }
+
+    if (name === 'confirmPassword' && value) {
+      if (value !== formData.password) {
+        newErrors.confirmPassword = 'Passwords must match';
+        newErrors.password = 'Passwords must match';
+      } else {
+        delete newErrors.confirmPassword;
+        delete newErrors.password;
+      }
     }
 
     setErrors(newErrors);
@@ -113,6 +134,13 @@ const Reg = () => {
       newErrors.password = 'Password must be at least 8 characters';
     } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password)) {
       newErrors.password = 'Password must include uppercase, lowercase, and number';
+    }
+
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = 'Please confirm your password';
+    } else if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords must match';
+      newErrors.password = 'Passwords must match';
     }
 
     setErrors(newErrors);
@@ -165,21 +193,21 @@ const Reg = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 flex items-center justify-center py-8 px-4 relative page-container">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 flex items-center justify-center px-4 relative page-container">
       {/* Background decorative elements */}
-      <div className="absolute text-3xl opacity-20 hidden lg:block" style={{top: '1rem', left: '1rem'}} aria-hidden="true">🎨</div>
-      <div className="absolute text-3xl opacity-20 hidden lg:block" style={{top: '1rem', right: '1rem'}} aria-hidden="true">👚</div>
-      <div className="absolute text-3xl opacity-20 hidden lg:block" style={{bottom: '1rem', left: '1rem'}} aria-hidden="true">☕</div>
-      <div className="absolute text-3xl opacity-20 hidden lg:block" style={{bottom: '1rem', right: '1rem'}} aria-hidden="true">🧥</div>
-      
-      <main className="w-full space-y-3 bg-white rounded-2xl shadow-2xl p-3 border border-gray-100" role="main" style={{maxWidth: '280px'}}>
-        <header className="text-center">
-          <div className="text-center mb-1">
-            <h1 className="text-[10px] font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Create Account</h1>
-            <span className="text-sm" aria-hidden="true">👕</span>
+      <div className="absolute text-2xl opacity-40 hidden lg:block" style={{top: '1rem', left: '1rem', filter: 'drop-shadow(4px 4px 8px rgba(147,51,234,1)) drop-shadow(0 0 15px rgba(168,85,247,0.9)) drop-shadow(0 0 20px rgba(147,51,234,0.6)) drop-shadow(0 0 2px rgba(0,0,0,0.7))', animation: 'float 3s ease-in-out infinite'}} aria-hidden="true">🎨</div>
+      <div className="absolute text-2xl opacity-40 hidden lg:block" style={{top: '1rem', right: '1rem', filter: 'drop-shadow(2px 2px 4px rgba(234,179,8,0.6)) drop-shadow(0 0 8px rgba(250,204,21,0.5)) drop-shadow(0 0 12px rgba(234,179,8,0.3)) drop-shadow(0 0 2px rgba(0,0,0,0.7))', animation: 'float 3s ease-in-out infinite'}} aria-hidden="true">👚</div>
+      <div className="absolute text-2xl opacity-40 hidden lg:block" style={{bottom: '1rem', left: '1rem', filter: 'drop-shadow(4px 4px 8px rgba(59,130,246,1)) drop-shadow(0 0 20px rgba(96,165,250,0.9)) drop-shadow(0 0 30px rgba(59,130,246,0.6)) drop-shadow(0 0 2px rgba(0,0,0,0.7))', animation: 'float 3s ease-in-out infinite'}} aria-hidden="true">☕</div>
+      <div className="absolute text-2xl opacity-40 hidden lg:block" style={{bottom: '1rem', right: '1rem', filter: 'drop-shadow(4px 4px 8px rgba(251,146,60,1)) drop-shadow(0 0 20px rgba(253,186,116,0.9)) drop-shadow(0 0 30px rgba(251,146,60,0.6)) drop-shadow(0 0 2px rgba(0,0,0,0.7))', animation: 'float 3s ease-in-out infinite'}} aria-hidden="true">🧥</div>
+
+      <main className="w-full space-y-3 bg-white rounded-2xl shadow-2xl border border-gray-100" role="main" style={{maxWidth: '280px', paddingTop: '2.5rem', paddingBottom: '2.5rem', paddingLeft: '0.75rem', paddingRight: '0.75rem'}}>
+        <header className="text-center" style={{marginTop: '-40px', marginBottom: '-24px'}}>
+          <h1 className="font-semibold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent" style={{margin: '0', padding: '0', lineHeight: '1', fontSize: '26px'}}>Create Account</h1>
+          <div className="text-center" style={{margin: '8px 0', padding: '0'}}>
+            <span className="text-2xl" aria-hidden="true" style={{margin: '0', padding: '0', display: 'inline-block', lineHeight: '1'}}>👕</span>
           </div>
-          <p className="font-semibold mt-0.5 drop-shadow-sm text-[8px]">
-            <span style={{color: '#6b7280'}}>Join Whitney's unique Creations today</span>
+          <p className="font-semibold drop-shadow-sm text-[8px]" style={{margin: '0', padding: '0', marginBottom: '40px'}}>
+            <span style={{color: '#6b7280'}}>Join Whitney's Unique Creations today</span>
           </p>
         </header>
 
@@ -189,10 +217,10 @@ const Reg = () => {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-3 mx-auto" noValidate style={{maxWidth: '70%'}}>
-          <div className="grid grid-cols-2 gap-2">
+        <form onSubmit={handleSubmit} className="mx-auto" noValidate style={{maxWidth: '70%'}}>
+          <div className="grid grid-cols-2 gap-2" style={{marginBottom: '24px'}}>
             <div>
-              <label htmlFor="first_name" className="block text-[10px] font-semibold text-gray-900 mb-0.5 drop-shadow-sm">
+              <label htmlFor="first_name" className="block text-[13px] font-semibold mb-0.5 drop-shadow-sm" style={{color: '#6b7280'}}>
                 First Name
               </label>
               <input
@@ -219,7 +247,7 @@ const Reg = () => {
               )}
             </div>
             <div>
-              <label htmlFor="last_name" className="block text-[10px] font-semibold text-gray-900 mb-0.5 drop-shadow-sm">
+              <label htmlFor="last_name" className="block text-[13px] font-semibold mb-0.5 drop-shadow-sm" style={{color: '#6b7280'}}>
                 Last Name
               </label>
               <input
@@ -247,140 +275,241 @@ const Reg = () => {
             </div>
           </div>
 
-          <div>
-            <label htmlFor="reg_username" className="block text-[10px] font-semibold text-gray-900 mb-0.5 drop-shadow-sm">
-              Username
-            </label>
-            <input
-              id="reg_username"
-              className={`w-full px-2 py-1 border-2 rounded focus:ring-1 transition-all bg-white text-gray-900 text-[10px] ${
-                errors.username ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
-              }`}
-              style={{color: '#1f2937'}}
-              type="text"
-              placeholder="Username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              autoComplete="username"
-              required
-              aria-describedby={errors.username ? 'username-error' : undefined}
-              aria-invalid={errors.username ? 'true' : 'false'}
-            />
-            {errors.username && (
-              <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="username-error">
-                {errors.username}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label htmlFor="email" className="block text-[10px] font-semibold text-gray-900 mb-0.5 drop-shadow-sm">
-              Email
-            </label>
-            <input
-              id="email"
-              className={`w-full px-2 py-1 border-2 rounded focus:ring-1 transition-all bg-white text-gray-900 text-[10px] ${
-                errors.email ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
-              }`}
-              style={{color: '#1f2937'}}
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              autoComplete="email"
-              required
-              aria-describedby={errors.email ? 'email-error' : undefined}
-              aria-invalid={errors.email ? 'true' : 'false'}
-            />
-            {errors.email && (
-              <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="email-error">
-                {errors.email}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label htmlFor="reg_password" className="block text-[10px] font-semibold text-gray-900 mb-0.5 drop-shadow-sm">
-              Password
-            </label>
-            <div className="relative">
+          <div className="grid grid-cols-2 gap-2" style={{marginBottom: '24px'}}>
+            <div>
+              <label htmlFor="reg_username" className="block text-[13px] font-semibold mb-0.5 drop-shadow-sm" style={{color: '#6b7280'}}>
+                Username
+              </label>
               <input
-                id="reg_password"
-                className={`w-full px-2 py-1 pr-7 border-2 rounded focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900 text-[10px] ${
-                  errors.password ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
+                id="reg_username"
+                className={`w-full px-2 py-1 border-2 rounded focus:ring-1 transition-all bg-white text-gray-900 text-[10px] ${
+                  errors.username ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
                 }`}
-                style={{color: '#1f2937', height: '28px'}}
-                type={showPassword ? "text" : "password"}
-                placeholder="Password (8+)"
-                name="password"
-                value={formData.password}
+                style={{color: '#1f2937'}}
+                type="text"
+                placeholder="Username"
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                autoComplete="new-password"
-                data-lpignore="true"
+                autoComplete="username"
                 required
-                aria-describedby={errors.password ? 'password-error' : undefined}
-                aria-invalid={errors.password ? 'true' : 'false'}
+                aria-describedby={errors.username ? 'username-error' : undefined}
+                aria-invalid={errors.username ? 'true' : 'false'}
               />
-              <button
-                type="button"
-                className="absolute inset-y-0 right-0 flex items-center justify-center rounded-r"
-                style={{width: '28px', height: '28px', backgroundColor: 'transparent', color: '#000000'}}
-                onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
-              >
-                <svg
-                  className="w-3 h-3"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  aria-hidden="true"
-                  style={{color: '#000000'}}
-                >
-                  {showPassword ? (
-                    // Regular eye (password visible)
-                    <>
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" fill="#000000" />
-                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" fill="#000000" />
-                    </>
-                  ) : (
-                    // Eye-slash (password hidden)
-                    <>
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" fill="#000000" />
-                      <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" fill="#000000" />
-                      <path stroke="#000000" strokeWidth="2" d="M4 4l12 12" strokeLinecap="round" />
-                    </>
-                  )}
-                </svg>
-              </button>
+              {errors.username && (
+                <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="username-error">
+                  {errors.username}
+                </p>
+              )}
             </div>
-            {errors.password && (
-              <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="password-error">
-                {errors.password}
-              </p>
-            )}
+
+            <div>
+              <label htmlFor="email" className="block text-[13px] font-semibold mb-0.5 drop-shadow-sm" style={{color: '#6b7280'}}>
+                Email
+              </label>
+              <input
+                id="email"
+                className={`w-full px-2 py-1 border-2 rounded focus:ring-1 transition-all bg-white text-gray-900 text-[10px] ${
+                  errors.email ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300 focus:ring-primary-500 focus:border-primary-500'
+                }`}
+                style={{color: '#1f2937'}}
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                autoComplete="email"
+                required
+                aria-describedby={errors.email ? 'email-error' : undefined}
+                aria-invalid={errors.email ? 'true' : 'false'}
+              />
+              {errors.email && (
+                <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="email-error">
+                  {errors.email}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2" style={{marginBottom: '36px'}}>
+            <div>
+              <label htmlFor="reg_password" className="block text-[13px] font-semibold mb-0.5 drop-shadow-sm" style={{color: '#6b7280'}}>
+                Password
+              </label>
+              <div className="relative">
+                <input
+                  id="reg_password"
+                  className={`w-full px-2 py-1 pr-7 border-2 rounded focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900 text-[10px] ${
+                    errors.password ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
+                  }`}
+                  style={{color: '#1f2937', height: '28px'}}
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password (8+)"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  autoComplete="new-password"
+                  data-lpignore="true"
+                  required
+                  aria-describedby={errors.password ? 'password-error' : undefined}
+                  aria-invalid={errors.password ? 'true' : 'false'}
+                />
+                <div
+                  role="button"
+                  tabIndex={0}
+                  style={{
+                    position: 'absolute',
+                    top: '2px',
+                    right: '4px',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '24px',
+                    backgroundColor: 'transparent',
+                    background: 'none',
+                    border: 'none',
+                    outline: 'none',
+                    padding: '0',
+                    margin: '0',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => setShowPassword(!showPassword)}
+                  onKeyPress={(e) => { if (e.key === 'Enter' || e.key === ' ') setShowPassword(!showPassword); }}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  <svg
+                    width="16"
+                    height="12"
+                    viewBox="0 0 24 18"
+                    aria-hidden="true"
+                    style={{fill: 'none', display: 'block'}}
+                  >
+                    {showPassword ? (
+                      // Regular eye (password visible)
+                      <>
+                        <path d="M12 11a2 2 0 100-4 2 2 0 000 4z" stroke="#9ca3af" strokeWidth="1" fill="#9ca3af" />
+                        <path d="M1 9s3-6 11-6 11 6 11 6-3 6-11 6S1 9 1 9z" stroke="#9ca3af" strokeWidth="1" fill="none" />
+                      </>
+                    ) : (
+                      // Eye-slash (password hidden)
+                      <>
+                        <path d="M12 11a2 2 0 100-4 2 2 0 000 4z" stroke="#9ca3af" strokeWidth="1" fill="#9ca3af" />
+                        <path d="M1 9s3-6 11-6 11 6 11 6-3 6-11 6S1 9 1 9z" stroke="#9ca3af" strokeWidth="1" fill="none" />
+                        <line x1="3" y1="1" x2="21" y2="17" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round" />
+                      </>
+                    )}
+                  </svg>
+                </div>
+              </div>
+              {errors.password && (
+                <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="password-error">
+                  {errors.password}
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="confirm_password" className="block text-[13px] font-semibold mb-0.5 drop-shadow-sm" style={{color: '#6b7280'}}>
+                Confirm Password
+              </label>
+              <div className="relative">
+                <input
+                  id="confirm_password"
+                  className={`w-full px-2 py-1 pr-7 border-2 rounded focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all bg-white text-gray-900 text-[10px] ${
+                    errors.confirmPassword ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
+                  }`}
+                  style={{color: '#1f2937', height: '28px'}}
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="Confirm"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  autoComplete="new-password"
+                  data-lpignore="true"
+                  required
+                  aria-describedby={errors.confirmPassword ? 'confirm-password-error' : undefined}
+                  aria-invalid={errors.confirmPassword ? 'true' : 'false'}
+                />
+                <div
+                  role="button"
+                  tabIndex={0}
+                  style={{
+                    position: 'absolute',
+                    top: '2px',
+                    right: '4px',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '24px',
+                    backgroundColor: 'transparent',
+                    background: 'none',
+                    border: 'none',
+                    outline: 'none',
+                    padding: '0',
+                    margin: '0',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  onKeyPress={(e) => { if (e.key === 'Enter' || e.key === ' ') setShowConfirmPassword(!showConfirmPassword); }}
+                  aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+                >
+                  <svg
+                    width="16"
+                    height="12"
+                    viewBox="0 0 24 18"
+                    aria-hidden="true"
+                    style={{fill: 'none', display: 'block'}}
+                  >
+                    {showConfirmPassword ? (
+                      // Regular eye (password visible)
+                      <>
+                        <path d="M12 11a2 2 0 100-4 2 2 0 000 4z" stroke="#9ca3af" strokeWidth="1" fill="#9ca3af" />
+                        <path d="M1 9s3-6 11-6 11 6 11 6-3 6-11 6S1 9 1 9z" stroke="#9ca3af" strokeWidth="1" fill="none" />
+                      </>
+                    ) : (
+                      // Eye-slash (password hidden)
+                      <>
+                        <path d="M12 11a2 2 0 100-4 2 2 0 000 4z" stroke="#9ca3af" strokeWidth="1" fill="#9ca3af" />
+                        <path d="M1 9s3-6 11-6 11 6 11 6-3 6-11 6S1 9 1 9z" stroke="#9ca3af" strokeWidth="1" fill="none" />
+                        <line x1="3" y1="1" x2="21" y2="17" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round" />
+                      </>
+                    )}
+                  </svg>
+                </div>
+              </div>
+              {errors.confirmPassword && (
+                <p className="mt-0.5 text-[9px] text-red-600" role="alert" aria-live="polite" id="confirm-password-error">
+                  {errors.confirmPassword}
+                </p>
+              )}
+            </div>
           </div>
 
           <button
             type="submit"
-            className="w-full btn-gradient-purple disabled:opacity-50 disabled:cursor-not-allowed text-[9px] py-0.5 font-semibold"
+            className="w-full btn-gradient-purple disabled:opacity-50 disabled:cursor-not-allowed text-[9px] font-semibold"
             disabled={isLoading}
+            style={{height: '24px'}}
             aria-label={isLoading ? 'Creating account...' : 'Create your account'}
           >
             {isLoading ? 'Creating Account...' : 'Create Account'}
           </button>
         </form>
 
-        <div className="text-center pt-1.5 border-t border-gray-200 mx-auto" style={{maxWidth: '70%'}}>
-          <p className="text-gray-900 font-bold text-[9px] mb-1">
+        <div className="text-center border-t border-gray-200 mx-auto" style={{maxWidth: '70%', marginTop: '20px', paddingTop: '16px'}}>
+          <p className="font-semibold drop-shadow-sm text-[8px]" style={{color: '#6b7280', marginBottom: '12px'}}>
             Already have an account?
           </p>
           <button
             onClick={() => handleLogin()}
-            className="w-full btn-gradient-primary text-[9px] py-0.5 font-semibold"
+            className="w-full btn-gradient-primary text-[9px] font-semibold"
+            style={{height: '24px'}}
             aria-label="Go to sign in page"
           >
             Sign In
