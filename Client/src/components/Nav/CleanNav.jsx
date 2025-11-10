@@ -234,7 +234,7 @@ const CleanNav = () => {
                     className={`px-4 py-3 text-sm font-bold transition-all duration-200 flex items-center justify-between ${
                       isLinkActive
                         ? 'bg-gradient-to-r from-pink-100 to-pink-200 text-white shadow-sm rounded-lg'
-                        : 'text-gray-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-400 hover:to-blue-500 hover:shadow-md rounded-lg'
+                        : 'text-gray-200 hover:text-white hover:bg-gradient-to-r hover:from-gray-300 hover:to-gray-400 hover:shadow-md rounded-lg'
                     }`}
                     aria-current={isLinkActive ? 'page' : undefined}
                     aria-label={`${link.label}${link.badge ? ` (${link.badge} items)` : ''}`}
@@ -436,7 +436,7 @@ const CleanNav = () => {
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)'
                     }}>
                     <h3 className="text-sm font-bold mb-3 text-center" style={{
-                      color: '#60a5fa',
+                      color: '#d1d5db',
                       textShadow: '0 2px 4px rgba(0, 0, 0, 0.8)'
                     }}>Settings Menu</h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -456,8 +456,8 @@ const CleanNav = () => {
                           textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)'
                         }}
                         onMouseEnter={(e) => {
-                          e.target.style.background = 'rgba(59, 130, 246, 0.3)';
-                          e.target.style.color = '#60a5fa';
+                          e.target.style.background = 'rgba(156, 163, 175, 0.3)';
+                          e.target.style.color = '#d1d5db';
                         }}
                         onMouseLeave={(e) => {
                           e.target.style.background = 'rgba(55, 65, 81, 0.5)';
@@ -482,8 +482,8 @@ const CleanNav = () => {
                           textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)'
                         }}
                         onMouseEnter={(e) => {
-                          e.target.style.background = 'rgba(59, 130, 246, 0.3)';
-                          e.target.style.color = '#60a5fa';
+                          e.target.style.background = 'rgba(156, 163, 175, 0.3)';
+                          e.target.style.color = '#d1d5db';
                         }}
                         onMouseLeave={(e) => {
                           e.target.style.background = 'rgba(55, 65, 81, 0.5)';
@@ -508,8 +508,8 @@ const CleanNav = () => {
                           textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)'
                         }}
                         onMouseEnter={(e) => {
-                          e.target.style.background = 'rgba(59, 130, 246, 0.3)';
-                          e.target.style.color = '#60a5fa';
+                          e.target.style.background = 'rgba(156, 163, 175, 0.3)';
+                          e.target.style.color = '#d1d5db';
                         }}
                         onMouseLeave={(e) => {
                           e.target.style.background = 'rgba(55, 65, 81, 0.5)';
@@ -534,8 +534,8 @@ const CleanNav = () => {
                           textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)'
                         }}
                         onMouseEnter={(e) => {
-                          e.target.style.background = 'rgba(59, 130, 246, 0.3)';
-                          e.target.style.color = '#60a5fa';
+                          e.target.style.background = 'rgba(156, 163, 175, 0.3)';
+                          e.target.style.color = '#d1d5db';
                         }}
                         onMouseLeave={(e) => {
                           e.target.style.background = 'rgba(55, 65, 81, 0.5)';
